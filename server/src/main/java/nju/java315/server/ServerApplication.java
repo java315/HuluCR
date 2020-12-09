@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -36,8 +35,8 @@ public class ServerApplication {
 
 				ch.pipeline().addLast(
 					new HttpServerCodec(), 
-					new HttpObjectAggregator(65535),
-					new WebSocketServerProtocolHandler("/websocket"),
+					//new HttpObjectAggregator(65535),
+					//new WebSocketServerProtocolHandler("/websocket"),
 					new GameMSgHandler()
 				);
 			}
@@ -48,7 +47,7 @@ public class ServerApplication {
 
 		try {
 			// 绑定端口
-			ChannelFuture f = b.bind(Integer.parseInt(args[1])).sync();
+			ChannelFuture f = b.bind(12345).sync();
 
 			if (f.isSuccess()){
 				LOGGER.info("Server start successfully!");
@@ -57,10 +56,11 @@ public class ServerApplication {
 			// 等待服务器信道关闭
 			f.channel().closeFuture().sync();
 
-		} catch (Exception e){
+		} catch (Exception e){			
+			LOGGER.error(e.getMessage(), e);
+		} finally {
 			workGroup.shutdownGracefully();
 			bossGroup.shutdownGracefully();
-			LOGGER.error(e.getMessage(), e);
 		}
 	}
 
