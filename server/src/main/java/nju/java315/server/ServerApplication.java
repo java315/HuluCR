@@ -47,7 +47,7 @@ public class ServerApplication {
 
 		try {
 			// 绑定端口
-			ChannelFuture f = b.bind(12345).sync();
+			ChannelFuture f = b.bind(8080).sync();
 
 			if (f.isSuccess()){
 				LOGGER.info("Server start successfully!");
