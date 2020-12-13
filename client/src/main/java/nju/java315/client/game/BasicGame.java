@@ -1,3 +1,7 @@
+/*
+123123
+*/
+
 package nju.java315.client.game;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -10,7 +14,6 @@ public class BasicGame extends GameApplication {
         settings.setWidth(800);
         settings.setHeight(600);
         settings.setTitle("Basic Game App");
-        123123;
     }
 
 }
