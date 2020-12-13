@@ -13,7 +13,8 @@ public class ClientApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClientApplication.class, args);
-		/*
+		System.out.println("launch game");
+		GameApplication.launch(BasicGame.class,args);
 		NettyClient nc = new NettyClient();
 		try {
 			nc.start();
@@ -22,9 +23,8 @@ public class ClientApplication {
 		} finally {
 
 		}
-		*/
-		System.out.println("launch game");
-		GameApplication.launch(BasicGame.class,args);
+		
+		
 	}
 
 }
