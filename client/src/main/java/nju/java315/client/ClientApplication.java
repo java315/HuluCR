@@ -1,3 +1,9 @@
+/*
+ * @Author: zb-nju
+ * @Date: 2020-12-13 23:41:23
+ * @LastEditors: zb-nju
+ * @LastEditTime: 2020-12-14 00:09:39
+ */
 package nju.java315.client;
 
 import com.almasb.fxgl.app.GameApplication;
@@ -13,7 +19,7 @@ public class ClientApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClientApplication.class, args);
-		/*
+
 		NettyClient nc = new NettyClient();
 		try {
 			nc.start();
@@ -22,7 +28,7 @@ public class ClientApplication {
 		} finally {
 
 		}
-		*/
+
 		System.out.println("launch game");
 		GameApplication.launch(BasicGame.class,args);
 	}
