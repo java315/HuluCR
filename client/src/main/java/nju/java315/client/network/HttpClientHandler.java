@@ -28,7 +28,7 @@ public class HttpClientHandler extends SimpleChannelInboundHandler<FullHttpRespo
         request.headers().set(HttpHeaderNames.CONTENT_LENGTH, request.content().readableBytes());
         // 发送http请求
         ctx.channel().writeAndFlush(request);
-        throw new Exception("disconnect!");
+
     }
  
     @Override
