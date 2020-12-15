@@ -1,3 +1,9 @@
+/*
+ * @Author: zb-nju
+ * @Date: 2020-12-13 23:48:37
+ * @LastEditors: zb-nju
+ * @LastEditTime: 2020-12-13 23:53:09
+ */
 package nju.java315.client.network;
 
 import java.net.URI;
@@ -28,7 +34,6 @@ public class HttpClientHandler extends SimpleChannelInboundHandler<FullHttpRespo
         request.headers().set(HttpHeaderNames.CONTENT_LENGTH, request.content().readableBytes());
         // 发送http请求
         ctx.channel().writeAndFlush(request);
-
     }
  
     @Override

@@ -1,3 +1,9 @@
+/*
+ * @Author: zb-nju
+ * @Date: 2020-12-13 23:41:23
+ * @LastEditors: zb-nju
+ * @LastEditTime: 2020-12-15 11:35:53
+ */
 package nju.java315.server;
 
 import org.slf4j.Logger;
@@ -34,10 +40,10 @@ public class ServerApplication {
 			protected void initChannel(SocketChannel ch) throws Exception {
 
 				ch.pipeline().addLast(
-					new HttpServerCodec(), 
+					new HttpServerCodec(),
 					//new HttpObjectAggregator(65535),
 					//new WebSocketServerProtocolHandler("/websocket"),
-					new GameMSgHandler()
+					new GameMsgHandler()
 				);
 			}
 		});
@@ -56,7 +62,7 @@ public class ServerApplication {
 			// 等待服务器信道关闭
 			f.channel().closeFuture().sync();
 
-		} catch (Exception e){			
+		} catch (Exception e){
 			LOGGER.error(e.getMessage(), e);
 		} finally {
 			workGroup.shutdownGracefully();
