@@ -1,3 +1,9 @@
+/*
+ * @Author: zb-nju
+ * @Date: 2020-12-13 23:41:23
+ * @LastEditors: zb-nju
+ * @LastEditTime: 2020-12-15 11:36:27
+ */
 package nju.java315.server;
 
 import org.slf4j.Logger;
@@ -18,9 +24,9 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import io.netty.util.CharsetUtil;
 
-public class GameMSgHandler extends SimpleChannelInboundHandler<HttpObject> {
+public class GameMsgHandler extends SimpleChannelInboundHandler<HttpObject> {
 
-    static private final Logger LOGGER = LoggerFactory.getLogger(GameMSgHandler.class);
+    static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
 /*
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -51,18 +57,18 @@ public class GameMSgHandler extends SimpleChannelInboundHandler<HttpObject> {
             System.out.println("Uri:" + uri);
         }
         if (msg instanceof HttpContent) {
- 
+
             HttpContent content = (HttpContent) msg;
             ByteBuf buf = content.content();
             System.out.println(buf.toString(io.netty.util.CharsetUtil.UTF_8));
- 
+
             ByteBuf byteBuf = Unpooled.copiedBuffer("hello world", CharsetUtil.UTF_8);
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, byteBuf);
             response.headers().add(HttpHeaderNames.CONTENT_TYPE, "text/plain");
             response.headers().add(HttpHeaderNames.CONTENT_LENGTH, byteBuf.readableBytes());
- 
+
             ctx.writeAndFlush(response);
- 
+
         }
     }
 }

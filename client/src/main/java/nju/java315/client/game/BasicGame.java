@@ -2,7 +2,7 @@
  * @Author: zb-nju
  * @Date: 2020-12-13 23:48:37
  * @LastEditors: zb-nju
- * @LastEditTime: 2020-12-14 00:19:05
+ * @LastEditTime: 2020-12-14 00:19:32
  */
 package nju.java315.client.game;
 
@@ -16,7 +16,6 @@ public class BasicGame extends GameApplication {
         settings.setWidth(800);
         settings.setHeight(600);
         settings.setTitle("Basic Game App");
-        System.out.println();
     }
 
 }
