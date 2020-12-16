@@ -808,20 +808,10 @@ public final class GameMsgProtocol {
        * 房间状态
        * </pre>
        *
-       * <code>string roomState = 2;</code>
+       * <code>uint32 roomState = 2;</code>
        * @return The roomState.
        */
-      java.lang.String getRoomState();
-      /**
-       * <pre>
-       * 房间状态
-       * </pre>
-       *
-       * <code>string roomState = 2;</code>
-       * @return The bytes for roomState.
-       */
-      com.google.protobuf.ByteString
-          getRoomStateBytes();
+      int getRoomState();
     }
     /**
      * <pre>
@@ -840,7 +830,6 @@ public final class GameMsgProtocol {
         super(builder);
       }
       private RoomInfo() {
-        roomState_ = "";
       }
 
       @java.lang.Override
@@ -878,10 +867,9 @@ public final class GameMsgProtocol {
                 roomId_ = input.readUInt32();
                 break;
               }
-              case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
+              case 16: {
 
-                roomState_ = s;
+                roomState_ = input.readUInt32();
                 break;
               }
               default: {
@@ -932,49 +920,18 @@ public final class GameMsgProtocol {
       }
 
       public static final int ROOMSTATE_FIELD_NUMBER = 2;
-      private volatile java.lang.Object roomState_;
+      private int roomState_;
       /**
        * <pre>
        * 房间状态
        * </pre>
        *
-       * <code>string roomState = 2;</code>
+       * <code>uint32 roomState = 2;</code>
        * @return The roomState.
        */
       @java.lang.Override
-      public java.lang.String getRoomState() {
-        java.lang.Object ref = roomState_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          roomState_ = s;
-          return s;
-        }
-      }
-      /**
-       * <pre>
-       * 房间状态
-       * </pre>
-       *
-       * <code>string roomState = 2;</code>
-       * @return The bytes for roomState.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getRoomStateBytes() {
-        java.lang.Object ref = roomState_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          roomState_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public int getRoomState() {
+        return roomState_;
       }
 
       private byte memoizedIsInitialized = -1;
@@ -994,8 +951,8 @@ public final class GameMsgProtocol {
         if (roomId_ != 0) {
           output.writeUInt32(1, roomId_);
         }
-        if (!getRoomStateBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, roomState_);
+        if (roomState_ != 0) {
+          output.writeUInt32(2, roomState_);
         }
         unknownFields.writeTo(output);
       }
@@ -1010,8 +967,9 @@ public final class GameMsgProtocol {
           size += com.google.protobuf.CodedOutputStream
             .computeUInt32Size(1, roomId_);
         }
-        if (!getRoomStateBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, roomState_);
+        if (roomState_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, roomState_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -1030,8 +988,8 @@ public final class GameMsgProtocol {
 
         if (getRoomId()
             != other.getRoomId()) return false;
-        if (!getRoomState()
-            .equals(other.getRoomState())) return false;
+        if (getRoomState()
+            != other.getRoomState()) return false;
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -1046,7 +1004,7 @@ public final class GameMsgProtocol {
         hash = (37 * hash) + ROOMID_FIELD_NUMBER;
         hash = (53 * hash) + getRoomId();
         hash = (37 * hash) + ROOMSTATE_FIELD_NUMBER;
-        hash = (53 * hash) + getRoomState().hashCode();
+        hash = (53 * hash) + getRoomState();
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -1186,7 +1144,7 @@ public final class GameMsgProtocol {
           super.clear();
           roomId_ = 0;
 
-          roomState_ = "";
+          roomState_ = 0;
 
           return this;
         }
@@ -1267,9 +1225,8 @@ public final class GameMsgProtocol {
           if (other.getRoomId() != 0) {
             setRoomId(other.getRoomId());
           }
-          if (!other.getRoomState().isEmpty()) {
-            roomState_ = other.roomState_;
-            onChanged();
+          if (other.getRoomState() != 0) {
+            setRoomState(other.getRoomState());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -1343,63 +1300,30 @@ public final class GameMsgProtocol {
           return this;
         }
 
-        private java.lang.Object roomState_ = "";
+        private int roomState_ ;
         /**
          * <pre>
          * 房间状态
          * </pre>
          *
-         * <code>string roomState = 2;</code>
+         * <code>uint32 roomState = 2;</code>
          * @return The roomState.
          */
-        public java.lang.String getRoomState() {
-          java.lang.Object ref = roomState_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            roomState_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
+        @java.lang.Override
+        public int getRoomState() {
+          return roomState_;
         }
         /**
          * <pre>
          * 房间状态
          * </pre>
          *
-         * <code>string roomState = 2;</code>
-         * @return The bytes for roomState.
-         */
-        public com.google.protobuf.ByteString
-            getRoomStateBytes() {
-          java.lang.Object ref = roomState_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            roomState_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <pre>
-         * 房间状态
-         * </pre>
-         *
-         * <code>string roomState = 2;</code>
+         * <code>uint32 roomState = 2;</code>
          * @param value The roomState to set.
          * @return This builder for chaining.
          */
-        public Builder setRoomState(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        public Builder setRoomState(int value) {
+          
           roomState_ = value;
           onChanged();
           return this;
@@ -1409,32 +1333,12 @@ public final class GameMsgProtocol {
          * 房间状态
          * </pre>
          *
-         * <code>string roomState = 2;</code>
+         * <code>uint32 roomState = 2;</code>
          * @return This builder for chaining.
          */
         public Builder clearRoomState() {
           
-          roomState_ = getDefaultInstance().getRoomState();
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * 房间状态
-         * </pre>
-         *
-         * <code>string roomState = 2;</code>
-         * @param value The bytes for roomState to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRoomStateBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          roomState_ = value;
+          roomState_ = 0;
           onChanged();
           return this;
         }
@@ -10302,7 +10206,7 @@ public final class GameMsgProtocol {
       "\n\025GameMsgProtocol.proto\"\016\n\014WhatRoomsCmd\"" +
       "m\n\017WhatRoomsResult\022+\n\010roomInfo\030\001 \003(\0132\031.W" +
       "hatRoomsResult.RoomInfo\032-\n\010RoomInfo\022\016\n\006r" +
-      "oomId\030\001 \001(\r\022\021\n\troomState\030\002 \001(\t\"=\n\014UserEn" +
+      "oomId\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\"=\n\014UserEn" +
       "tryCmd\022\016\n\006roomId\030\001 \001(\r\022\016\n\006userId\030\002 \001(\r\022\r" +
       "\n\005party\030\003 \001(\t\"5\n\017UserEntryResult\022\016\n\006room" +
       "Id\030\001 \001(\r\022\022\n\nopponentId\030\002 \001(\r\"\016\n\014UserRead" +

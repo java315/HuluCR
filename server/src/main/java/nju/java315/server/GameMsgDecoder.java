@@ -1,9 +1,3 @@
-/*
- * @Author: java315
- * @Date: 2020-12-15 23:14:23
- * @LastEditors: zb-nju
- * @LastEditTime: 2020-12-16 14:42:26
- */
 package nju.java315.server;
 
 import com.google.protobuf.GeneratedMessageV3;

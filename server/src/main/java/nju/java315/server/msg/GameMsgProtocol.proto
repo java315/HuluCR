@@ -33,7 +33,7 @@ message WhatRoomsResult {
         // 用户 Id
         uint32 roomId = 1;
         // 房间状态
-        string roomState = 2;
+        uint32 roomState = 2;
     }
 }
 

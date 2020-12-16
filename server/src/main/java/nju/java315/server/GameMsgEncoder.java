@@ -1,9 +1,3 @@
-/*
- * @Author: java315
- * @Date: 2020-12-16 00:05:28
- * @LastEditors: zb-nju
- * @LastEditTime: 2020-12-16 14:47:49
- */
 package nju.java315.server;
 
 import io.netty.channel.ChannelOutboundHandlerAdapter;

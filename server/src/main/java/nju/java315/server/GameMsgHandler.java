@@ -1,12 +1,7 @@
-/*
- * @Author: zb-nju
- * @Date: 2020-12-13 23:41:23
- * @LastEditors: zb-nju
- * @LastEditTime: 2020-12-16 15:08:36
- */
 package nju.java315.server;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +15,13 @@ import io.netty.channel.group.ChannelGroup;
 import nju.java315.server.msg.GameMsgProtocol;
 import io.netty.util.CharsetUtil;
 
+
+
 public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
 
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
 
-    static private HashMap<Integer, ChannelGroup> channelGroups = new HashMap<>();
+    static private HashMap<Integer, Room> rooms = new HashMap<>();
     static private HashMap<Channel, Integer> channelToRoomId = new HashMap<>();
 
     @Override
@@ -43,8 +40,20 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
         try{
             Channel channel = ctx.channel();
             if(msg instanceof GameMsgProtocol.WhatRoomsCmd){
+                GameMsgProtocol.WhatRoomsResult.Builder resultBuilder = GameMsgProtocol.WhatRoomsResult.newBuilder();
 
+                for(Map.Entry<Integer, Room> entry : rooms.entrySet()){
+                    GameMsgProtocol.WhatRoomsResult.RoomInfo.Builder roomInfoBuilder = GameMsgProtocol.WhatRoomsResult.RoomInfo.newBuilder();
+
+                    roomInfoBuilder.setRoomId(entry.getKey());
+                    roomInfoBuilder.setRoomState(entry.getValue().getRoomState().getValue());
+                    resultBuilder.addRoomInfo(roomInfoBuilder);
+                }
+
+                GameMsgProtocol.WhatRoomsResult result = resultBuilder.build();
+                ctx.writeAndFlush(result);
             }
+
             else if(msg instanceof GameMsgProtocol.UserEntryCmd){
 
             }
@@ -69,5 +78,4 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
 
 
     }
-
 }
