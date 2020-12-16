@@ -1,0 +1,152 @@
+syntax = "proto3";
+
+// 消息代号
+enum MsgCode {
+    WHAT_ROOMS_CMD = 0;
+    WHAT_ROOMS_RESULT = 1;
+    USER_ENTRY_CMD = 2;
+    USER_ENTRY_RESULT = 3;
+    USER_READY_CMD = 4;
+    USER_READY_RESULT = 5;
+    USER_PUT_CMD = 6;
+    USER_PUT_RESULT = 7;
+    USER_DIE_CMD = 8;
+    USER_DIE_RESULT = 9;
+    USER_LEAVE_CMD = 10;
+    USER_LEAVE_RESULT = 11;
+};
+
+//
+// 用户询问有哪些房间
+///////////////////////////////////////////////////////////////////////
+// 指令
+message WhatRoomsCmd {
+}
+
+// 结果
+message WhatRoomsResult {
+    // 用户信息数组
+    repeated RoomInfo roomInfo = 1;
+
+    // 用户信息
+    message RoomInfo {
+        // 用户 Id
+        uint32 roomId = 1;
+        // 房间状态
+        string roomState = 2;
+    }
+}
+
+//
+// 用户进入房间
+///////////////////////////////////////////////////////////////////////
+// 指令
+message UserEntryCmd {
+    // 房间号
+    uint32 roomId = 1;
+
+    // 用户id
+    uint32 userId = 2;
+
+    // 用户想作为哪一方
+    string party = 3;
+}
+
+// 结果
+message UserEntryResult {
+    // 房间号
+    uint32 roomId = 1;
+
+    // 用户是哪一方
+    uint32 opponentId = 2;
+}
+
+//
+// 用户准备
+///////////////////////////////////////////////////////////////////////
+// 指令
+message UserReadyCmd {
+}
+
+// 结果
+message UserReadyResult {
+    uint32 userId = 1;
+}
+
+//
+// 用户放置角色
+///////////////////////////////////////////////////////////////////////
+// 指令
+message UserPutCmd {
+    // 放置的位置 X
+    float PosX = 1;
+
+    // 放置的位置 Y
+    float PosY = 2;
+
+    // 放置的角色
+    string character = 3;
+}
+
+// 结果
+message UserPutResult {
+    // 用户信息数组
+    repeated StepInfo stepInfo = 1;
+
+    // 用户信息
+    message StepInfo {
+        // 谁放的
+        uint32 userId = 1;
+
+        // 放置的位置 X
+        float PosX = 2;
+
+        // 放置的位置 Y
+        float PosY = 3;
+
+        // 放置的角色
+        string character = 4;
+    }
+}
+
+// 游戏结束
+///////////////////////////////////////////////////////////////////////
+// 指令
+message UserDieCmd {
+}
+
+// 结果
+message UserDieResult {
+    // 退出用户 Id
+    uint32 dieUserId = 1;
+}
+
+//
+// 用户停驻
+///////////////////////////////////////////////////////////////////////
+// 指令
+message UserStopCmd {
+}
+
+// 结果
+message UserStopResult {
+    // 停驻用户 Id
+    uint32 stopUserId = 1;
+    // 停驻在位置 X
+    float stopAtPosX = 2;
+    // 停驻在位置 Y
+    float stopAtPosY = 3;
+}
+
+//
+// 用户离开房间
+///////////////////////////////////////////////////////////////////////
+// 指令
+message UserLeaveCmd {
+}
+
+// 结果
+message UserLeaveResult {
+    // 离开用户的 id
+    uint32 leaveUserId = 1;
+}
