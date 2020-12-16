@@ -1,3 +1,9 @@
+/*
+ * @Author: java315
+ * @Date: 2020-12-15 11:48:37
+ * @LastEditors: zb-nju
+ * @LastEditTime: 2020-12-15 11:49:13
+ */
 package nju.java315.client.game;
 
 public class Config {
@@ -17,7 +23,7 @@ public class Config {
     public static final int TOWER_GRIX_Y = 9;
 
     public static final int MID_TOWER_GRID_Y = 4;
-    public static final int MID_TOWER_GRID_X = 9; 
+    public static final int MID_TOWER_GRID_X = 9;
 
     public static final int WATER_MAX_COUNT = 10;
     public static final int WATER_UP_TIME = 2; // 2 seconds add a water
