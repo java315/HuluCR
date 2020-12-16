@@ -4,16 +4,13 @@ package nju.java315.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.netty.channel.Channel;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.util.concurrent.GlobalEventExecutor;
+import io.netty.channel.ChannelId;
 
 
 
 public class Room{
     static private final Logger LOGGER = LoggerFactory.getLogger(Room.class);
-
-    final ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    Player[] players;
 
     public enum ROOM_STATE{
         ONE_PLAYER(0),TWO_PLAYER(1),PLAYING(2);
@@ -32,7 +29,9 @@ public class Room{
     };
     private ROOM_STATE roomState;
 
-    public Room(){
+    public Room(Player player){
+        players = new Player[2];
+        players[0] = player;
         roomState = ROOM_STATE.ONE_PLAYER;
     }
 
@@ -40,13 +39,26 @@ public class Room{
         return roomState;
     }
 
-    public void join(Channel channel){
-        channelGroup.add(channel);
+    public Player getPlayer(){
+        if(players[0] != null)
+            return players[0];
+        else
+            return players[1];
+    }
+
+    public void join(Player player){
+        if(players[0] == null)
+            players[0] = player;
+        else
+            players[1] = player;
         roomState = ROOM_STATE.TWO_PLAYER;
     }
 
-    public void leave(Channel channel){
-        channelGroup.remove(channel);
+    public void leave(Player player){
+        if(player == players[0])
+            players[0] = null;
+        else
+            players[1] = null;
         roomState = ROOM_STATE.ONE_PLAYER;
     }
 

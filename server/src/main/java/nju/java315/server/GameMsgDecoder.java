@@ -26,8 +26,6 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter{
             byte[] bytes = ((String)msg).getBytes(CharsetUtil.UTF_8);
             ByteBuf byteBuf = Unpooled.wrappedBuffer(bytes);
 
-            //消息的长度
-            int length = byteBuf.readShort();
             //消息的类型
             int msgCode = byteBuf.readShort();
 

@@ -25,13 +25,13 @@ message WhatRoomsCmd {
 
 // 结果
 message WhatRoomsResult {
-    // 用户信息数组
+    // 房间信息数组
     repeated RoomInfo roomInfo = 1;
 
-    // 用户信息
+    // 房间信息
     message RoomInfo {
-        // 用户 Id
-        uint32 roomId = 1;
+        // 房间 ID
+        uint32 roomID = 1;
         // 房间状态
         uint32 roomState = 2;
     }
@@ -43,22 +43,19 @@ message WhatRoomsResult {
 // 指令
 message UserEntryCmd {
     // 房间号
-    uint32 roomId = 1;
+    uint32 roomID = 1;
 
     // 用户id
-    uint32 userId = 2;
-
-    // 用户想作为哪一方
-    string party = 3;
+    uint32 userID = 2;
 }
 
 // 结果
 message UserEntryResult {
     // 房间号
-    uint32 roomId = 1;
+    uint32 roomID = 1;
 
-    // 用户是哪一方
-    uint32 opponentId = 2;
+    // 对手的id
+    uint32 opponentID = 2;
 }
 
 //
@@ -70,7 +67,7 @@ message UserReadyCmd {
 
 // 结果
 message UserReadyResult {
-    uint32 userId = 1;
+    uint32 userID = 1;
 }
 
 //
@@ -96,7 +93,7 @@ message UserPutResult {
     // 用户信息
     message StepInfo {
         // 谁放的
-        uint32 userId = 1;
+        uint32 userID = 1;
 
         // 放置的位置 X
         float PosX = 2;
@@ -117,8 +114,8 @@ message UserDieCmd {
 
 // 结果
 message UserDieResult {
-    // 退出用户 Id
-    uint32 dieUserId = 1;
+    // 退出用户 ID
+    uint32 dieUserID = 1;
 }
 
 //
@@ -130,8 +127,8 @@ message UserStopCmd {
 
 // 结果
 message UserStopResult {
-    // 停驻用户 Id
-    uint32 stopUserId = 1;
+    // 停驻用户 ID
+    uint32 stopUserID = 1;
     // 停驻在位置 X
     float stopAtPosX = 2;
     // 停驻在位置 Y
@@ -148,5 +145,5 @@ message UserLeaveCmd {
 // 结果
 message UserLeaveResult {
     // 离开用户的 id
-    uint32 leaveUserId = 1;
+    uint32 leaveUserID = 1;
 }

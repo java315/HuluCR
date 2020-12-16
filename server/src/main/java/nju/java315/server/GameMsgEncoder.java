@@ -52,7 +52,6 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
             byte[] msgBody = ((GeneratedMessageV3)msg).toByteArray();
 
             ByteBuf byteBuf = ctx.alloc().buffer();
-            byteBuf.writeShort((short)msgBody.length);
             byteBuf.writeShort((short)msgCode);
             byteBuf.writeBytes(msgBody);
 
