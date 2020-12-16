@@ -4,7 +4,7 @@ public class Config {
     private Config() {}
 
     public static final int WIDTH = 440;
-    public static final int HEIGHT= 1000;
+    public static final int HEIGHT= 700;
 
     public static final int HORIZONTAL_GRID_NUM = 18;
     public static final int VERTICAL_GRID_NUM = 18;  // 半场的纵向格子数
@@ -23,7 +23,7 @@ public class Config {
     public static final int WATER_UP_TIME = 2; // 2 seconds add a water
 
     public static final class Asset {
-        
+
     }
 
 }
