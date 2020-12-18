@@ -6,7 +6,7 @@ import nju.java315.client.game.util.PositionHandler;
 import com.almasb.fxgl.entity.component.Component;
 
 public class PlayerCompoent extends Component{
-    
+    private int currentCard;
 
     public void chooseCard(int cardID){
         System.out.println("card " + cardID + " has been chosen");

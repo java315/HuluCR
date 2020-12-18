@@ -9,8 +9,8 @@ package nju.java315.client.game;
 public class Config {
     private Config() {}
 
-    public static final int WIDTH = 440;
-    public static final int HEIGHT= 700;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT= 600;
 
     public static final int HORIZONTAL_GRID_NUM = 18;
     public static final int VERTICAL_GRID_NUM = 18;  // 半场的纵向格子数

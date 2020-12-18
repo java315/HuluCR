@@ -8,5 +8,5 @@ public enum HuluCRType {
     GRANDFATHER,
 
     // 远程攻击方式
-    FIREBALL,ARROW
+    FIREBALL,ARROW,
 }
