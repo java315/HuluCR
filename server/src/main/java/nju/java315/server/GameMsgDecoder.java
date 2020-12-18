@@ -1,9 +1,3 @@
-/*
- * @Author: java315
- * @Date: 2020-12-15 23:14:23
- * @LastEditors: zb-nju
- * @LastEditTime: 2020-12-16 14:42:26
- */
 package nju.java315.server;
 
 import com.google.protobuf.GeneratedMessageV3;
@@ -32,8 +26,6 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter{
             byte[] bytes = ((String)msg).getBytes(CharsetUtil.UTF_8);
             ByteBuf byteBuf = Unpooled.wrappedBuffer(bytes);
 
-            //消息的长度
-            int length = byteBuf.readShort();
             //消息的类型
             int msgCode = byteBuf.readShort();
 

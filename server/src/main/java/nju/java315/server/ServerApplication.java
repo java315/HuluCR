@@ -1,9 +1,3 @@
-/*
- * @Author: zb-nju
- * @Date: 2020-12-13 23:41:23
- * @LastEditors: zb-nju
- * @LastEditTime: 2020-12-16 08:35:31
- */
 package nju.java315.server;
 
 import org.slf4j.Logger;
@@ -22,12 +16,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.http.HttpObjectAggregator;
-import io.netty.handler.codec.http.HttpServerCodec;
-import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
-import io.netty.util.CharsetUtil;
 
 @SpringBootApplication
 public class ServerApplication {

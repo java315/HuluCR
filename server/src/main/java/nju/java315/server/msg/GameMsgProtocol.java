@@ -652,7 +652,7 @@ public final class GameMsgProtocol {
 
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -661,7 +661,7 @@ public final class GameMsgProtocol {
         getRoomInfoList();
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -669,7 +669,7 @@ public final class GameMsgProtocol {
     GameMsgProtocol.WhatRoomsResult.RoomInfo getRoomInfo(int index);
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -677,7 +677,7 @@ public final class GameMsgProtocol {
     int getRoomInfoCount();
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -686,7 +686,7 @@ public final class GameMsgProtocol {
         getRoomInfoOrBuilderList();
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -795,37 +795,27 @@ public final class GameMsgProtocol {
 
       /**
        * <pre>
-       * 用户 Id
+       * 房间 ID
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
-       * @return The roomId.
+       * <code>uint32 roomID = 1;</code>
+       * @return The roomID.
        */
-      int getRoomId();
+      int getRoomID();
 
       /**
        * <pre>
        * 房间状态
        * </pre>
        *
-       * <code>string roomState = 2;</code>
+       * <code>uint32 roomState = 2;</code>
        * @return The roomState.
        */
-      java.lang.String getRoomState();
-      /**
-       * <pre>
-       * 房间状态
-       * </pre>
-       *
-       * <code>string roomState = 2;</code>
-       * @return The bytes for roomState.
-       */
-      com.google.protobuf.ByteString
-          getRoomStateBytes();
+      int getRoomState();
     }
     /**
      * <pre>
-     * 用户信息
+     * 房间信息
      * </pre>
      *
      * Protobuf type {@code WhatRoomsResult.RoomInfo}
@@ -840,7 +830,6 @@ public final class GameMsgProtocol {
         super(builder);
       }
       private RoomInfo() {
-        roomState_ = "";
       }
 
       @java.lang.Override
@@ -875,13 +864,12 @@ public final class GameMsgProtocol {
                 break;
               case 8: {
 
-                roomId_ = input.readUInt32();
+                roomID_ = input.readUInt32();
                 break;
               }
-              case 18: {
-                java.lang.String s = input.readStringRequireUtf8();
+              case 16: {
 
-                roomState_ = s;
+                roomState_ = input.readUInt32();
                 break;
               }
               default: {
@@ -917,64 +905,33 @@ public final class GameMsgProtocol {
       }
 
       public static final int ROOMID_FIELD_NUMBER = 1;
-      private int roomId_;
+      private int roomID_;
       /**
        * <pre>
-       * 用户 Id
+       * 房间 ID
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
-       * @return The roomId.
+       * <code>uint32 roomID = 1;</code>
+       * @return The roomID.
        */
       @java.lang.Override
-      public int getRoomId() {
-        return roomId_;
+      public int getRoomID() {
+        return roomID_;
       }
 
       public static final int ROOMSTATE_FIELD_NUMBER = 2;
-      private volatile java.lang.Object roomState_;
+      private int roomState_;
       /**
        * <pre>
        * 房间状态
        * </pre>
        *
-       * <code>string roomState = 2;</code>
+       * <code>uint32 roomState = 2;</code>
        * @return The roomState.
        */
       @java.lang.Override
-      public java.lang.String getRoomState() {
-        java.lang.Object ref = roomState_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          roomState_ = s;
-          return s;
-        }
-      }
-      /**
-       * <pre>
-       * 房间状态
-       * </pre>
-       *
-       * <code>string roomState = 2;</code>
-       * @return The bytes for roomState.
-       */
-      @java.lang.Override
-      public com.google.protobuf.ByteString
-          getRoomStateBytes() {
-        java.lang.Object ref = roomState_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          roomState_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public int getRoomState() {
+        return roomState_;
       }
 
       private byte memoizedIsInitialized = -1;
@@ -991,11 +948,11 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (roomId_ != 0) {
-          output.writeUInt32(1, roomId_);
+        if (roomID_ != 0) {
+          output.writeUInt32(1, roomID_);
         }
-        if (!getRoomStateBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, roomState_);
+        if (roomState_ != 0) {
+          output.writeUInt32(2, roomState_);
         }
         unknownFields.writeTo(output);
       }
@@ -1006,12 +963,13 @@ public final class GameMsgProtocol {
         if (size != -1) return size;
 
         size = 0;
-        if (roomId_ != 0) {
+        if (roomID_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, roomId_);
+            .computeUInt32Size(1, roomID_);
         }
-        if (!getRoomStateBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, roomState_);
+        if (roomState_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, roomState_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -1028,10 +986,10 @@ public final class GameMsgProtocol {
         }
         GameMsgProtocol.WhatRoomsResult.RoomInfo other = (GameMsgProtocol.WhatRoomsResult.RoomInfo) obj;
 
-        if (getRoomId()
-            != other.getRoomId()) return false;
-        if (!getRoomState()
-            .equals(other.getRoomState())) return false;
+        if (getRoomID()
+            != other.getRoomID()) return false;
+        if (getRoomState()
+            != other.getRoomState()) return false;
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -1044,9 +1002,9 @@ public final class GameMsgProtocol {
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
         hash = (37 * hash) + ROOMID_FIELD_NUMBER;
-        hash = (53 * hash) + getRoomId();
+        hash = (53 * hash) + getRoomID();
         hash = (37 * hash) + ROOMSTATE_FIELD_NUMBER;
-        hash = (53 * hash) + getRoomState().hashCode();
+        hash = (53 * hash) + getRoomState();
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -1144,7 +1102,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息
+       * 房间信息
        * </pre>
        *
        * Protobuf type {@code WhatRoomsResult.RoomInfo}
@@ -1184,9 +1142,9 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          roomId_ = 0;
+          roomID_ = 0;
 
-          roomState_ = "";
+          roomState_ = 0;
 
           return this;
         }
@@ -1214,7 +1172,7 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public GameMsgProtocol.WhatRoomsResult.RoomInfo buildPartial() {
           GameMsgProtocol.WhatRoomsResult.RoomInfo result = new GameMsgProtocol.WhatRoomsResult.RoomInfo(this);
-          result.roomId_ = roomId_;
+          result.roomID_ = roomID_;
           result.roomState_ = roomState_;
           onBuilt();
           return result;
@@ -1264,12 +1222,11 @@ public final class GameMsgProtocol {
 
         public Builder mergeFrom(GameMsgProtocol.WhatRoomsResult.RoomInfo other) {
           if (other == GameMsgProtocol.WhatRoomsResult.RoomInfo.getDefaultInstance()) return this;
-          if (other.getRoomId() != 0) {
-            setRoomId(other.getRoomId());
+          if (other.getRoomID() != 0) {
+            setRoomID(other.getRoomID());
           }
-          if (!other.getRoomState().isEmpty()) {
-            roomState_ = other.roomState_;
-            onChanged();
+          if (other.getRoomState() != 0) {
+            setRoomState(other.getRoomState());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -1300,106 +1257,73 @@ public final class GameMsgProtocol {
           return this;
         }
 
-        private int roomId_ ;
+        private int roomID_ ;
         /**
          * <pre>
-         * 用户 Id
+         * 房间 ID
          * </pre>
          *
-         * <code>uint32 roomId = 1;</code>
-         * @return The roomId.
+         * <code>uint32 roomID = 1;</code>
+         * @return The roomID.
          */
         @java.lang.Override
-        public int getRoomId() {
-          return roomId_;
+        public int getRoomID() {
+          return roomID_;
         }
         /**
          * <pre>
-         * 用户 Id
+         * 房间 ID
          * </pre>
          *
-         * <code>uint32 roomId = 1;</code>
-         * @param value The roomId to set.
+         * <code>uint32 roomID = 1;</code>
+         * @param value The roomID to set.
          * @return This builder for chaining.
          */
-        public Builder setRoomId(int value) {
+        public Builder setRoomID(int value) {
           
-          roomId_ = value;
+          roomID_ = value;
           onChanged();
           return this;
         }
         /**
          * <pre>
-         * 用户 Id
+         * 房间 ID
          * </pre>
          *
-         * <code>uint32 roomId = 1;</code>
+         * <code>uint32 roomID = 1;</code>
          * @return This builder for chaining.
          */
-        public Builder clearRoomId() {
+        public Builder clearRoomID() {
           
-          roomId_ = 0;
+          roomID_ = 0;
           onChanged();
           return this;
         }
 
-        private java.lang.Object roomState_ = "";
+        private int roomState_ ;
         /**
          * <pre>
          * 房间状态
          * </pre>
          *
-         * <code>string roomState = 2;</code>
+         * <code>uint32 roomState = 2;</code>
          * @return The roomState.
          */
-        public java.lang.String getRoomState() {
-          java.lang.Object ref = roomState_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            roomState_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
+        @java.lang.Override
+        public int getRoomState() {
+          return roomState_;
         }
         /**
          * <pre>
          * 房间状态
          * </pre>
          *
-         * <code>string roomState = 2;</code>
-         * @return The bytes for roomState.
-         */
-        public com.google.protobuf.ByteString
-            getRoomStateBytes() {
-          java.lang.Object ref = roomState_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            roomState_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <pre>
-         * 房间状态
-         * </pre>
-         *
-         * <code>string roomState = 2;</code>
+         * <code>uint32 roomState = 2;</code>
          * @param value The roomState to set.
          * @return This builder for chaining.
          */
-        public Builder setRoomState(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        public Builder setRoomState(int value) {
+          
           roomState_ = value;
           onChanged();
           return this;
@@ -1409,32 +1333,12 @@ public final class GameMsgProtocol {
          * 房间状态
          * </pre>
          *
-         * <code>string roomState = 2;</code>
+         * <code>uint32 roomState = 2;</code>
          * @return This builder for chaining.
          */
         public Builder clearRoomState() {
           
-          roomState_ = getDefaultInstance().getRoomState();
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * 房间状态
-         * </pre>
-         *
-         * <code>string roomState = 2;</code>
-         * @param value The bytes for roomState to set.
-         * @return This builder for chaining.
-         */
-        public Builder setRoomStateBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          roomState_ = value;
+          roomState_ = 0;
           onChanged();
           return this;
         }
@@ -1495,7 +1399,7 @@ public final class GameMsgProtocol {
     private java.util.List<GameMsgProtocol.WhatRoomsResult.RoomInfo> roomInfo_;
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1506,7 +1410,7 @@ public final class GameMsgProtocol {
     }
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1518,7 +1422,7 @@ public final class GameMsgProtocol {
     }
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1529,7 +1433,7 @@ public final class GameMsgProtocol {
     }
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1540,7 +1444,7 @@ public final class GameMsgProtocol {
     }
     /**
      * <pre>
-     * 用户信息数组
+     * 房间信息数组
      * </pre>
      *
      * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1911,7 +1815,7 @@ public final class GameMsgProtocol {
 
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1925,7 +1829,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1939,7 +1843,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1953,7 +1857,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1974,7 +1878,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -1992,7 +1896,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2012,7 +1916,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2033,7 +1937,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2051,7 +1955,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2069,7 +1973,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2088,7 +1992,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2105,7 +2009,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2122,7 +2026,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2133,7 +2037,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2147,7 +2051,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2162,7 +2066,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2173,7 +2077,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2185,7 +2089,7 @@ public final class GameMsgProtocol {
       }
       /**
        * <pre>
-       * 用户信息数组
+       * 房间信息数组
        * </pre>
        *
        * <code>repeated .WhatRoomsResult.RoomInfo roomInfo = 1;</code>
@@ -2270,40 +2174,20 @@ public final class GameMsgProtocol {
      * 房间号
      * </pre>
      *
-     * <code>uint32 roomId = 1;</code>
-     * @return The roomId.
+     * <code>uint32 roomID = 1;</code>
+     * @return The roomID.
      */
-    int getRoomId();
+    int getRoomID();
 
     /**
      * <pre>
      * 用户id
      * </pre>
      *
-     * <code>uint32 userId = 2;</code>
-     * @return The userId.
+     * <code>uint32 userID = 2;</code>
+     * @return The userID.
      */
-    int getUserId();
-
-    /**
-     * <pre>
-     * 用户想作为哪一方
-     * </pre>
-     *
-     * <code>string party = 3;</code>
-     * @return The party.
-     */
-    java.lang.String getParty();
-    /**
-     * <pre>
-     * 用户想作为哪一方
-     * </pre>
-     *
-     * <code>string party = 3;</code>
-     * @return The bytes for party.
-     */
-    com.google.protobuf.ByteString
-        getPartyBytes();
+    int getUserID();
   }
   /**
    * <pre>
@@ -2324,7 +2208,6 @@ public final class GameMsgProtocol {
       super(builder);
     }
     private UserEntryCmd() {
-      party_ = "";
     }
 
     @java.lang.Override
@@ -2359,18 +2242,12 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              roomId_ = input.readUInt32();
+              roomID_ = input.readUInt32();
               break;
             }
             case 16: {
 
-              userId_ = input.readUInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              party_ = s;
+              userID_ = input.readUInt32();
               break;
             }
             default: {
@@ -2406,79 +2283,33 @@ public final class GameMsgProtocol {
     }
 
     public static final int ROOMID_FIELD_NUMBER = 1;
-    private int roomId_;
+    private int roomID_;
     /**
      * <pre>
      * 房间号
      * </pre>
      *
-     * <code>uint32 roomId = 1;</code>
-     * @return The roomId.
+     * <code>uint32 roomID = 1;</code>
+     * @return The roomID.
      */
     @java.lang.Override
-    public int getRoomId() {
-      return roomId_;
+    public int getRoomID() {
+      return roomID_;
     }
 
     public static final int USERID_FIELD_NUMBER = 2;
-    private int userId_;
+    private int userID_;
     /**
      * <pre>
      * 用户id
      * </pre>
      *
-     * <code>uint32 userId = 2;</code>
-     * @return The userId.
+     * <code>uint32 userID = 2;</code>
+     * @return The userID.
      */
     @java.lang.Override
-    public int getUserId() {
-      return userId_;
-    }
-
-    public static final int PARTY_FIELD_NUMBER = 3;
-    private volatile java.lang.Object party_;
-    /**
-     * <pre>
-     * 用户想作为哪一方
-     * </pre>
-     *
-     * <code>string party = 3;</code>
-     * @return The party.
-     */
-    @java.lang.Override
-    public java.lang.String getParty() {
-      java.lang.Object ref = party_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        party_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     * 用户想作为哪一方
-     * </pre>
-     *
-     * <code>string party = 3;</code>
-     * @return The bytes for party.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString
-        getPartyBytes() {
-      java.lang.Object ref = party_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        party_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getUserID() {
+      return userID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2495,14 +2326,11 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (roomId_ != 0) {
-        output.writeUInt32(1, roomId_);
+      if (roomID_ != 0) {
+        output.writeUInt32(1, roomID_);
       }
-      if (userId_ != 0) {
-        output.writeUInt32(2, userId_);
-      }
-      if (!getPartyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, party_);
+      if (userID_ != 0) {
+        output.writeUInt32(2, userID_);
       }
       unknownFields.writeTo(output);
     }
@@ -2513,16 +2341,13 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (roomId_ != 0) {
+      if (roomID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, roomId_);
+          .computeUInt32Size(1, roomID_);
       }
-      if (userId_ != 0) {
+      if (userID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, userId_);
-      }
-      if (!getPartyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, party_);
+          .computeUInt32Size(2, userID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2539,12 +2364,10 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.UserEntryCmd other = (GameMsgProtocol.UserEntryCmd) obj;
 
-      if (getRoomId()
-          != other.getRoomId()) return false;
-      if (getUserId()
-          != other.getUserId()) return false;
-      if (!getParty()
-          .equals(other.getParty())) return false;
+      if (getRoomID()
+          != other.getRoomID()) return false;
+      if (getUserID()
+          != other.getUserID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2557,11 +2380,9 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
-      hash = (53 * hash) + getRoomId();
+      hash = (53 * hash) + getRoomID();
       hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserId();
-      hash = (37 * hash) + PARTY_FIELD_NUMBER;
-      hash = (53 * hash) + getParty().hashCode();
+      hash = (53 * hash) + getUserID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2701,11 +2522,9 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        roomId_ = 0;
+        roomID_ = 0;
 
-        userId_ = 0;
-
-        party_ = "";
+        userID_ = 0;
 
         return this;
       }
@@ -2733,9 +2552,8 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public GameMsgProtocol.UserEntryCmd buildPartial() {
         GameMsgProtocol.UserEntryCmd result = new GameMsgProtocol.UserEntryCmd(this);
-        result.roomId_ = roomId_;
-        result.userId_ = userId_;
-        result.party_ = party_;
+        result.roomID_ = roomID_;
+        result.userID_ = userID_;
         onBuilt();
         return result;
       }
@@ -2784,15 +2602,11 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.UserEntryCmd other) {
         if (other == GameMsgProtocol.UserEntryCmd.getDefaultInstance()) return this;
-        if (other.getRoomId() != 0) {
-          setRoomId(other.getRoomId());
+        if (other.getRoomID() != 0) {
+          setRoomID(other.getRoomID());
         }
-        if (other.getUserId() != 0) {
-          setUserId(other.getUserId());
-        }
-        if (!other.getParty().isEmpty()) {
-          party_ = other.party_;
-          onChanged();
+        if (other.getUserID() != 0) {
+          setUserID(other.getUserID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2823,31 +2637,31 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int roomId_ ;
+      private int roomID_ ;
       /**
        * <pre>
        * 房间号
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
-       * @return The roomId.
+       * <code>uint32 roomID = 1;</code>
+       * @return The roomID.
        */
       @java.lang.Override
-      public int getRoomId() {
-        return roomId_;
+      public int getRoomID() {
+        return roomID_;
       }
       /**
        * <pre>
        * 房间号
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
-       * @param value The roomId to set.
+       * <code>uint32 roomID = 1;</code>
+       * @param value The roomID to set.
        * @return This builder for chaining.
        */
-      public Builder setRoomId(int value) {
+      public Builder setRoomID(int value) {
         
-        roomId_ = value;
+        roomID_ = value;
         onChanged();
         return this;
       }
@@ -2856,41 +2670,41 @@ public final class GameMsgProtocol {
        * 房间号
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
+       * <code>uint32 roomID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRoomId() {
+      public Builder clearRoomID() {
         
-        roomId_ = 0;
+        roomID_ = 0;
         onChanged();
         return this;
       }
 
-      private int userId_ ;
+      private int userID_ ;
       /**
        * <pre>
        * 用户id
        * </pre>
        *
-       * <code>uint32 userId = 2;</code>
-       * @return The userId.
+       * <code>uint32 userID = 2;</code>
+       * @return The userID.
        */
       @java.lang.Override
-      public int getUserId() {
-        return userId_;
+      public int getUserID() {
+        return userID_;
       }
       /**
        * <pre>
        * 用户id
        * </pre>
        *
-       * <code>uint32 userId = 2;</code>
-       * @param value The userId to set.
+       * <code>uint32 userID = 2;</code>
+       * @param value The userID to set.
        * @return This builder for chaining.
        */
-      public Builder setUserId(int value) {
+      public Builder setUserID(int value) {
         
-        userId_ = value;
+        userID_ = value;
         onChanged();
         return this;
       }
@@ -2899,108 +2713,12 @@ public final class GameMsgProtocol {
        * 用户id
        * </pre>
        *
-       * <code>uint32 userId = 2;</code>
+       * <code>uint32 userID = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearUserId() {
+      public Builder clearUserID() {
         
-        userId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object party_ = "";
-      /**
-       * <pre>
-       * 用户想作为哪一方
-       * </pre>
-       *
-       * <code>string party = 3;</code>
-       * @return The party.
-       */
-      public java.lang.String getParty() {
-        java.lang.Object ref = party_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          party_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       * 用户想作为哪一方
-       * </pre>
-       *
-       * <code>string party = 3;</code>
-       * @return The bytes for party.
-       */
-      public com.google.protobuf.ByteString
-          getPartyBytes() {
-        java.lang.Object ref = party_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          party_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       * 用户想作为哪一方
-       * </pre>
-       *
-       * <code>string party = 3;</code>
-       * @param value The party to set.
-       * @return This builder for chaining.
-       */
-      public Builder setParty(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        party_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 用户想作为哪一方
-       * </pre>
-       *
-       * <code>string party = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearParty() {
-        
-        party_ = getDefaultInstance().getParty();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 用户想作为哪一方
-       * </pre>
-       *
-       * <code>string party = 3;</code>
-       * @param value The bytes for party to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPartyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        party_ = value;
+        userID_ = 0;
         onChanged();
         return this;
       }
@@ -3066,20 +2784,20 @@ public final class GameMsgProtocol {
      * 房间号
      * </pre>
      *
-     * <code>uint32 roomId = 1;</code>
-     * @return The roomId.
+     * <code>uint32 roomID = 1;</code>
+     * @return The roomID.
      */
-    int getRoomId();
+    int getRoomID();
 
     /**
      * <pre>
-     * 用户是哪一方
+     * 对手的id
      * </pre>
      *
-     * <code>uint32 opponentId = 2;</code>
-     * @return The opponentId.
+     * <code>uint32 opponentID = 2;</code>
+     * @return The opponentID.
      */
-    int getOpponentId();
+    int getOpponentID();
   }
   /**
    * <pre>
@@ -3132,12 +2850,12 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              roomId_ = input.readUInt32();
+              roomID_ = input.readUInt32();
               break;
             }
             case 16: {
 
-              opponentId_ = input.readUInt32();
+              opponentID_ = input.readUInt32();
               break;
             }
             default: {
@@ -3173,33 +2891,33 @@ public final class GameMsgProtocol {
     }
 
     public static final int ROOMID_FIELD_NUMBER = 1;
-    private int roomId_;
+    private int roomID_;
     /**
      * <pre>
      * 房间号
      * </pre>
      *
-     * <code>uint32 roomId = 1;</code>
-     * @return The roomId.
+     * <code>uint32 roomID = 1;</code>
+     * @return The roomID.
      */
     @java.lang.Override
-    public int getRoomId() {
-      return roomId_;
+    public int getRoomID() {
+      return roomID_;
     }
 
     public static final int OPPONENTID_FIELD_NUMBER = 2;
-    private int opponentId_;
+    private int opponentID_;
     /**
      * <pre>
-     * 用户是哪一方
+     * 对手的id
      * </pre>
      *
-     * <code>uint32 opponentId = 2;</code>
-     * @return The opponentId.
+     * <code>uint32 opponentID = 2;</code>
+     * @return The opponentID.
      */
     @java.lang.Override
-    public int getOpponentId() {
-      return opponentId_;
+    public int getOpponentID() {
+      return opponentID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3216,11 +2934,11 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (roomId_ != 0) {
-        output.writeUInt32(1, roomId_);
+      if (roomID_ != 0) {
+        output.writeUInt32(1, roomID_);
       }
-      if (opponentId_ != 0) {
-        output.writeUInt32(2, opponentId_);
+      if (opponentID_ != 0) {
+        output.writeUInt32(2, opponentID_);
       }
       unknownFields.writeTo(output);
     }
@@ -3231,13 +2949,13 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (roomId_ != 0) {
+      if (roomID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, roomId_);
+          .computeUInt32Size(1, roomID_);
       }
-      if (opponentId_ != 0) {
+      if (opponentID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, opponentId_);
+          .computeUInt32Size(2, opponentID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3254,10 +2972,10 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.UserEntryResult other = (GameMsgProtocol.UserEntryResult) obj;
 
-      if (getRoomId()
-          != other.getRoomId()) return false;
-      if (getOpponentId()
-          != other.getOpponentId()) return false;
+      if (getRoomID()
+          != other.getRoomID()) return false;
+      if (getOpponentID()
+          != other.getOpponentID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3270,9 +2988,9 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
-      hash = (53 * hash) + getRoomId();
+      hash = (53 * hash) + getRoomID();
       hash = (37 * hash) + OPPONENTID_FIELD_NUMBER;
-      hash = (53 * hash) + getOpponentId();
+      hash = (53 * hash) + getOpponentID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3410,9 +3128,9 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        roomId_ = 0;
+        roomID_ = 0;
 
-        opponentId_ = 0;
+        opponentID_ = 0;
 
         return this;
       }
@@ -3440,8 +3158,8 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public GameMsgProtocol.UserEntryResult buildPartial() {
         GameMsgProtocol.UserEntryResult result = new GameMsgProtocol.UserEntryResult(this);
-        result.roomId_ = roomId_;
-        result.opponentId_ = opponentId_;
+        result.roomID_ = roomID_;
+        result.opponentID_ = opponentID_;
         onBuilt();
         return result;
       }
@@ -3490,11 +3208,11 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.UserEntryResult other) {
         if (other == GameMsgProtocol.UserEntryResult.getDefaultInstance()) return this;
-        if (other.getRoomId() != 0) {
-          setRoomId(other.getRoomId());
+        if (other.getRoomID() != 0) {
+          setRoomID(other.getRoomID());
         }
-        if (other.getOpponentId() != 0) {
-          setOpponentId(other.getOpponentId());
+        if (other.getOpponentID() != 0) {
+          setOpponentID(other.getOpponentID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3525,31 +3243,31 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int roomId_ ;
+      private int roomID_ ;
       /**
        * <pre>
        * 房间号
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
-       * @return The roomId.
+       * <code>uint32 roomID = 1;</code>
+       * @return The roomID.
        */
       @java.lang.Override
-      public int getRoomId() {
-        return roomId_;
+      public int getRoomID() {
+        return roomID_;
       }
       /**
        * <pre>
        * 房间号
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
-       * @param value The roomId to set.
+       * <code>uint32 roomID = 1;</code>
+       * @param value The roomID to set.
        * @return This builder for chaining.
        */
-      public Builder setRoomId(int value) {
+      public Builder setRoomID(int value) {
         
-        roomId_ = value;
+        roomID_ = value;
         onChanged();
         return this;
       }
@@ -3558,55 +3276,55 @@ public final class GameMsgProtocol {
        * 房间号
        * </pre>
        *
-       * <code>uint32 roomId = 1;</code>
+       * <code>uint32 roomID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRoomId() {
+      public Builder clearRoomID() {
         
-        roomId_ = 0;
+        roomID_ = 0;
         onChanged();
         return this;
       }
 
-      private int opponentId_ ;
+      private int opponentID_ ;
       /**
        * <pre>
-       * 用户是哪一方
+       * 对手的id
        * </pre>
        *
-       * <code>uint32 opponentId = 2;</code>
-       * @return The opponentId.
+       * <code>uint32 opponentID = 2;</code>
+       * @return The opponentID.
        */
       @java.lang.Override
-      public int getOpponentId() {
-        return opponentId_;
+      public int getOpponentID() {
+        return opponentID_;
       }
       /**
        * <pre>
-       * 用户是哪一方
+       * 对手的id
        * </pre>
        *
-       * <code>uint32 opponentId = 2;</code>
-       * @param value The opponentId to set.
+       * <code>uint32 opponentID = 2;</code>
+       * @param value The opponentID to set.
        * @return This builder for chaining.
        */
-      public Builder setOpponentId(int value) {
+      public Builder setOpponentID(int value) {
         
-        opponentId_ = value;
+        opponentID_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * 用户是哪一方
+       * 对手的id
        * </pre>
        *
-       * <code>uint32 opponentId = 2;</code>
+       * <code>uint32 opponentID = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearOpponentId() {
+      public Builder clearOpponentID() {
         
-        opponentId_ = 0;
+        opponentID_ = 0;
         onChanged();
         return this;
       }
@@ -4098,10 +3816,10 @@ public final class GameMsgProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 userId = 1;</code>
-     * @return The userId.
+     * <code>uint32 userID = 1;</code>
+     * @return The userID.
      */
-    int getUserId();
+    int getUserID();
   }
   /**
    * <pre>
@@ -4154,7 +3872,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              userId_ = input.readUInt32();
+              userID_ = input.readUInt32();
               break;
             }
             default: {
@@ -4190,14 +3908,14 @@ public final class GameMsgProtocol {
     }
 
     public static final int USERID_FIELD_NUMBER = 1;
-    private int userId_;
+    private int userID_;
     /**
-     * <code>uint32 userId = 1;</code>
-     * @return The userId.
+     * <code>uint32 userID = 1;</code>
+     * @return The userID.
      */
     @java.lang.Override
-    public int getUserId() {
-      return userId_;
+    public int getUserID() {
+      return userID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4214,8 +3932,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (userId_ != 0) {
-        output.writeUInt32(1, userId_);
+      if (userID_ != 0) {
+        output.writeUInt32(1, userID_);
       }
       unknownFields.writeTo(output);
     }
@@ -4226,9 +3944,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (userId_ != 0) {
+      if (userID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, userId_);
+          .computeUInt32Size(1, userID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4245,8 +3963,8 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.UserReadyResult other = (GameMsgProtocol.UserReadyResult) obj;
 
-      if (getUserId()
-          != other.getUserId()) return false;
+      if (getUserID()
+          != other.getUserID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4259,7 +3977,7 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserId();
+      hash = (53 * hash) + getUserID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4397,7 +4115,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        userId_ = 0;
+        userID_ = 0;
 
         return this;
       }
@@ -4425,7 +4143,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public GameMsgProtocol.UserReadyResult buildPartial() {
         GameMsgProtocol.UserReadyResult result = new GameMsgProtocol.UserReadyResult(this);
-        result.userId_ = userId_;
+        result.userID_ = userID_;
         onBuilt();
         return result;
       }
@@ -4474,8 +4192,8 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.UserReadyResult other) {
         if (other == GameMsgProtocol.UserReadyResult.getDefaultInstance()) return this;
-        if (other.getUserId() != 0) {
-          setUserId(other.getUserId());
+        if (other.getUserID() != 0) {
+          setUserID(other.getUserID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4506,33 +4224,33 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int userId_ ;
+      private int userID_ ;
       /**
-       * <code>uint32 userId = 1;</code>
-       * @return The userId.
+       * <code>uint32 userID = 1;</code>
+       * @return The userID.
        */
       @java.lang.Override
-      public int getUserId() {
-        return userId_;
+      public int getUserID() {
+        return userID_;
       }
       /**
-       * <code>uint32 userId = 1;</code>
-       * @param value The userId to set.
+       * <code>uint32 userID = 1;</code>
+       * @param value The userID to set.
        * @return This builder for chaining.
        */
-      public Builder setUserId(int value) {
+      public Builder setUserID(int value) {
         
-        userId_ = value;
+        userID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 userId = 1;</code>
+       * <code>uint32 userID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearUserId() {
+      public Builder clearUserID() {
         
-        userId_ = 0;
+        userID_ = 0;
         onChanged();
         return this;
       }
@@ -5541,10 +5259,10 @@ public final class GameMsgProtocol {
        * 谁放的
        * </pre>
        *
-       * <code>uint32 userId = 1;</code>
-       * @return The userId.
+       * <code>uint32 userID = 1;</code>
+       * @return The userID.
        */
-      int getUserId();
+      int getUserID();
 
       /**
        * <pre>
@@ -5638,7 +5356,7 @@ public final class GameMsgProtocol {
                 break;
               case 8: {
 
-                userId_ = input.readUInt32();
+                userID_ = input.readUInt32();
                 break;
               }
               case 21: {
@@ -5690,18 +5408,18 @@ public final class GameMsgProtocol {
       }
 
       public static final int USERID_FIELD_NUMBER = 1;
-      private int userId_;
+      private int userID_;
       /**
        * <pre>
        * 谁放的
        * </pre>
        *
-       * <code>uint32 userId = 1;</code>
-       * @return The userId.
+       * <code>uint32 userID = 1;</code>
+       * @return The userID.
        */
       @java.lang.Override
-      public int getUserId() {
-        return userId_;
+      public int getUserID() {
+        return userID_;
       }
 
       public static final int POSX_FIELD_NUMBER = 2;
@@ -5794,8 +5512,8 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (userId_ != 0) {
-          output.writeUInt32(1, userId_);
+        if (userID_ != 0) {
+          output.writeUInt32(1, userID_);
         }
         if (posX_ != 0F) {
           output.writeFloat(2, posX_);
@@ -5815,9 +5533,9 @@ public final class GameMsgProtocol {
         if (size != -1) return size;
 
         size = 0;
-        if (userId_ != 0) {
+        if (userID_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, userId_);
+            .computeUInt32Size(1, userID_);
         }
         if (posX_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
@@ -5845,8 +5563,8 @@ public final class GameMsgProtocol {
         }
         GameMsgProtocol.UserPutResult.StepInfo other = (GameMsgProtocol.UserPutResult.StepInfo) obj;
 
-        if (getUserId()
-            != other.getUserId()) return false;
+        if (getUserID()
+            != other.getUserID()) return false;
         if (java.lang.Float.floatToIntBits(getPosX())
             != java.lang.Float.floatToIntBits(
                 other.getPosX())) return false;
@@ -5867,7 +5585,7 @@ public final class GameMsgProtocol {
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
         hash = (37 * hash) + USERID_FIELD_NUMBER;
-        hash = (53 * hash) + getUserId();
+        hash = (53 * hash) + getUserID();
         hash = (37 * hash) + POSX_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosX());
@@ -6013,7 +5731,7 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          userId_ = 0;
+          userID_ = 0;
 
           posX_ = 0F;
 
@@ -6047,7 +5765,7 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public GameMsgProtocol.UserPutResult.StepInfo buildPartial() {
           GameMsgProtocol.UserPutResult.StepInfo result = new GameMsgProtocol.UserPutResult.StepInfo(this);
-          result.userId_ = userId_;
+          result.userID_ = userID_;
           result.posX_ = posX_;
           result.posY_ = posY_;
           result.character_ = character_;
@@ -6099,8 +5817,8 @@ public final class GameMsgProtocol {
 
         public Builder mergeFrom(GameMsgProtocol.UserPutResult.StepInfo other) {
           if (other == GameMsgProtocol.UserPutResult.StepInfo.getDefaultInstance()) return this;
-          if (other.getUserId() != 0) {
-            setUserId(other.getUserId());
+          if (other.getUserID() != 0) {
+            setUserID(other.getUserID());
           }
           if (other.getPosX() != 0F) {
             setPosX(other.getPosX());
@@ -6141,31 +5859,31 @@ public final class GameMsgProtocol {
           return this;
         }
 
-        private int userId_ ;
+        private int userID_ ;
         /**
          * <pre>
          * 谁放的
          * </pre>
          *
-         * <code>uint32 userId = 1;</code>
-         * @return The userId.
+         * <code>uint32 userID = 1;</code>
+         * @return The userID.
          */
         @java.lang.Override
-        public int getUserId() {
-          return userId_;
+        public int getUserID() {
+          return userID_;
         }
         /**
          * <pre>
          * 谁放的
          * </pre>
          *
-         * <code>uint32 userId = 1;</code>
-         * @param value The userId to set.
+         * <code>uint32 userID = 1;</code>
+         * @param value The userID to set.
          * @return This builder for chaining.
          */
-        public Builder setUserId(int value) {
+        public Builder setUserID(int value) {
           
-          userId_ = value;
+          userID_ = value;
           onChanged();
           return this;
         }
@@ -6174,12 +5892,12 @@ public final class GameMsgProtocol {
          * 谁放的
          * </pre>
          *
-         * <code>uint32 userId = 1;</code>
+         * <code>uint32 userID = 1;</code>
          * @return This builder for chaining.
          */
-        public Builder clearUserId() {
+        public Builder clearUserID() {
           
-          userId_ = 0;
+          userID_ = 0;
           onChanged();
           return this;
         }
@@ -7624,13 +7342,13 @@ public final class GameMsgProtocol {
 
     /**
      * <pre>
-     * 退出用户 Id
+     * 退出用户 ID
      * </pre>
      *
-     * <code>uint32 dieUserId = 1;</code>
-     * @return The dieUserId.
+     * <code>uint32 dieUserID = 1;</code>
+     * @return The dieUserID.
      */
-    int getDieUserId();
+    int getDieUserID();
   }
   /**
    * <pre>
@@ -7683,7 +7401,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              dieUserId_ = input.readUInt32();
+              dieUserID_ = input.readUInt32();
               break;
             }
             default: {
@@ -7719,18 +7437,18 @@ public final class GameMsgProtocol {
     }
 
     public static final int DIEUSERID_FIELD_NUMBER = 1;
-    private int dieUserId_;
+    private int dieUserID_;
     /**
      * <pre>
-     * 退出用户 Id
+     * 退出用户 ID
      * </pre>
      *
-     * <code>uint32 dieUserId = 1;</code>
-     * @return The dieUserId.
+     * <code>uint32 dieUserID = 1;</code>
+     * @return The dieUserID.
      */
     @java.lang.Override
-    public int getDieUserId() {
-      return dieUserId_;
+    public int getDieUserID() {
+      return dieUserID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7747,8 +7465,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (dieUserId_ != 0) {
-        output.writeUInt32(1, dieUserId_);
+      if (dieUserID_ != 0) {
+        output.writeUInt32(1, dieUserID_);
       }
       unknownFields.writeTo(output);
     }
@@ -7759,9 +7477,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (dieUserId_ != 0) {
+      if (dieUserID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, dieUserId_);
+          .computeUInt32Size(1, dieUserID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7778,8 +7496,8 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.UserDieResult other = (GameMsgProtocol.UserDieResult) obj;
 
-      if (getDieUserId()
-          != other.getDieUserId()) return false;
+      if (getDieUserID()
+          != other.getDieUserID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7792,7 +7510,7 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + DIEUSERID_FIELD_NUMBER;
-      hash = (53 * hash) + getDieUserId();
+      hash = (53 * hash) + getDieUserID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7930,7 +7648,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dieUserId_ = 0;
+        dieUserID_ = 0;
 
         return this;
       }
@@ -7958,7 +7676,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public GameMsgProtocol.UserDieResult buildPartial() {
         GameMsgProtocol.UserDieResult result = new GameMsgProtocol.UserDieResult(this);
-        result.dieUserId_ = dieUserId_;
+        result.dieUserID_ = dieUserID_;
         onBuilt();
         return result;
       }
@@ -8007,8 +7725,8 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.UserDieResult other) {
         if (other == GameMsgProtocol.UserDieResult.getDefaultInstance()) return this;
-        if (other.getDieUserId() != 0) {
-          setDieUserId(other.getDieUserId());
+        if (other.getDieUserID() != 0) {
+          setDieUserID(other.getDieUserID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8039,45 +7757,45 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int dieUserId_ ;
+      private int dieUserID_ ;
       /**
        * <pre>
-       * 退出用户 Id
+       * 退出用户 ID
        * </pre>
        *
-       * <code>uint32 dieUserId = 1;</code>
-       * @return The dieUserId.
+       * <code>uint32 dieUserID = 1;</code>
+       * @return The dieUserID.
        */
       @java.lang.Override
-      public int getDieUserId() {
-        return dieUserId_;
+      public int getDieUserID() {
+        return dieUserID_;
       }
       /**
        * <pre>
-       * 退出用户 Id
+       * 退出用户 ID
        * </pre>
        *
-       * <code>uint32 dieUserId = 1;</code>
-       * @param value The dieUserId to set.
+       * <code>uint32 dieUserID = 1;</code>
+       * @param value The dieUserID to set.
        * @return This builder for chaining.
        */
-      public Builder setDieUserId(int value) {
+      public Builder setDieUserID(int value) {
         
-        dieUserId_ = value;
+        dieUserID_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * 退出用户 Id
+       * 退出用户 ID
        * </pre>
        *
-       * <code>uint32 dieUserId = 1;</code>
+       * <code>uint32 dieUserID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDieUserId() {
+      public Builder clearDieUserID() {
         
-        dieUserId_ = 0;
+        dieUserID_ = 0;
         onChanged();
         return this;
       }
@@ -8570,13 +8288,13 @@ public final class GameMsgProtocol {
 
     /**
      * <pre>
-     * 停驻用户 Id
+     * 停驻用户 ID
      * </pre>
      *
-     * <code>uint32 stopUserId = 1;</code>
-     * @return The stopUserId.
+     * <code>uint32 stopUserID = 1;</code>
+     * @return The stopUserID.
      */
-    int getStopUserId();
+    int getStopUserID();
 
     /**
      * <pre>
@@ -8649,7 +8367,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              stopUserId_ = input.readUInt32();
+              stopUserID_ = input.readUInt32();
               break;
             }
             case 21: {
@@ -8695,18 +8413,18 @@ public final class GameMsgProtocol {
     }
 
     public static final int STOPUSERID_FIELD_NUMBER = 1;
-    private int stopUserId_;
+    private int stopUserID_;
     /**
      * <pre>
-     * 停驻用户 Id
+     * 停驻用户 ID
      * </pre>
      *
-     * <code>uint32 stopUserId = 1;</code>
-     * @return The stopUserId.
+     * <code>uint32 stopUserID = 1;</code>
+     * @return The stopUserID.
      */
     @java.lang.Override
-    public int getStopUserId() {
-      return stopUserId_;
+    public int getStopUserID() {
+      return stopUserID_;
     }
 
     public static final int STOPATPOSX_FIELD_NUMBER = 2;
@@ -8753,8 +8471,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (stopUserId_ != 0) {
-        output.writeUInt32(1, stopUserId_);
+      if (stopUserID_ != 0) {
+        output.writeUInt32(1, stopUserID_);
       }
       if (stopAtPosX_ != 0F) {
         output.writeFloat(2, stopAtPosX_);
@@ -8771,9 +8489,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (stopUserId_ != 0) {
+      if (stopUserID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, stopUserId_);
+          .computeUInt32Size(1, stopUserID_);
       }
       if (stopAtPosX_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
@@ -8798,8 +8516,8 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.UserStopResult other = (GameMsgProtocol.UserStopResult) obj;
 
-      if (getStopUserId()
-          != other.getStopUserId()) return false;
+      if (getStopUserID()
+          != other.getStopUserID()) return false;
       if (java.lang.Float.floatToIntBits(getStopAtPosX())
           != java.lang.Float.floatToIntBits(
               other.getStopAtPosX())) return false;
@@ -8818,7 +8536,7 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + STOPUSERID_FIELD_NUMBER;
-      hash = (53 * hash) + getStopUserId();
+      hash = (53 * hash) + getStopUserID();
       hash = (37 * hash) + STOPATPOSX_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getStopAtPosX());
@@ -8962,7 +8680,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        stopUserId_ = 0;
+        stopUserID_ = 0;
 
         stopAtPosX_ = 0F;
 
@@ -8994,7 +8712,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public GameMsgProtocol.UserStopResult buildPartial() {
         GameMsgProtocol.UserStopResult result = new GameMsgProtocol.UserStopResult(this);
-        result.stopUserId_ = stopUserId_;
+        result.stopUserID_ = stopUserID_;
         result.stopAtPosX_ = stopAtPosX_;
         result.stopAtPosY_ = stopAtPosY_;
         onBuilt();
@@ -9045,8 +8763,8 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.UserStopResult other) {
         if (other == GameMsgProtocol.UserStopResult.getDefaultInstance()) return this;
-        if (other.getStopUserId() != 0) {
-          setStopUserId(other.getStopUserId());
+        if (other.getStopUserID() != 0) {
+          setStopUserID(other.getStopUserID());
         }
         if (other.getStopAtPosX() != 0F) {
           setStopAtPosX(other.getStopAtPosX());
@@ -9083,45 +8801,45 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int stopUserId_ ;
+      private int stopUserID_ ;
       /**
        * <pre>
-       * 停驻用户 Id
+       * 停驻用户 ID
        * </pre>
        *
-       * <code>uint32 stopUserId = 1;</code>
-       * @return The stopUserId.
+       * <code>uint32 stopUserID = 1;</code>
+       * @return The stopUserID.
        */
       @java.lang.Override
-      public int getStopUserId() {
-        return stopUserId_;
+      public int getStopUserID() {
+        return stopUserID_;
       }
       /**
        * <pre>
-       * 停驻用户 Id
+       * 停驻用户 ID
        * </pre>
        *
-       * <code>uint32 stopUserId = 1;</code>
-       * @param value The stopUserId to set.
+       * <code>uint32 stopUserID = 1;</code>
+       * @param value The stopUserID to set.
        * @return This builder for chaining.
        */
-      public Builder setStopUserId(int value) {
+      public Builder setStopUserID(int value) {
         
-        stopUserId_ = value;
+        stopUserID_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * 停驻用户 Id
+       * 停驻用户 ID
        * </pre>
        *
-       * <code>uint32 stopUserId = 1;</code>
+       * <code>uint32 stopUserID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearStopUserId() {
+      public Builder clearStopUserID() {
         
-        stopUserId_ = 0;
+        stopUserID_ = 0;
         onChanged();
         return this;
       }
@@ -9703,10 +9421,10 @@ public final class GameMsgProtocol {
      * 离开用户的 id
      * </pre>
      *
-     * <code>uint32 leaveUserId = 1;</code>
-     * @return The leaveUserId.
+     * <code>uint32 leaveUserID = 1;</code>
+     * @return The leaveUserID.
      */
-    int getLeaveUserId();
+    int getLeaveUserID();
   }
   /**
    * <pre>
@@ -9759,7 +9477,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              leaveUserId_ = input.readUInt32();
+              leaveUserID_ = input.readUInt32();
               break;
             }
             default: {
@@ -9795,18 +9513,18 @@ public final class GameMsgProtocol {
     }
 
     public static final int LEAVEUSERID_FIELD_NUMBER = 1;
-    private int leaveUserId_;
+    private int leaveUserID_;
     /**
      * <pre>
      * 离开用户的 id
      * </pre>
      *
-     * <code>uint32 leaveUserId = 1;</code>
-     * @return The leaveUserId.
+     * <code>uint32 leaveUserID = 1;</code>
+     * @return The leaveUserID.
      */
     @java.lang.Override
-    public int getLeaveUserId() {
-      return leaveUserId_;
+    public int getLeaveUserID() {
+      return leaveUserID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9823,8 +9541,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (leaveUserId_ != 0) {
-        output.writeUInt32(1, leaveUserId_);
+      if (leaveUserID_ != 0) {
+        output.writeUInt32(1, leaveUserID_);
       }
       unknownFields.writeTo(output);
     }
@@ -9835,9 +9553,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (leaveUserId_ != 0) {
+      if (leaveUserID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, leaveUserId_);
+          .computeUInt32Size(1, leaveUserID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9854,8 +9572,8 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.UserLeaveResult other = (GameMsgProtocol.UserLeaveResult) obj;
 
-      if (getLeaveUserId()
-          != other.getLeaveUserId()) return false;
+      if (getLeaveUserID()
+          != other.getLeaveUserID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9868,7 +9586,7 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + LEAVEUSERID_FIELD_NUMBER;
-      hash = (53 * hash) + getLeaveUserId();
+      hash = (53 * hash) + getLeaveUserID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10006,7 +9724,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        leaveUserId_ = 0;
+        leaveUserID_ = 0;
 
         return this;
       }
@@ -10034,7 +9752,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public GameMsgProtocol.UserLeaveResult buildPartial() {
         GameMsgProtocol.UserLeaveResult result = new GameMsgProtocol.UserLeaveResult(this);
-        result.leaveUserId_ = leaveUserId_;
+        result.leaveUserID_ = leaveUserID_;
         onBuilt();
         return result;
       }
@@ -10083,8 +9801,8 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.UserLeaveResult other) {
         if (other == GameMsgProtocol.UserLeaveResult.getDefaultInstance()) return this;
-        if (other.getLeaveUserId() != 0) {
-          setLeaveUserId(other.getLeaveUserId());
+        if (other.getLeaveUserID() != 0) {
+          setLeaveUserID(other.getLeaveUserID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -10115,31 +9833,31 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int leaveUserId_ ;
+      private int leaveUserID_ ;
       /**
        * <pre>
        * 离开用户的 id
        * </pre>
        *
-       * <code>uint32 leaveUserId = 1;</code>
-       * @return The leaveUserId.
+       * <code>uint32 leaveUserID = 1;</code>
+       * @return The leaveUserID.
        */
       @java.lang.Override
-      public int getLeaveUserId() {
-        return leaveUserId_;
+      public int getLeaveUserID() {
+        return leaveUserID_;
       }
       /**
        * <pre>
        * 离开用户的 id
        * </pre>
        *
-       * <code>uint32 leaveUserId = 1;</code>
-       * @param value The leaveUserId to set.
+       * <code>uint32 leaveUserID = 1;</code>
+       * @param value The leaveUserID to set.
        * @return This builder for chaining.
        */
-      public Builder setLeaveUserId(int value) {
+      public Builder setLeaveUserID(int value) {
         
-        leaveUserId_ = value;
+        leaveUserID_ = value;
         onChanged();
         return this;
       }
@@ -10148,12 +9866,12 @@ public final class GameMsgProtocol {
        * 离开用户的 id
        * </pre>
        *
-       * <code>uint32 leaveUserId = 1;</code>
+       * <code>uint32 leaveUserID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearLeaveUserId() {
+      public Builder clearLeaveUserID() {
         
-        leaveUserId_ = 0;
+        leaveUserID_ = 0;
         onChanged();
         return this;
       }
@@ -10302,28 +10020,28 @@ public final class GameMsgProtocol {
       "\n\025GameMsgProtocol.proto\"\016\n\014WhatRoomsCmd\"" +
       "m\n\017WhatRoomsResult\022+\n\010roomInfo\030\001 \003(\0132\031.W" +
       "hatRoomsResult.RoomInfo\032-\n\010RoomInfo\022\016\n\006r" +
-      "oomId\030\001 \001(\r\022\021\n\troomState\030\002 \001(\t\"=\n\014UserEn" +
-      "tryCmd\022\016\n\006roomId\030\001 \001(\r\022\016\n\006userId\030\002 \001(\r\022\r" +
-      "\n\005party\030\003 \001(\t\"5\n\017UserEntryResult\022\016\n\006room" +
-      "Id\030\001 \001(\r\022\022\n\nopponentId\030\002 \001(\r\"\016\n\014UserRead" +
-      "yCmd\"!\n\017UserReadyResult\022\016\n\006userId\030\001 \001(\r\"" +
-      ";\n\nUserPutCmd\022\014\n\004PosX\030\001 \001(\002\022\014\n\004PosY\030\002 \001(" +
-      "\002\022\021\n\tcharacter\030\003 \001(\t\"\205\001\n\rUserPutResult\022)" +
-      "\n\010stepInfo\030\001 \003(\0132\027.UserPutResult.StepInf" +
-      "o\032I\n\010StepInfo\022\016\n\006userId\030\001 \001(\r\022\014\n\004PosX\030\002 " +
-      "\001(\002\022\014\n\004PosY\030\003 \001(\002\022\021\n\tcharacter\030\004 \001(\t\"\014\n\n" +
-      "UserDieCmd\"\"\n\rUserDieResult\022\021\n\tdieUserId" +
-      "\030\001 \001(\r\"\r\n\013UserStopCmd\"L\n\016UserStopResult\022" +
-      "\022\n\nstopUserId\030\001 \001(\r\022\022\n\nstopAtPosX\030\002 \001(\002\022" +
-      "\022\n\nstopAtPosY\030\003 \001(\002\"\016\n\014UserLeaveCmd\"&\n\017U" +
-      "serLeaveResult\022\023\n\013leaveUserId\030\001 \001(\r*\203\002\n\007" +
-      "MsgCode\022\022\n\016WHAT_ROOMS_CMD\020\000\022\025\n\021WHAT_ROOM" +
-      "S_RESULT\020\001\022\022\n\016USER_ENTRY_CMD\020\002\022\025\n\021USER_E" +
-      "NTRY_RESULT\020\003\022\022\n\016USER_READY_CMD\020\004\022\025\n\021USE" +
-      "R_READY_RESULT\020\005\022\020\n\014USER_PUT_CMD\020\006\022\023\n\017US" +
-      "ER_PUT_RESULT\020\007\022\020\n\014USER_DIE_CMD\020\010\022\023\n\017USE" +
-      "R_DIE_RESULT\020\t\022\022\n\016USER_LEAVE_CMD\020\n\022\025\n\021US" +
-      "ER_LEAVE_RESULT\020\013b\006proto3"
+      "oomID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\".\n\014UserEn" +
+      "tryCmd\022\016\n\006roomID\030\001 \001(\r\022\016\n\006userID\030\002 \001(\r\"5" +
+      "\n\017UserEntryResult\022\016\n\006roomID\030\001 \001(\r\022\022\n\nopp" +
+      "onentID\030\002 \001(\r\"\016\n\014UserReadyCmd\"!\n\017UserRea" +
+      "dyResult\022\016\n\006userID\030\001 \001(\r\";\n\nUserPutCmd\022\014" +
+      "\n\004PosX\030\001 \001(\002\022\014\n\004PosY\030\002 \001(\002\022\021\n\tcharacter\030" +
+      "\003 \001(\t\"\205\001\n\rUserPutResult\022)\n\010stepInfo\030\001 \003(" +
+      "\0132\027.UserPutResult.StepInfo\032I\n\010StepInfo\022\016" +
+      "\n\006userID\030\001 \001(\r\022\014\n\004PosX\030\002 \001(\002\022\014\n\004PosY\030\003 \001" +
+      "(\002\022\021\n\tcharacter\030\004 \001(\t\"\014\n\nUserDieCmd\"\"\n\rU" +
+      "serDieResult\022\021\n\tdieUserID\030\001 \001(\r\"\r\n\013UserS" +
+      "topCmd\"L\n\016UserStopResult\022\022\n\nstopUserID\030\001" +
+      " \001(\r\022\022\n\nstopAtPosX\030\002 \001(\002\022\022\n\nstopAtPosY\030\003" +
+      " \001(\002\"\016\n\014UserLeaveCmd\"&\n\017UserLeaveResult\022" +
+      "\023\n\013leaveUserID\030\001 \001(\r*\203\002\n\007MsgCode\022\022\n\016WHAT" +
+      "_ROOMS_CMD\020\000\022\025\n\021WHAT_ROOMS_RESULT\020\001\022\022\n\016U" +
+      "SER_ENTRY_CMD\020\002\022\025\n\021USER_ENTRY_RESULT\020\003\022\022" +
+      "\n\016USER_READY_CMD\020\004\022\025\n\021USER_READY_RESULT\020" +
+      "\005\022\020\n\014USER_PUT_CMD\020\006\022\023\n\017USER_PUT_RESULT\020\007" +
+      "\022\020\n\014USER_DIE_CMD\020\010\022\023\n\017USER_DIE_RESULT\020\t\022" +
+      "\022\n\016USER_LEAVE_CMD\020\n\022\025\n\021USER_LEAVE_RESULT" +
+      "\020\013b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10346,19 +10064,19 @@ public final class GameMsgProtocol {
     internal_static_WhatRoomsResult_RoomInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_WhatRoomsResult_RoomInfo_descriptor,
-        new java.lang.String[] { "RoomId", "RoomState", });
+        new java.lang.String[] { "RoomID", "RoomState", });
     internal_static_UserEntryCmd_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_UserEntryCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserEntryCmd_descriptor,
-        new java.lang.String[] { "RoomId", "UserId", "Party", });
+        new java.lang.String[] { "RoomID", "UserID", });
     internal_static_UserEntryResult_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_UserEntryResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserEntryResult_descriptor,
-        new java.lang.String[] { "RoomId", "OpponentId", });
+        new java.lang.String[] { "RoomID", "OpponentID", });
     internal_static_UserReadyCmd_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_UserReadyCmd_fieldAccessorTable = new
@@ -10370,7 +10088,7 @@ public final class GameMsgProtocol {
     internal_static_UserReadyResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserReadyResult_descriptor,
-        new java.lang.String[] { "UserId", });
+        new java.lang.String[] { "UserID", });
     internal_static_UserPutCmd_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_UserPutCmd_fieldAccessorTable = new
@@ -10388,7 +10106,7 @@ public final class GameMsgProtocol {
     internal_static_UserPutResult_StepInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserPutResult_StepInfo_descriptor,
-        new java.lang.String[] { "UserId", "PosX", "PosY", "Character", });
+        new java.lang.String[] { "UserID", "PosX", "PosY", "Character", });
     internal_static_UserDieCmd_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_UserDieCmd_fieldAccessorTable = new
@@ -10400,7 +10118,7 @@ public final class GameMsgProtocol {
     internal_static_UserDieResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserDieResult_descriptor,
-        new java.lang.String[] { "DieUserId", });
+        new java.lang.String[] { "DieUserID", });
     internal_static_UserStopCmd_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_UserStopCmd_fieldAccessorTable = new
@@ -10412,7 +10130,7 @@ public final class GameMsgProtocol {
     internal_static_UserStopResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserStopResult_descriptor,
-        new java.lang.String[] { "StopUserId", "StopAtPosX", "StopAtPosY", });
+        new java.lang.String[] { "StopUserID", "StopAtPosX", "StopAtPosY", });
     internal_static_UserLeaveCmd_descriptor =
       getDescriptor().getMessageTypes().get(12);
     internal_static_UserLeaveCmd_fieldAccessorTable = new
@@ -10424,7 +10142,7 @@ public final class GameMsgProtocol {
     internal_static_UserLeaveResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserLeaveResult_descriptor,
-        new java.lang.String[] { "LeaveUserId", });
+        new java.lang.String[] { "LeaveUserID", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
