@@ -10,12 +10,14 @@ import com.almasb.fxgl.entity.components.CollidableComponent;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import nju.java315.client.game.type.AttackMethod;
+import nju.java315.client.game.type.TowerType;
 
 public class HuluCRFactory implements EntityFactory {
     @Spawns("Fireball")
     public Entity newFireball(SpawnData data) {
         return FXGL.entityBuilder()
-                    .type(HuluCRType.FIREBALL)
+                    .type(AttackMethod.FIREBALL)
                     .viewWithBBox(new Rectangle(10, 10, Color.RED))
                     .with(new CollidableComponent(true))
                     //.with(new ProjectileComponent(direction, speed)) // TODO
@@ -25,7 +27,7 @@ public class HuluCRFactory implements EntityFactory {
     @Spawns("Grandfather")
     public Entity newGrandfather(SpawnData data) {
         return FXGL.entityBuilder()
-                    .type(HuluCRType.GRANDFATHER)
+                    .type(TowerType.GRANDFATHER)
                     .build();
     }
 }
