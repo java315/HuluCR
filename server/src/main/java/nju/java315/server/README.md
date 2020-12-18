@@ -22,11 +22,9 @@
   * 利用从整形映射到 Room 的 map 实现多房间。
   * ~~服务器端设置由 chanel 映射到信道组编号的 map，或消息中设置房间号，偏向前者~~
 * 将玩家 channel 保存在全局信道组中
-* 实现 Player 类，其中保存玩家 ID、 ChannelId、所在房间号、以及是否准备好。利用从 ChannelId 映射到 player 的 map 实现 channel 与 玩家的一一对应。在玩家进入房间时，将其对应 player 对象传入房间，后续可用其中信息（channelId），从信道组中检索得到对应的channel以发送信息。
-
-## 未实现
-
-* 每个时隙里面只发一次，把收到的消息全部在一个包里转发出去，然后限制每个时隙客户端只能发一次
+* 实现 Player 类，其中保存玩家 ID、 ~~ChannelId~~channel、所在房间号、以及是否准备好。利用从 ChannelId 映射到 player 的 map 实现 channel 与 玩家的一一对应。在玩家进入房间时，将其对应 player 对象传入房间，后续可用其中信息（~~channelId~~ channel），~~从信道组中检索得到对应的channel以~~发送信息。
+* 每个时隙里面只发一次，把收到的消息全部在一个包里转发出去，然后限制每个时隙客户端只能发一次。实现方法：
+  * 将收到的消息存入 Room 类中设置的消息队列
+  * 使将 Room 类扩展 runnable 接口，在其中重写 run，实现向客户端发送步骤消息，在 GameMsgHandler 中设置一个 ScheduledExecutorService，使用其中的 scheduleAtFixedRate 方法，在房间游戏开始时按一定速率向客户端发送消息。
 * 群发方法 https://www.jianshu.com/p/adc2de3691c7
-
 

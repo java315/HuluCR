@@ -5,8 +5,6 @@ import java.util.Queue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelId;
 import io.netty.util.concurrent.ScheduledFuture;
 import nju.java315.server.msg.GameMsgProtocol;
 
