@@ -30,16 +30,16 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
 
             if(msg instanceof WhatRoomsResult)
                 msgCode = GameMsgProtocol.MsgCode.WHAT_ROOMS_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.UserEntryResult)
-                msgCode = GameMsgProtocol.MsgCode.USER_ENTRY_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.UserReadyResult)
-                msgCode = GameMsgProtocol.MsgCode.USER_READY_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.UserPutResult)
-                msgCode = GameMsgProtocol.MsgCode.USER_PUT_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.UserDieResult)
-                msgCode = GameMsgProtocol.MsgCode.USER_DIE_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.UserLeaveResult)
-                msgCode = GameMsgProtocol.MsgCode.USER_LEAVE_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerEntryResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_ENTRY_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerReadyResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_READY_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerPutResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_PUT_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerDieResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_DIE_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerLeaveResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_LEAVE_RESULT_VALUE;
             else{
                 LOGGER.error(
                     "无法识别的消息类型，msgClass = {}",
