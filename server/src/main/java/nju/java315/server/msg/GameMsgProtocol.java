@@ -32,45 +32,45 @@ public final class GameMsgProtocol {
      */
     WHAT_ROOMS_RESULT(1),
     /**
-     * <code>USER_ENTRY_CMD = 2;</code>
+     * <code>PLAYER_ENTRY_CMD = 2;</code>
      */
-    USER_ENTRY_CMD(2),
+    PLAYER_ENTRY_CMD(2),
     /**
-     * <code>USER_ENTRY_RESULT = 3;</code>
+     * <code>PLAYER_ENTRY_RESULT = 3;</code>
      */
-    USER_ENTRY_RESULT(3),
+    PLAYER_ENTRY_RESULT(3),
     /**
-     * <code>USER_READY_CMD = 4;</code>
+     * <code>PLAYER_READY_CMD = 4;</code>
      */
-    USER_READY_CMD(4),
+    PLAYER_READY_CMD(4),
     /**
-     * <code>USER_READY_RESULT = 5;</code>
+     * <code>PLAYER_READY_RESULT = 5;</code>
      */
-    USER_READY_RESULT(5),
+    PLAYER_READY_RESULT(5),
     /**
-     * <code>USER_PUT_CMD = 6;</code>
+     * <code>PLAYER_PUT_CMD = 6;</code>
      */
-    USER_PUT_CMD(6),
+    PLAYER_PUT_CMD(6),
     /**
-     * <code>USER_PUT_RESULT = 7;</code>
+     * <code>PLAYER_PUT_RESULT = 7;</code>
      */
-    USER_PUT_RESULT(7),
+    PLAYER_PUT_RESULT(7),
     /**
-     * <code>USER_DIE_CMD = 8;</code>
+     * <code>PLAYER_DIE_CMD = 8;</code>
      */
-    USER_DIE_CMD(8),
+    PLAYER_DIE_CMD(8),
     /**
-     * <code>USER_DIE_RESULT = 9;</code>
+     * <code>PLAYER_DIE_RESULT = 9;</code>
      */
-    USER_DIE_RESULT(9),
+    PLAYER_DIE_RESULT(9),
     /**
-     * <code>USER_LEAVE_CMD = 10;</code>
+     * <code>PLAYER_LEAVE_CMD = 10;</code>
      */
-    USER_LEAVE_CMD(10),
+    PLAYER_LEAVE_CMD(10),
     /**
-     * <code>USER_LEAVE_RESULT = 11;</code>
+     * <code>PLAYER_LEAVE_RESULT = 11;</code>
      */
-    USER_LEAVE_RESULT(11),
+    PLAYER_LEAVE_RESULT(11),
     UNRECOGNIZED(-1),
     ;
 
@@ -83,45 +83,45 @@ public final class GameMsgProtocol {
      */
     public static final int WHAT_ROOMS_RESULT_VALUE = 1;
     /**
-     * <code>USER_ENTRY_CMD = 2;</code>
+     * <code>PLAYER_ENTRY_CMD = 2;</code>
      */
-    public static final int USER_ENTRY_CMD_VALUE = 2;
+    public static final int PLAYER_ENTRY_CMD_VALUE = 2;
     /**
-     * <code>USER_ENTRY_RESULT = 3;</code>
+     * <code>PLAYER_ENTRY_RESULT = 3;</code>
      */
-    public static final int USER_ENTRY_RESULT_VALUE = 3;
+    public static final int PLAYER_ENTRY_RESULT_VALUE = 3;
     /**
-     * <code>USER_READY_CMD = 4;</code>
+     * <code>PLAYER_READY_CMD = 4;</code>
      */
-    public static final int USER_READY_CMD_VALUE = 4;
+    public static final int PLAYER_READY_CMD_VALUE = 4;
     /**
-     * <code>USER_READY_RESULT = 5;</code>
+     * <code>PLAYER_READY_RESULT = 5;</code>
      */
-    public static final int USER_READY_RESULT_VALUE = 5;
+    public static final int PLAYER_READY_RESULT_VALUE = 5;
     /**
-     * <code>USER_PUT_CMD = 6;</code>
+     * <code>PLAYER_PUT_CMD = 6;</code>
      */
-    public static final int USER_PUT_CMD_VALUE = 6;
+    public static final int PLAYER_PUT_CMD_VALUE = 6;
     /**
-     * <code>USER_PUT_RESULT = 7;</code>
+     * <code>PLAYER_PUT_RESULT = 7;</code>
      */
-    public static final int USER_PUT_RESULT_VALUE = 7;
+    public static final int PLAYER_PUT_RESULT_VALUE = 7;
     /**
-     * <code>USER_DIE_CMD = 8;</code>
+     * <code>PLAYER_DIE_CMD = 8;</code>
      */
-    public static final int USER_DIE_CMD_VALUE = 8;
+    public static final int PLAYER_DIE_CMD_VALUE = 8;
     /**
-     * <code>USER_DIE_RESULT = 9;</code>
+     * <code>PLAYER_DIE_RESULT = 9;</code>
      */
-    public static final int USER_DIE_RESULT_VALUE = 9;
+    public static final int PLAYER_DIE_RESULT_VALUE = 9;
     /**
-     * <code>USER_LEAVE_CMD = 10;</code>
+     * <code>PLAYER_LEAVE_CMD = 10;</code>
      */
-    public static final int USER_LEAVE_CMD_VALUE = 10;
+    public static final int PLAYER_LEAVE_CMD_VALUE = 10;
     /**
-     * <code>USER_LEAVE_RESULT = 11;</code>
+     * <code>PLAYER_LEAVE_RESULT = 11;</code>
      */
-    public static final int USER_LEAVE_RESULT_VALUE = 11;
+    public static final int PLAYER_LEAVE_RESULT_VALUE = 11;
 
 
     public final int getNumber() {
@@ -150,16 +150,16 @@ public final class GameMsgProtocol {
       switch (value) {
         case 0: return WHAT_ROOMS_CMD;
         case 1: return WHAT_ROOMS_RESULT;
-        case 2: return USER_ENTRY_CMD;
-        case 3: return USER_ENTRY_RESULT;
-        case 4: return USER_READY_CMD;
-        case 5: return USER_READY_RESULT;
-        case 6: return USER_PUT_CMD;
-        case 7: return USER_PUT_RESULT;
-        case 8: return USER_DIE_CMD;
-        case 9: return USER_DIE_RESULT;
-        case 10: return USER_LEAVE_CMD;
-        case 11: return USER_LEAVE_RESULT;
+        case 2: return PLAYER_ENTRY_CMD;
+        case 3: return PLAYER_ENTRY_RESULT;
+        case 4: return PLAYER_READY_CMD;
+        case 5: return PLAYER_READY_RESULT;
+        case 6: return PLAYER_PUT_CMD;
+        case 7: return PLAYER_PUT_RESULT;
+        case 8: return PLAYER_DIE_CMD;
+        case 9: return PLAYER_DIE_RESULT;
+        case 10: return PLAYER_LEAVE_CMD;
+        case 11: return PLAYER_LEAVE_RESULT;
         default: return null;
       }
     }
@@ -2165,8 +2165,8 @@ public final class GameMsgProtocol {
 
   }
 
-  public interface UserEntryCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserEntryCmd)
+  public interface PlayerEntryCmdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerEntryCmd)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2184,10 +2184,10 @@ public final class GameMsgProtocol {
      * 用户id
      * </pre>
      *
-     * <code>uint32 userID = 2;</code>
-     * @return The userID.
+     * <code>uint32 playerID = 2;</code>
+     * @return The playerID.
      */
-    int getUserID();
+    int getPlayerID();
   }
   /**
    * <pre>
@@ -2196,25 +2196,25 @@ public final class GameMsgProtocol {
    * 指令
    * </pre>
    *
-   * Protobuf type {@code UserEntryCmd}
+   * Protobuf type {@code PlayerEntryCmd}
    */
-  public static final class UserEntryCmd extends
+  public static final class PlayerEntryCmd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserEntryCmd)
-      UserEntryCmdOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerEntryCmd)
+      PlayerEntryCmdOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserEntryCmd.newBuilder() to construct.
-    private UserEntryCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerEntryCmd.newBuilder() to construct.
+    private PlayerEntryCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserEntryCmd() {
+    private PlayerEntryCmd() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserEntryCmd();
+      return new PlayerEntryCmd();
     }
 
     @java.lang.Override
@@ -2222,7 +2222,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserEntryCmd(
+    private PlayerEntryCmd(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2247,7 +2247,7 @@ public final class GameMsgProtocol {
             }
             case 16: {
 
-              userID_ = input.readUInt32();
+              playerID_ = input.readUInt32();
               break;
             }
             default: {
@@ -2271,15 +2271,15 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserEntryCmd_descriptor;
+      return GameMsgProtocol.internal_static_PlayerEntryCmd_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserEntryCmd_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerEntryCmd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserEntryCmd.class, GameMsgProtocol.UserEntryCmd.Builder.class);
+              GameMsgProtocol.PlayerEntryCmd.class, GameMsgProtocol.PlayerEntryCmd.Builder.class);
     }
 
     public static final int ROOMID_FIELD_NUMBER = 1;
@@ -2297,19 +2297,19 @@ public final class GameMsgProtocol {
       return roomID_;
     }
 
-    public static final int USERID_FIELD_NUMBER = 2;
-    private int userID_;
+    public static final int PLAYERID_FIELD_NUMBER = 2;
+    private int playerID_;
     /**
      * <pre>
      * 用户id
      * </pre>
      *
-     * <code>uint32 userID = 2;</code>
-     * @return The userID.
+     * <code>uint32 playerID = 2;</code>
+     * @return The playerID.
      */
     @java.lang.Override
-    public int getUserID() {
-      return userID_;
+    public int getPlayerID() {
+      return playerID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2329,8 +2329,8 @@ public final class GameMsgProtocol {
       if (roomID_ != 0) {
         output.writeUInt32(1, roomID_);
       }
-      if (userID_ != 0) {
-        output.writeUInt32(2, userID_);
+      if (playerID_ != 0) {
+        output.writeUInt32(2, playerID_);
       }
       unknownFields.writeTo(output);
     }
@@ -2345,9 +2345,9 @@ public final class GameMsgProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, roomID_);
       }
-      if (userID_ != 0) {
+      if (playerID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, userID_);
+          .computeUInt32Size(2, playerID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2359,15 +2359,15 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserEntryCmd)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerEntryCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserEntryCmd other = (GameMsgProtocol.UserEntryCmd) obj;
+      GameMsgProtocol.PlayerEntryCmd other = (GameMsgProtocol.PlayerEntryCmd) obj;
 
       if (getRoomID()
           != other.getRoomID()) return false;
-      if (getUserID()
-          != other.getUserID()) return false;
+      if (getPlayerID()
+          != other.getPlayerID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2381,76 +2381,76 @@ public final class GameMsgProtocol {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
       hash = (53 * hash) + getRoomID();
-      hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserID();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerEntryCmd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryCmd parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryCmd parseFrom(
+    public static GameMsgProtocol.PlayerEntryCmd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2463,7 +2463,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserEntryCmd prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerEntryCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2485,26 +2485,26 @@ public final class GameMsgProtocol {
      * 指令
      * </pre>
      *
-     * Protobuf type {@code UserEntryCmd}
+     * Protobuf type {@code PlayerEntryCmd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserEntryCmd)
-        GameMsgProtocol.UserEntryCmdOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerEntryCmd)
+        GameMsgProtocol.PlayerEntryCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserEntryCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerEntryCmd_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserEntryCmd_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerEntryCmd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserEntryCmd.class, GameMsgProtocol.UserEntryCmd.Builder.class);
+                GameMsgProtocol.PlayerEntryCmd.class, GameMsgProtocol.PlayerEntryCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserEntryCmd.newBuilder()
+      // Construct using GameMsgProtocol.PlayerEntryCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2524,7 +2524,7 @@ public final class GameMsgProtocol {
         super.clear();
         roomID_ = 0;
 
-        userID_ = 0;
+        playerID_ = 0;
 
         return this;
       }
@@ -2532,17 +2532,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserEntryCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerEntryCmd_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserEntryCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserEntryCmd.getDefaultInstance();
+      public GameMsgProtocol.PlayerEntryCmd getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerEntryCmd.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserEntryCmd build() {
-        GameMsgProtocol.UserEntryCmd result = buildPartial();
+      public GameMsgProtocol.PlayerEntryCmd build() {
+        GameMsgProtocol.PlayerEntryCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2550,10 +2550,10 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserEntryCmd buildPartial() {
-        GameMsgProtocol.UserEntryCmd result = new GameMsgProtocol.UserEntryCmd(this);
+      public GameMsgProtocol.PlayerEntryCmd buildPartial() {
+        GameMsgProtocol.PlayerEntryCmd result = new GameMsgProtocol.PlayerEntryCmd(this);
         result.roomID_ = roomID_;
-        result.userID_ = userID_;
+        result.playerID_ = playerID_;
         onBuilt();
         return result;
       }
@@ -2592,21 +2592,21 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserEntryCmd) {
-          return mergeFrom((GameMsgProtocol.UserEntryCmd)other);
+        if (other instanceof GameMsgProtocol.PlayerEntryCmd) {
+          return mergeFrom((GameMsgProtocol.PlayerEntryCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserEntryCmd other) {
-        if (other == GameMsgProtocol.UserEntryCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerEntryCmd other) {
+        if (other == GameMsgProtocol.PlayerEntryCmd.getDefaultInstance()) return this;
         if (other.getRoomID() != 0) {
           setRoomID(other.getRoomID());
         }
-        if (other.getUserID() != 0) {
-          setUserID(other.getUserID());
+        if (other.getPlayerID() != 0) {
+          setPlayerID(other.getPlayerID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2623,11 +2623,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserEntryCmd parsedMessage = null;
+        GameMsgProtocol.PlayerEntryCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserEntryCmd) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerEntryCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2680,31 +2680,31 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int userID_ ;
+      private int playerID_ ;
       /**
        * <pre>
        * 用户id
        * </pre>
        *
-       * <code>uint32 userID = 2;</code>
-       * @return The userID.
+       * <code>uint32 playerID = 2;</code>
+       * @return The playerID.
        */
       @java.lang.Override
-      public int getUserID() {
-        return userID_;
+      public int getPlayerID() {
+        return playerID_;
       }
       /**
        * <pre>
        * 用户id
        * </pre>
        *
-       * <code>uint32 userID = 2;</code>
-       * @param value The userID to set.
+       * <code>uint32 playerID = 2;</code>
+       * @param value The playerID to set.
        * @return This builder for chaining.
        */
-      public Builder setUserID(int value) {
+      public Builder setPlayerID(int value) {
         
-        userID_ = value;
+        playerID_ = value;
         onChanged();
         return this;
       }
@@ -2713,12 +2713,12 @@ public final class GameMsgProtocol {
        * 用户id
        * </pre>
        *
-       * <code>uint32 userID = 2;</code>
+       * <code>uint32 playerID = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearUserID() {
+      public Builder clearPlayerID() {
         
-        userID_ = 0;
+        playerID_ = 0;
         onChanged();
         return this;
       }
@@ -2735,48 +2735,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserEntryCmd)
+      // @@protoc_insertion_point(builder_scope:PlayerEntryCmd)
     }
 
-    // @@protoc_insertion_point(class_scope:UserEntryCmd)
-    private static final GameMsgProtocol.UserEntryCmd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerEntryCmd)
+    private static final GameMsgProtocol.PlayerEntryCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserEntryCmd();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerEntryCmd();
     }
 
-    public static GameMsgProtocol.UserEntryCmd getDefaultInstance() {
+    public static GameMsgProtocol.PlayerEntryCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserEntryCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserEntryCmd>() {
+    private static final com.google.protobuf.Parser<PlayerEntryCmd>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerEntryCmd>() {
       @java.lang.Override
-      public UserEntryCmd parsePartialFrom(
+      public PlayerEntryCmd parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserEntryCmd(input, extensionRegistry);
+        return new PlayerEntryCmd(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserEntryCmd> parser() {
+    public static com.google.protobuf.Parser<PlayerEntryCmd> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserEntryCmd> getParserForType() {
+    public com.google.protobuf.Parser<PlayerEntryCmd> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserEntryCmd getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerEntryCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserEntryResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserEntryResult)
+  public interface PlayerEntryResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerEntryResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2804,25 +2804,25 @@ public final class GameMsgProtocol {
    * 结果
    * </pre>
    *
-   * Protobuf type {@code UserEntryResult}
+   * Protobuf type {@code PlayerEntryResult}
    */
-  public static final class UserEntryResult extends
+  public static final class PlayerEntryResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserEntryResult)
-      UserEntryResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerEntryResult)
+      PlayerEntryResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserEntryResult.newBuilder() to construct.
-    private UserEntryResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerEntryResult.newBuilder() to construct.
+    private PlayerEntryResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserEntryResult() {
+    private PlayerEntryResult() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserEntryResult();
+      return new PlayerEntryResult();
     }
 
     @java.lang.Override
@@ -2830,7 +2830,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserEntryResult(
+    private PlayerEntryResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2879,15 +2879,15 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserEntryResult_descriptor;
+      return GameMsgProtocol.internal_static_PlayerEntryResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserEntryResult_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerEntryResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserEntryResult.class, GameMsgProtocol.UserEntryResult.Builder.class);
+              GameMsgProtocol.PlayerEntryResult.class, GameMsgProtocol.PlayerEntryResult.Builder.class);
     }
 
     public static final int ROOMID_FIELD_NUMBER = 1;
@@ -2967,10 +2967,10 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserEntryResult)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerEntryResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserEntryResult other = (GameMsgProtocol.UserEntryResult) obj;
+      GameMsgProtocol.PlayerEntryResult other = (GameMsgProtocol.PlayerEntryResult) obj;
 
       if (getRoomID()
           != other.getRoomID()) return false;
@@ -2996,69 +2996,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerEntryResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryResult parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserEntryResult parseFrom(
+    public static GameMsgProtocol.PlayerEntryResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3071,7 +3071,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserEntryResult prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerEntryResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3091,26 +3091,26 @@ public final class GameMsgProtocol {
      * 结果
      * </pre>
      *
-     * Protobuf type {@code UserEntryResult}
+     * Protobuf type {@code PlayerEntryResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserEntryResult)
-        GameMsgProtocol.UserEntryResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerEntryResult)
+        GameMsgProtocol.PlayerEntryResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserEntryResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerEntryResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserEntryResult_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerEntryResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserEntryResult.class, GameMsgProtocol.UserEntryResult.Builder.class);
+                GameMsgProtocol.PlayerEntryResult.class, GameMsgProtocol.PlayerEntryResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserEntryResult.newBuilder()
+      // Construct using GameMsgProtocol.PlayerEntryResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3138,17 +3138,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserEntryResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerEntryResult_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserEntryResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserEntryResult.getDefaultInstance();
+      public GameMsgProtocol.PlayerEntryResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerEntryResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserEntryResult build() {
-        GameMsgProtocol.UserEntryResult result = buildPartial();
+      public GameMsgProtocol.PlayerEntryResult build() {
+        GameMsgProtocol.PlayerEntryResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3156,8 +3156,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserEntryResult buildPartial() {
-        GameMsgProtocol.UserEntryResult result = new GameMsgProtocol.UserEntryResult(this);
+      public GameMsgProtocol.PlayerEntryResult buildPartial() {
+        GameMsgProtocol.PlayerEntryResult result = new GameMsgProtocol.PlayerEntryResult(this);
         result.roomID_ = roomID_;
         result.opponentID_ = opponentID_;
         onBuilt();
@@ -3198,16 +3198,16 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserEntryResult) {
-          return mergeFrom((GameMsgProtocol.UserEntryResult)other);
+        if (other instanceof GameMsgProtocol.PlayerEntryResult) {
+          return mergeFrom((GameMsgProtocol.PlayerEntryResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserEntryResult other) {
-        if (other == GameMsgProtocol.UserEntryResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerEntryResult other) {
+        if (other == GameMsgProtocol.PlayerEntryResult.getDefaultInstance()) return this;
         if (other.getRoomID() != 0) {
           setRoomID(other.getRoomID());
         }
@@ -3229,11 +3229,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserEntryResult parsedMessage = null;
+        GameMsgProtocol.PlayerEntryResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserEntryResult) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerEntryResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3341,48 +3341,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserEntryResult)
+      // @@protoc_insertion_point(builder_scope:PlayerEntryResult)
     }
 
-    // @@protoc_insertion_point(class_scope:UserEntryResult)
-    private static final GameMsgProtocol.UserEntryResult DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerEntryResult)
+    private static final GameMsgProtocol.PlayerEntryResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserEntryResult();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerEntryResult();
     }
 
-    public static GameMsgProtocol.UserEntryResult getDefaultInstance() {
+    public static GameMsgProtocol.PlayerEntryResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserEntryResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserEntryResult>() {
+    private static final com.google.protobuf.Parser<PlayerEntryResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerEntryResult>() {
       @java.lang.Override
-      public UserEntryResult parsePartialFrom(
+      public PlayerEntryResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserEntryResult(input, extensionRegistry);
+        return new PlayerEntryResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserEntryResult> parser() {
+    public static com.google.protobuf.Parser<PlayerEntryResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserEntryResult> getParserForType() {
+    public com.google.protobuf.Parser<PlayerEntryResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserEntryResult getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerEntryResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserReadyCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserReadyCmd)
+  public interface PlayerReadyCmdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerReadyCmd)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
@@ -3392,25 +3392,25 @@ public final class GameMsgProtocol {
    * 指令
    * </pre>
    *
-   * Protobuf type {@code UserReadyCmd}
+   * Protobuf type {@code PlayerReadyCmd}
    */
-  public static final class UserReadyCmd extends
+  public static final class PlayerReadyCmd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserReadyCmd)
-      UserReadyCmdOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerReadyCmd)
+      PlayerReadyCmdOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserReadyCmd.newBuilder() to construct.
-    private UserReadyCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerReadyCmd.newBuilder() to construct.
+    private PlayerReadyCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserReadyCmd() {
+    private PlayerReadyCmd() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserReadyCmd();
+      return new PlayerReadyCmd();
     }
 
     @java.lang.Override
@@ -3418,7 +3418,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserReadyCmd(
+    private PlayerReadyCmd(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3457,15 +3457,15 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserReadyCmd_descriptor;
+      return GameMsgProtocol.internal_static_PlayerReadyCmd_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserReadyCmd_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerReadyCmd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserReadyCmd.class, GameMsgProtocol.UserReadyCmd.Builder.class);
+              GameMsgProtocol.PlayerReadyCmd.class, GameMsgProtocol.PlayerReadyCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3501,10 +3501,10 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserReadyCmd)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerReadyCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserReadyCmd other = (GameMsgProtocol.UserReadyCmd) obj;
+      GameMsgProtocol.PlayerReadyCmd other = (GameMsgProtocol.PlayerReadyCmd) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -3522,69 +3522,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyCmd parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerReadyCmd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserReadyCmd parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserReadyCmd parseFrom(
+    public static GameMsgProtocol.PlayerReadyCmd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3597,7 +3597,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserReadyCmd prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerReadyCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3619,26 +3619,26 @@ public final class GameMsgProtocol {
      * 指令
      * </pre>
      *
-     * Protobuf type {@code UserReadyCmd}
+     * Protobuf type {@code PlayerReadyCmd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserReadyCmd)
-        GameMsgProtocol.UserReadyCmdOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerReadyCmd)
+        GameMsgProtocol.PlayerReadyCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserReadyCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerReadyCmd_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserReadyCmd_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerReadyCmd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserReadyCmd.class, GameMsgProtocol.UserReadyCmd.Builder.class);
+                GameMsgProtocol.PlayerReadyCmd.class, GameMsgProtocol.PlayerReadyCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserReadyCmd.newBuilder()
+      // Construct using GameMsgProtocol.PlayerReadyCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3662,17 +3662,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserReadyCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerReadyCmd_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserReadyCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserReadyCmd.getDefaultInstance();
+      public GameMsgProtocol.PlayerReadyCmd getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerReadyCmd.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserReadyCmd build() {
-        GameMsgProtocol.UserReadyCmd result = buildPartial();
+      public GameMsgProtocol.PlayerReadyCmd build() {
+        GameMsgProtocol.PlayerReadyCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3680,8 +3680,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserReadyCmd buildPartial() {
-        GameMsgProtocol.UserReadyCmd result = new GameMsgProtocol.UserReadyCmd(this);
+      public GameMsgProtocol.PlayerReadyCmd buildPartial() {
+        GameMsgProtocol.PlayerReadyCmd result = new GameMsgProtocol.PlayerReadyCmd(this);
         onBuilt();
         return result;
       }
@@ -3720,16 +3720,16 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserReadyCmd) {
-          return mergeFrom((GameMsgProtocol.UserReadyCmd)other);
+        if (other instanceof GameMsgProtocol.PlayerReadyCmd) {
+          return mergeFrom((GameMsgProtocol.PlayerReadyCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserReadyCmd other) {
-        if (other == GameMsgProtocol.UserReadyCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerReadyCmd other) {
+        if (other == GameMsgProtocol.PlayerReadyCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3745,11 +3745,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserReadyCmd parsedMessage = null;
+        GameMsgProtocol.PlayerReadyCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserReadyCmd) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerReadyCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3771,80 +3771,90 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserReadyCmd)
+      // @@protoc_insertion_point(builder_scope:PlayerReadyCmd)
     }
 
-    // @@protoc_insertion_point(class_scope:UserReadyCmd)
-    private static final GameMsgProtocol.UserReadyCmd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerReadyCmd)
+    private static final GameMsgProtocol.PlayerReadyCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserReadyCmd();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerReadyCmd();
     }
 
-    public static GameMsgProtocol.UserReadyCmd getDefaultInstance() {
+    public static GameMsgProtocol.PlayerReadyCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserReadyCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserReadyCmd>() {
+    private static final com.google.protobuf.Parser<PlayerReadyCmd>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerReadyCmd>() {
       @java.lang.Override
-      public UserReadyCmd parsePartialFrom(
+      public PlayerReadyCmd parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserReadyCmd(input, extensionRegistry);
+        return new PlayerReadyCmd(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserReadyCmd> parser() {
+    public static com.google.protobuf.Parser<PlayerReadyCmd> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserReadyCmd> getParserForType() {
+    public com.google.protobuf.Parser<PlayerReadyCmd> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserReadyCmd getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerReadyCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserReadyResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserReadyResult)
+  public interface PlayerReadyResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerReadyResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 userID = 1;</code>
-     * @return The userID.
+     * <code>uint32 playerID = 1;</code>
+     * @return The playerID.
      */
-    int getUserID();
+    int getPlayerID();
+
+    /**
+     * <pre>
+     *告知玩家房间的状态
+     * </pre>
+     *
+     * <code>uint32 roomState = 2;</code>
+     * @return The roomState.
+     */
+    int getRoomState();
   }
   /**
    * <pre>
    * 结果
    * </pre>
    *
-   * Protobuf type {@code UserReadyResult}
+   * Protobuf type {@code PlayerReadyResult}
    */
-  public static final class UserReadyResult extends
+  public static final class PlayerReadyResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserReadyResult)
-      UserReadyResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerReadyResult)
+      PlayerReadyResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserReadyResult.newBuilder() to construct.
-    private UserReadyResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerReadyResult.newBuilder() to construct.
+    private PlayerReadyResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserReadyResult() {
+    private PlayerReadyResult() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserReadyResult();
+      return new PlayerReadyResult();
     }
 
     @java.lang.Override
@@ -3852,7 +3862,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserReadyResult(
+    private PlayerReadyResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3872,7 +3882,12 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              userID_ = input.readUInt32();
+              playerID_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+
+              roomState_ = input.readUInt32();
               break;
             }
             default: {
@@ -3896,26 +3911,41 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserReadyResult_descriptor;
+      return GameMsgProtocol.internal_static_PlayerReadyResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserReadyResult_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerReadyResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserReadyResult.class, GameMsgProtocol.UserReadyResult.Builder.class);
+              GameMsgProtocol.PlayerReadyResult.class, GameMsgProtocol.PlayerReadyResult.Builder.class);
     }
 
-    public static final int USERID_FIELD_NUMBER = 1;
-    private int userID_;
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerID_;
     /**
-     * <code>uint32 userID = 1;</code>
-     * @return The userID.
+     * <code>uint32 playerID = 1;</code>
+     * @return The playerID.
      */
     @java.lang.Override
-    public int getUserID() {
-      return userID_;
+    public int getPlayerID() {
+      return playerID_;
+    }
+
+    public static final int ROOMSTATE_FIELD_NUMBER = 2;
+    private int roomState_;
+    /**
+     * <pre>
+     *告知玩家房间的状态
+     * </pre>
+     *
+     * <code>uint32 roomState = 2;</code>
+     * @return The roomState.
+     */
+    @java.lang.Override
+    public int getRoomState() {
+      return roomState_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3932,8 +3962,11 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (userID_ != 0) {
-        output.writeUInt32(1, userID_);
+      if (playerID_ != 0) {
+        output.writeUInt32(1, playerID_);
+      }
+      if (roomState_ != 0) {
+        output.writeUInt32(2, roomState_);
       }
       unknownFields.writeTo(output);
     }
@@ -3944,9 +3977,13 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (userID_ != 0) {
+      if (playerID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, userID_);
+          .computeUInt32Size(1, playerID_);
+      }
+      if (roomState_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, roomState_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3958,13 +3995,15 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserReadyResult)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerReadyResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserReadyResult other = (GameMsgProtocol.UserReadyResult) obj;
+      GameMsgProtocol.PlayerReadyResult other = (GameMsgProtocol.PlayerReadyResult) obj;
 
-      if (getUserID()
-          != other.getUserID()) return false;
+      if (getPlayerID()
+          != other.getPlayerID()) return false;
+      if (getRoomState()
+          != other.getRoomState()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3976,76 +4015,78 @@ public final class GameMsgProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserID();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerID();
+      hash = (37 * hash) + ROOMSTATE_FIELD_NUMBER;
+      hash = (53 * hash) + getRoomState();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyResult parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerReadyResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserReadyResult parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserReadyResult parseFrom(
+    public static GameMsgProtocol.PlayerReadyResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4058,7 +4099,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserReadyResult prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerReadyResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4078,26 +4119,26 @@ public final class GameMsgProtocol {
      * 结果
      * </pre>
      *
-     * Protobuf type {@code UserReadyResult}
+     * Protobuf type {@code PlayerReadyResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserReadyResult)
-        GameMsgProtocol.UserReadyResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerReadyResult)
+        GameMsgProtocol.PlayerReadyResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserReadyResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerReadyResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserReadyResult_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerReadyResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserReadyResult.class, GameMsgProtocol.UserReadyResult.Builder.class);
+                GameMsgProtocol.PlayerReadyResult.class, GameMsgProtocol.PlayerReadyResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserReadyResult.newBuilder()
+      // Construct using GameMsgProtocol.PlayerReadyResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4115,7 +4156,9 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        userID_ = 0;
+        playerID_ = 0;
+
+        roomState_ = 0;
 
         return this;
       }
@@ -4123,17 +4166,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserReadyResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerReadyResult_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserReadyResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserReadyResult.getDefaultInstance();
+      public GameMsgProtocol.PlayerReadyResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerReadyResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserReadyResult build() {
-        GameMsgProtocol.UserReadyResult result = buildPartial();
+      public GameMsgProtocol.PlayerReadyResult build() {
+        GameMsgProtocol.PlayerReadyResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4141,9 +4184,10 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserReadyResult buildPartial() {
-        GameMsgProtocol.UserReadyResult result = new GameMsgProtocol.UserReadyResult(this);
-        result.userID_ = userID_;
+      public GameMsgProtocol.PlayerReadyResult buildPartial() {
+        GameMsgProtocol.PlayerReadyResult result = new GameMsgProtocol.PlayerReadyResult(this);
+        result.playerID_ = playerID_;
+        result.roomState_ = roomState_;
         onBuilt();
         return result;
       }
@@ -4182,18 +4226,21 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserReadyResult) {
-          return mergeFrom((GameMsgProtocol.UserReadyResult)other);
+        if (other instanceof GameMsgProtocol.PlayerReadyResult) {
+          return mergeFrom((GameMsgProtocol.PlayerReadyResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserReadyResult other) {
-        if (other == GameMsgProtocol.UserReadyResult.getDefaultInstance()) return this;
-        if (other.getUserID() != 0) {
-          setUserID(other.getUserID());
+      public Builder mergeFrom(GameMsgProtocol.PlayerReadyResult other) {
+        if (other == GameMsgProtocol.PlayerReadyResult.getDefaultInstance()) return this;
+        if (other.getPlayerID() != 0) {
+          setPlayerID(other.getPlayerID());
+        }
+        if (other.getRoomState() != 0) {
+          setRoomState(other.getRoomState());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4210,11 +4257,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserReadyResult parsedMessage = null;
+        GameMsgProtocol.PlayerReadyResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserReadyResult) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerReadyResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4224,33 +4271,76 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int userID_ ;
+      private int playerID_ ;
       /**
-       * <code>uint32 userID = 1;</code>
-       * @return The userID.
+       * <code>uint32 playerID = 1;</code>
+       * @return The playerID.
        */
       @java.lang.Override
-      public int getUserID() {
-        return userID_;
+      public int getPlayerID() {
+        return playerID_;
       }
       /**
-       * <code>uint32 userID = 1;</code>
-       * @param value The userID to set.
+       * <code>uint32 playerID = 1;</code>
+       * @param value The playerID to set.
        * @return This builder for chaining.
        */
-      public Builder setUserID(int value) {
+      public Builder setPlayerID(int value) {
         
-        userID_ = value;
+        playerID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 userID = 1;</code>
+       * <code>uint32 playerID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearUserID() {
+      public Builder clearPlayerID() {
         
-        userID_ = 0;
+        playerID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int roomState_ ;
+      /**
+       * <pre>
+       *告知玩家房间的状态
+       * </pre>
+       *
+       * <code>uint32 roomState = 2;</code>
+       * @return The roomState.
+       */
+      @java.lang.Override
+      public int getRoomState() {
+        return roomState_;
+      }
+      /**
+       * <pre>
+       *告知玩家房间的状态
+       * </pre>
+       *
+       * <code>uint32 roomState = 2;</code>
+       * @param value The roomState to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRoomState(int value) {
+        
+        roomState_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *告知玩家房间的状态
+       * </pre>
+       *
+       * <code>uint32 roomState = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRoomState() {
+        
+        roomState_ = 0;
         onChanged();
         return this;
       }
@@ -4267,48 +4357,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserReadyResult)
+      // @@protoc_insertion_point(builder_scope:PlayerReadyResult)
     }
 
-    // @@protoc_insertion_point(class_scope:UserReadyResult)
-    private static final GameMsgProtocol.UserReadyResult DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerReadyResult)
+    private static final GameMsgProtocol.PlayerReadyResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserReadyResult();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerReadyResult();
     }
 
-    public static GameMsgProtocol.UserReadyResult getDefaultInstance() {
+    public static GameMsgProtocol.PlayerReadyResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserReadyResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserReadyResult>() {
+    private static final com.google.protobuf.Parser<PlayerReadyResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerReadyResult>() {
       @java.lang.Override
-      public UserReadyResult parsePartialFrom(
+      public PlayerReadyResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserReadyResult(input, extensionRegistry);
+        return new PlayerReadyResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserReadyResult> parser() {
+    public static com.google.protobuf.Parser<PlayerReadyResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserReadyResult> getParserForType() {
+    public com.google.protobuf.Parser<PlayerReadyResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserReadyResult getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerReadyResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserPutCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserPutCmd)
+  public interface PlayerPutCmdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerPutCmd)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4316,20 +4406,20 @@ public final class GameMsgProtocol {
      * 放置的位置 X
      * </pre>
      *
-     * <code>float PosX = 1;</code>
+     * <code>uint32 PosX = 1;</code>
      * @return The posX.
      */
-    float getPosX();
+    int getPosX();
 
     /**
      * <pre>
      * 放置的位置 Y
      * </pre>
      *
-     * <code>float PosY = 2;</code>
+     * <code>uint32 PosY = 2;</code>
      * @return The posY.
      */
-    float getPosY();
+    int getPosY();
 
     /**
      * <pre>
@@ -4358,18 +4448,18 @@ public final class GameMsgProtocol {
    * 指令
    * </pre>
    *
-   * Protobuf type {@code UserPutCmd}
+   * Protobuf type {@code PlayerPutCmd}
    */
-  public static final class UserPutCmd extends
+  public static final class PlayerPutCmd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserPutCmd)
-      UserPutCmdOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerPutCmd)
+      PlayerPutCmdOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserPutCmd.newBuilder() to construct.
-    private UserPutCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerPutCmd.newBuilder() to construct.
+    private PlayerPutCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserPutCmd() {
+    private PlayerPutCmd() {
       character_ = "";
     }
 
@@ -4377,7 +4467,7 @@ public final class GameMsgProtocol {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserPutCmd();
+      return new PlayerPutCmd();
     }
 
     @java.lang.Override
@@ -4385,7 +4475,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserPutCmd(
+    private PlayerPutCmd(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4403,14 +4493,14 @@ public final class GameMsgProtocol {
             case 0:
               done = true;
               break;
-            case 13: {
+            case 8: {
 
-              posX_ = input.readFloat();
+              posX_ = input.readUInt32();
               break;
             }
-            case 21: {
+            case 16: {
 
-              posY_ = input.readFloat();
+              posY_ = input.readUInt32();
               break;
             }
             case 26: {
@@ -4440,44 +4530,44 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserPutCmd_descriptor;
+      return GameMsgProtocol.internal_static_PlayerPutCmd_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserPutCmd_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerPutCmd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserPutCmd.class, GameMsgProtocol.UserPutCmd.Builder.class);
+              GameMsgProtocol.PlayerPutCmd.class, GameMsgProtocol.PlayerPutCmd.Builder.class);
     }
 
     public static final int POSX_FIELD_NUMBER = 1;
-    private float posX_;
+    private int posX_;
     /**
      * <pre>
      * 放置的位置 X
      * </pre>
      *
-     * <code>float PosX = 1;</code>
+     * <code>uint32 PosX = 1;</code>
      * @return The posX.
      */
     @java.lang.Override
-    public float getPosX() {
+    public int getPosX() {
       return posX_;
     }
 
     public static final int POSY_FIELD_NUMBER = 2;
-    private float posY_;
+    private int posY_;
     /**
      * <pre>
      * 放置的位置 Y
      * </pre>
      *
-     * <code>float PosY = 2;</code>
+     * <code>uint32 PosY = 2;</code>
      * @return The posY.
      */
     @java.lang.Override
-    public float getPosY() {
+    public int getPosY() {
       return posY_;
     }
 
@@ -4541,11 +4631,11 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (posX_ != 0F) {
-        output.writeFloat(1, posX_);
+      if (posX_ != 0) {
+        output.writeUInt32(1, posX_);
       }
-      if (posY_ != 0F) {
-        output.writeFloat(2, posY_);
+      if (posY_ != 0) {
+        output.writeUInt32(2, posY_);
       }
       if (!getCharacterBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, character_);
@@ -4559,13 +4649,13 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (posX_ != 0F) {
+      if (posX_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(1, posX_);
+          .computeUInt32Size(1, posX_);
       }
-      if (posY_ != 0F) {
+      if (posY_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, posY_);
+          .computeUInt32Size(2, posY_);
       }
       if (!getCharacterBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, character_);
@@ -4580,17 +4670,15 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserPutCmd)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerPutCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserPutCmd other = (GameMsgProtocol.UserPutCmd) obj;
+      GameMsgProtocol.PlayerPutCmd other = (GameMsgProtocol.PlayerPutCmd) obj;
 
-      if (java.lang.Float.floatToIntBits(getPosX())
-          != java.lang.Float.floatToIntBits(
-              other.getPosX())) return false;
-      if (java.lang.Float.floatToIntBits(getPosY())
-          != java.lang.Float.floatToIntBits(
-              other.getPosY())) return false;
+      if (getPosX()
+          != other.getPosX()) return false;
+      if (getPosY()
+          != other.getPosY()) return false;
       if (!getCharacter()
           .equals(other.getCharacter())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -4605,11 +4693,9 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + POSX_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPosX());
+      hash = (53 * hash) + getPosX();
       hash = (37 * hash) + POSY_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getPosY());
+      hash = (53 * hash) + getPosY();
       hash = (37 * hash) + CHARACTER_FIELD_NUMBER;
       hash = (53 * hash) + getCharacter().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -4617,69 +4703,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutCmd parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerPutCmd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserPutCmd parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserPutCmd parseFrom(
+    public static GameMsgProtocol.PlayerPutCmd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4692,7 +4778,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserPutCmd prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerPutCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4714,26 +4800,26 @@ public final class GameMsgProtocol {
      * 指令
      * </pre>
      *
-     * Protobuf type {@code UserPutCmd}
+     * Protobuf type {@code PlayerPutCmd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserPutCmd)
-        GameMsgProtocol.UserPutCmdOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerPutCmd)
+        GameMsgProtocol.PlayerPutCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserPutCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerPutCmd_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserPutCmd_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerPutCmd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserPutCmd.class, GameMsgProtocol.UserPutCmd.Builder.class);
+                GameMsgProtocol.PlayerPutCmd.class, GameMsgProtocol.PlayerPutCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserPutCmd.newBuilder()
+      // Construct using GameMsgProtocol.PlayerPutCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4751,9 +4837,9 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        posX_ = 0F;
+        posX_ = 0;
 
-        posY_ = 0F;
+        posY_ = 0;
 
         character_ = "";
 
@@ -4763,17 +4849,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserPutCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerPutCmd_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserPutCmd.getDefaultInstance();
+      public GameMsgProtocol.PlayerPutCmd getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerPutCmd.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutCmd build() {
-        GameMsgProtocol.UserPutCmd result = buildPartial();
+      public GameMsgProtocol.PlayerPutCmd build() {
+        GameMsgProtocol.PlayerPutCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4781,8 +4867,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutCmd buildPartial() {
-        GameMsgProtocol.UserPutCmd result = new GameMsgProtocol.UserPutCmd(this);
+      public GameMsgProtocol.PlayerPutCmd buildPartial() {
+        GameMsgProtocol.PlayerPutCmd result = new GameMsgProtocol.PlayerPutCmd(this);
         result.posX_ = posX_;
         result.posY_ = posY_;
         result.character_ = character_;
@@ -4824,20 +4910,20 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserPutCmd) {
-          return mergeFrom((GameMsgProtocol.UserPutCmd)other);
+        if (other instanceof GameMsgProtocol.PlayerPutCmd) {
+          return mergeFrom((GameMsgProtocol.PlayerPutCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserPutCmd other) {
-        if (other == GameMsgProtocol.UserPutCmd.getDefaultInstance()) return this;
-        if (other.getPosX() != 0F) {
+      public Builder mergeFrom(GameMsgProtocol.PlayerPutCmd other) {
+        if (other == GameMsgProtocol.PlayerPutCmd.getDefaultInstance()) return this;
+        if (other.getPosX() != 0) {
           setPosX(other.getPosX());
         }
-        if (other.getPosY() != 0F) {
+        if (other.getPosY() != 0) {
           setPosY(other.getPosY());
         }
         if (!other.getCharacter().isEmpty()) {
@@ -4859,11 +4945,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserPutCmd parsedMessage = null;
+        GameMsgProtocol.PlayerPutCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserPutCmd) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerPutCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4873,17 +4959,17 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private float posX_ ;
+      private int posX_ ;
       /**
        * <pre>
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 1;</code>
+       * <code>uint32 PosX = 1;</code>
        * @return The posX.
        */
       @java.lang.Override
-      public float getPosX() {
+      public int getPosX() {
         return posX_;
       }
       /**
@@ -4891,11 +4977,11 @@ public final class GameMsgProtocol {
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 1;</code>
+       * <code>uint32 PosX = 1;</code>
        * @param value The posX to set.
        * @return This builder for chaining.
        */
-      public Builder setPosX(float value) {
+      public Builder setPosX(int value) {
         
         posX_ = value;
         onChanged();
@@ -4906,27 +4992,27 @@ public final class GameMsgProtocol {
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 1;</code>
+       * <code>uint32 PosX = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearPosX() {
         
-        posX_ = 0F;
+        posX_ = 0;
         onChanged();
         return this;
       }
 
-      private float posY_ ;
+      private int posY_ ;
       /**
        * <pre>
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 2;</code>
+       * <code>uint32 PosY = 2;</code>
        * @return The posY.
        */
       @java.lang.Override
-      public float getPosY() {
+      public int getPosY() {
         return posY_;
       }
       /**
@@ -4934,11 +5020,11 @@ public final class GameMsgProtocol {
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 2;</code>
+       * <code>uint32 PosY = 2;</code>
        * @param value The posY to set.
        * @return This builder for chaining.
        */
-      public Builder setPosY(float value) {
+      public Builder setPosY(int value) {
         
         posY_ = value;
         onChanged();
@@ -4949,12 +5035,12 @@ public final class GameMsgProtocol {
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 2;</code>
+       * <code>uint32 PosY = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearPosY() {
         
-        posY_ = 0F;
+        posY_ = 0;
         onChanged();
         return this;
       }
@@ -5067,48 +5153,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserPutCmd)
+      // @@protoc_insertion_point(builder_scope:PlayerPutCmd)
     }
 
-    // @@protoc_insertion_point(class_scope:UserPutCmd)
-    private static final GameMsgProtocol.UserPutCmd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerPutCmd)
+    private static final GameMsgProtocol.PlayerPutCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserPutCmd();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerPutCmd();
     }
 
-    public static GameMsgProtocol.UserPutCmd getDefaultInstance() {
+    public static GameMsgProtocol.PlayerPutCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserPutCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserPutCmd>() {
+    private static final com.google.protobuf.Parser<PlayerPutCmd>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerPutCmd>() {
       @java.lang.Override
-      public UserPutCmd parsePartialFrom(
+      public PlayerPutCmd parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserPutCmd(input, extensionRegistry);
+        return new PlayerPutCmd(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserPutCmd> parser() {
+    public static com.google.protobuf.Parser<PlayerPutCmd> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserPutCmd> getParserForType() {
+    public com.google.protobuf.Parser<PlayerPutCmd> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserPutCmd getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerPutCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserPutResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserPutResult)
+  public interface PlayerPutResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerPutResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5116,24 +5202,24 @@ public final class GameMsgProtocol {
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
-    java.util.List<GameMsgProtocol.UserPutResult.StepInfo> 
+    java.util.List<GameMsgProtocol.PlayerPutResult.StepInfo> 
         getStepInfoList();
     /**
      * <pre>
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
-    GameMsgProtocol.UserPutResult.StepInfo getStepInfo(int index);
+    GameMsgProtocol.PlayerPutResult.StepInfo getStepInfo(int index);
     /**
      * <pre>
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
     int getStepInfoCount();
     /**
@@ -5141,18 +5227,18 @@ public final class GameMsgProtocol {
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
-    java.util.List<? extends GameMsgProtocol.UserPutResult.StepInfoOrBuilder> 
+    java.util.List<? extends GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder> 
         getStepInfoOrBuilderList();
     /**
      * <pre>
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
-    GameMsgProtocol.UserPutResult.StepInfoOrBuilder getStepInfoOrBuilder(
+    GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder getStepInfoOrBuilder(
         int index);
   }
   /**
@@ -5160,18 +5246,18 @@ public final class GameMsgProtocol {
    * 结果
    * </pre>
    *
-   * Protobuf type {@code UserPutResult}
+   * Protobuf type {@code PlayerPutResult}
    */
-  public static final class UserPutResult extends
+  public static final class PlayerPutResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserPutResult)
-      UserPutResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerPutResult)
+      PlayerPutResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserPutResult.newBuilder() to construct.
-    private UserPutResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerPutResult.newBuilder() to construct.
+    private PlayerPutResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserPutResult() {
+    private PlayerPutResult() {
       stepInfo_ = java.util.Collections.emptyList();
     }
 
@@ -5179,7 +5265,7 @@ public final class GameMsgProtocol {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserPutResult();
+      return new PlayerPutResult();
     }
 
     @java.lang.Override
@@ -5187,7 +5273,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserPutResult(
+    private PlayerPutResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -5208,11 +5294,11 @@ public final class GameMsgProtocol {
               break;
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                stepInfo_ = new java.util.ArrayList<GameMsgProtocol.UserPutResult.StepInfo>();
+                stepInfo_ = new java.util.ArrayList<GameMsgProtocol.PlayerPutResult.StepInfo>();
                 mutable_bitField0_ |= 0x00000001;
               }
               stepInfo_.add(
-                  input.readMessage(GameMsgProtocol.UserPutResult.StepInfo.parser(), extensionRegistry));
+                  input.readMessage(GameMsgProtocol.PlayerPutResult.StepInfo.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -5239,37 +5325,47 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserPutResult_descriptor;
+      return GameMsgProtocol.internal_static_PlayerPutResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserPutResult_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerPutResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserPutResult.class, GameMsgProtocol.UserPutResult.Builder.class);
+              GameMsgProtocol.PlayerPutResult.class, GameMsgProtocol.PlayerPutResult.Builder.class);
     }
 
     public interface StepInfoOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:UserPutResult.StepInfo)
+        // @@protoc_insertion_point(interface_extends:PlayerPutResult.StepInfo)
         com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <pre>
+       * 信息编号
+       * </pre>
+       *
+       * <code>uint32 msgID = 1;</code>
+       * @return The msgID.
+       */
+      int getMsgID();
 
       /**
        * <pre>
        * 谁放的
        * </pre>
        *
-       * <code>uint32 userID = 1;</code>
-       * @return The userID.
+       * <code>uint32 playerID = 2;</code>
+       * @return The playerID.
        */
-      int getUserID();
+      int getPlayerID();
 
       /**
        * <pre>
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 2;</code>
+       * <code>float PosX = 3;</code>
        * @return The posX.
        */
       float getPosX();
@@ -5279,7 +5375,7 @@ public final class GameMsgProtocol {
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 3;</code>
+       * <code>float PosY = 4;</code>
        * @return The posY.
        */
       float getPosY();
@@ -5289,7 +5385,7 @@ public final class GameMsgProtocol {
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 4;</code>
+       * <code>string character = 5;</code>
        * @return The character.
        */
       java.lang.String getCharacter();
@@ -5298,7 +5394,7 @@ public final class GameMsgProtocol {
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 4;</code>
+       * <code>string character = 5;</code>
        * @return The bytes for character.
        */
       com.google.protobuf.ByteString
@@ -5309,11 +5405,11 @@ public final class GameMsgProtocol {
      * 用户信息
      * </pre>
      *
-     * Protobuf type {@code UserPutResult.StepInfo}
+     * Protobuf type {@code PlayerPutResult.StepInfo}
      */
     public static final class StepInfo extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:UserPutResult.StepInfo)
+        // @@protoc_insertion_point(message_implements:PlayerPutResult.StepInfo)
         StepInfoOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use StepInfo.newBuilder() to construct.
@@ -5356,20 +5452,25 @@ public final class GameMsgProtocol {
                 break;
               case 8: {
 
-                userID_ = input.readUInt32();
+                msgID_ = input.readUInt32();
                 break;
               }
-              case 21: {
+              case 16: {
 
-                posX_ = input.readFloat();
+                playerID_ = input.readUInt32();
                 break;
               }
               case 29: {
 
+                posX_ = input.readFloat();
+                break;
+              }
+              case 37: {
+
                 posY_ = input.readFloat();
                 break;
               }
-              case 34: {
+              case 42: {
                 java.lang.String s = input.readStringRequireUtf8();
 
                 character_ = s;
@@ -5396,40 +5497,55 @@ public final class GameMsgProtocol {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserPutResult_StepInfo_descriptor;
+        return GameMsgProtocol.internal_static_PlayerPutResult_StepInfo_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserPutResult_StepInfo_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerPutResult_StepInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserPutResult.StepInfo.class, GameMsgProtocol.UserPutResult.StepInfo.Builder.class);
+                GameMsgProtocol.PlayerPutResult.StepInfo.class, GameMsgProtocol.PlayerPutResult.StepInfo.Builder.class);
       }
 
-      public static final int USERID_FIELD_NUMBER = 1;
-      private int userID_;
+      public static final int MSGID_FIELD_NUMBER = 1;
+      private int msgID_;
+      /**
+       * <pre>
+       * 信息编号
+       * </pre>
+       *
+       * <code>uint32 msgID = 1;</code>
+       * @return The msgID.
+       */
+      @java.lang.Override
+      public int getMsgID() {
+        return msgID_;
+      }
+
+      public static final int PLAYERID_FIELD_NUMBER = 2;
+      private int playerID_;
       /**
        * <pre>
        * 谁放的
        * </pre>
        *
-       * <code>uint32 userID = 1;</code>
-       * @return The userID.
+       * <code>uint32 playerID = 2;</code>
+       * @return The playerID.
        */
       @java.lang.Override
-      public int getUserID() {
-        return userID_;
+      public int getPlayerID() {
+        return playerID_;
       }
 
-      public static final int POSX_FIELD_NUMBER = 2;
+      public static final int POSX_FIELD_NUMBER = 3;
       private float posX_;
       /**
        * <pre>
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 2;</code>
+       * <code>float PosX = 3;</code>
        * @return The posX.
        */
       @java.lang.Override
@@ -5437,14 +5553,14 @@ public final class GameMsgProtocol {
         return posX_;
       }
 
-      public static final int POSY_FIELD_NUMBER = 3;
+      public static final int POSY_FIELD_NUMBER = 4;
       private float posY_;
       /**
        * <pre>
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 3;</code>
+       * <code>float PosY = 4;</code>
        * @return The posY.
        */
       @java.lang.Override
@@ -5452,14 +5568,14 @@ public final class GameMsgProtocol {
         return posY_;
       }
 
-      public static final int CHARACTER_FIELD_NUMBER = 4;
+      public static final int CHARACTER_FIELD_NUMBER = 5;
       private volatile java.lang.Object character_;
       /**
        * <pre>
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 4;</code>
+       * <code>string character = 5;</code>
        * @return The character.
        */
       @java.lang.Override
@@ -5480,7 +5596,7 @@ public final class GameMsgProtocol {
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 4;</code>
+       * <code>string character = 5;</code>
        * @return The bytes for character.
        */
       @java.lang.Override
@@ -5512,17 +5628,20 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (userID_ != 0) {
-          output.writeUInt32(1, userID_);
+        if (msgID_ != 0) {
+          output.writeUInt32(1, msgID_);
+        }
+        if (playerID_ != 0) {
+          output.writeUInt32(2, playerID_);
         }
         if (posX_ != 0F) {
-          output.writeFloat(2, posX_);
+          output.writeFloat(3, posX_);
         }
         if (posY_ != 0F) {
-          output.writeFloat(3, posY_);
+          output.writeFloat(4, posY_);
         }
         if (!getCharacterBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, character_);
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 5, character_);
         }
         unknownFields.writeTo(output);
       }
@@ -5533,20 +5652,24 @@ public final class GameMsgProtocol {
         if (size != -1) return size;
 
         size = 0;
-        if (userID_ != 0) {
+        if (msgID_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, userID_);
+            .computeUInt32Size(1, msgID_);
+        }
+        if (playerID_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, playerID_);
         }
         if (posX_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(2, posX_);
+            .computeFloatSize(3, posX_);
         }
         if (posY_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(3, posY_);
+            .computeFloatSize(4, posY_);
         }
         if (!getCharacterBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, character_);
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, character_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -5558,13 +5681,15 @@ public final class GameMsgProtocol {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof GameMsgProtocol.UserPutResult.StepInfo)) {
+        if (!(obj instanceof GameMsgProtocol.PlayerPutResult.StepInfo)) {
           return super.equals(obj);
         }
-        GameMsgProtocol.UserPutResult.StepInfo other = (GameMsgProtocol.UserPutResult.StepInfo) obj;
+        GameMsgProtocol.PlayerPutResult.StepInfo other = (GameMsgProtocol.PlayerPutResult.StepInfo) obj;
 
-        if (getUserID()
-            != other.getUserID()) return false;
+        if (getMsgID()
+            != other.getMsgID()) return false;
+        if (getPlayerID()
+            != other.getPlayerID()) return false;
         if (java.lang.Float.floatToIntBits(getPosX())
             != java.lang.Float.floatToIntBits(
                 other.getPosX())) return false;
@@ -5584,8 +5709,10 @@ public final class GameMsgProtocol {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + USERID_FIELD_NUMBER;
-        hash = (53 * hash) + getUserID();
+        hash = (37 * hash) + MSGID_FIELD_NUMBER;
+        hash = (53 * hash) + getMsgID();
+        hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+        hash = (53 * hash) + getPlayerID();
         hash = (37 * hash) + POSX_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosX());
@@ -5599,69 +5726,69 @@ public final class GameMsgProtocol {
         return hash;
       }
 
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(byte[] data)
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(java.io.InputStream input)
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseDelimitedFrom(java.io.InputStream input)
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseDelimitedFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static GameMsgProtocol.UserPutResult.StepInfo parseFrom(
+      public static GameMsgProtocol.PlayerPutResult.StepInfo parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -5674,7 +5801,7 @@ public final class GameMsgProtocol {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(GameMsgProtocol.UserPutResult.StepInfo prototype) {
+      public static Builder newBuilder(GameMsgProtocol.PlayerPutResult.StepInfo prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -5694,26 +5821,26 @@ public final class GameMsgProtocol {
        * 用户信息
        * </pre>
        *
-       * Protobuf type {@code UserPutResult.StepInfo}
+       * Protobuf type {@code PlayerPutResult.StepInfo}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:UserPutResult.StepInfo)
-          GameMsgProtocol.UserPutResult.StepInfoOrBuilder {
+          // @@protoc_insertion_point(builder_implements:PlayerPutResult.StepInfo)
+          GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return GameMsgProtocol.internal_static_UserPutResult_StepInfo_descriptor;
+          return GameMsgProtocol.internal_static_PlayerPutResult_StepInfo_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return GameMsgProtocol.internal_static_UserPutResult_StepInfo_fieldAccessorTable
+          return GameMsgProtocol.internal_static_PlayerPutResult_StepInfo_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  GameMsgProtocol.UserPutResult.StepInfo.class, GameMsgProtocol.UserPutResult.StepInfo.Builder.class);
+                  GameMsgProtocol.PlayerPutResult.StepInfo.class, GameMsgProtocol.PlayerPutResult.StepInfo.Builder.class);
         }
 
-        // Construct using GameMsgProtocol.UserPutResult.StepInfo.newBuilder()
+        // Construct using GameMsgProtocol.PlayerPutResult.StepInfo.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -5731,7 +5858,9 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          userID_ = 0;
+          msgID_ = 0;
+
+          playerID_ = 0;
 
           posX_ = 0F;
 
@@ -5745,17 +5874,17 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return GameMsgProtocol.internal_static_UserPutResult_StepInfo_descriptor;
+          return GameMsgProtocol.internal_static_PlayerPutResult_StepInfo_descriptor;
         }
 
         @java.lang.Override
-        public GameMsgProtocol.UserPutResult.StepInfo getDefaultInstanceForType() {
-          return GameMsgProtocol.UserPutResult.StepInfo.getDefaultInstance();
+        public GameMsgProtocol.PlayerPutResult.StepInfo getDefaultInstanceForType() {
+          return GameMsgProtocol.PlayerPutResult.StepInfo.getDefaultInstance();
         }
 
         @java.lang.Override
-        public GameMsgProtocol.UserPutResult.StepInfo build() {
-          GameMsgProtocol.UserPutResult.StepInfo result = buildPartial();
+        public GameMsgProtocol.PlayerPutResult.StepInfo build() {
+          GameMsgProtocol.PlayerPutResult.StepInfo result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -5763,9 +5892,10 @@ public final class GameMsgProtocol {
         }
 
         @java.lang.Override
-        public GameMsgProtocol.UserPutResult.StepInfo buildPartial() {
-          GameMsgProtocol.UserPutResult.StepInfo result = new GameMsgProtocol.UserPutResult.StepInfo(this);
-          result.userID_ = userID_;
+        public GameMsgProtocol.PlayerPutResult.StepInfo buildPartial() {
+          GameMsgProtocol.PlayerPutResult.StepInfo result = new GameMsgProtocol.PlayerPutResult.StepInfo(this);
+          result.msgID_ = msgID_;
+          result.playerID_ = playerID_;
           result.posX_ = posX_;
           result.posY_ = posY_;
           result.character_ = character_;
@@ -5807,18 +5937,21 @@ public final class GameMsgProtocol {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof GameMsgProtocol.UserPutResult.StepInfo) {
-            return mergeFrom((GameMsgProtocol.UserPutResult.StepInfo)other);
+          if (other instanceof GameMsgProtocol.PlayerPutResult.StepInfo) {
+            return mergeFrom((GameMsgProtocol.PlayerPutResult.StepInfo)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(GameMsgProtocol.UserPutResult.StepInfo other) {
-          if (other == GameMsgProtocol.UserPutResult.StepInfo.getDefaultInstance()) return this;
-          if (other.getUserID() != 0) {
-            setUserID(other.getUserID());
+        public Builder mergeFrom(GameMsgProtocol.PlayerPutResult.StepInfo other) {
+          if (other == GameMsgProtocol.PlayerPutResult.StepInfo.getDefaultInstance()) return this;
+          if (other.getMsgID() != 0) {
+            setMsgID(other.getMsgID());
+          }
+          if (other.getPlayerID() != 0) {
+            setPlayerID(other.getPlayerID());
           }
           if (other.getPosX() != 0F) {
             setPosX(other.getPosX());
@@ -5845,11 +5978,11 @@ public final class GameMsgProtocol {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          GameMsgProtocol.UserPutResult.StepInfo parsedMessage = null;
+          GameMsgProtocol.PlayerPutResult.StepInfo parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (GameMsgProtocol.UserPutResult.StepInfo) e.getUnfinishedMessage();
+            parsedMessage = (GameMsgProtocol.PlayerPutResult.StepInfo) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -5859,31 +5992,74 @@ public final class GameMsgProtocol {
           return this;
         }
 
-        private int userID_ ;
+        private int msgID_ ;
+        /**
+         * <pre>
+         * 信息编号
+         * </pre>
+         *
+         * <code>uint32 msgID = 1;</code>
+         * @return The msgID.
+         */
+        @java.lang.Override
+        public int getMsgID() {
+          return msgID_;
+        }
+        /**
+         * <pre>
+         * 信息编号
+         * </pre>
+         *
+         * <code>uint32 msgID = 1;</code>
+         * @param value The msgID to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMsgID(int value) {
+          
+          msgID_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         * 信息编号
+         * </pre>
+         *
+         * <code>uint32 msgID = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMsgID() {
+          
+          msgID_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int playerID_ ;
         /**
          * <pre>
          * 谁放的
          * </pre>
          *
-         * <code>uint32 userID = 1;</code>
-         * @return The userID.
+         * <code>uint32 playerID = 2;</code>
+         * @return The playerID.
          */
         @java.lang.Override
-        public int getUserID() {
-          return userID_;
+        public int getPlayerID() {
+          return playerID_;
         }
         /**
          * <pre>
          * 谁放的
          * </pre>
          *
-         * <code>uint32 userID = 1;</code>
-         * @param value The userID to set.
+         * <code>uint32 playerID = 2;</code>
+         * @param value The playerID to set.
          * @return This builder for chaining.
          */
-        public Builder setUserID(int value) {
+        public Builder setPlayerID(int value) {
           
-          userID_ = value;
+          playerID_ = value;
           onChanged();
           return this;
         }
@@ -5892,12 +6068,12 @@ public final class GameMsgProtocol {
          * 谁放的
          * </pre>
          *
-         * <code>uint32 userID = 1;</code>
+         * <code>uint32 playerID = 2;</code>
          * @return This builder for chaining.
          */
-        public Builder clearUserID() {
+        public Builder clearPlayerID() {
           
-          userID_ = 0;
+          playerID_ = 0;
           onChanged();
           return this;
         }
@@ -5908,7 +6084,7 @@ public final class GameMsgProtocol {
          * 放置的位置 X
          * </pre>
          *
-         * <code>float PosX = 2;</code>
+         * <code>float PosX = 3;</code>
          * @return The posX.
          */
         @java.lang.Override
@@ -5920,7 +6096,7 @@ public final class GameMsgProtocol {
          * 放置的位置 X
          * </pre>
          *
-         * <code>float PosX = 2;</code>
+         * <code>float PosX = 3;</code>
          * @param value The posX to set.
          * @return This builder for chaining.
          */
@@ -5935,7 +6111,7 @@ public final class GameMsgProtocol {
          * 放置的位置 X
          * </pre>
          *
-         * <code>float PosX = 2;</code>
+         * <code>float PosX = 3;</code>
          * @return This builder for chaining.
          */
         public Builder clearPosX() {
@@ -5951,7 +6127,7 @@ public final class GameMsgProtocol {
          * 放置的位置 Y
          * </pre>
          *
-         * <code>float PosY = 3;</code>
+         * <code>float PosY = 4;</code>
          * @return The posY.
          */
         @java.lang.Override
@@ -5963,7 +6139,7 @@ public final class GameMsgProtocol {
          * 放置的位置 Y
          * </pre>
          *
-         * <code>float PosY = 3;</code>
+         * <code>float PosY = 4;</code>
          * @param value The posY to set.
          * @return This builder for chaining.
          */
@@ -5978,7 +6154,7 @@ public final class GameMsgProtocol {
          * 放置的位置 Y
          * </pre>
          *
-         * <code>float PosY = 3;</code>
+         * <code>float PosY = 4;</code>
          * @return This builder for chaining.
          */
         public Builder clearPosY() {
@@ -5994,7 +6170,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 4;</code>
+         * <code>string character = 5;</code>
          * @return The character.
          */
         public java.lang.String getCharacter() {
@@ -6014,7 +6190,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 4;</code>
+         * <code>string character = 5;</code>
          * @return The bytes for character.
          */
         public com.google.protobuf.ByteString
@@ -6035,7 +6211,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 4;</code>
+         * <code>string character = 5;</code>
          * @param value The character to set.
          * @return This builder for chaining.
          */
@@ -6054,7 +6230,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 4;</code>
+         * <code>string character = 5;</code>
          * @return This builder for chaining.
          */
         public Builder clearCharacter() {
@@ -6068,7 +6244,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 4;</code>
+         * <code>string character = 5;</code>
          * @param value The bytes for character to set.
          * @return This builder for chaining.
          */
@@ -6096,16 +6272,16 @@ public final class GameMsgProtocol {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:UserPutResult.StepInfo)
+        // @@protoc_insertion_point(builder_scope:PlayerPutResult.StepInfo)
       }
 
-      // @@protoc_insertion_point(class_scope:UserPutResult.StepInfo)
-      private static final GameMsgProtocol.UserPutResult.StepInfo DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:PlayerPutResult.StepInfo)
+      private static final GameMsgProtocol.PlayerPutResult.StepInfo DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new GameMsgProtocol.UserPutResult.StepInfo();
+        DEFAULT_INSTANCE = new GameMsgProtocol.PlayerPutResult.StepInfo();
       }
 
-      public static GameMsgProtocol.UserPutResult.StepInfo getDefaultInstance() {
+      public static GameMsgProtocol.PlayerPutResult.StepInfo getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -6130,23 +6306,23 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutResult.StepInfo getDefaultInstanceForType() {
+      public GameMsgProtocol.PlayerPutResult.StepInfo getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public static final int STEPINFO_FIELD_NUMBER = 1;
-    private java.util.List<GameMsgProtocol.UserPutResult.StepInfo> stepInfo_;
+    private java.util.List<GameMsgProtocol.PlayerPutResult.StepInfo> stepInfo_;
     /**
      * <pre>
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<GameMsgProtocol.UserPutResult.StepInfo> getStepInfoList() {
+    public java.util.List<GameMsgProtocol.PlayerPutResult.StepInfo> getStepInfoList() {
       return stepInfo_;
     }
     /**
@@ -6154,10 +6330,10 @@ public final class GameMsgProtocol {
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends GameMsgProtocol.UserPutResult.StepInfoOrBuilder> 
+    public java.util.List<? extends GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder> 
         getStepInfoOrBuilderList() {
       return stepInfo_;
     }
@@ -6166,7 +6342,7 @@ public final class GameMsgProtocol {
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
     @java.lang.Override
     public int getStepInfoCount() {
@@ -6177,10 +6353,10 @@ public final class GameMsgProtocol {
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
     @java.lang.Override
-    public GameMsgProtocol.UserPutResult.StepInfo getStepInfo(int index) {
+    public GameMsgProtocol.PlayerPutResult.StepInfo getStepInfo(int index) {
       return stepInfo_.get(index);
     }
     /**
@@ -6188,10 +6364,10 @@ public final class GameMsgProtocol {
      * 用户信息数组
      * </pre>
      *
-     * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+     * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
      */
     @java.lang.Override
-    public GameMsgProtocol.UserPutResult.StepInfoOrBuilder getStepInfoOrBuilder(
+    public GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder getStepInfoOrBuilder(
         int index) {
       return stepInfo_.get(index);
     }
@@ -6236,10 +6412,10 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserPutResult)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerPutResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserPutResult other = (GameMsgProtocol.UserPutResult) obj;
+      GameMsgProtocol.PlayerPutResult other = (GameMsgProtocol.PlayerPutResult) obj;
 
       if (!getStepInfoList()
           .equals(other.getStepInfoList())) return false;
@@ -6263,69 +6439,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerPutResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerPutResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutResult parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerPutResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserPutResult parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerPutResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserPutResult parseFrom(
+    public static GameMsgProtocol.PlayerPutResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -6338,7 +6514,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserPutResult prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerPutResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -6358,26 +6534,26 @@ public final class GameMsgProtocol {
      * 结果
      * </pre>
      *
-     * Protobuf type {@code UserPutResult}
+     * Protobuf type {@code PlayerPutResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserPutResult)
-        GameMsgProtocol.UserPutResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerPutResult)
+        GameMsgProtocol.PlayerPutResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserPutResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerPutResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserPutResult_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerPutResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserPutResult.class, GameMsgProtocol.UserPutResult.Builder.class);
+                GameMsgProtocol.PlayerPutResult.class, GameMsgProtocol.PlayerPutResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserPutResult.newBuilder()
+      // Construct using GameMsgProtocol.PlayerPutResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -6408,17 +6584,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserPutResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerPutResult_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserPutResult.getDefaultInstance();
+      public GameMsgProtocol.PlayerPutResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerPutResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutResult build() {
-        GameMsgProtocol.UserPutResult result = buildPartial();
+      public GameMsgProtocol.PlayerPutResult build() {
+        GameMsgProtocol.PlayerPutResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -6426,8 +6602,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserPutResult buildPartial() {
-        GameMsgProtocol.UserPutResult result = new GameMsgProtocol.UserPutResult(this);
+      public GameMsgProtocol.PlayerPutResult buildPartial() {
+        GameMsgProtocol.PlayerPutResult result = new GameMsgProtocol.PlayerPutResult(this);
         int from_bitField0_ = bitField0_;
         if (stepInfoBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
@@ -6476,16 +6652,16 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserPutResult) {
-          return mergeFrom((GameMsgProtocol.UserPutResult)other);
+        if (other instanceof GameMsgProtocol.PlayerPutResult) {
+          return mergeFrom((GameMsgProtocol.PlayerPutResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserPutResult other) {
-        if (other == GameMsgProtocol.UserPutResult.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerPutResult other) {
+        if (other == GameMsgProtocol.PlayerPutResult.getDefaultInstance()) return this;
         if (stepInfoBuilder_ == null) {
           if (!other.stepInfo_.isEmpty()) {
             if (stepInfo_.isEmpty()) {
@@ -6527,11 +6703,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserPutResult parsedMessage = null;
+        GameMsgProtocol.PlayerPutResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserPutResult) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerPutResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -6542,26 +6718,26 @@ public final class GameMsgProtocol {
       }
       private int bitField0_;
 
-      private java.util.List<GameMsgProtocol.UserPutResult.StepInfo> stepInfo_ =
+      private java.util.List<GameMsgProtocol.PlayerPutResult.StepInfo> stepInfo_ =
         java.util.Collections.emptyList();
       private void ensureStepInfoIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          stepInfo_ = new java.util.ArrayList<GameMsgProtocol.UserPutResult.StepInfo>(stepInfo_);
+          stepInfo_ = new java.util.ArrayList<GameMsgProtocol.PlayerPutResult.StepInfo>(stepInfo_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          GameMsgProtocol.UserPutResult.StepInfo, GameMsgProtocol.UserPutResult.StepInfo.Builder, GameMsgProtocol.UserPutResult.StepInfoOrBuilder> stepInfoBuilder_;
+          GameMsgProtocol.PlayerPutResult.StepInfo, GameMsgProtocol.PlayerPutResult.StepInfo.Builder, GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder> stepInfoBuilder_;
 
       /**
        * <pre>
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public java.util.List<GameMsgProtocol.UserPutResult.StepInfo> getStepInfoList() {
+      public java.util.List<GameMsgProtocol.PlayerPutResult.StepInfo> getStepInfoList() {
         if (stepInfoBuilder_ == null) {
           return java.util.Collections.unmodifiableList(stepInfo_);
         } else {
@@ -6573,7 +6749,7 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public int getStepInfoCount() {
         if (stepInfoBuilder_ == null) {
@@ -6587,9 +6763,9 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public GameMsgProtocol.UserPutResult.StepInfo getStepInfo(int index) {
+      public GameMsgProtocol.PlayerPutResult.StepInfo getStepInfo(int index) {
         if (stepInfoBuilder_ == null) {
           return stepInfo_.get(index);
         } else {
@@ -6601,10 +6777,10 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder setStepInfo(
-          int index, GameMsgProtocol.UserPutResult.StepInfo value) {
+          int index, GameMsgProtocol.PlayerPutResult.StepInfo value) {
         if (stepInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6622,10 +6798,10 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder setStepInfo(
-          int index, GameMsgProtocol.UserPutResult.StepInfo.Builder builderForValue) {
+          int index, GameMsgProtocol.PlayerPutResult.StepInfo.Builder builderForValue) {
         if (stepInfoBuilder_ == null) {
           ensureStepInfoIsMutable();
           stepInfo_.set(index, builderForValue.build());
@@ -6640,9 +6816,9 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public Builder addStepInfo(GameMsgProtocol.UserPutResult.StepInfo value) {
+      public Builder addStepInfo(GameMsgProtocol.PlayerPutResult.StepInfo value) {
         if (stepInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6660,10 +6836,10 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder addStepInfo(
-          int index, GameMsgProtocol.UserPutResult.StepInfo value) {
+          int index, GameMsgProtocol.PlayerPutResult.StepInfo value) {
         if (stepInfoBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -6681,10 +6857,10 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder addStepInfo(
-          GameMsgProtocol.UserPutResult.StepInfo.Builder builderForValue) {
+          GameMsgProtocol.PlayerPutResult.StepInfo.Builder builderForValue) {
         if (stepInfoBuilder_ == null) {
           ensureStepInfoIsMutable();
           stepInfo_.add(builderForValue.build());
@@ -6699,10 +6875,10 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder addStepInfo(
-          int index, GameMsgProtocol.UserPutResult.StepInfo.Builder builderForValue) {
+          int index, GameMsgProtocol.PlayerPutResult.StepInfo.Builder builderForValue) {
         if (stepInfoBuilder_ == null) {
           ensureStepInfoIsMutable();
           stepInfo_.add(index, builderForValue.build());
@@ -6717,10 +6893,10 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder addAllStepInfo(
-          java.lang.Iterable<? extends GameMsgProtocol.UserPutResult.StepInfo> values) {
+          java.lang.Iterable<? extends GameMsgProtocol.PlayerPutResult.StepInfo> values) {
         if (stepInfoBuilder_ == null) {
           ensureStepInfoIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -6736,7 +6912,7 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder clearStepInfo() {
         if (stepInfoBuilder_ == null) {
@@ -6753,7 +6929,7 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
       public Builder removeStepInfo(int index) {
         if (stepInfoBuilder_ == null) {
@@ -6770,9 +6946,9 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public GameMsgProtocol.UserPutResult.StepInfo.Builder getStepInfoBuilder(
+      public GameMsgProtocol.PlayerPutResult.StepInfo.Builder getStepInfoBuilder(
           int index) {
         return getStepInfoFieldBuilder().getBuilder(index);
       }
@@ -6781,9 +6957,9 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public GameMsgProtocol.UserPutResult.StepInfoOrBuilder getStepInfoOrBuilder(
+      public GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder getStepInfoOrBuilder(
           int index) {
         if (stepInfoBuilder_ == null) {
           return stepInfo_.get(index);  } else {
@@ -6795,9 +6971,9 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public java.util.List<? extends GameMsgProtocol.UserPutResult.StepInfoOrBuilder> 
+      public java.util.List<? extends GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder> 
            getStepInfoOrBuilderList() {
         if (stepInfoBuilder_ != null) {
           return stepInfoBuilder_.getMessageOrBuilderList();
@@ -6810,41 +6986,41 @@ public final class GameMsgProtocol {
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public GameMsgProtocol.UserPutResult.StepInfo.Builder addStepInfoBuilder() {
+      public GameMsgProtocol.PlayerPutResult.StepInfo.Builder addStepInfoBuilder() {
         return getStepInfoFieldBuilder().addBuilder(
-            GameMsgProtocol.UserPutResult.StepInfo.getDefaultInstance());
+            GameMsgProtocol.PlayerPutResult.StepInfo.getDefaultInstance());
       }
       /**
        * <pre>
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public GameMsgProtocol.UserPutResult.StepInfo.Builder addStepInfoBuilder(
+      public GameMsgProtocol.PlayerPutResult.StepInfo.Builder addStepInfoBuilder(
           int index) {
         return getStepInfoFieldBuilder().addBuilder(
-            index, GameMsgProtocol.UserPutResult.StepInfo.getDefaultInstance());
+            index, GameMsgProtocol.PlayerPutResult.StepInfo.getDefaultInstance());
       }
       /**
        * <pre>
        * 用户信息数组
        * </pre>
        *
-       * <code>repeated .UserPutResult.StepInfo stepInfo = 1;</code>
+       * <code>repeated .PlayerPutResult.StepInfo stepInfo = 1;</code>
        */
-      public java.util.List<GameMsgProtocol.UserPutResult.StepInfo.Builder> 
+      public java.util.List<GameMsgProtocol.PlayerPutResult.StepInfo.Builder> 
            getStepInfoBuilderList() {
         return getStepInfoFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          GameMsgProtocol.UserPutResult.StepInfo, GameMsgProtocol.UserPutResult.StepInfo.Builder, GameMsgProtocol.UserPutResult.StepInfoOrBuilder> 
+          GameMsgProtocol.PlayerPutResult.StepInfo, GameMsgProtocol.PlayerPutResult.StepInfo.Builder, GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder> 
           getStepInfoFieldBuilder() {
         if (stepInfoBuilder_ == null) {
           stepInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              GameMsgProtocol.UserPutResult.StepInfo, GameMsgProtocol.UserPutResult.StepInfo.Builder, GameMsgProtocol.UserPutResult.StepInfoOrBuilder>(
+              GameMsgProtocol.PlayerPutResult.StepInfo, GameMsgProtocol.PlayerPutResult.StepInfo.Builder, GameMsgProtocol.PlayerPutResult.StepInfoOrBuilder>(
                   stepInfo_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
@@ -6866,48 +7042,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserPutResult)
+      // @@protoc_insertion_point(builder_scope:PlayerPutResult)
     }
 
-    // @@protoc_insertion_point(class_scope:UserPutResult)
-    private static final GameMsgProtocol.UserPutResult DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerPutResult)
+    private static final GameMsgProtocol.PlayerPutResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserPutResult();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerPutResult();
     }
 
-    public static GameMsgProtocol.UserPutResult getDefaultInstance() {
+    public static GameMsgProtocol.PlayerPutResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserPutResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserPutResult>() {
+    private static final com.google.protobuf.Parser<PlayerPutResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerPutResult>() {
       @java.lang.Override
-      public UserPutResult parsePartialFrom(
+      public PlayerPutResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserPutResult(input, extensionRegistry);
+        return new PlayerPutResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserPutResult> parser() {
+    public static com.google.protobuf.Parser<PlayerPutResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserPutResult> getParserForType() {
+    public com.google.protobuf.Parser<PlayerPutResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserPutResult getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerPutResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserDieCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserDieCmd)
+  public interface PlayerDieCmdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerDieCmd)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
@@ -6917,25 +7093,25 @@ public final class GameMsgProtocol {
    * 指令
    * </pre>
    *
-   * Protobuf type {@code UserDieCmd}
+   * Protobuf type {@code PlayerDieCmd}
    */
-  public static final class UserDieCmd extends
+  public static final class PlayerDieCmd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserDieCmd)
-      UserDieCmdOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerDieCmd)
+      PlayerDieCmdOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserDieCmd.newBuilder() to construct.
-    private UserDieCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerDieCmd.newBuilder() to construct.
+    private PlayerDieCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserDieCmd() {
+    private PlayerDieCmd() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserDieCmd();
+      return new PlayerDieCmd();
     }
 
     @java.lang.Override
@@ -6943,7 +7119,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserDieCmd(
+    private PlayerDieCmd(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6982,15 +7158,15 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserDieCmd_descriptor;
+      return GameMsgProtocol.internal_static_PlayerDieCmd_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserDieCmd_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerDieCmd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserDieCmd.class, GameMsgProtocol.UserDieCmd.Builder.class);
+              GameMsgProtocol.PlayerDieCmd.class, GameMsgProtocol.PlayerDieCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7026,10 +7202,10 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserDieCmd)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerDieCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserDieCmd other = (GameMsgProtocol.UserDieCmd) obj;
+      GameMsgProtocol.PlayerDieCmd other = (GameMsgProtocol.PlayerDieCmd) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7047,69 +7223,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieCmd parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerDieCmd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieCmd parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieCmd parseFrom(
+    public static GameMsgProtocol.PlayerDieCmd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7122,7 +7298,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserDieCmd prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerDieCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7144,26 +7320,26 @@ public final class GameMsgProtocol {
      * 指令
      * </pre>
      *
-     * Protobuf type {@code UserDieCmd}
+     * Protobuf type {@code PlayerDieCmd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserDieCmd)
-        GameMsgProtocol.UserDieCmdOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerDieCmd)
+        GameMsgProtocol.PlayerDieCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserDieCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerDieCmd_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserDieCmd_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerDieCmd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserDieCmd.class, GameMsgProtocol.UserDieCmd.Builder.class);
+                GameMsgProtocol.PlayerDieCmd.class, GameMsgProtocol.PlayerDieCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserDieCmd.newBuilder()
+      // Construct using GameMsgProtocol.PlayerDieCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7187,17 +7363,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserDieCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerDieCmd_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserDieCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserDieCmd.getDefaultInstance();
+      public GameMsgProtocol.PlayerDieCmd getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerDieCmd.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserDieCmd build() {
-        GameMsgProtocol.UserDieCmd result = buildPartial();
+      public GameMsgProtocol.PlayerDieCmd build() {
+        GameMsgProtocol.PlayerDieCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7205,8 +7381,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserDieCmd buildPartial() {
-        GameMsgProtocol.UserDieCmd result = new GameMsgProtocol.UserDieCmd(this);
+      public GameMsgProtocol.PlayerDieCmd buildPartial() {
+        GameMsgProtocol.PlayerDieCmd result = new GameMsgProtocol.PlayerDieCmd(this);
         onBuilt();
         return result;
       }
@@ -7245,16 +7421,16 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserDieCmd) {
-          return mergeFrom((GameMsgProtocol.UserDieCmd)other);
+        if (other instanceof GameMsgProtocol.PlayerDieCmd) {
+          return mergeFrom((GameMsgProtocol.PlayerDieCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserDieCmd other) {
-        if (other == GameMsgProtocol.UserDieCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerDieCmd other) {
+        if (other == GameMsgProtocol.PlayerDieCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -7270,11 +7446,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserDieCmd parsedMessage = null;
+        GameMsgProtocol.PlayerDieCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserDieCmd) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerDieCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7296,84 +7472,84 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserDieCmd)
+      // @@protoc_insertion_point(builder_scope:PlayerDieCmd)
     }
 
-    // @@protoc_insertion_point(class_scope:UserDieCmd)
-    private static final GameMsgProtocol.UserDieCmd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerDieCmd)
+    private static final GameMsgProtocol.PlayerDieCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserDieCmd();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerDieCmd();
     }
 
-    public static GameMsgProtocol.UserDieCmd getDefaultInstance() {
+    public static GameMsgProtocol.PlayerDieCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserDieCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserDieCmd>() {
+    private static final com.google.protobuf.Parser<PlayerDieCmd>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerDieCmd>() {
       @java.lang.Override
-      public UserDieCmd parsePartialFrom(
+      public PlayerDieCmd parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserDieCmd(input, extensionRegistry);
+        return new PlayerDieCmd(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserDieCmd> parser() {
+    public static com.google.protobuf.Parser<PlayerDieCmd> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserDieCmd> getParserForType() {
+    public com.google.protobuf.Parser<PlayerDieCmd> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserDieCmd getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerDieCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserDieResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserDieResult)
+  public interface PlayerDieResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerDieResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <pre>
-     * 退出用户 ID
+     * 失败用户 ID
      * </pre>
      *
-     * <code>uint32 dieUserID = 1;</code>
-     * @return The dieUserID.
+     * <code>uint32 diePlayerID = 1;</code>
+     * @return The diePlayerID.
      */
-    int getDieUserID();
+    int getDiePlayerID();
   }
   /**
    * <pre>
    * 结果
    * </pre>
    *
-   * Protobuf type {@code UserDieResult}
+   * Protobuf type {@code PlayerDieResult}
    */
-  public static final class UserDieResult extends
+  public static final class PlayerDieResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserDieResult)
-      UserDieResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerDieResult)
+      PlayerDieResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserDieResult.newBuilder() to construct.
-    private UserDieResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerDieResult.newBuilder() to construct.
+    private PlayerDieResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserDieResult() {
+    private PlayerDieResult() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserDieResult();
+      return new PlayerDieResult();
     }
 
     @java.lang.Override
@@ -7381,7 +7557,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserDieResult(
+    private PlayerDieResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7401,7 +7577,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              dieUserID_ = input.readUInt32();
+              diePlayerID_ = input.readUInt32();
               break;
             }
             default: {
@@ -7425,30 +7601,30 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserDieResult_descriptor;
+      return GameMsgProtocol.internal_static_PlayerDieResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserDieResult_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerDieResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserDieResult.class, GameMsgProtocol.UserDieResult.Builder.class);
+              GameMsgProtocol.PlayerDieResult.class, GameMsgProtocol.PlayerDieResult.Builder.class);
     }
 
-    public static final int DIEUSERID_FIELD_NUMBER = 1;
-    private int dieUserID_;
+    public static final int DIEPLAYERID_FIELD_NUMBER = 1;
+    private int diePlayerID_;
     /**
      * <pre>
-     * 退出用户 ID
+     * 失败用户 ID
      * </pre>
      *
-     * <code>uint32 dieUserID = 1;</code>
-     * @return The dieUserID.
+     * <code>uint32 diePlayerID = 1;</code>
+     * @return The diePlayerID.
      */
     @java.lang.Override
-    public int getDieUserID() {
-      return dieUserID_;
+    public int getDiePlayerID() {
+      return diePlayerID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7465,8 +7641,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (dieUserID_ != 0) {
-        output.writeUInt32(1, dieUserID_);
+      if (diePlayerID_ != 0) {
+        output.writeUInt32(1, diePlayerID_);
       }
       unknownFields.writeTo(output);
     }
@@ -7477,9 +7653,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (dieUserID_ != 0) {
+      if (diePlayerID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, dieUserID_);
+          .computeUInt32Size(1, diePlayerID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7491,13 +7667,13 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserDieResult)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerDieResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserDieResult other = (GameMsgProtocol.UserDieResult) obj;
+      GameMsgProtocol.PlayerDieResult other = (GameMsgProtocol.PlayerDieResult) obj;
 
-      if (getDieUserID()
-          != other.getDieUserID()) return false;
+      if (getDiePlayerID()
+          != other.getDiePlayerID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7509,76 +7685,76 @@ public final class GameMsgProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DIEUSERID_FIELD_NUMBER;
-      hash = (53 * hash) + getDieUserID();
+      hash = (37 * hash) + DIEPLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getDiePlayerID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerDieResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerDieResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerDieResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieResult parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerDieResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserDieResult parseFrom(
+    public static GameMsgProtocol.PlayerDieResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -7591,7 +7767,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserDieResult prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerDieResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -7611,26 +7787,26 @@ public final class GameMsgProtocol {
      * 结果
      * </pre>
      *
-     * Protobuf type {@code UserDieResult}
+     * Protobuf type {@code PlayerDieResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserDieResult)
-        GameMsgProtocol.UserDieResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerDieResult)
+        GameMsgProtocol.PlayerDieResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserDieResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerDieResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserDieResult_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerDieResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserDieResult.class, GameMsgProtocol.UserDieResult.Builder.class);
+                GameMsgProtocol.PlayerDieResult.class, GameMsgProtocol.PlayerDieResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserDieResult.newBuilder()
+      // Construct using GameMsgProtocol.PlayerDieResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -7648,7 +7824,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        dieUserID_ = 0;
+        diePlayerID_ = 0;
 
         return this;
       }
@@ -7656,17 +7832,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserDieResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerDieResult_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserDieResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserDieResult.getDefaultInstance();
+      public GameMsgProtocol.PlayerDieResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerDieResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserDieResult build() {
-        GameMsgProtocol.UserDieResult result = buildPartial();
+      public GameMsgProtocol.PlayerDieResult build() {
+        GameMsgProtocol.PlayerDieResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -7674,9 +7850,9 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserDieResult buildPartial() {
-        GameMsgProtocol.UserDieResult result = new GameMsgProtocol.UserDieResult(this);
-        result.dieUserID_ = dieUserID_;
+      public GameMsgProtocol.PlayerDieResult buildPartial() {
+        GameMsgProtocol.PlayerDieResult result = new GameMsgProtocol.PlayerDieResult(this);
+        result.diePlayerID_ = diePlayerID_;
         onBuilt();
         return result;
       }
@@ -7715,18 +7891,18 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserDieResult) {
-          return mergeFrom((GameMsgProtocol.UserDieResult)other);
+        if (other instanceof GameMsgProtocol.PlayerDieResult) {
+          return mergeFrom((GameMsgProtocol.PlayerDieResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserDieResult other) {
-        if (other == GameMsgProtocol.UserDieResult.getDefaultInstance()) return this;
-        if (other.getDieUserID() != 0) {
-          setDieUserID(other.getDieUserID());
+      public Builder mergeFrom(GameMsgProtocol.PlayerDieResult other) {
+        if (other == GameMsgProtocol.PlayerDieResult.getDefaultInstance()) return this;
+        if (other.getDiePlayerID() != 0) {
+          setDiePlayerID(other.getDiePlayerID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7743,11 +7919,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserDieResult parsedMessage = null;
+        GameMsgProtocol.PlayerDieResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserDieResult) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerDieResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -7757,45 +7933,45 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int dieUserID_ ;
+      private int diePlayerID_ ;
       /**
        * <pre>
-       * 退出用户 ID
+       * 失败用户 ID
        * </pre>
        *
-       * <code>uint32 dieUserID = 1;</code>
-       * @return The dieUserID.
+       * <code>uint32 diePlayerID = 1;</code>
+       * @return The diePlayerID.
        */
       @java.lang.Override
-      public int getDieUserID() {
-        return dieUserID_;
+      public int getDiePlayerID() {
+        return diePlayerID_;
       }
       /**
        * <pre>
-       * 退出用户 ID
+       * 失败用户 ID
        * </pre>
        *
-       * <code>uint32 dieUserID = 1;</code>
-       * @param value The dieUserID to set.
+       * <code>uint32 diePlayerID = 1;</code>
+       * @param value The diePlayerID to set.
        * @return This builder for chaining.
        */
-      public Builder setDieUserID(int value) {
+      public Builder setDiePlayerID(int value) {
         
-        dieUserID_ = value;
+        diePlayerID_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * 退出用户 ID
+       * 失败用户 ID
        * </pre>
        *
-       * <code>uint32 dieUserID = 1;</code>
+       * <code>uint32 diePlayerID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearDieUserID() {
+      public Builder clearDiePlayerID() {
         
-        dieUserID_ = 0;
+        diePlayerID_ = 0;
         onChanged();
         return this;
       }
@@ -7812,48 +7988,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserDieResult)
+      // @@protoc_insertion_point(builder_scope:PlayerDieResult)
     }
 
-    // @@protoc_insertion_point(class_scope:UserDieResult)
-    private static final GameMsgProtocol.UserDieResult DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerDieResult)
+    private static final GameMsgProtocol.PlayerDieResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserDieResult();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerDieResult();
     }
 
-    public static GameMsgProtocol.UserDieResult getDefaultInstance() {
+    public static GameMsgProtocol.PlayerDieResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserDieResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserDieResult>() {
+    private static final com.google.protobuf.Parser<PlayerDieResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerDieResult>() {
       @java.lang.Override
-      public UserDieResult parsePartialFrom(
+      public PlayerDieResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserDieResult(input, extensionRegistry);
+        return new PlayerDieResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserDieResult> parser() {
+    public static com.google.protobuf.Parser<PlayerDieResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserDieResult> getParserForType() {
+    public com.google.protobuf.Parser<PlayerDieResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserDieResult getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerDieResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserStopCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserStopCmd)
+  public interface PlayerStopCmdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerStopCmd)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
@@ -7863,25 +8039,25 @@ public final class GameMsgProtocol {
    * 指令
    * </pre>
    *
-   * Protobuf type {@code UserStopCmd}
+   * Protobuf type {@code PlayerStopCmd}
    */
-  public static final class UserStopCmd extends
+  public static final class PlayerStopCmd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserStopCmd)
-      UserStopCmdOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerStopCmd)
+      PlayerStopCmdOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserStopCmd.newBuilder() to construct.
-    private UserStopCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerStopCmd.newBuilder() to construct.
+    private PlayerStopCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserStopCmd() {
+    private PlayerStopCmd() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserStopCmd();
+      return new PlayerStopCmd();
     }
 
     @java.lang.Override
@@ -7889,7 +8065,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserStopCmd(
+    private PlayerStopCmd(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -7928,15 +8104,15 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserStopCmd_descriptor;
+      return GameMsgProtocol.internal_static_PlayerStopCmd_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserStopCmd_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerStopCmd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserStopCmd.class, GameMsgProtocol.UserStopCmd.Builder.class);
+              GameMsgProtocol.PlayerStopCmd.class, GameMsgProtocol.PlayerStopCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7972,10 +8148,10 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserStopCmd)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerStopCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserStopCmd other = (GameMsgProtocol.UserStopCmd) obj;
+      GameMsgProtocol.PlayerStopCmd other = (GameMsgProtocol.PlayerStopCmd) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -7993,69 +8169,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerStopCmd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopCmd parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopCmd parseFrom(
+    public static GameMsgProtocol.PlayerStopCmd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8068,7 +8244,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserStopCmd prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerStopCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8090,26 +8266,26 @@ public final class GameMsgProtocol {
      * 指令
      * </pre>
      *
-     * Protobuf type {@code UserStopCmd}
+     * Protobuf type {@code PlayerStopCmd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserStopCmd)
-        GameMsgProtocol.UserStopCmdOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerStopCmd)
+        GameMsgProtocol.PlayerStopCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserStopCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerStopCmd_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserStopCmd_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerStopCmd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserStopCmd.class, GameMsgProtocol.UserStopCmd.Builder.class);
+                GameMsgProtocol.PlayerStopCmd.class, GameMsgProtocol.PlayerStopCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserStopCmd.newBuilder()
+      // Construct using GameMsgProtocol.PlayerStopCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8133,17 +8309,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserStopCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerStopCmd_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserStopCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserStopCmd.getDefaultInstance();
+      public GameMsgProtocol.PlayerStopCmd getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerStopCmd.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserStopCmd build() {
-        GameMsgProtocol.UserStopCmd result = buildPartial();
+      public GameMsgProtocol.PlayerStopCmd build() {
+        GameMsgProtocol.PlayerStopCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8151,8 +8327,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserStopCmd buildPartial() {
-        GameMsgProtocol.UserStopCmd result = new GameMsgProtocol.UserStopCmd(this);
+      public GameMsgProtocol.PlayerStopCmd buildPartial() {
+        GameMsgProtocol.PlayerStopCmd result = new GameMsgProtocol.PlayerStopCmd(this);
         onBuilt();
         return result;
       }
@@ -8191,16 +8367,16 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserStopCmd) {
-          return mergeFrom((GameMsgProtocol.UserStopCmd)other);
+        if (other instanceof GameMsgProtocol.PlayerStopCmd) {
+          return mergeFrom((GameMsgProtocol.PlayerStopCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserStopCmd other) {
-        if (other == GameMsgProtocol.UserStopCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerStopCmd other) {
+        if (other == GameMsgProtocol.PlayerStopCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -8216,11 +8392,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserStopCmd parsedMessage = null;
+        GameMsgProtocol.PlayerStopCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserStopCmd) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerStopCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8242,48 +8418,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserStopCmd)
+      // @@protoc_insertion_point(builder_scope:PlayerStopCmd)
     }
 
-    // @@protoc_insertion_point(class_scope:UserStopCmd)
-    private static final GameMsgProtocol.UserStopCmd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerStopCmd)
+    private static final GameMsgProtocol.PlayerStopCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserStopCmd();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerStopCmd();
     }
 
-    public static GameMsgProtocol.UserStopCmd getDefaultInstance() {
+    public static GameMsgProtocol.PlayerStopCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserStopCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserStopCmd>() {
+    private static final com.google.protobuf.Parser<PlayerStopCmd>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerStopCmd>() {
       @java.lang.Override
-      public UserStopCmd parsePartialFrom(
+      public PlayerStopCmd parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserStopCmd(input, extensionRegistry);
+        return new PlayerStopCmd(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserStopCmd> parser() {
+    public static com.google.protobuf.Parser<PlayerStopCmd> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserStopCmd> getParserForType() {
+    public com.google.protobuf.Parser<PlayerStopCmd> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserStopCmd getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerStopCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserStopResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserStopResult)
+  public interface PlayerStopResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerStopResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -8291,10 +8467,10 @@ public final class GameMsgProtocol {
      * 停驻用户 ID
      * </pre>
      *
-     * <code>uint32 stopUserID = 1;</code>
-     * @return The stopUserID.
+     * <code>uint32 stopPlayerID = 1;</code>
+     * @return The stopPlayerID.
      */
-    int getStopUserID();
+    int getStopPlayerID();
 
     /**
      * <pre>
@@ -8321,25 +8497,25 @@ public final class GameMsgProtocol {
    * 结果
    * </pre>
    *
-   * Protobuf type {@code UserStopResult}
+   * Protobuf type {@code PlayerStopResult}
    */
-  public static final class UserStopResult extends
+  public static final class PlayerStopResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserStopResult)
-      UserStopResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerStopResult)
+      PlayerStopResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserStopResult.newBuilder() to construct.
-    private UserStopResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerStopResult.newBuilder() to construct.
+    private PlayerStopResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserStopResult() {
+    private PlayerStopResult() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserStopResult();
+      return new PlayerStopResult();
     }
 
     @java.lang.Override
@@ -8347,7 +8523,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserStopResult(
+    private PlayerStopResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8367,7 +8543,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              stopUserID_ = input.readUInt32();
+              stopPlayerID_ = input.readUInt32();
               break;
             }
             case 21: {
@@ -8401,30 +8577,30 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserStopResult_descriptor;
+      return GameMsgProtocol.internal_static_PlayerStopResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserStopResult_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerStopResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserStopResult.class, GameMsgProtocol.UserStopResult.Builder.class);
+              GameMsgProtocol.PlayerStopResult.class, GameMsgProtocol.PlayerStopResult.Builder.class);
     }
 
-    public static final int STOPUSERID_FIELD_NUMBER = 1;
-    private int stopUserID_;
+    public static final int STOPPLAYERID_FIELD_NUMBER = 1;
+    private int stopPlayerID_;
     /**
      * <pre>
      * 停驻用户 ID
      * </pre>
      *
-     * <code>uint32 stopUserID = 1;</code>
-     * @return The stopUserID.
+     * <code>uint32 stopPlayerID = 1;</code>
+     * @return The stopPlayerID.
      */
     @java.lang.Override
-    public int getStopUserID() {
-      return stopUserID_;
+    public int getStopPlayerID() {
+      return stopPlayerID_;
     }
 
     public static final int STOPATPOSX_FIELD_NUMBER = 2;
@@ -8471,8 +8647,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (stopUserID_ != 0) {
-        output.writeUInt32(1, stopUserID_);
+      if (stopPlayerID_ != 0) {
+        output.writeUInt32(1, stopPlayerID_);
       }
       if (stopAtPosX_ != 0F) {
         output.writeFloat(2, stopAtPosX_);
@@ -8489,9 +8665,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (stopUserID_ != 0) {
+      if (stopPlayerID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, stopUserID_);
+          .computeUInt32Size(1, stopPlayerID_);
       }
       if (stopAtPosX_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
@@ -8511,13 +8687,13 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserStopResult)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerStopResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserStopResult other = (GameMsgProtocol.UserStopResult) obj;
+      GameMsgProtocol.PlayerStopResult other = (GameMsgProtocol.PlayerStopResult) obj;
 
-      if (getStopUserID()
-          != other.getStopUserID()) return false;
+      if (getStopPlayerID()
+          != other.getStopPlayerID()) return false;
       if (java.lang.Float.floatToIntBits(getStopAtPosX())
           != java.lang.Float.floatToIntBits(
               other.getStopAtPosX())) return false;
@@ -8535,8 +8711,8 @@ public final class GameMsgProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STOPUSERID_FIELD_NUMBER;
-      hash = (53 * hash) + getStopUserID();
+      hash = (37 * hash) + STOPPLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getStopPlayerID();
       hash = (37 * hash) + STOPATPOSX_FIELD_NUMBER;
       hash = (53 * hash) + java.lang.Float.floatToIntBits(
           getStopAtPosX());
@@ -8548,69 +8724,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerStopResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerStopResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerStopResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopResult parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerStopResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserStopResult parseFrom(
+    public static GameMsgProtocol.PlayerStopResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8623,7 +8799,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserStopResult prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerStopResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8643,26 +8819,26 @@ public final class GameMsgProtocol {
      * 结果
      * </pre>
      *
-     * Protobuf type {@code UserStopResult}
+     * Protobuf type {@code PlayerStopResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserStopResult)
-        GameMsgProtocol.UserStopResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerStopResult)
+        GameMsgProtocol.PlayerStopResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserStopResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerStopResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserStopResult_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerStopResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserStopResult.class, GameMsgProtocol.UserStopResult.Builder.class);
+                GameMsgProtocol.PlayerStopResult.class, GameMsgProtocol.PlayerStopResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserStopResult.newBuilder()
+      // Construct using GameMsgProtocol.PlayerStopResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8680,7 +8856,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        stopUserID_ = 0;
+        stopPlayerID_ = 0;
 
         stopAtPosX_ = 0F;
 
@@ -8692,17 +8868,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserStopResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerStopResult_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserStopResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserStopResult.getDefaultInstance();
+      public GameMsgProtocol.PlayerStopResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerStopResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserStopResult build() {
-        GameMsgProtocol.UserStopResult result = buildPartial();
+      public GameMsgProtocol.PlayerStopResult build() {
+        GameMsgProtocol.PlayerStopResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8710,9 +8886,9 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserStopResult buildPartial() {
-        GameMsgProtocol.UserStopResult result = new GameMsgProtocol.UserStopResult(this);
-        result.stopUserID_ = stopUserID_;
+      public GameMsgProtocol.PlayerStopResult buildPartial() {
+        GameMsgProtocol.PlayerStopResult result = new GameMsgProtocol.PlayerStopResult(this);
+        result.stopPlayerID_ = stopPlayerID_;
         result.stopAtPosX_ = stopAtPosX_;
         result.stopAtPosY_ = stopAtPosY_;
         onBuilt();
@@ -8753,18 +8929,18 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserStopResult) {
-          return mergeFrom((GameMsgProtocol.UserStopResult)other);
+        if (other instanceof GameMsgProtocol.PlayerStopResult) {
+          return mergeFrom((GameMsgProtocol.PlayerStopResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserStopResult other) {
-        if (other == GameMsgProtocol.UserStopResult.getDefaultInstance()) return this;
-        if (other.getStopUserID() != 0) {
-          setStopUserID(other.getStopUserID());
+      public Builder mergeFrom(GameMsgProtocol.PlayerStopResult other) {
+        if (other == GameMsgProtocol.PlayerStopResult.getDefaultInstance()) return this;
+        if (other.getStopPlayerID() != 0) {
+          setStopPlayerID(other.getStopPlayerID());
         }
         if (other.getStopAtPosX() != 0F) {
           setStopAtPosX(other.getStopAtPosX());
@@ -8787,11 +8963,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserStopResult parsedMessage = null;
+        GameMsgProtocol.PlayerStopResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserStopResult) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerStopResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8801,31 +8977,31 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int stopUserID_ ;
+      private int stopPlayerID_ ;
       /**
        * <pre>
        * 停驻用户 ID
        * </pre>
        *
-       * <code>uint32 stopUserID = 1;</code>
-       * @return The stopUserID.
+       * <code>uint32 stopPlayerID = 1;</code>
+       * @return The stopPlayerID.
        */
       @java.lang.Override
-      public int getStopUserID() {
-        return stopUserID_;
+      public int getStopPlayerID() {
+        return stopPlayerID_;
       }
       /**
        * <pre>
        * 停驻用户 ID
        * </pre>
        *
-       * <code>uint32 stopUserID = 1;</code>
-       * @param value The stopUserID to set.
+       * <code>uint32 stopPlayerID = 1;</code>
+       * @param value The stopPlayerID to set.
        * @return This builder for chaining.
        */
-      public Builder setStopUserID(int value) {
+      public Builder setStopPlayerID(int value) {
         
-        stopUserID_ = value;
+        stopPlayerID_ = value;
         onChanged();
         return this;
       }
@@ -8834,12 +9010,12 @@ public final class GameMsgProtocol {
        * 停驻用户 ID
        * </pre>
        *
-       * <code>uint32 stopUserID = 1;</code>
+       * <code>uint32 stopPlayerID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearStopUserID() {
+      public Builder clearStopPlayerID() {
         
-        stopUserID_ = 0;
+        stopPlayerID_ = 0;
         onChanged();
         return this;
       }
@@ -8942,48 +9118,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserStopResult)
+      // @@protoc_insertion_point(builder_scope:PlayerStopResult)
     }
 
-    // @@protoc_insertion_point(class_scope:UserStopResult)
-    private static final GameMsgProtocol.UserStopResult DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerStopResult)
+    private static final GameMsgProtocol.PlayerStopResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserStopResult();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerStopResult();
     }
 
-    public static GameMsgProtocol.UserStopResult getDefaultInstance() {
+    public static GameMsgProtocol.PlayerStopResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserStopResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserStopResult>() {
+    private static final com.google.protobuf.Parser<PlayerStopResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerStopResult>() {
       @java.lang.Override
-      public UserStopResult parsePartialFrom(
+      public PlayerStopResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserStopResult(input, extensionRegistry);
+        return new PlayerStopResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserStopResult> parser() {
+    public static com.google.protobuf.Parser<PlayerStopResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserStopResult> getParserForType() {
+    public com.google.protobuf.Parser<PlayerStopResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserStopResult getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerStopResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserLeaveCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserLeaveCmd)
+  public interface PlayerLeaveCmdOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerLeaveCmd)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
@@ -8993,25 +9169,25 @@ public final class GameMsgProtocol {
    * 指令
    * </pre>
    *
-   * Protobuf type {@code UserLeaveCmd}
+   * Protobuf type {@code PlayerLeaveCmd}
    */
-  public static final class UserLeaveCmd extends
+  public static final class PlayerLeaveCmd extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserLeaveCmd)
-      UserLeaveCmdOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerLeaveCmd)
+      PlayerLeaveCmdOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserLeaveCmd.newBuilder() to construct.
-    private UserLeaveCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerLeaveCmd.newBuilder() to construct.
+    private PlayerLeaveCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserLeaveCmd() {
+    private PlayerLeaveCmd() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserLeaveCmd();
+      return new PlayerLeaveCmd();
     }
 
     @java.lang.Override
@@ -9019,7 +9195,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserLeaveCmd(
+    private PlayerLeaveCmd(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9058,15 +9234,15 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserLeaveCmd_descriptor;
+      return GameMsgProtocol.internal_static_PlayerLeaveCmd_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserLeaveCmd_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerLeaveCmd_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserLeaveCmd.class, GameMsgProtocol.UserLeaveCmd.Builder.class);
+              GameMsgProtocol.PlayerLeaveCmd.class, GameMsgProtocol.PlayerLeaveCmd.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9102,10 +9278,10 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserLeaveCmd)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerLeaveCmd)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserLeaveCmd other = (GameMsgProtocol.UserLeaveCmd) obj;
+      GameMsgProtocol.PlayerLeaveCmd other = (GameMsgProtocol.PlayerLeaveCmd) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -9123,69 +9299,69 @@ public final class GameMsgProtocol {
       return hash;
     }
 
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerLeaveCmd parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserLeaveCmd parseFrom(
+    public static GameMsgProtocol.PlayerLeaveCmd parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9198,7 +9374,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserLeaveCmd prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerLeaveCmd prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9220,26 +9396,26 @@ public final class GameMsgProtocol {
      * 指令
      * </pre>
      *
-     * Protobuf type {@code UserLeaveCmd}
+     * Protobuf type {@code PlayerLeaveCmd}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserLeaveCmd)
-        GameMsgProtocol.UserLeaveCmdOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerLeaveCmd)
+        GameMsgProtocol.PlayerLeaveCmdOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserLeaveCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerLeaveCmd_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserLeaveCmd_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerLeaveCmd_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserLeaveCmd.class, GameMsgProtocol.UserLeaveCmd.Builder.class);
+                GameMsgProtocol.PlayerLeaveCmd.class, GameMsgProtocol.PlayerLeaveCmd.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserLeaveCmd.newBuilder()
+      // Construct using GameMsgProtocol.PlayerLeaveCmd.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9263,17 +9439,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserLeaveCmd_descriptor;
+        return GameMsgProtocol.internal_static_PlayerLeaveCmd_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserLeaveCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.UserLeaveCmd.getDefaultInstance();
+      public GameMsgProtocol.PlayerLeaveCmd getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerLeaveCmd.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserLeaveCmd build() {
-        GameMsgProtocol.UserLeaveCmd result = buildPartial();
+      public GameMsgProtocol.PlayerLeaveCmd build() {
+        GameMsgProtocol.PlayerLeaveCmd result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9281,8 +9457,8 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserLeaveCmd buildPartial() {
-        GameMsgProtocol.UserLeaveCmd result = new GameMsgProtocol.UserLeaveCmd(this);
+      public GameMsgProtocol.PlayerLeaveCmd buildPartial() {
+        GameMsgProtocol.PlayerLeaveCmd result = new GameMsgProtocol.PlayerLeaveCmd(this);
         onBuilt();
         return result;
       }
@@ -9321,16 +9497,16 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserLeaveCmd) {
-          return mergeFrom((GameMsgProtocol.UserLeaveCmd)other);
+        if (other instanceof GameMsgProtocol.PlayerLeaveCmd) {
+          return mergeFrom((GameMsgProtocol.PlayerLeaveCmd)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserLeaveCmd other) {
-        if (other == GameMsgProtocol.UserLeaveCmd.getDefaultInstance()) return this;
+      public Builder mergeFrom(GameMsgProtocol.PlayerLeaveCmd other) {
+        if (other == GameMsgProtocol.PlayerLeaveCmd.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -9346,11 +9522,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserLeaveCmd parsedMessage = null;
+        GameMsgProtocol.PlayerLeaveCmd parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserLeaveCmd) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerLeaveCmd) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9372,48 +9548,48 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserLeaveCmd)
+      // @@protoc_insertion_point(builder_scope:PlayerLeaveCmd)
     }
 
-    // @@protoc_insertion_point(class_scope:UserLeaveCmd)
-    private static final GameMsgProtocol.UserLeaveCmd DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerLeaveCmd)
+    private static final GameMsgProtocol.PlayerLeaveCmd DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserLeaveCmd();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerLeaveCmd();
     }
 
-    public static GameMsgProtocol.UserLeaveCmd getDefaultInstance() {
+    public static GameMsgProtocol.PlayerLeaveCmd getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserLeaveCmd>
-        PARSER = new com.google.protobuf.AbstractParser<UserLeaveCmd>() {
+    private static final com.google.protobuf.Parser<PlayerLeaveCmd>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerLeaveCmd>() {
       @java.lang.Override
-      public UserLeaveCmd parsePartialFrom(
+      public PlayerLeaveCmd parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserLeaveCmd(input, extensionRegistry);
+        return new PlayerLeaveCmd(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserLeaveCmd> parser() {
+    public static com.google.protobuf.Parser<PlayerLeaveCmd> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserLeaveCmd> getParserForType() {
+    public com.google.protobuf.Parser<PlayerLeaveCmd> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserLeaveCmd getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerLeaveCmd getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface UserLeaveResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:UserLeaveResult)
+  public interface PlayerLeaveResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerLeaveResult)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -9421,35 +9597,35 @@ public final class GameMsgProtocol {
      * 离开用户的 id
      * </pre>
      *
-     * <code>uint32 leaveUserID = 1;</code>
-     * @return The leaveUserID.
+     * <code>uint32 leavePlayerID = 1;</code>
+     * @return The leavePlayerID.
      */
-    int getLeaveUserID();
+    int getLeavePlayerID();
   }
   /**
    * <pre>
    * 结果
    * </pre>
    *
-   * Protobuf type {@code UserLeaveResult}
+   * Protobuf type {@code PlayerLeaveResult}
    */
-  public static final class UserLeaveResult extends
+  public static final class PlayerLeaveResult extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:UserLeaveResult)
-      UserLeaveResultOrBuilder {
+      // @@protoc_insertion_point(message_implements:PlayerLeaveResult)
+      PlayerLeaveResultOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserLeaveResult.newBuilder() to construct.
-    private UserLeaveResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use PlayerLeaveResult.newBuilder() to construct.
+    private PlayerLeaveResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserLeaveResult() {
+    private PlayerLeaveResult() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserLeaveResult();
+      return new PlayerLeaveResult();
     }
 
     @java.lang.Override
@@ -9457,7 +9633,7 @@ public final class GameMsgProtocol {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserLeaveResult(
+    private PlayerLeaveResult(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9477,7 +9653,7 @@ public final class GameMsgProtocol {
               break;
             case 8: {
 
-              leaveUserID_ = input.readUInt32();
+              leavePlayerID_ = input.readUInt32();
               break;
             }
             default: {
@@ -9501,30 +9677,30 @@ public final class GameMsgProtocol {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GameMsgProtocol.internal_static_UserLeaveResult_descriptor;
+      return GameMsgProtocol.internal_static_PlayerLeaveResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_UserLeaveResult_fieldAccessorTable
+      return GameMsgProtocol.internal_static_PlayerLeaveResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.UserLeaveResult.class, GameMsgProtocol.UserLeaveResult.Builder.class);
+              GameMsgProtocol.PlayerLeaveResult.class, GameMsgProtocol.PlayerLeaveResult.Builder.class);
     }
 
-    public static final int LEAVEUSERID_FIELD_NUMBER = 1;
-    private int leaveUserID_;
+    public static final int LEAVEPLAYERID_FIELD_NUMBER = 1;
+    private int leavePlayerID_;
     /**
      * <pre>
      * 离开用户的 id
      * </pre>
      *
-     * <code>uint32 leaveUserID = 1;</code>
-     * @return The leaveUserID.
+     * <code>uint32 leavePlayerID = 1;</code>
+     * @return The leavePlayerID.
      */
     @java.lang.Override
-    public int getLeaveUserID() {
-      return leaveUserID_;
+    public int getLeavePlayerID() {
+      return leavePlayerID_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9541,8 +9717,8 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (leaveUserID_ != 0) {
-        output.writeUInt32(1, leaveUserID_);
+      if (leavePlayerID_ != 0) {
+        output.writeUInt32(1, leavePlayerID_);
       }
       unknownFields.writeTo(output);
     }
@@ -9553,9 +9729,9 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (leaveUserID_ != 0) {
+      if (leavePlayerID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, leaveUserID_);
+          .computeUInt32Size(1, leavePlayerID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9567,13 +9743,13 @@ public final class GameMsgProtocol {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GameMsgProtocol.UserLeaveResult)) {
+      if (!(obj instanceof GameMsgProtocol.PlayerLeaveResult)) {
         return super.equals(obj);
       }
-      GameMsgProtocol.UserLeaveResult other = (GameMsgProtocol.UserLeaveResult) obj;
+      GameMsgProtocol.PlayerLeaveResult other = (GameMsgProtocol.PlayerLeaveResult) obj;
 
-      if (getLeaveUserID()
-          != other.getLeaveUserID()) return false;
+      if (getLeavePlayerID()
+          != other.getLeavePlayerID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -9585,76 +9761,76 @@ public final class GameMsgProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + LEAVEUSERID_FIELD_NUMBER;
-      hash = (53 * hash) + getLeaveUserID();
+      hash = (37 * hash) + LEAVEPLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getLeavePlayerID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(byte[] data)
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveResult parseDelimitedFrom(java.io.InputStream input)
+    public static GameMsgProtocol.PlayerLeaveResult parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserLeaveResult parseDelimitedFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GameMsgProtocol.UserLeaveResult parseFrom(
+    public static GameMsgProtocol.PlayerLeaveResult parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9667,7 +9843,7 @@ public final class GameMsgProtocol {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GameMsgProtocol.UserLeaveResult prototype) {
+    public static Builder newBuilder(GameMsgProtocol.PlayerLeaveResult prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9687,26 +9863,26 @@ public final class GameMsgProtocol {
      * 结果
      * </pre>
      *
-     * Protobuf type {@code UserLeaveResult}
+     * Protobuf type {@code PlayerLeaveResult}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:UserLeaveResult)
-        GameMsgProtocol.UserLeaveResultOrBuilder {
+        // @@protoc_insertion_point(builder_implements:PlayerLeaveResult)
+        GameMsgProtocol.PlayerLeaveResultOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GameMsgProtocol.internal_static_UserLeaveResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerLeaveResult_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_UserLeaveResult_fieldAccessorTable
+        return GameMsgProtocol.internal_static_PlayerLeaveResult_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.UserLeaveResult.class, GameMsgProtocol.UserLeaveResult.Builder.class);
+                GameMsgProtocol.PlayerLeaveResult.class, GameMsgProtocol.PlayerLeaveResult.Builder.class);
       }
 
-      // Construct using GameMsgProtocol.UserLeaveResult.newBuilder()
+      // Construct using GameMsgProtocol.PlayerLeaveResult.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9724,7 +9900,7 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        leaveUserID_ = 0;
+        leavePlayerID_ = 0;
 
         return this;
       }
@@ -9732,17 +9908,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GameMsgProtocol.internal_static_UserLeaveResult_descriptor;
+        return GameMsgProtocol.internal_static_PlayerLeaveResult_descriptor;
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserLeaveResult getDefaultInstanceForType() {
-        return GameMsgProtocol.UserLeaveResult.getDefaultInstance();
+      public GameMsgProtocol.PlayerLeaveResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerLeaveResult.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserLeaveResult build() {
-        GameMsgProtocol.UserLeaveResult result = buildPartial();
+      public GameMsgProtocol.PlayerLeaveResult build() {
+        GameMsgProtocol.PlayerLeaveResult result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9750,9 +9926,9 @@ public final class GameMsgProtocol {
       }
 
       @java.lang.Override
-      public GameMsgProtocol.UserLeaveResult buildPartial() {
-        GameMsgProtocol.UserLeaveResult result = new GameMsgProtocol.UserLeaveResult(this);
-        result.leaveUserID_ = leaveUserID_;
+      public GameMsgProtocol.PlayerLeaveResult buildPartial() {
+        GameMsgProtocol.PlayerLeaveResult result = new GameMsgProtocol.PlayerLeaveResult(this);
+        result.leavePlayerID_ = leavePlayerID_;
         onBuilt();
         return result;
       }
@@ -9791,18 +9967,18 @@ public final class GameMsgProtocol {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.UserLeaveResult) {
-          return mergeFrom((GameMsgProtocol.UserLeaveResult)other);
+        if (other instanceof GameMsgProtocol.PlayerLeaveResult) {
+          return mergeFrom((GameMsgProtocol.PlayerLeaveResult)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GameMsgProtocol.UserLeaveResult other) {
-        if (other == GameMsgProtocol.UserLeaveResult.getDefaultInstance()) return this;
-        if (other.getLeaveUserID() != 0) {
-          setLeaveUserID(other.getLeaveUserID());
+      public Builder mergeFrom(GameMsgProtocol.PlayerLeaveResult other) {
+        if (other == GameMsgProtocol.PlayerLeaveResult.getDefaultInstance()) return this;
+        if (other.getLeavePlayerID() != 0) {
+          setLeavePlayerID(other.getLeavePlayerID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9819,11 +9995,11 @@ public final class GameMsgProtocol {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GameMsgProtocol.UserLeaveResult parsedMessage = null;
+        GameMsgProtocol.PlayerLeaveResult parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.UserLeaveResult) e.getUnfinishedMessage();
+          parsedMessage = (GameMsgProtocol.PlayerLeaveResult) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9833,31 +10009,31 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int leaveUserID_ ;
+      private int leavePlayerID_ ;
       /**
        * <pre>
        * 离开用户的 id
        * </pre>
        *
-       * <code>uint32 leaveUserID = 1;</code>
-       * @return The leaveUserID.
+       * <code>uint32 leavePlayerID = 1;</code>
+       * @return The leavePlayerID.
        */
       @java.lang.Override
-      public int getLeaveUserID() {
-        return leaveUserID_;
+      public int getLeavePlayerID() {
+        return leavePlayerID_;
       }
       /**
        * <pre>
        * 离开用户的 id
        * </pre>
        *
-       * <code>uint32 leaveUserID = 1;</code>
-       * @param value The leaveUserID to set.
+       * <code>uint32 leavePlayerID = 1;</code>
+       * @param value The leavePlayerID to set.
        * @return This builder for chaining.
        */
-      public Builder setLeaveUserID(int value) {
+      public Builder setLeavePlayerID(int value) {
         
-        leaveUserID_ = value;
+        leavePlayerID_ = value;
         onChanged();
         return this;
       }
@@ -9866,12 +10042,12 @@ public final class GameMsgProtocol {
        * 离开用户的 id
        * </pre>
        *
-       * <code>uint32 leaveUserID = 1;</code>
+       * <code>uint32 leavePlayerID = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearLeaveUserID() {
+      public Builder clearLeavePlayerID() {
         
-        leaveUserID_ = 0;
+        leavePlayerID_ = 0;
         onChanged();
         return this;
       }
@@ -9888,41 +10064,41 @@ public final class GameMsgProtocol {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:UserLeaveResult)
+      // @@protoc_insertion_point(builder_scope:PlayerLeaveResult)
     }
 
-    // @@protoc_insertion_point(class_scope:UserLeaveResult)
-    private static final GameMsgProtocol.UserLeaveResult DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:PlayerLeaveResult)
+    private static final GameMsgProtocol.PlayerLeaveResult DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.UserLeaveResult();
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerLeaveResult();
     }
 
-    public static GameMsgProtocol.UserLeaveResult getDefaultInstance() {
+    public static GameMsgProtocol.PlayerLeaveResult getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserLeaveResult>
-        PARSER = new com.google.protobuf.AbstractParser<UserLeaveResult>() {
+    private static final com.google.protobuf.Parser<PlayerLeaveResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerLeaveResult>() {
       @java.lang.Override
-      public UserLeaveResult parsePartialFrom(
+      public PlayerLeaveResult parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserLeaveResult(input, extensionRegistry);
+        return new PlayerLeaveResult(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserLeaveResult> parser() {
+    public static com.google.protobuf.Parser<PlayerLeaveResult> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserLeaveResult> getParserForType() {
+    public com.google.protobuf.Parser<PlayerLeaveResult> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GameMsgProtocol.UserLeaveResult getDefaultInstanceForType() {
+    public GameMsgProtocol.PlayerLeaveResult getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -9944,70 +10120,70 @@ public final class GameMsgProtocol {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_WhatRoomsResult_RoomInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserEntryCmd_descriptor;
+    internal_static_PlayerEntryCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserEntryCmd_fieldAccessorTable;
+      internal_static_PlayerEntryCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserEntryResult_descriptor;
+    internal_static_PlayerEntryResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserEntryResult_fieldAccessorTable;
+      internal_static_PlayerEntryResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserReadyCmd_descriptor;
+    internal_static_PlayerReadyCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserReadyCmd_fieldAccessorTable;
+      internal_static_PlayerReadyCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserReadyResult_descriptor;
+    internal_static_PlayerReadyResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserReadyResult_fieldAccessorTable;
+      internal_static_PlayerReadyResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserPutCmd_descriptor;
+    internal_static_PlayerPutCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserPutCmd_fieldAccessorTable;
+      internal_static_PlayerPutCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserPutResult_descriptor;
+    internal_static_PlayerPutResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserPutResult_fieldAccessorTable;
+      internal_static_PlayerPutResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserPutResult_StepInfo_descriptor;
+    internal_static_PlayerPutResult_StepInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserPutResult_StepInfo_fieldAccessorTable;
+      internal_static_PlayerPutResult_StepInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserDieCmd_descriptor;
+    internal_static_PlayerDieCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserDieCmd_fieldAccessorTable;
+      internal_static_PlayerDieCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserDieResult_descriptor;
+    internal_static_PlayerDieResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserDieResult_fieldAccessorTable;
+      internal_static_PlayerDieResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserStopCmd_descriptor;
+    internal_static_PlayerStopCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserStopCmd_fieldAccessorTable;
+      internal_static_PlayerStopCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserStopResult_descriptor;
+    internal_static_PlayerStopResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserStopResult_fieldAccessorTable;
+      internal_static_PlayerStopResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserLeaveCmd_descriptor;
+    internal_static_PlayerLeaveCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserLeaveCmd_fieldAccessorTable;
+      internal_static_PlayerLeaveCmd_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_UserLeaveResult_descriptor;
+    internal_static_PlayerLeaveResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_UserLeaveResult_fieldAccessorTable;
+      internal_static_PlayerLeaveResult_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -10020,28 +10196,30 @@ public final class GameMsgProtocol {
       "\n\025GameMsgProtocol.proto\"\016\n\014WhatRoomsCmd\"" +
       "m\n\017WhatRoomsResult\022+\n\010roomInfo\030\001 \003(\0132\031.W" +
       "hatRoomsResult.RoomInfo\032-\n\010RoomInfo\022\016\n\006r" +
-      "oomID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\".\n\014UserEn" +
-      "tryCmd\022\016\n\006roomID\030\001 \001(\r\022\016\n\006userID\030\002 \001(\r\"5" +
-      "\n\017UserEntryResult\022\016\n\006roomID\030\001 \001(\r\022\022\n\nopp" +
-      "onentID\030\002 \001(\r\"\016\n\014UserReadyCmd\"!\n\017UserRea" +
-      "dyResult\022\016\n\006userID\030\001 \001(\r\";\n\nUserPutCmd\022\014" +
-      "\n\004PosX\030\001 \001(\002\022\014\n\004PosY\030\002 \001(\002\022\021\n\tcharacter\030" +
-      "\003 \001(\t\"\205\001\n\rUserPutResult\022)\n\010stepInfo\030\001 \003(" +
-      "\0132\027.UserPutResult.StepInfo\032I\n\010StepInfo\022\016" +
-      "\n\006userID\030\001 \001(\r\022\014\n\004PosX\030\002 \001(\002\022\014\n\004PosY\030\003 \001" +
-      "(\002\022\021\n\tcharacter\030\004 \001(\t\"\014\n\nUserDieCmd\"\"\n\rU" +
-      "serDieResult\022\021\n\tdieUserID\030\001 \001(\r\"\r\n\013UserS" +
-      "topCmd\"L\n\016UserStopResult\022\022\n\nstopUserID\030\001" +
-      " \001(\r\022\022\n\nstopAtPosX\030\002 \001(\002\022\022\n\nstopAtPosY\030\003" +
-      " \001(\002\"\016\n\014UserLeaveCmd\"&\n\017UserLeaveResult\022" +
-      "\023\n\013leaveUserID\030\001 \001(\r*\203\002\n\007MsgCode\022\022\n\016WHAT" +
-      "_ROOMS_CMD\020\000\022\025\n\021WHAT_ROOMS_RESULT\020\001\022\022\n\016U" +
-      "SER_ENTRY_CMD\020\002\022\025\n\021USER_ENTRY_RESULT\020\003\022\022" +
-      "\n\016USER_READY_CMD\020\004\022\025\n\021USER_READY_RESULT\020" +
-      "\005\022\020\n\014USER_PUT_CMD\020\006\022\023\n\017USER_PUT_RESULT\020\007" +
-      "\022\020\n\014USER_DIE_CMD\020\010\022\023\n\017USER_DIE_RESULT\020\t\022" +
-      "\022\n\016USER_LEAVE_CMD\020\n\022\025\n\021USER_LEAVE_RESULT" +
-      "\020\013b\006proto3"
+      "oomID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\"2\n\016Player" +
+      "EntryCmd\022\016\n\006roomID\030\001 \001(\r\022\020\n\010playerID\030\002 \001" +
+      "(\r\"7\n\021PlayerEntryResult\022\016\n\006roomID\030\001 \001(\r\022" +
+      "\022\n\nopponentID\030\002 \001(\r\"\020\n\016PlayerReadyCmd\"8\n" +
+      "\021PlayerReadyResult\022\020\n\010playerID\030\001 \001(\r\022\021\n\t" +
+      "roomState\030\002 \001(\r\"=\n\014PlayerPutCmd\022\014\n\004PosX\030" +
+      "\001 \001(\r\022\014\n\004PosY\030\002 \001(\r\022\021\n\tcharacter\030\003 \001(\t\"\232" +
+      "\001\n\017PlayerPutResult\022+\n\010stepInfo\030\001 \003(\0132\031.P" +
+      "layerPutResult.StepInfo\032Z\n\010StepInfo\022\r\n\005m" +
+      "sgID\030\001 \001(\r\022\020\n\010playerID\030\002 \001(\r\022\014\n\004PosX\030\003 \001" +
+      "(\002\022\014\n\004PosY\030\004 \001(\002\022\021\n\tcharacter\030\005 \001(\t\"\016\n\014P" +
+      "layerDieCmd\"&\n\017PlayerDieResult\022\023\n\013diePla" +
+      "yerID\030\001 \001(\r\"\017\n\rPlayerStopCmd\"P\n\020PlayerSt" +
+      "opResult\022\024\n\014stopPlayerID\030\001 \001(\r\022\022\n\nstopAt" +
+      "PosX\030\002 \001(\002\022\022\n\nstopAtPosY\030\003 \001(\002\"\020\n\016Player" +
+      "LeaveCmd\"*\n\021PlayerLeaveResult\022\025\n\rleavePl" +
+      "ayerID\030\001 \001(\r*\227\002\n\007MsgCode\022\022\n\016WHAT_ROOMS_C" +
+      "MD\020\000\022\025\n\021WHAT_ROOMS_RESULT\020\001\022\024\n\020PLAYER_EN" +
+      "TRY_CMD\020\002\022\027\n\023PLAYER_ENTRY_RESULT\020\003\022\024\n\020PL" +
+      "AYER_READY_CMD\020\004\022\027\n\023PLAYER_READY_RESULT\020" +
+      "\005\022\022\n\016PLAYER_PUT_CMD\020\006\022\025\n\021PLAYER_PUT_RESU" +
+      "LT\020\007\022\022\n\016PLAYER_DIE_CMD\020\010\022\025\n\021PLAYER_DIE_R" +
+      "ESULT\020\t\022\024\n\020PLAYER_LEAVE_CMD\020\n\022\027\n\023PLAYER_" +
+      "LEAVE_RESULT\020\013b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10065,84 +10243,84 @@ public final class GameMsgProtocol {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_WhatRoomsResult_RoomInfo_descriptor,
         new java.lang.String[] { "RoomID", "RoomState", });
-    internal_static_UserEntryCmd_descriptor =
+    internal_static_PlayerEntryCmd_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_UserEntryCmd_fieldAccessorTable = new
+    internal_static_PlayerEntryCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserEntryCmd_descriptor,
-        new java.lang.String[] { "RoomID", "UserID", });
-    internal_static_UserEntryResult_descriptor =
+        internal_static_PlayerEntryCmd_descriptor,
+        new java.lang.String[] { "RoomID", "PlayerID", });
+    internal_static_PlayerEntryResult_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_UserEntryResult_fieldAccessorTable = new
+    internal_static_PlayerEntryResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserEntryResult_descriptor,
+        internal_static_PlayerEntryResult_descriptor,
         new java.lang.String[] { "RoomID", "OpponentID", });
-    internal_static_UserReadyCmd_descriptor =
+    internal_static_PlayerReadyCmd_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_UserReadyCmd_fieldAccessorTable = new
+    internal_static_PlayerReadyCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserReadyCmd_descriptor,
+        internal_static_PlayerReadyCmd_descriptor,
         new java.lang.String[] { });
-    internal_static_UserReadyResult_descriptor =
+    internal_static_PlayerReadyResult_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_UserReadyResult_fieldAccessorTable = new
+    internal_static_PlayerReadyResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserReadyResult_descriptor,
-        new java.lang.String[] { "UserID", });
-    internal_static_UserPutCmd_descriptor =
+        internal_static_PlayerReadyResult_descriptor,
+        new java.lang.String[] { "PlayerID", "RoomState", });
+    internal_static_PlayerPutCmd_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_UserPutCmd_fieldAccessorTable = new
+    internal_static_PlayerPutCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserPutCmd_descriptor,
+        internal_static_PlayerPutCmd_descriptor,
         new java.lang.String[] { "PosX", "PosY", "Character", });
-    internal_static_UserPutResult_descriptor =
+    internal_static_PlayerPutResult_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_UserPutResult_fieldAccessorTable = new
+    internal_static_PlayerPutResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserPutResult_descriptor,
+        internal_static_PlayerPutResult_descriptor,
         new java.lang.String[] { "StepInfo", });
-    internal_static_UserPutResult_StepInfo_descriptor =
-      internal_static_UserPutResult_descriptor.getNestedTypes().get(0);
-    internal_static_UserPutResult_StepInfo_fieldAccessorTable = new
+    internal_static_PlayerPutResult_StepInfo_descriptor =
+      internal_static_PlayerPutResult_descriptor.getNestedTypes().get(0);
+    internal_static_PlayerPutResult_StepInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserPutResult_StepInfo_descriptor,
-        new java.lang.String[] { "UserID", "PosX", "PosY", "Character", });
-    internal_static_UserDieCmd_descriptor =
+        internal_static_PlayerPutResult_StepInfo_descriptor,
+        new java.lang.String[] { "MsgID", "PlayerID", "PosX", "PosY", "Character", });
+    internal_static_PlayerDieCmd_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_UserDieCmd_fieldAccessorTable = new
+    internal_static_PlayerDieCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserDieCmd_descriptor,
+        internal_static_PlayerDieCmd_descriptor,
         new java.lang.String[] { });
-    internal_static_UserDieResult_descriptor =
+    internal_static_PlayerDieResult_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_UserDieResult_fieldAccessorTable = new
+    internal_static_PlayerDieResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserDieResult_descriptor,
-        new java.lang.String[] { "DieUserID", });
-    internal_static_UserStopCmd_descriptor =
+        internal_static_PlayerDieResult_descriptor,
+        new java.lang.String[] { "DiePlayerID", });
+    internal_static_PlayerStopCmd_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_UserStopCmd_fieldAccessorTable = new
+    internal_static_PlayerStopCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserStopCmd_descriptor,
+        internal_static_PlayerStopCmd_descriptor,
         new java.lang.String[] { });
-    internal_static_UserStopResult_descriptor =
+    internal_static_PlayerStopResult_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_UserStopResult_fieldAccessorTable = new
+    internal_static_PlayerStopResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserStopResult_descriptor,
-        new java.lang.String[] { "StopUserID", "StopAtPosX", "StopAtPosY", });
-    internal_static_UserLeaveCmd_descriptor =
+        internal_static_PlayerStopResult_descriptor,
+        new java.lang.String[] { "StopPlayerID", "StopAtPosX", "StopAtPosY", });
+    internal_static_PlayerLeaveCmd_descriptor =
       getDescriptor().getMessageTypes().get(12);
-    internal_static_UserLeaveCmd_fieldAccessorTable = new
+    internal_static_PlayerLeaveCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserLeaveCmd_descriptor,
+        internal_static_PlayerLeaveCmd_descriptor,
         new java.lang.String[] { });
-    internal_static_UserLeaveResult_descriptor =
+    internal_static_PlayerLeaveResult_descriptor =
       getDescriptor().getMessageTypes().get(13);
-    internal_static_UserLeaveResult_fieldAccessorTable = new
+    internal_static_PlayerLeaveResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_UserLeaveResult_descriptor,
-        new java.lang.String[] { "LeaveUserID", });
+        internal_static_PlayerLeaveResult_descriptor,
+        new java.lang.String[] { "LeavePlayerID", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

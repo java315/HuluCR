@@ -38,20 +38,20 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter{
                 case GameMsgProtocol.MsgCode.WHAT_ROOMS_CMD_VALUE:
                     cmd = GameMsgProtocol.WhatRoomsCmd.parseFrom(msgBody);
                     break;
-                case GameMsgProtocol.MsgCode.USER_ENTRY_CMD_VALUE:
-                    cmd = GameMsgProtocol.UserEntryCmd.parseFrom(msgBody);
+                case GameMsgProtocol.MsgCode.PLAYER_ENTRY_CMD_VALUE:
+                    cmd = GameMsgProtocol.PlayerEntryCmd.parseFrom(msgBody);
                     break;
-                case GameMsgProtocol.MsgCode.USER_READY_CMD_VALUE:
-                    cmd = GameMsgProtocol.UserReadyCmd.parseFrom(msgBody);
+                case GameMsgProtocol.MsgCode.PLAYER_READY_CMD_VALUE:
+                    cmd = GameMsgProtocol.PlayerReadyCmd.parseFrom(msgBody);
                     break;
-                case GameMsgProtocol.MsgCode.USER_PUT_CMD_VALUE:
-                    cmd = GameMsgProtocol.UserPutCmd.parseFrom(msgBody);
+                case GameMsgProtocol.MsgCode.PLAYER_PUT_CMD_VALUE:
+                    cmd = GameMsgProtocol.PlayerPutCmd.parseFrom(msgBody);
                     break;
-                case GameMsgProtocol.MsgCode.USER_DIE_CMD_VALUE:
-                    cmd = GameMsgProtocol.UserDieCmd.parseFrom(msgBody);
+                case GameMsgProtocol.MsgCode.PLAYER_DIE_CMD_VALUE:
+                    cmd = GameMsgProtocol.PlayerDieCmd.parseFrom(msgBody);
                     break;
-                case GameMsgProtocol.MsgCode.USER_LEAVE_CMD_VALUE:
-                    cmd = GameMsgProtocol.UserLeaveCmd.parseFrom(msgBody);
+                case GameMsgProtocol.MsgCode.PLAYER_LEAVE_CMD_VALUE:
+                    cmd = GameMsgProtocol.PlayerLeaveCmd.parseFrom(msgBody);
                     break;
                 default:
                     break;

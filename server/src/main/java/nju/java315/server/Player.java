@@ -1,22 +1,22 @@
 package nju.java315.server;
 
-import io.netty.channel.ChannelId;
+import io.netty.channel.Channel;
 
 public class Player{
-    private final ChannelId channelID;
+    private final Channel channel;
     private int playerID;
     private int roomID;
     private Boolean ready;
 
-    public Player(ChannelId channelID){
-        this.channelID = channelID;
+    public Player(Channel channel){
+        this.channel = channel;
         playerID = -1;
         roomID = -1;
         ready = false;
     }
 
-    public ChannelId getChannelID(){
-        return channelID;
+    public Channel getChannel(){
+        return channel;
     }
 
     public void setPlayerID(int ID){
