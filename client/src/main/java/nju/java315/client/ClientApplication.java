@@ -21,7 +21,7 @@ public class ClientApplication {
 		SpringApplication.run(ClientApplication.class, args);
 
 		System.out.println("launch game");
-		GameApplication.launch(HuluCRApp.class,args);		
+		GameApplication.launch(HuluCRApp.class,args);
 	}
 
 }

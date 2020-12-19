@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import java.lang.Double?>
+<?import com.almasb.fxgl.ui.ProgressBar?>
+<Pane prefWidth="600" prefHeight="970" xmlns="http://javafx.com/javafx/8.0.60"
+      xmlns:fx="http://javafx.com/fxml/1">
+
+    <ProgressBar fx:id="waterMeter" translateX="25" translateY="180" />
+
+</Pane>

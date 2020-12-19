@@ -11,6 +11,8 @@ import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.app.scene.SimpleGameMenu;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.ui.UI;
+import com.almasb.fxgl.ui.UIController;
 
 import javafx.beans.binding.StringBinding;
 import javafx.geometry.Point2D;
@@ -33,6 +35,8 @@ import java.util.Map;
 
 public class HuluCRApp extends GameApplication {
 
+    private HuluCRController uiController;
+
     @Override
     protected void initSettings(GameSettings settings) {
         settings.setWidth(WIDTH);
@@ -47,7 +51,7 @@ public class HuluCRApp extends GameApplication {
         settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newMainMenu() {
-                
+
                 return new FXGLDefaultMenu(MenuType.MAIN_MENU);
                 //return new HuluCRMenu(MenuType.MAIN_MENU);
             }
@@ -55,7 +59,7 @@ public class HuluCRApp extends GameApplication {
         settings.setApplicationMode(ApplicationMode.DEVELOPER);
     }
 
-    
+
     @Override
     protected void initInput() {
         Input input = getInput();
@@ -63,13 +67,13 @@ public class HuluCRApp extends GameApplication {
         onKeyDown(KeyCode.W, "Choose Card 1", () -> playerCompoent.chooseCard(1));
         onKeyDown(KeyCode.E, "Choose Card 2", () -> playerCompoent.chooseCard(2));
         onKeyDown(KeyCode.R, "Choose Card 3", () -> playerCompoent.chooseCard(3));
-        
+
         UserAction putCard = new UserAction("put"){
             @Override
             protected void onAction() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
                 playerCompoent.preput(cursorPoint);
-                
+
             }
             protected void onActionEnd() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
@@ -91,13 +95,28 @@ public class HuluCRApp extends GameApplication {
     @Override
     protected void initGameVars(Map<String, Object> vars) {
         // TODO Auto-generated method stub
-        super.initGameVars(vars);
+        vars.put("upTowerLives", CHILD_TOWER_LIVES);
+        vars.put("downTowerLives", CHILD_TOWER_LIVES);
+        vars.put("mainTowerLives", MAIN_TOWER_LIVES);
+        vars.put("enemiesKilled", 0);
+        vars.put("waterMeter", WATER_INIT_COUNT);
     }
 
     // 初始化游戏元素
     @Override
     protected void initGame() {
         getGameWorld().addEntityFactory(new HuluCRFactory());
+
+        //圣水自动增加
+        getGameTimer().runAtInterval(()->{
+            if(getd("waterMeter") < WATER_MAX_COUNT){
+                inc("waterMeter", 1 / WATER_UP_STEP);
+                if(getd("waterMeter") > WATER_MAX_COUNT)
+                    set("waterMeter", WATER_MAX_COUNT);
+            }
+        }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
+
+        spawn("Background");
     }
 
     // 初始化物理环境
@@ -109,7 +128,13 @@ public class HuluCRApp extends GameApplication {
     // 初始化ui
     @Override
     protected void initUI() {
+        uiController = new HuluCRController(getGameScene());
 
+        UI ui = getAssetLoader().loadUI(Asset.FXML_MAIN_UI, uiController);
+
+        uiController.getWaterMeter().currentValueProperty().bind(getdp("waterMeter"));
+
+        getGameScene().addUI(ui);
     }
 
     private boolean runningFirstTime = true;

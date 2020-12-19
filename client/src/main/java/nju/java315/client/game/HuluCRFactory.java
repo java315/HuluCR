@@ -13,7 +13,19 @@ import javafx.scene.shape.Rectangle;
 import nju.java315.client.game.type.AttackMethod;
 import nju.java315.client.game.type.TowerType;
 
+import static com.almasb.fxgl.dsl.FXGL.*;
+
 public class HuluCRFactory implements EntityFactory {
+    @Spawns("Background")
+    public Entity newBackground(SpawnData data) {
+        return entityBuilder()
+                .at(-10, -10)
+                // bigger than game size to account for camera shake
+                .view(texture("background/background.png", Config.WIDTH + 20, Config.HEIGHT + 20))
+                .zIndex(-500)
+                .build();
+    }
+
     @Spawns("Fireball")
     public Entity newFireball(SpawnData data) {
         return FXGL.entityBuilder()
