@@ -1,6 +1,7 @@
 package nju.java315.client.game;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import com.almasb.fxgl.ui.ProgressBar;
 import com.almasb.fxgl.ui.UIController;
@@ -14,6 +15,9 @@ public class HuluCRController implements UIController {
     @FXML
     private ProgressBar waterMeter;
 
+    @FXML
+    private Label timeLabel;
+
     private GameScene gameScene;
 
     public HuluCRController(GameScene gameScene){
@@ -23,6 +27,7 @@ public class HuluCRController implements UIController {
     @Override
     public void init() {
         // TODO Auto-generated method stub
+        timeLabel.setFont(getUIFactoryService().newFont(18));
 
         waterMeter.setLabelVisible(true);
         waterMeter.setMinValue(0);
@@ -32,6 +37,10 @@ public class HuluCRController implements UIController {
         waterMeter.setFill(new Color(0.9921875, 0.26171875, 0.39453125, 1.0));
         waterMeter.setWidth(110);
         waterMeter.setHeight(15);
+    }
+
+    public Label getTimeLabel(){
+        return timeLabel;
     }
 
     public ProgressBar getWaterMeter(){

@@ -9,6 +9,7 @@ public class TowerComponent extends Component{
     public TowerComponent(int lives){
         this.lives = lives;
     }
+
     public void onHit(int damage){
         lives -= damage;
 
