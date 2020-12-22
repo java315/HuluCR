@@ -1,8 +1,8 @@
-package nju.java315.server;
+package nju.java315.client.network;
 
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import com.google.protobuf.GeneratedMessageV3;
-import nju.java315.server.msg.GameMsgProtocol;
+import nju.java315.client.network.msg.GameMsgProtocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPromise;
@@ -10,7 +10,6 @@ import io.netty.util.CharsetUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgEncoder.class);
 
@@ -27,18 +26,18 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
         try{
             int msgCode = -1;
 
-            if(msg instanceof GameMsgProtocol.WhatRoomsResult)
-                msgCode = GameMsgProtocol.MsgCode.WHAT_ROOMS_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.PlayerEntryResult)
-                msgCode = GameMsgProtocol.MsgCode.PLAYER_ENTRY_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.PlayerReadyResult)
-                msgCode = GameMsgProtocol.MsgCode.PLAYER_READY_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.PlayerPutResult)
-                msgCode = GameMsgProtocol.MsgCode.PLAYER_PUT_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.PlayerDieResult)
-                msgCode = GameMsgProtocol.MsgCode.PLAYER_DIE_RESULT_VALUE;
-            else if(msg instanceof GameMsgProtocol.PlayerLeaveResult)
-                msgCode = GameMsgProtocol.MsgCode.PLAYER_LEAVE_RESULT_VALUE;
+            if(msg instanceof GameMsgProtocol.WhatRoomsCmd)
+                msgCode = GameMsgProtocol.MsgCode.WHAT_ROOMS_CMD_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerEntryCmd)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_ENTRY_CMD_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerReadyCmd)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_READY_CMD_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerPutCmd)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_PUT_CMD_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerDieCmd)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_DIE_CMD_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerLeaveCmd)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_LEAVE_CMD_VALUE;
             else{
                 LOGGER.error(
                     "无法识别的消息类型，msgClass = {}",

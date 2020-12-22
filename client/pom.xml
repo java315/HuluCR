@@ -54,11 +54,18 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.29</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.github.almasb</groupId>
 			<artifactId>fxgl</artifactId>
 			<version>11.12</version>
 		</dependency>
+
+		<dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.14.0</version>
+        </dependency>
 	</dependencies>
 
 	<build>

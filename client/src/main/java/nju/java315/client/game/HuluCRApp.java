@@ -17,6 +17,7 @@ import com.almasb.fxgl.ui.UI;
 import com.almasb.fxgl.ui.UIController;
 
 import javafx.beans.binding.StringBinding;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -106,8 +107,9 @@ public class HuluCRApp extends GameApplication {
         vars.put("upTowerLives", CHILD_TOWER_LIVES);
         vars.put("downTowerLives", CHILD_TOWER_LIVES);
         vars.put("mainTowerLives", MAIN_TOWER_LIVES);
-        vars.put("enemiesKilled", 0);
         vars.put("waterMeter", WATER_INIT_COUNT);
+        vars.put("min", 0);
+        vars.put("sec", 0);
     }
 
     // 初始化游戏元素
@@ -123,6 +125,27 @@ public class HuluCRApp extends GameApplication {
                     set("waterMeter", WATER_MAX_COUNT);
             }
         }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
+
+        //计时器
+        getGameTimer().runAtInterval(()->{
+            inc("sec", 1);
+            if(geti("sec")>=60){
+                inc("min", 1);
+                set("sec", 0);
+            }
+            String minValue, secValue;
+            if(geti("min") < 10)
+                minValue = "0" + String.valueOf(geti("min"));
+            else
+                minValue = String.valueOf(geti("min"));
+
+            if(geti("sec") < 10)
+                secValue = "0" + String.valueOf(geti("sec"));
+            else
+                secValue = String.valueOf(geti("sec"));
+
+            uiController.getTimeLabel().setText(minValue + ":" + secValue);
+        }, Duration.seconds(1));
 
         spawn("Background");
 
