@@ -33,6 +33,17 @@ public class Config {
     public static final int CHILD_TOWER_LIVES = 1500;
     public static final int MAIN_TOWER_LIVES = 2500;
 
+    public static final int LARGE_HULU_COST = 2;
+    public static final int EYE_HULU_COST = 2;
+    public static final int IRON_HULU_COST = 2;
+    public static final int FIRE_HULU_COST = 2;
+    public static final int WATER_HULU_COST = 2;
+    public static final int STEALTH_HULU_COST = 2;
+    public static final int HULU_HULU_COST = 2;
+    public static final int NTR_COST = 2;
+    public static final int SNAKE_COST = 2;
+    public static final int BAT_ARROW_COST = 2;
+    public static final int BAT_SPEAR_COST = 2;
 
     public static final class Asset {
         // TODO write a fxml

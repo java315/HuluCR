@@ -1,5 +1,6 @@
 package nju.java315.client.game;
 
+import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
@@ -31,12 +32,14 @@ import javafx.util.Duration;
 import nju.java315.client.game.components.PlayerComponent;
 import nju.java315.client.game.event.PutEvent;
 import nju.java315.client.game.type.MonsterType;
+import nju.java315.client.game.type.CursorEventType;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static nju.java315.client.game.Config.*;
 
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.EnumSet;
 import java.util.Map;
 import java.util.Random;
@@ -54,8 +57,17 @@ public class HuluCRApp extends GameApplication {
     //闭包，获得随机的卡片
     static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand.nextInt(MonsterType.class.getEnumConstants().length)];
 
+    List<Entity> cards = new ArrayList<>();
+
     int cardX = 50;
-    int[] cardY = {240, 325, 410, 495};
+    int[] cardY = {240, 325, 410, 495, 600};
+
+    //以下变量用于选卡操作
+    int currentCard = -1;
+    Point2D lastCursorPoint = null;
+
+    //鼠标操作类型
+    CursorEventType cursorEventType = CursorEventType.UNKNOW;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -83,26 +95,30 @@ public class HuluCRApp extends GameApplication {
     @Override
     protected void initInput() {
         Input input = getInput();
-        onKeyDown(KeyCode.Q, "Choose Card 0", () -> playerComponent.chooseCard(0));
-        onKeyDown(KeyCode.W, "Choose Card 1", () -> playerComponent.chooseCard(1));
-        onKeyDown(KeyCode.E, "Choose Card 2", () -> playerComponent.chooseCard(2));
-        onKeyDown(KeyCode.R, "Choose Card 3", () -> playerComponent.chooseCard(3));
 
         UserAction putCard = new UserAction("put"){
             @Override
+            protected void onActionBegin(){
+                Point2D cursorPoint = getInput().getMousePositionUI();
+                dealWithCursorBegin(cursorPoint);
+            }
+
+            @Override
             protected void onAction() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
-                playerComponent.preput(cursorPoint);
+                dealWithCursor(cursorPoint);
             }
+
+            @Override
             protected void onActionEnd() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
-                playerComponent.put(cursorPoint);
+                dealWithCursorEnd(cursorPoint);
             }
         };
         input.addAction(putCard, MouseButton.PRIMARY);
     }
     private Entity player;
-	private PlayerComponent playerComponent;
+	// private PlayerComponent playerComponent;
 
     // 初始化事件监听和处理
     @Override
@@ -119,7 +135,6 @@ public class HuluCRApp extends GameApplication {
         vars.put("downTowerLives", CHILD_TOWER_LIVES);
         vars.put("mainTowerLives", MAIN_TOWER_LIVES);
         vars.put("waterMeter", WATER_INIT_COUNT);
-        vars.put("cards", new ArrayList<Entity>());
         vars.put("min", 0);
         vars.put("sec", 0);
     }
@@ -141,7 +156,7 @@ public class HuluCRApp extends GameApplication {
         for(int i = 0;i < 4; i++){
             MonsterType temp = randomMonster.getRandomMonster();
 
-            ((ArrayList<Entity>)geto("cards")).add(
+            cards.add(
                 spawn("Card", new SpawnData(cardX, cardY[i]).put("type", temp))
             );
         }
@@ -214,9 +229,93 @@ public class HuluCRApp extends GameApplication {
 
     }
 
+    //确定正在进行哪种操作
+    public void dealWithCursorBegin(Point2D cursorPoint){
+        int x = (int)cursorPoint.getX(), y = (int)cursorPoint.getY();
+        if(x >= cardX && x <= cardX + 73){
+            for(int i = 0;i < 4;i++){
+                if(y >= cardY[i] && y <= cardY[i] + 73){
+                    currentCard = i;
+                    lastCursorPoint = cursorPoint;
+                    cursorEventType = CursorEventType.PUT_CARD;
+                    break;
+                }
+            }
+        }
+        System.out.println(currentCard);
+    }
+
+    public void dealWithCursor(Point2D cursorPoint){
+        switch(cursorEventType){
+            case PLAYER_READY:
+                break;
+            case PUT_CARD:
+                if(currentCard != -1){
+                    double dx = (int)(cursorPoint.getX() - lastCursorPoint.getX());
+                    double dy = (int)(cursorPoint.getY() - lastCursorPoint.getY());
+
+                    cards.get(currentCard).translate(dx, dy);
+                    lastCursorPoint = cursorPoint;
+                }
+                break;
+            case UNKNOW:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void dealWithCursorEnd(Point2D cursorPoint){
+        switch(cursorEventType){
+            case PLAYER_READY:
+                break;
+            case PUT_CARD:
+                if(currentCard != -1 && isSuitableForPutCard(cursorPoint)){
+                    MonsterType type = (MonsterType) cards.get(currentCard).getType();
+
+                    if((int)getd("waterMeter") > type.getCost()){
+                        inc("waterMeter", (double)(-1 * type.getCost()));
+
+                        Entity card = cards.remove(currentCard);
+
+                        MonsterType temp = randomMonster.getRandomMonster();
+                        cards.add(
+                            spawn("Card", new SpawnData(cardX, cardY[4]).put("type", temp))
+                        );
+                    }
+                    runOnce(this::updateCardPosition, Duration.millis(200));
+                }
+                break;
+            case UNKNOW:
+                break;
+            default:
+                break;
+        }
+        cursorPoint = null;
+        currentCard = -1;
+        cursorEventType = CursorEventType.UNKNOW;
+    }
+
+    public void updateCardPosition(){
+        for(int i = 0;i < 4;i++){
+            animationBuilder()
+                .interpolator(Interpolators.EXPONENTIAL.EASE_IN())
+                .duration(Duration.millis(200))
+                .translate(cards.get(i))
+                .from(cards.get(i).getPosition())
+                .to(new Point2D(cardX, cardY[i]))
+                .buildAndPlay();
+        }
+    }
+
+    public boolean isSuitableForPutCard(Point2D curPoint){
+        //TODO
+        return true;
+    }
+
     private void spawnPlayer() {
         player = spawn("Player", 15, 50);
-        playerComponent = player.getComponent(PlayerComponent.class);
+        // playerComponent = player.getComponent(PlayerComponent.class);
     }
 
     private void stopLoading(){
