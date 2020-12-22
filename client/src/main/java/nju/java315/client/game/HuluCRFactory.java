@@ -57,6 +57,14 @@ public class HuluCRFactory implements EntityFactory {
                     .build();
     }
 
+    @Spawns("Card")
+    public Entity newCard(SpawnData data){
+        return FXGL.entityBuilder()
+                .from(data)
+                .viewWithBBox(((MonsterType)data.get("type")).getCardUrl())
+                .build();
+    }
+
     @Spawns("Grandfather")
     public Entity newGrandfather(SpawnData data) {
         return FXGL.entityBuilder()
@@ -68,7 +76,7 @@ public class HuluCRFactory implements EntityFactory {
     public Entity newLargeHulu(SpawnData data) {
         return FXGL.entityBuilder().from(data)
                     .type(MonsterType.LARGE_HULU)
-                    .viewWithBBox("largehulu.png")
+                    .viewWithBBox(MonsterType.LARGE_HULU.getEntityUrl())
                     .with(new HealthCompoent(data.get("hp")))
                     .with(new MonsterCompenonet())
                     .build();

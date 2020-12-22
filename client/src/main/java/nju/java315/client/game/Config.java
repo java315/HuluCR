@@ -37,6 +37,38 @@ public class Config {
     public static final class Asset {
         // TODO write a fxml
         public static final String FXML_MAIN_UI = "main.fxml";
-    }
 
+        public static final String LARGE_HULU_CARD_URL = "1.png";
+        public static final String LARGE_HULU_ENTITY_URL = "";
+
+        public static final String EYE_HULU_CARD_URL = "1.png";
+        public static final String EYE_HULU_ENTITY_URL = "";
+
+        public static final String IRON_HULU_CARD_URL = "1.png";
+        public static final String IRON_HULU_ENTITY_URL = "";
+
+        public static final String FIRE_HULU_CARD_URL = "1.png";
+        public static final String FIRE_HULU_ENTITY_URL = "";
+
+        public static final String WATER_HULU_CARD_URL = "1.png";
+        public static final String WATER_HULU_ENTITY_URL = "";
+
+        public static final String STEALTH_HULU_CARD_URL = "1.png";
+        public static final String STEALTH_HULU_ENTITY_URL = "";
+
+        public static final String HULU_HULU_CARD_URL = "1.png";
+        public static final String HULU_HULU_ENTITY_URL = "";
+
+        public static final String NTR_CARD_URL = "1.png";
+        public static final String NTR_ENTITY_URL = "";
+
+        public static final String SNAKE_CARD_URL = "1.png";
+        public static final String SNAKE_ENTITY_URL = "";
+
+        public static final String BAT_ARROW_CARD_URL = "1.png";
+        public static final String BAT_ARROW_ENTITY_URL = "";
+
+        public static final String BAT_SPEAR_CARD_URL = "1.png";
+        public static final String BAT_SPEAR_ENTITY_URL = "";
+    }
 }

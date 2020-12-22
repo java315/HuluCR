@@ -12,7 +12,6 @@ public class PutEvent extends Event {
 
     public PutEvent(EventType<? extends Event> eventType) {
         super(eventType);
-        
     }
 
     private String monsterName;

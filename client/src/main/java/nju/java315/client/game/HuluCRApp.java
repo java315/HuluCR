@@ -30,17 +30,32 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import nju.java315.client.game.components.PlayerComponent;
 import nju.java315.client.game.event.PutEvent;
+import nju.java315.client.game.type.MonsterType;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static nju.java315.client.game.Config.*;
 
 import java.security.ProtectionDomain;
+import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Map;
+import java.util.Random;
+
+interface randomMonster{
+    MonsterType getRandomMonster();
+}
 
 public class HuluCRApp extends GameApplication {
 
     private HuluCRController uiController;
+
+    private static Random rand = new Random(47);
+
+    //闭包，获得随机的卡片
+    static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand.nextInt(MonsterType.class.getEnumConstants().length)];
+
+    int cardX = 50;
+    int[] cardY = {240, 325, 410, 495};
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -78,7 +93,6 @@ public class HuluCRApp extends GameApplication {
             protected void onAction() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
                 playerComponent.preput(cursorPoint);
-
             }
             protected void onActionEnd() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
@@ -86,8 +100,6 @@ public class HuluCRApp extends GameApplication {
             }
         };
         input.addAction(putCard, MouseButton.PRIMARY);
-
-
     }
     private Entity player;
 	private PlayerComponent playerComponent;
@@ -95,7 +107,6 @@ public class HuluCRApp extends GameApplication {
     // 初始化事件监听和处理
     @Override
     protected void onPreInit() {
-        
         // 事件相关
         onEvent(PutEvent.ANY, this::onMonsterPut);
     }
@@ -108,6 +119,7 @@ public class HuluCRApp extends GameApplication {
         vars.put("downTowerLives", CHILD_TOWER_LIVES);
         vars.put("mainTowerLives", MAIN_TOWER_LIVES);
         vars.put("waterMeter", WATER_INIT_COUNT);
+        vars.put("cards", new ArrayList<Entity>());
         vars.put("min", 0);
         vars.put("sec", 0);
     }
@@ -125,6 +137,14 @@ public class HuluCRApp extends GameApplication {
                     set("waterMeter", WATER_MAX_COUNT);
             }
         }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
+
+        for(int i = 0;i < 4; i++){
+            MonsterType temp = randomMonster.getRandomMonster();
+
+            ((ArrayList<Entity>)geto("cards")).add(
+                spawn("Card", new SpawnData(cardX, cardY[i]).put("type", temp))
+            );
+        }
 
         //计时器
         getGameTimer().runAtInterval(()->{
@@ -201,7 +221,7 @@ public class HuluCRApp extends GameApplication {
 
     private void stopLoading(){
         gameLoading = false;
-    } 
+    }
 
     private void onMonsterPut(PutEvent event){
         spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100));
