@@ -4,6 +4,7 @@ import com.almasb.fxgl.entity.Entity;
 
 import javafx.event.Event;
 import javafx.event.EventType;
+import javafx.geometry.Point2D;
 
 public class PutEvent extends Event {
 
@@ -14,16 +15,22 @@ public class PutEvent extends Event {
         
     }
 
-    private Entity entity;
+    private String monsterName;
+    private Point2D point;
 
-
-    public PutEvent(EventType<? extends Event> eventType, Entity entity) {
+    public PutEvent(EventType<? extends Event> eventType, String monsterName, Point2D point) {
         super(eventType);
-        this.entity = entity;
+
+        this.monsterName = monsterName;
+        this.point = point;
     }
 
-    public Entity getEntity() {
-        return entity;
+    public String getMonsterName() {
+        return monsterName;
+    }
+
+    public Point2D getPoint() {
+        return point;
     }
     
 }

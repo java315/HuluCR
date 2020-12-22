@@ -1,6 +1,8 @@
 package nju.java315.client.game;
 
 public enum HuluCRType {
+    PLAYER,
+
     // 放置性角色
     MONSTER,
     

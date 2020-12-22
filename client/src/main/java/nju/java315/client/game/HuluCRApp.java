@@ -9,6 +9,8 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.app.scene.SimpleGameMenu;
+import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.ui.UI;
@@ -25,11 +27,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import nju.java315.client.game.components.PlayerCompoent;
+import nju.java315.client.game.components.PlayerComponent;
+import nju.java315.client.game.event.PutEvent;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static nju.java315.client.game.Config.*;
 
+import java.security.ProtectionDomain;
 import java.util.EnumSet;
 import java.util.Map;
 
@@ -63,38 +67,42 @@ public class HuluCRApp extends GameApplication {
     @Override
     protected void initInput() {
         Input input = getInput();
-        onKeyDown(KeyCode.Q, "Choose Card 0", () -> playerCompoent.chooseCard(0));
-        onKeyDown(KeyCode.W, "Choose Card 1", () -> playerCompoent.chooseCard(1));
-        onKeyDown(KeyCode.E, "Choose Card 2", () -> playerCompoent.chooseCard(2));
-        onKeyDown(KeyCode.R, "Choose Card 3", () -> playerCompoent.chooseCard(3));
+        onKeyDown(KeyCode.Q, "Choose Card 0", () -> playerComponent.chooseCard(0));
+        onKeyDown(KeyCode.W, "Choose Card 1", () -> playerComponent.chooseCard(1));
+        onKeyDown(KeyCode.E, "Choose Card 2", () -> playerComponent.chooseCard(2));
+        onKeyDown(KeyCode.R, "Choose Card 3", () -> playerComponent.chooseCard(3));
 
         UserAction putCard = new UserAction("put"){
             @Override
             protected void onAction() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
-                playerCompoent.preput(cursorPoint);
+                playerComponent.preput(cursorPoint);
 
             }
             protected void onActionEnd() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
-                playerCompoent.put(cursorPoint);
+                playerComponent.put(cursorPoint);
             }
         };
         input.addAction(putCard, MouseButton.PRIMARY);
+
+
     }
+    private Entity player;
+	private PlayerComponent playerComponent;
 
-	private PlayerCompoent playerCompoent;
-
+    // 初始化事件监听和处理
     @Override
     protected void onPreInit() {
-        // TODO Auto-generated method stub
-        super.onPreInit();
+        
+        // 事件相关
+        onEvent(PutEvent.ANY, this::onMonsterPut);
     }
 
     // 建立映射表
     @Override
     protected void initGameVars(Map<String, Object> vars) {
-        // TODO Auto-generated method stub
+
         vars.put("upTowerLives", CHILD_TOWER_LIVES);
         vars.put("downTowerLives", CHILD_TOWER_LIVES);
         vars.put("mainTowerLives", MAIN_TOWER_LIVES);
@@ -117,6 +125,8 @@ public class HuluCRApp extends GameApplication {
         }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
 
         spawn("Background");
+
+        spawnPlayer();
     }
 
     // 初始化物理环境
@@ -161,7 +171,16 @@ public class HuluCRApp extends GameApplication {
 
     }
 
+    private void spawnPlayer() {
+        player = spawn("Player", 15, 50);
+        playerComponent = player.getComponent(PlayerComponent.class);
+    }
+
     private void stopLoading(){
         gameLoading = false;
     } 
+
+    private void onMonsterPut(PutEvent event){
+        spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100));
+    }
 }

@@ -22,7 +22,7 @@ public class HuluCRController implements UIController {
 
     @Override
     public void init() {
-        // TODO Auto-generated method stub
+
 
         waterMeter.setLabelVisible(true);
         waterMeter.setMinValue(0);
