@@ -15,8 +15,6 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.http.HttpClientCodec;
-import io.netty.handler.codec.http.HttpObjectAggregator;
 
 public class NettyClient {
 
@@ -34,12 +32,10 @@ public class NettyClient {
 				@Override
 				protected void initChannel(SocketChannel ch) throws Exception {
 				    ChannelPipeline pipeline = ((Channel) ch).pipeline();
-                    pipeline.addLast(new HttpClientCodec());
-                    pipeline.addLast(new HttpObjectAggregator(65536));
-                    pipeline.addLast(new HttpClientHandler());
-					
+                    pipeline.addLast(new GameMsgDecoder());
+                    pipeline.addLast(new GameMsgEncoder());
+                    pipeline.addLast(new GameMsgHandler());
 				}
-                
             });
 
             // 启动客户端.
