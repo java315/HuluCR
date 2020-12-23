@@ -50,15 +50,30 @@ public enum MonsterType{
             Config.Asset.SNAKE_ENTITY_URL,
             Config.SNAKE_COST
     ),
-    BAT_ARROW("BatArrow",
-            Config.Asset.BAT_ARROW_CARD_URL,
-            Config.Asset.BAT_ARROW_ENTITY_URL,
-            Config.BAT_ARROW_COST
+    CENTIPEDE("Centipede",
+            Config.Asset.CENTIPEDE_CARD_URL,
+            Config.Asset.CENTIPEDE_ENTITY_URL,
+            Config.CENTIPEDE_COST
     ),
-    BAT_SPEAR("BatSpear",
-            Config.Asset.BAT_SPEAR_CARD_URL,
-            Config.Asset.BAT_SPEAR_ENTITY_URL,
-            Config.BAT_SPEAR_COST
+    SPIDER("Spider",
+            Config.Asset.SPIDER_CARD_URL,
+            Config.Asset.SPIDER_ENTITY_URL,
+            Config.SPIDER_COST
+    ),
+    TOAD("Toad",
+            Config.Asset.SNAKE_CARD_URL,
+            Config.Asset.SNAKE_ENTITY_URL,
+            Config.SNAKE_COST
+    ),
+    WASP("Wasp",
+            Config.Asset.TOAD_CARD_URL,
+            Config.Asset.TOAD_ENTITY_URL,
+            Config.TOAD_COST
+    ),
+    WILD_BOAR("WildBoar",
+            Config.Asset.WILD_BOAR_CARD_URL,
+            Config.Asset.WILD_BOAR_ENTITY_URL,
+            Config.WILD_BOAR_COST
     );
 
     private String cardUrl;

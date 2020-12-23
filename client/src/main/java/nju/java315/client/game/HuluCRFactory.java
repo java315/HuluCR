@@ -59,9 +59,11 @@ public class HuluCRFactory implements EntityFactory {
 
     @Spawns("Card")
     public Entity newCard(SpawnData data){
+        MonsterType type = data.get("type");
         return FXGL.entityBuilder()
                 .from(data)
-                .viewWithBBox(((MonsterType)data.get("type")).getCardUrl())
+                .type(type)
+                .viewWithBBox(type.getCardUrl())
                 .build();
     }
 

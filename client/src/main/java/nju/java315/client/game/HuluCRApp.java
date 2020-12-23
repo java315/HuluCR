@@ -100,6 +100,7 @@ public class HuluCRApp extends GameApplication {
             @Override
             protected void onActionBegin(){
                 Point2D cursorPoint = getInput().getMousePositionUI();
+                System.out.println("put:" + cursorPoint.toString());
                 dealWithCursorBegin(cursorPoint);
             }
 
@@ -242,7 +243,6 @@ public class HuluCRApp extends GameApplication {
                 }
             }
         }
-        System.out.println(currentCard);
     }
 
     public void dealWithCursor(Point2D cursorPoint){
@@ -273,7 +273,7 @@ public class HuluCRApp extends GameApplication {
                 if(currentCard != -1 && isSuitableForPutCard(cursorPoint)){
                     MonsterType type = (MonsterType) cards.get(currentCard).getType();
 
-                    if((int)getd("waterMeter") > type.getCost()){
+                    if((int)getd("waterMeter") >= type.getCost()){
                         inc("waterMeter", (double)(-1 * type.getCost()));
 
                         Entity card = cards.remove(currentCard);
@@ -283,8 +283,8 @@ public class HuluCRApp extends GameApplication {
                             spawn("Card", new SpawnData(cardX, cardY[4]).put("type", temp))
                         );
                     }
-                    runOnce(this::updateCardPosition, Duration.millis(200));
                 }
+                runOnce(this::updateCardPosition, Duration.millis(200));
                 break;
             case UNKNOW:
                 break;
@@ -308,9 +308,13 @@ public class HuluCRApp extends GameApplication {
         }
     }
 
-    public boolean isSuitableForPutCard(Point2D curPoint){
-        //TODO
-        return true;
+    public boolean isSuitableForPutCard(Point2D cursorPoint){
+        int x = (int)cursorPoint.getX(), y = (int)cursorPoint.getY();
+        if(x >= 235 && x <= 545 && y >= 50 && y <= 550)
+            return true;
+        else if(x >= 210 && x<= 235 && y >= 215 && y <= 385)
+            return true;
+        return false;
     }
 
     private void spawnPlayer() {
