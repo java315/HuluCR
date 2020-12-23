@@ -282,9 +282,17 @@ public class HuluCRApp extends GameApplication {
                         cards.add(
                             spawn("Card", new SpawnData(cardX, cardY[4]).put("type", temp))
                         );
+                        
+                        // 产生放置事件
+                        getGameWorld().removeEntity(card);
+                        getEventBus().fireEvent(new PutEvent(PutEvent.ANY, "LargeHulu", cursorPoint));
+                        
+
                     }
+                    
                 }
                 runOnce(this::updateCardPosition, Duration.millis(200));
+                
                 break;
             case UNKNOW:
                 break;
@@ -327,6 +335,10 @@ public class HuluCRApp extends GameApplication {
     }
 
     private void onMonsterPut(PutEvent event){
+        System.out.println("monster");
         spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100));
+
+        // 向server发送放置消息
+        spawn("Fireball", event.getPoint());
     }
 }

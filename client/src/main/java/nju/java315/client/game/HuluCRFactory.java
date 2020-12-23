@@ -8,9 +8,21 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.particle.ParticleComponent;
+import com.almasb.fxgl.particle.ParticleEmitter;
+import com.almasb.fxgl.particle.ParticleEmitters;
+import com.almasb.fxgl.physics.BoundingShape;
+import com.almasb.fxgl.physics.HitBox;
+import com.almasb.fxgl.physics.PhysicsComponent;
+import com.almasb.fxgl.physics.box2d.dynamics.BodyType;
+import com.almasb.fxgl.physics.box2d.dynamics.FixtureDef;
 import com.almasb.fxgl.texture.Texture;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.geometry.Point2D;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nju.java315.client.game.components.HealthCompoent;
@@ -26,12 +38,9 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 public class HuluCRFactory implements EntityFactory {
     @Spawns("Background")
     public Entity newBackground(SpawnData data) {
-        return entityBuilder()
-                .at(-10, -10)
+        return entityBuilder().at(-10, -10)
                 // bigger than game size to account for camera shake
-                .view(texture("background/background.png", Config.WIDTH + 20, Config.HEIGHT + 20))
-                .zIndex(-500)
-                .build();
+                .view(texture("background/background.png", Config.WIDTH + 20, Config.HEIGHT + 20)).zIndex(-500).build();
     }
 
     @Spawns("Player")
@@ -40,21 +49,49 @@ public class HuluCRFactory implements EntityFactory {
         texture.setPreserveRatio(true);
         texture.setFitHeight(40);
 
-        return entityBuilder().from(data)
-                .type(HuluCRType.PLAYER)
-                .viewWithBBox(texture)
-                .with(new PlayerComponent())
+        return entityBuilder().from(data).type(HuluCRType.PLAYER).viewWithBBox(texture).with(new PlayerComponent())
                 .build();
     }
 
     @Spawns("Fireball")
     public Entity newFireball(SpawnData data) {
+        System.out.println("fireball");
+        PhysicsComponent physics = new PhysicsComponent();
+        physics.setBodyType(BodyType.DYNAMIC);
+        physics.setFixtureDef(new FixtureDef().density(0.3f).restitution(1.0f));
+        physics.setOnPhysicsInitialized(() -> physics.setLinearVelocity(5 * 60, -5 * 60));
+
+        SimpleBooleanProperty flag = new SimpleBooleanProperty();
+        flag.set(true);
+
+        ParticleEmitter emitter = ParticleEmitters.newFireEmitter();
+
+        emitter.startColorProperty().bind(
+                Bindings.when(flag)
+                        .then(Color.LIGHTYELLOW)
+                        .otherwise(Color.RED)
+        );
+
+        emitter.endColorProperty().bind(
+                Bindings.when(flag)
+                        .then(Color.RED)
+                        .otherwise(Color.LIGHTBLUE)
+        );
+
+        emitter.setBlendMode(BlendMode.SRC_OVER);
+        emitter.setSize(5, 10);
+        emitter.setEmissionRate(1);
+
         return FXGL.entityBuilder()
+                    .from(data)
                     .type(AttackMethod.FIREBALL)
-                    .viewWithBBox(new Rectangle(10, 10, Color.RED))
+                    .bbox(new HitBox(BoundingShape.circle(5)))
+                    .with(physics)
                     .with(new CollidableComponent(true))
-                    //.with(new ProjectileComponent(direction, speed)) // TODO
+                    .with(new ParticleComponent(emitter))
+                    //.with(new ProjectileComponent(new Point2D(0,1), 400))
                     .build();
+
     }
 
     @Spawns("Card")

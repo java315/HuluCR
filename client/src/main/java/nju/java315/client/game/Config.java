@@ -53,7 +53,7 @@ public class Config {
         public static final String FXML_MAIN_UI = "main.fxml";
 
         public static final String LARGE_HULU_CARD_URL = "card/largeHulu.png";
-        public static final String LARGE_HULU_ENTITY_URL = "";
+        public static final String LARGE_HULU_ENTITY_URL = "player2.png";
 
         public static final String EYE_HULU_CARD_URL = "card/eyeHulu.png";
         public static final String EYE_HULU_ENTITY_URL = "";
