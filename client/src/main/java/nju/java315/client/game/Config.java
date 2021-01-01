@@ -48,6 +48,10 @@ public class Config {
     public static final int WASP_COST = 2;
     public static final int WILD_BOAR_COST = 2;
 
+    // 网络相关参数
+    public static final int SERVER_PORT = 8080;
+    public static final String SERVER_IP = "127.0.0.1";
+
     public static final class Asset {
         // TODO write a fxml
         public static final String FXML_MAIN_UI = "main.fxml";

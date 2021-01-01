@@ -69,6 +69,9 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
 
                 int roomID = cmd.getRoomID();
                 int userID = cmd.getPlayerID();
+                
+                LOGGER.info(userID + "enter room" + roomID);
+
                 Player joiner = players.get(channel.id());
                 Player opponent = null;
                 Boolean success = false;

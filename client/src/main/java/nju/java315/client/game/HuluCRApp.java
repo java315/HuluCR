@@ -10,10 +10,12 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.app.scene.SimpleGameMenu;
+import com.almasb.fxgl.core.serialization.Bundle;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.net.Client;
 import com.almasb.fxgl.ui.UI;
 import com.almasb.fxgl.ui.UIController;
 
@@ -44,7 +46,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Random;
 
-interface randomMonster{
+interface randomMonster {
     MonsterType getRandomMonster();
 }
 
@@ -54,19 +56,20 @@ public class HuluCRApp extends GameApplication {
 
     private static Random rand = new Random(47);
 
-    //闭包，获得随机的卡片
-    static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand.nextInt(MonsterType.class.getEnumConstants().length)];
+    // 闭包，获得随机的卡片
+    static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand
+            .nextInt(MonsterType.class.getEnumConstants().length)];
 
     List<Entity> cards = new ArrayList<>();
 
     int cardX = 50;
-    int[] cardY = {240, 325, 410, 495, 600};
+    int[] cardY = { 240, 325, 410, 495, 600 };
 
-    //以下变量用于选卡操作
+    // 以下变量用于选卡操作
     int currentCard = -1;
     Point2D lastCursorPoint = null;
 
-    //鼠标操作类型
+    // 鼠标操作类型
     CursorEventType cursorEventType = CursorEventType.UNKNOW;
 
     @Override
@@ -78,27 +81,26 @@ public class HuluCRApp extends GameApplication {
         settings.setProfilingEnabled(false);
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(true);
-        //settings.setEnabledMenuItems(EnumSet.of(MenuItem.EXTRA));
+        // settings.setEnabledMenuItems(EnumSet.of(MenuItem.EXTRA));
 
         settings.setSceneFactory(new SceneFactory() {
             @Override
             public FXGLMenu newMainMenu() {
 
                 return new FXGLDefaultMenu(MenuType.MAIN_MENU);
-                //return new HuluCRMenu(MenuType.MAIN_MENU);
+                // return new HuluCRMenu(MenuType.MAIN_MENU);
             }
         });
         settings.setApplicationMode(ApplicationMode.DEVELOPER);
     }
 
-
     @Override
     protected void initInput() {
         Input input = getInput();
 
-        UserAction putCard = new UserAction("put"){
+        UserAction putCard = new UserAction("put") {
             @Override
-            protected void onActionBegin(){
+            protected void onActionBegin() {
                 Point2D cursorPoint = getInput().getMousePositionUI();
                 System.out.println("put:" + cursorPoint.toString());
                 dealWithCursorBegin(cursorPoint);
@@ -118,8 +120,9 @@ public class HuluCRApp extends GameApplication {
         };
         input.addAction(putCard, MouseButton.PRIMARY);
     }
+
     private Entity player;
-	// private PlayerComponent playerComponent;
+    // private PlayerComponent playerComponent;
 
     // 初始化事件监听和处理
     @Override
@@ -141,8 +144,13 @@ public class HuluCRApp extends GameApplication {
     }
 
     // 初始化游戏元素
+    private HuluCRClientManager clientManager;
+
     @Override
     protected void initGame() {
+        // 初始化网络
+        clientManager = new HuluCRClientManager(SERVER_IP,SERVER_PORT);
+        //添加工厂
         getGameWorld().addEntityFactory(new HuluCRFactory());
 
         //圣水自动增加
@@ -213,9 +221,12 @@ public class HuluCRApp extends GameApplication {
         super.onUpdate(tpf);
         if(runningFirstTime) {
             getDialogService().showInputBox("Please input your room id", answer -> {
-                System.out.println("room id: "+ answer);
+                System.out.println("room id: " + answer);
                 // send room id to server
+                clientManager.enterRoom(Integer.parseInt(answer));
                 runOnce(this::stopLoading, Duration.seconds(2.0));
+                
+
 
                 runningFirstTime = false;
                 gameLoading = true;
