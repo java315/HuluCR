@@ -1,6 +1,7 @@
 package nju.java315.client.game;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 import com.almasb.fxgl.core.serialization.Bundle;
 import com.almasb.fxgl.dsl.FXGL;
@@ -81,8 +82,11 @@ class HuluCRClientManager{
             for(int i=0;i<msgBody.length;i++){
                 bytes[i+2] = msgBody[i];
             }
-            String outputFrame = new String(bytes,StandardCharsets.UTF_8);
-            
+            System.out.println("代码为:"+msgCode);
+            System.out.println((int)bytes[0] + " " + (int)bytes[1]);
+            String outputFrame = new String(bytes,StandardCharsets.UTF_16);
+            System.out.println(Arrays.toString(outputFrame.getBytes(StandardCharsets.UTF_16)));
+
             return outputFrame;
         } catch (Exception ex){
             LOGGER.error(ex.getMessage(), ex);

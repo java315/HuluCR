@@ -16,6 +16,7 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception{
+        LOGGER.info("正在编码 "+msg.toString());
         if(ctx == null || msg == null)
             return;
 
@@ -51,10 +52,11 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
             byte[] msgBody = ((GeneratedMessageV3)msg).toByteArray();
 
             ByteBuf byteBuf = ctx.alloc().buffer();
+            byteBuf.writeInt(2 + msgBody.length);
             byteBuf.writeShort((short)msgCode);
             byteBuf.writeBytes(msgBody);
 
-            String outputFrame = byteBuf.toString(CharsetUtil.UTF_8);
+            String outputFrame = byteBuf.toString(CharsetUtil.UTF_16);
             super.write(ctx, outputFrame, promise);
         }catch (Exception ex){
             LOGGER.error(ex.getMessage(), ex);

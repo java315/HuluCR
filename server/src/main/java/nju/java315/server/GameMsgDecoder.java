@@ -1,7 +1,12 @@
 package nju.java315.server;
 
+import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Optional;
+
 import com.google.protobuf.GeneratedMessageV3;
 import nju.java315.server.msg.GameMsgProtocol;
+import nju.java315.server.util.ByteArrayUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,23 +16,24 @@ import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GameMsgDecoder extends ChannelInboundHandlerAdapter{
+public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgDecoder.class);
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
-        if(ctx == null || msg == null)
-            return;
 
-        if(!(msg instanceof String))
+        if(ctx == null || msg == null){
+            LOGGER.warn("空消息");
             return;
-
+        }
+        
         try{
-            byte[] bytes = ((String)msg).getBytes(CharsetUtil.UTF_8);
-            ByteBuf byteBuf = Unpooled.wrappedBuffer(bytes);
-
+            int length = ((ByteBuf)msg).readInt();
+            System.out.println(length);
+            ByteBuf byteBuf = ((ByteBuf)msg).readSlice(length);
             //消息的类型
-            int msgCode = byteBuf.readShort();
+            int unknownFlag = byteBuf.readShort();
+            int msgCode = byteBuf.readUnsignedShort();
 
             byte[] msgBody = new byte[byteBuf.readableBytes()];
             byteBuf.readBytes(msgBody);
@@ -57,9 +63,12 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter{
                     break;
             }
 
-
-            if(cmd != null)
+            LOGGER.info(cmd.toString());
+            if(cmd != null){
+                LOGGER.info("完成处理");
                 ctx.fireChannelRead(cmd);
+            }
+                
 
         }catch(Exception ex){
             LOGGER.error(ex.getMessage(), ex);

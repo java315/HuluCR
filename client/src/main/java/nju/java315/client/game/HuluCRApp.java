@@ -22,14 +22,9 @@ import com.almasb.fxgl.ui.UIController;
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nju.java315.client.game.components.PlayerComponent;
 import nju.java315.client.game.event.PutEvent;
@@ -220,13 +215,16 @@ public class HuluCRApp extends GameApplication {
     protected void onUpdate(double tpf) {
         super.onUpdate(tpf);
         if(runningFirstTime) {
+            
             getDialogService().showInputBox("Please input your room id", answer -> {
                 System.out.println("room id: " + answer);
                 // send room id to server
                 clientManager.enterRoom(Integer.parseInt(answer));
+
+                
                 runOnce(this::stopLoading, Duration.seconds(2.0));
                 
-
+                
 
                 runningFirstTime = false;
                 gameLoading = true;
@@ -351,5 +349,6 @@ public class HuluCRApp extends GameApplication {
 
         // 向server发送放置消息
         spawn("Fireball", event.getPoint());
+        
     }
 }

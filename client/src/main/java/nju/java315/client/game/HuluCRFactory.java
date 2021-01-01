@@ -115,7 +115,7 @@ public class HuluCRFactory implements EntityFactory {
     public Entity newLargeHulu(SpawnData data) {
         return FXGL.entityBuilder().from(data)
                     .type(MonsterType.LARGE_HULU)
-                    .viewWithBBox(MonsterType.LARGE_HULU.getEntityUrl())
+                    .viewWithBBox(MonsterType.LARGE_HULU.getRightUrl())
                     .with(new HealthCompoent(data.get("hp")))
                     .with(new MonsterCompenonet())
                     .build();

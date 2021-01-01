@@ -50,52 +50,66 @@ public class Config {
 
     // 网络相关参数
     public static final int SERVER_PORT = 8080;
-    public static final String SERVER_IP = "127.0.0.1";
+    public static final String SERVER_IP = "localhost";
 
     public static final class Asset {
         // TODO write a fxml
         public static final String FXML_MAIN_UI = "main.fxml";
 
         public static final String LARGE_HULU_CARD_URL = "card/largeHulu.png";
-        public static final String LARGE_HULU_ENTITY_URL = "player2.png";
+        public static final String LARGE_HULU_ENTITY_LEFT_URL = "monster/red-left.png";
+        public static final String LARGE_HULU_ENTITY_RIGHT_URL = "monster/red-right.png";
 
         public static final String EYE_HULU_CARD_URL = "card/eyeHulu.png";
-        public static final String EYE_HULU_ENTITY_URL = "";
+        public static final String EYE_HULU_ENTITY_LEFT_URL = "monster/orange-left.png";
+        public static final String EYE_HULU_ENTITY_RIGHT_URL = "monster/orange-right.png";
 
         public static final String IRON_HULU_CARD_URL = "card/ironHulu.png";
-        public static final String IRON_HULU_ENTITY_URL = "";
+        public static final String IRON_HULU_ENTITY_LEFT_URL = "monster/yellow-left.png";
+        public static final String IRON_HULU_ENTITY_RIGHT_URL = "monster/yellow-right.png";
 
         public static final String FIRE_HULU_CARD_URL = "card/fireHulu.png";
-        public static final String FIRE_HULU_ENTITY_URL = "";
+        public static final String FIRE_HULU_ENTITY_LEFT_URL = "monster/green-left.png";
+        public static final String FIRE_HULU_ENTITY_RIGHT_URL = "monster/green-right.png";
 
         public static final String WATER_HULU_CARD_URL = "card/waterHulu.png";
-        public static final String WATER_HULU_ENTITY_URL = "";
+        public static final String WATER_HULU_ENTITY_LEFT_URL = "monster/blue-left.png";
+        public static final String WATER_HULU_ENTITY_RIGHT_URL = "monster/blue-right.png";
 
         public static final String STEALTH_HULU_CARD_URL = "card/stealthHulu.png";
-        public static final String STEALTH_HULU_ENTITY_URL = "";
+        public static final String STEALTH_HULU_ENTITY_LEFT_URL = "monster/cyan-left.png";
+        public static final String STEALTH_HULU_ENTITY_RIGHT_URL = "monster/cyan-right.png";
 
         public static final String HULU_HULU_CARD_URL = "card/huluHulu.png";
-        public static final String HULU_HULU_ENTITY_URL = "";
+        public static final String HULU_HULU_ENTITY_LEFT_URL = "monster/purple-left.png";
+        public static final String HULU_HULU_ENTITY_RIGHT_URL = "monster/purple-right.png";
 
         public static final String NTR_CARD_URL = "card/NTR.png";
-        public static final String NTR_ENTITY_URL = "";
+        public static final String NTR_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
+        public static final String NTR_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
 
         public static final String SNAKE_CARD_URL = "card/snake.png";
-        public static final String SNAKE_ENTITY_URL = "";
+        public static final String SNAKE_ENTITY_LEFT_URL = "monster/snake-left.png";
+        public static final String SNAKE_ENTITY_RIGHT_URL = "monster/snake-right.png";
 
         public static final String CENTIPEDE_CARD_URL = "card/centipede.png";
-        public static final String CENTIPEDE_ENTITY_URL = "";
+        public static final String CENTIPEDE_ENTITY_LEFT_URL = "";
+        public static final String CENTIPEDE_ENTITY_RIGHT_URL = "";
 
         public static final String SPIDER_CARD_URL = "card/spider.png";
-        public static final String SPIDER_ENTITY_URL = "";
+        public static final String SPIDER_ENTITY_LEFT_URL = "";
+        public static final String SPIDER_ENTITY_RIGHT_URL = "";
 
         public static final String TOAD_CARD_URL = "card/toad.png";
-        public static final String TOAD_ENTITY_URL = "";
+        public static final String TOAD_ENTITY_LEFT_URL = "";
+        public static final String TOAD_ENTITY_RIGHT_URL = "";
 
         public static final String WASP_CARD_URL = "card/wasp.png";
-        public static final String WASP_ENTITY_URL = "";
+        public static final String WASP_ENTITY_LEFT_URL = "";
+        public static final String WASP_ENTITY_RIGHT_URL = "";
 
         public static final String WILD_BOAR_CARD_URL = "card/wildBoar.png";
-        public static final String WILD_BOAR_ENTITY_URL = "";
+        public static final String WILD_BOAR_ENTITY_LEFT_URL = "";
+        public static final String WILD_BOAR_ENTITY_RIGHT_URL = "";
     }
 }

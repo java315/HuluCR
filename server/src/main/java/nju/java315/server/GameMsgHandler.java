@@ -38,12 +38,14 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
             return;
         Channel channel = ctx.channel();
         //channelGroup.add(channel);
+
         players.put(channel.id(), new Player(channel));
         super.channelActive(ctx);
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception{
+        LOGGER.info("收到:"+msg.toString());
         if(ctx == null || msg == null)
             return;
 
@@ -70,7 +72,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
                 int roomID = cmd.getRoomID();
                 int userID = cmd.getPlayerID();
                 
-                LOGGER.info(userID + "enter room" + roomID);
+                LOGGER.info(userID + " enter room " + roomID);
 
                 Player joiner = players.get(channel.id());
                 Player opponent = null;
