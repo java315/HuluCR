@@ -20,11 +20,11 @@ import nju.java315.client.game.network.msg.GameMsgProtocol;
 
 class HuluCRClientManager{
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
-    private Client<String> client;
-    private Connection<String> conn;
+    private Client<byte[]> client;
+    private Connection<byte[]> conn;
     public HuluCRClientManager(String ip, int port){
         try {
-            client = FXGL.getNetService().newTCPClient(ip, port, new ClientConfig(String.class));
+            client = FXGL.getNetService().newTCPClient(ip, port, new ClientConfig<>(byte[].class));
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             System.exit(-1);
@@ -45,12 +45,12 @@ class HuluCRClientManager{
         builder.setRoomID(id);
         builder.setPlayerID(100);
         GameMsgProtocol.PlayerEntryCmd cmd = builder.build();
-        String outputFrame = encode(cmd);
+        byte[] outputFrame = encode(cmd);
 
         conn.send(outputFrame);
     }
 
-    private String encode(Object msg){
+    private byte[] encode(Object msg){
         try {
             int msgCode = -1;
 
@@ -71,7 +71,7 @@ class HuluCRClientManager{
                     "无法识别的消息类型，msgClass = {}",
                     msg.getClass().getSimpleName()
                 );
-                return "";
+                return null;
             }
 
             byte[] msgBody = ((GeneratedMessageV3)msg).toByteArray();
@@ -84,13 +84,12 @@ class HuluCRClientManager{
             }
             System.out.println("代码为:"+msgCode);
             System.out.println((int)bytes[0] + " " + (int)bytes[1]);
-            String outputFrame = new String(bytes,StandardCharsets.UTF_16);
-            System.out.println(Arrays.toString(outputFrame.getBytes(StandardCharsets.UTF_16)));
+            
 
-            return outputFrame;
+            return bytes;
         } catch (Exception ex){
             LOGGER.error(ex.getMessage(), ex);
         }
-        return "";
+        return null;
     }
 }

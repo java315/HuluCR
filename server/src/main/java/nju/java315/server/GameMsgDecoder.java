@@ -32,12 +32,12 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
             System.out.println(length);
             ByteBuf byteBuf = ((ByteBuf)msg).readSlice(length);
             //消息的类型
-            int unknownFlag = byteBuf.readShort();
+            //int unknownFlag = byteBuf.readShort();
             int msgCode = byteBuf.readUnsignedShort();
 
             byte[] msgBody = new byte[byteBuf.readableBytes()];
             byteBuf.readBytes(msgBody);
-
+            LOGGER.info("msgCode : {}",msgCode);
             GeneratedMessageV3 cmd = null;
 
             switch(msgCode){
