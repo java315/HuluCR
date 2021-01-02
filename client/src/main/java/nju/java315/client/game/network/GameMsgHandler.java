@@ -1,7 +1,10 @@
 package nju.java315.client.game.network;
 
+import java.util.Arrays;
+
 import com.almasb.fxgl.net.Connection;
 import com.almasb.fxgl.net.MessageHandler;
+import com.almasb.fxgl.net.Readers;
 import com.google.protobuf.GeneratedMessageV3;
 
 import org.slf4j.Logger;
@@ -12,11 +15,12 @@ import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 import nju.java315.client.game.network.msg.GameMsgProtocol;
 
-public class GameMsgHandler implements MessageHandler<String> {
+public class GameMsgHandler implements MessageHandler<byte[]> {
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
     @Override
-    public void onReceive(Connection<String> connection, String msg) {
-        System.out.println("get server message");
+    public void onReceive(Connection<byte[]> connection, byte[] msg) {
+        LOGGER.info("get server message : {}",Arrays.toString(msg));
+        
         GeneratedMessageV3 cmd = decodeMessage(msg);
         try{
             if (cmd instanceof GameMsgProtocol.WhatRoomsResult) {
@@ -43,13 +47,13 @@ public class GameMsgHandler implements MessageHandler<String> {
 
     }
 
-    private GeneratedMessageV3 decodeMessage(String msg) {
-        if (msg == null || !(msg instanceof String))
+    private GeneratedMessageV3 decodeMessage(byte[] msg) {
+        if (msg == null)
             return null;
 
         try {
-            byte[] bytes = msg.getBytes(CharsetUtil.UTF_8);
-            ByteBuf byteBuf = Unpooled.wrappedBuffer(bytes);
+
+            ByteBuf byteBuf = Unpooled.wrappedBuffer(msg);
 
             // 消息的类型
             int msgCode = byteBuf.readShort();
