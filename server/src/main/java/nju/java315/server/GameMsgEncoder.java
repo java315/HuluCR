@@ -57,7 +57,7 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
             byteBuf.writeBytes(msgBody);
 
             String outputFrame = byteBuf.toString(CharsetUtil.UTF_16);
-            super.write(ctx, outputFrame, promise);
+            ctx.writeAndFlush(outputFrame);
         }catch (Exception ex){
             LOGGER.error(ex.getMessage(), ex);
         }
