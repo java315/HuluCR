@@ -15,39 +15,44 @@ import org.yaml.snakeyaml.util.ArrayUtils;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.util.CharsetUtil;
+import javafx.geometry.Point2D;
 import nju.java315.client.game.network.GameMsgHandler;
 import nju.java315.client.game.network.msg.GameMsgProtocol;
-
+ 
 class HuluCRClientManager{
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
     private Client<byte[]> client;
-    private Connection<byte[]> conn;
-    public HuluCRClientManager(String ip, int port){
-        try {
-            client = FXGL.getNetService().newTCPClient(ip, port, new ClientConfig<>(byte[].class));
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-            System.exit(-1);
-        }
 
-        
+    private Connection<byte[]> conn; 
+
+    public HuluCRClientManager(String ip,int port) {
+
+        client = FXGL.getNetService().newTCPClient(ip, port, new ClientConfig<>(byte[].class));
         client.setOnConnected(connection -> {
             LOGGER.info("connect to server : " + connection.isConnected());
             conn = connection;
             connection.addMessageHandlerFX(new GameMsgHandler());
         });
-        client.connectAsync();
-        
     }
-    
+     
+
+     
     public void enterRoom(int id){
         GameMsgProtocol.PlayerEntryCmd.Builder builder = GameMsgProtocol.PlayerEntryCmd.newBuilder();
         builder.setRoomID(id);
         builder.setPlayerID(100);
         GameMsgProtocol.PlayerEntryCmd cmd = builder.build();
         byte[] outputFrame = encode(cmd);
+        if (conn != null)
+            conn.send(outputFrame);
+    }
 
-        conn.send(outputFrame);
+    public void putMonster(String monster,Point2D pos){
+        GameMsgProtocol.PlayerPutCmd.Builder builder = GameMsgProtocol.PlayerPutCmd.newBuilder();
+        builder.setPosX((int)pos.getX());
+        builder.setPosY((int)pos.getY());
+        builder.setCharacter(monster);
+        //conn.send(outputFrame);
     }
 
     private byte[] encode(Object msg){

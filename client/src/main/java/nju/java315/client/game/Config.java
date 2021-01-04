@@ -12,10 +12,10 @@ public class Config {
     public static final int WIDTH = 970;
     public static final int HEIGHT= 600;
 
-    public static final int HORIZONTAL_GRID_NUM = 18;
-    public static final int VERTICAL_GRID_NUM = 18;  // 半场的纵向格子数
-    public static final int GRID_HORIZONTAL_SIZE = 24;
-    public static final int GRID_VERTICAL_SIZE = 16;
+    public static final int HORIZONTAL_GRID_NUM = 97;
+    public static final int VERTICAL_GRID_NUM = 60;  
+    public static final int CELL_HEIGHT = 10;
+    public static final int CELL_WIDTH = 10;
 
     public static final int RIVER_GRID_WIDTH = 1;
     public static final int UP_TOWER_GRIX_Y = 3; // 从0开始

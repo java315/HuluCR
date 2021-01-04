@@ -10,6 +10,9 @@ public enum HuluCRType {
     TOWER,
 
     // 远程攻击方式
-    ATTACK
+    ATTACK,
+
+    // 
+    BLOCK
 }
 

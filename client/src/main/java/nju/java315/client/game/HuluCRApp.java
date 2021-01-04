@@ -16,6 +16,8 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.net.Client;
+import com.almasb.fxgl.pathfinding.CellState;
+import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.ui.UI;
 import com.almasb.fxgl.ui.UIController;
 
@@ -123,7 +125,8 @@ public class HuluCRApp extends GameApplication {
     @Override
     protected void onPreInit() {
         // 事件相关
-        onEvent(PutEvent.ANY, this::onMonsterPut);
+        onEvent(PutEvent.SELF_PUT, this::onMonsterPut);
+        onEvent(PutEvent.ENEMY_PUT, this::onEnemyPut);
     }
 
     // 建立映射表
@@ -148,6 +151,10 @@ public class HuluCRApp extends GameApplication {
         //添加工厂
         getGameWorld().addEntityFactory(new HuluCRFactory());
 
+        // 初始化grid
+        initBlock();
+        initGrid();
+
         //圣水自动增加
         getGameTimer().runAtInterval(()->{
             if(getd("waterMeter") < WATER_MAX_COUNT){
@@ -157,6 +164,7 @@ public class HuluCRApp extends GameApplication {
             }
         }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
 
+        //初始化卡片栏
         for(int i = 0;i < 4; i++){
             MonsterType temp = randomMonster.getRandomMonster();
 
@@ -240,6 +248,7 @@ public class HuluCRApp extends GameApplication {
     }
 
     //确定正在进行哪种操作
+    private Entity temp_monster;
     public void dealWithCursorBegin(Point2D cursorPoint){
         int x = (int)cursorPoint.getX(), y = (int)cursorPoint.getY();
         if(x >= cardX && x <= cardX + 73){
@@ -248,6 +257,12 @@ public class HuluCRApp extends GameApplication {
                     currentCard = i;
                     lastCursorPoint = cursorPoint;
                     cursorEventType = CursorEventType.PUT_CARD;
+                    Entity card = cards.get(currentCard);
+                    MonsterType type = (MonsterType)card.getType();
+                    //temp_monster = spawn(type.getName(), cursorPoint);
+                    temp_monster = spawn("FakeMonster", new SpawnData(cursorPoint).put("type", type));
+                    
+                    card.setVisible(false);
                     break;
                 }
             }
@@ -257,13 +272,15 @@ public class HuluCRApp extends GameApplication {
     public void dealWithCursor(Point2D cursorPoint){
         switch(cursorEventType){
             case PLAYER_READY:
-                break;
+                break; 
             case PUT_CARD:
                 if(currentCard != -1){
+                    //Entity card = cards.get(currentCard);
                     double dx = (int)(cursorPoint.getX() - lastCursorPoint.getX());
                     double dy = (int)(cursorPoint.getY() - lastCursorPoint.getY());
-
-                    cards.get(currentCard).translate(dx, dy);
+                    temp_monster.translate(dx, dy);
+                    //card.translate(dx, dy);
+                    
                     lastCursorPoint = cursorPoint;
                 }
                 break;
@@ -279,7 +296,15 @@ public class HuluCRApp extends GameApplication {
             case PLAYER_READY:
                 break;
             case PUT_CARD:
-                if(currentCard != -1 && isSuitableForPutCard(cursorPoint)){
+                if (currentCard == -1){
+
+                }
+                else if (!isSuitableForPutCard(cursorPoint)){
+                    Entity card = cards.get(currentCard);
+                    temp_monster.removeFromWorld();
+                    card.setVisible(true);
+                }
+                else{
                     MonsterType type = (MonsterType) cards.get(currentCard).getType();
 
                     if((int)getd("waterMeter") >= type.getCost()){
@@ -293,13 +318,20 @@ public class HuluCRApp extends GameApplication {
                         );
                         
                         // 产生放置事件
-                        getGameWorld().removeEntity(card);
-                        getEventBus().fireEvent(new PutEvent(PutEvent.ANY, "LargeHulu", cursorPoint));
+                        card.removeFromWorld();
+                        temp_monster.removeFromWorld();
+                        System.out.println(type.getName());
+                        getEventBus().fireEvent(new PutEvent(PutEvent.SELF_PUT, "LargeHulu", cursorPoint));
                         
 
                     }
-                    
+                    else {
+                        Entity card = cards.get(currentCard);
+                        temp_monster.removeFromWorld();
+                        card.setVisible(true);
+                    }
                 }
+                
                 runOnce(this::updateCardPosition, Duration.millis(200));
                 
                 break;
@@ -344,11 +376,53 @@ public class HuluCRApp extends GameApplication {
     }
 
     private void onMonsterPut(PutEvent event){
-        System.out.println("monster");
+
         spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100));
 
         // 向server发送放置消息
         spawn("Fireball", event.getPoint());
-        
+        clientManager.putMonster(event.getMonsterName(),event.getPoint());
+    }
+
+    private void onEnemyPut(PutEvent event) {
+
+    }
+
+
+
+    // AStar
+    private AStarGrid grid;
+
+    public AStarGrid getGrid() {
+        return grid;
+    }
+
+    private void initGrid() {
+        grid = AStarGrid.fromWorld(getGameWorld(), HORIZONTAL_GRID_NUM, VERTICAL_GRID_NUM, CELL_WIDTH, CELL_HEIGHT, (type) -> {
+            if (type == HuluCRType.BLOCK){
+                return CellState.NOT_WALKABLE;
+            }
+                
+            return CellState.WALKABLE;
+        });
+        set("grid", grid);
+    }
+
+    private void initBlock() {
+        int HULUIMG_SIZE = 40;
+        spawn("Block", new SpawnData(208,16).put("height", 32).put("width", 932-208));
+        spawn("Block", new SpawnData(208,556-HULUIMG_SIZE).put("height", 32+HULUIMG_SIZE).put("width", 932-208));
+
+        spawn("Block", new SpawnData(208,390).put("height", 554-390).put("width", 20));
+        spawn("Block", new SpawnData(208,48).put("height", 554-390).put("width", 20));
+        spawn("Block", new SpawnData(188,188).put("height", 411-188).put("width", 20));
+
+        spawn("Block", new SpawnData(916-HULUIMG_SIZE,48).put("height", 554-390).put("width", 20+HULUIMG_SIZE));
+        spawn("Block", new SpawnData(916-HULUIMG_SIZE,390).put("height", 554-390).put("width", 20+HULUIMG_SIZE));
+        spawn("Block", new SpawnData(937-HULUIMG_SIZE,188).put("height", 411-188).put("width", 20+HULUIMG_SIZE));
+
+        spawn("Block", new SpawnData(552-HULUIMG_SIZE,20 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
+        spawn("Block", new SpawnData(552-HULUIMG_SIZE,480 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
+        spawn("Block", new SpawnData(552-HULUIMG_SIZE,167 - HULUIMG_SIZE).put("height", 262).put("width", 27+HULUIMG_SIZE));
     }
 }

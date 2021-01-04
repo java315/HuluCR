@@ -2,6 +2,7 @@ package nju.java315.client.game.network;
 
 import java.util.Arrays;
 
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.net.Connection;
 import com.almasb.fxgl.net.MessageHandler;
 import com.almasb.fxgl.net.Readers;
@@ -13,27 +14,36 @@ import org.slf4j.LoggerFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
+import javafx.geometry.Point2D;
+import nju.java315.client.game.event.PutEvent;
 import nju.java315.client.game.network.msg.GameMsgProtocol;
+import nju.java315.client.game.network.msg.GameMsgProtocol.PlayerPutResult.StepInfo;
 
 public class GameMsgHandler implements MessageHandler<byte[]> {
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
+
     @Override
     public void onReceive(Connection<byte[]> connection, byte[] msg) {
-        LOGGER.info("get server message : {}",Arrays.toString(msg));
-        
+        LOGGER.info("get server message : {}", Arrays.toString(msg));
+
         GeneratedMessageV3 cmd = decodeMessage(msg);
-        try{
+        try {
             if (cmd instanceof GameMsgProtocol.WhatRoomsResult) {
 
-            }
-            else if (cmd instanceof GameMsgProtocol.PlayerEntryResult) {
-                System.out.println("player enter");
-            }
-            else if (cmd instanceof GameMsgProtocol.PlayerReadyResult) {
-                System.out.println("player ready");
-            }
-            else if (cmd instanceof GameMsgProtocol.PlayerPutResult) {
+            } else if (cmd instanceof GameMsgProtocol.PlayerEntryResult) {
+                GameMsgProtocol.PlayerEntryResult result = (GameMsgProtocol.PlayerEntryResult) cmd;
+                int roomID = result.getRoomID();
+                LOGGER.info("success enter room {}", roomID);
+            } else if (cmd instanceof GameMsgProtocol.PlayerReadyResult) {
+                LOGGER.info("ready");
 
+            } else if (cmd instanceof GameMsgProtocol.PlayerPutResult) {
+                GameMsgProtocol.PlayerPutResult result = (GameMsgProtocol.PlayerPutResult) cmd;
+                StepInfo info = result.getStepInfo(1);
+                float x = info.getPosX();
+                float y = info.getPosY();
+                String monsterName = info.getCharacter();
+                FXGL.getEventBus().fireEvent(new PutEvent(PutEvent.ENEMY_PUT,monsterName,new Point2D(x,y)));
             }
             else if (cmd instanceof GameMsgProtocol.PlayerDieResult) {
 
