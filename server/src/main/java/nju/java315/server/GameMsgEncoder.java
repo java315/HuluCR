@@ -40,6 +40,8 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
                 msgCode = GameMsgProtocol.MsgCode.PLAYER_DIE_RESULT_VALUE;
             else if(msg instanceof GameMsgProtocol.PlayerLeaveResult)
                 msgCode = GameMsgProtocol.MsgCode.PLAYER_LEAVE_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerActiveResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_ACTIVE_RESULT_VALUE;
             else{
                 LOGGER.error(
                     "无法识别的消息类型，msgClass = {}",

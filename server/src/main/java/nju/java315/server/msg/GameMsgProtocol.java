@@ -71,6 +71,10 @@ public final class GameMsgProtocol {
      * <code>PLAYER_LEAVE_RESULT = 11;</code>
      */
     PLAYER_LEAVE_RESULT(11),
+    /**
+     * <code>PLAYER_ACTIVE_RESULT = 12;</code>
+     */
+    PLAYER_ACTIVE_RESULT(12),
     UNRECOGNIZED(-1),
     ;
 
@@ -122,6 +126,10 @@ public final class GameMsgProtocol {
      * <code>PLAYER_LEAVE_RESULT = 11;</code>
      */
     public static final int PLAYER_LEAVE_RESULT_VALUE = 11;
+    /**
+     * <code>PLAYER_ACTIVE_RESULT = 12;</code>
+     */
+    public static final int PLAYER_ACTIVE_RESULT_VALUE = 12;
 
 
     public final int getNumber() {
@@ -160,6 +168,7 @@ public final class GameMsgProtocol {
         case 9: return PLAYER_DIE_RESULT;
         case 10: return PLAYER_LEAVE_CMD;
         case 11: return PLAYER_LEAVE_RESULT;
+        case 12: return PLAYER_ACTIVE_RESULT;
         default: return null;
       }
     }
@@ -2178,16 +2187,6 @@ public final class GameMsgProtocol {
      * @return The roomID.
      */
     int getRoomID();
-
-    /**
-     * <pre>
-     * 用户id
-     * </pre>
-     *
-     * <code>uint32 playerID = 2;</code>
-     * @return The playerID.
-     */
-    int getPlayerID();
   }
   /**
    * <pre>
@@ -2245,11 +2244,6 @@ public final class GameMsgProtocol {
               roomID_ = input.readUInt32();
               break;
             }
-            case 16: {
-
-              playerID_ = input.readUInt32();
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -2297,21 +2291,6 @@ public final class GameMsgProtocol {
       return roomID_;
     }
 
-    public static final int PLAYERID_FIELD_NUMBER = 2;
-    private int playerID_;
-    /**
-     * <pre>
-     * 用户id
-     * </pre>
-     *
-     * <code>uint32 playerID = 2;</code>
-     * @return The playerID.
-     */
-    @java.lang.Override
-    public int getPlayerID() {
-      return playerID_;
-    }
-
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2329,9 +2308,6 @@ public final class GameMsgProtocol {
       if (roomID_ != 0) {
         output.writeUInt32(1, roomID_);
       }
-      if (playerID_ != 0) {
-        output.writeUInt32(2, playerID_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -2344,10 +2320,6 @@ public final class GameMsgProtocol {
       if (roomID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, roomID_);
-      }
-      if (playerID_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, playerID_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2366,8 +2338,6 @@ public final class GameMsgProtocol {
 
       if (getRoomID()
           != other.getRoomID()) return false;
-      if (getPlayerID()
-          != other.getPlayerID()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2381,8 +2351,6 @@ public final class GameMsgProtocol {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
       hash = (53 * hash) + getRoomID();
-      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
-      hash = (53 * hash) + getPlayerID();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2524,8 +2492,6 @@ public final class GameMsgProtocol {
         super.clear();
         roomID_ = 0;
 
-        playerID_ = 0;
-
         return this;
       }
 
@@ -2553,7 +2519,6 @@ public final class GameMsgProtocol {
       public GameMsgProtocol.PlayerEntryCmd buildPartial() {
         GameMsgProtocol.PlayerEntryCmd result = new GameMsgProtocol.PlayerEntryCmd(this);
         result.roomID_ = roomID_;
-        result.playerID_ = playerID_;
         onBuilt();
         return result;
       }
@@ -2604,9 +2569,6 @@ public final class GameMsgProtocol {
         if (other == GameMsgProtocol.PlayerEntryCmd.getDefaultInstance()) return this;
         if (other.getRoomID() != 0) {
           setRoomID(other.getRoomID());
-        }
-        if (other.getPlayerID() != 0) {
-          setPlayerID(other.getPlayerID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2679,49 +2641,6 @@ public final class GameMsgProtocol {
         onChanged();
         return this;
       }
-
-      private int playerID_ ;
-      /**
-       * <pre>
-       * 用户id
-       * </pre>
-       *
-       * <code>uint32 playerID = 2;</code>
-       * @return The playerID.
-       */
-      @java.lang.Override
-      public int getPlayerID() {
-        return playerID_;
-      }
-      /**
-       * <pre>
-       * 用户id
-       * </pre>
-       *
-       * <code>uint32 playerID = 2;</code>
-       * @param value The playerID to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPlayerID(int value) {
-        
-        playerID_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 用户id
-       * </pre>
-       *
-       * <code>uint32 playerID = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPlayerID() {
-        
-        playerID_ = 0;
-        onChanged();
-        return this;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2791,13 +2710,33 @@ public final class GameMsgProtocol {
 
     /**
      * <pre>
-     * 对手的id
+     * 加入玩家的 id
      * </pre>
      *
-     * <code>uint32 opponentID = 2;</code>
-     * @return The opponentID.
+     * <code>uint32 entryPlayerID = 2;</code>
+     * @return The entryPlayerID.
      */
-    int getOpponentID();
+    int getEntryPlayerID();
+
+    /**
+     * <pre>
+     * 房间中另一个人的id
+     * </pre>
+     *
+     * <code>uint32 enemyID = 3;</code>
+     * @return The enemyID.
+     */
+    int getEnemyID();
+
+    /**
+     * <pre>
+     *对手是否准备好
+     * </pre>
+     *
+     * <code>bool enemyIsReady = 4;</code>
+     * @return The enemyIsReady.
+     */
+    boolean getEnemyIsReady();
   }
   /**
    * <pre>
@@ -2855,7 +2794,17 @@ public final class GameMsgProtocol {
             }
             case 16: {
 
-              opponentID_ = input.readUInt32();
+              entryPlayerID_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+
+              enemyID_ = input.readUInt32();
+              break;
+            }
+            case 32: {
+
+              enemyIsReady_ = input.readBool();
               break;
             }
             default: {
@@ -2905,19 +2854,49 @@ public final class GameMsgProtocol {
       return roomID_;
     }
 
-    public static final int OPPONENTID_FIELD_NUMBER = 2;
-    private int opponentID_;
+    public static final int ENTRYPLAYERID_FIELD_NUMBER = 2;
+    private int entryPlayerID_;
     /**
      * <pre>
-     * 对手的id
+     * 加入玩家的 id
      * </pre>
      *
-     * <code>uint32 opponentID = 2;</code>
-     * @return The opponentID.
+     * <code>uint32 entryPlayerID = 2;</code>
+     * @return The entryPlayerID.
      */
     @java.lang.Override
-    public int getOpponentID() {
-      return opponentID_;
+    public int getEntryPlayerID() {
+      return entryPlayerID_;
+    }
+
+    public static final int ENEMYID_FIELD_NUMBER = 3;
+    private int enemyID_;
+    /**
+     * <pre>
+     * 房间中另一个人的id
+     * </pre>
+     *
+     * <code>uint32 enemyID = 3;</code>
+     * @return The enemyID.
+     */
+    @java.lang.Override
+    public int getEnemyID() {
+      return enemyID_;
+    }
+
+    public static final int ENEMYISREADY_FIELD_NUMBER = 4;
+    private boolean enemyIsReady_;
+    /**
+     * <pre>
+     *对手是否准备好
+     * </pre>
+     *
+     * <code>bool enemyIsReady = 4;</code>
+     * @return The enemyIsReady.
+     */
+    @java.lang.Override
+    public boolean getEnemyIsReady() {
+      return enemyIsReady_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2937,8 +2916,14 @@ public final class GameMsgProtocol {
       if (roomID_ != 0) {
         output.writeUInt32(1, roomID_);
       }
-      if (opponentID_ != 0) {
-        output.writeUInt32(2, opponentID_);
+      if (entryPlayerID_ != 0) {
+        output.writeUInt32(2, entryPlayerID_);
+      }
+      if (enemyID_ != 0) {
+        output.writeUInt32(3, enemyID_);
+      }
+      if (enemyIsReady_ != false) {
+        output.writeBool(4, enemyIsReady_);
       }
       unknownFields.writeTo(output);
     }
@@ -2953,9 +2938,17 @@ public final class GameMsgProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, roomID_);
       }
-      if (opponentID_ != 0) {
+      if (entryPlayerID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, opponentID_);
+          .computeUInt32Size(2, entryPlayerID_);
+      }
+      if (enemyID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(3, enemyID_);
+      }
+      if (enemyIsReady_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, enemyIsReady_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2974,8 +2967,12 @@ public final class GameMsgProtocol {
 
       if (getRoomID()
           != other.getRoomID()) return false;
-      if (getOpponentID()
-          != other.getOpponentID()) return false;
+      if (getEntryPlayerID()
+          != other.getEntryPlayerID()) return false;
+      if (getEnemyID()
+          != other.getEnemyID()) return false;
+      if (getEnemyIsReady()
+          != other.getEnemyIsReady()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2989,8 +2986,13 @@ public final class GameMsgProtocol {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ROOMID_FIELD_NUMBER;
       hash = (53 * hash) + getRoomID();
-      hash = (37 * hash) + OPPONENTID_FIELD_NUMBER;
-      hash = (53 * hash) + getOpponentID();
+      hash = (37 * hash) + ENTRYPLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getEntryPlayerID();
+      hash = (37 * hash) + ENEMYID_FIELD_NUMBER;
+      hash = (53 * hash) + getEnemyID();
+      hash = (37 * hash) + ENEMYISREADY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getEnemyIsReady());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3130,7 +3132,11 @@ public final class GameMsgProtocol {
         super.clear();
         roomID_ = 0;
 
-        opponentID_ = 0;
+        entryPlayerID_ = 0;
+
+        enemyID_ = 0;
+
+        enemyIsReady_ = false;
 
         return this;
       }
@@ -3159,7 +3165,9 @@ public final class GameMsgProtocol {
       public GameMsgProtocol.PlayerEntryResult buildPartial() {
         GameMsgProtocol.PlayerEntryResult result = new GameMsgProtocol.PlayerEntryResult(this);
         result.roomID_ = roomID_;
-        result.opponentID_ = opponentID_;
+        result.entryPlayerID_ = entryPlayerID_;
+        result.enemyID_ = enemyID_;
+        result.enemyIsReady_ = enemyIsReady_;
         onBuilt();
         return result;
       }
@@ -3211,8 +3219,14 @@ public final class GameMsgProtocol {
         if (other.getRoomID() != 0) {
           setRoomID(other.getRoomID());
         }
-        if (other.getOpponentID() != 0) {
-          setOpponentID(other.getOpponentID());
+        if (other.getEntryPlayerID() != 0) {
+          setEntryPlayerID(other.getEntryPlayerID());
+        }
+        if (other.getEnemyID() != 0) {
+          setEnemyID(other.getEnemyID());
+        }
+        if (other.getEnemyIsReady() != false) {
+          setEnemyIsReady(other.getEnemyIsReady());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3286,45 +3300,131 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int opponentID_ ;
+      private int entryPlayerID_ ;
       /**
        * <pre>
-       * 对手的id
+       * 加入玩家的 id
        * </pre>
        *
-       * <code>uint32 opponentID = 2;</code>
-       * @return The opponentID.
+       * <code>uint32 entryPlayerID = 2;</code>
+       * @return The entryPlayerID.
        */
       @java.lang.Override
-      public int getOpponentID() {
-        return opponentID_;
+      public int getEntryPlayerID() {
+        return entryPlayerID_;
       }
       /**
        * <pre>
-       * 对手的id
+       * 加入玩家的 id
        * </pre>
        *
-       * <code>uint32 opponentID = 2;</code>
-       * @param value The opponentID to set.
+       * <code>uint32 entryPlayerID = 2;</code>
+       * @param value The entryPlayerID to set.
        * @return This builder for chaining.
        */
-      public Builder setOpponentID(int value) {
+      public Builder setEntryPlayerID(int value) {
         
-        opponentID_ = value;
+        entryPlayerID_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * 对手的id
+       * 加入玩家的 id
        * </pre>
        *
-       * <code>uint32 opponentID = 2;</code>
+       * <code>uint32 entryPlayerID = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearOpponentID() {
+      public Builder clearEntryPlayerID() {
         
-        opponentID_ = 0;
+        entryPlayerID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int enemyID_ ;
+      /**
+       * <pre>
+       * 房间中另一个人的id
+       * </pre>
+       *
+       * <code>uint32 enemyID = 3;</code>
+       * @return The enemyID.
+       */
+      @java.lang.Override
+      public int getEnemyID() {
+        return enemyID_;
+      }
+      /**
+       * <pre>
+       * 房间中另一个人的id
+       * </pre>
+       *
+       * <code>uint32 enemyID = 3;</code>
+       * @param value The enemyID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnemyID(int value) {
+        
+        enemyID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 房间中另一个人的id
+       * </pre>
+       *
+       * <code>uint32 enemyID = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnemyID() {
+        
+        enemyID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean enemyIsReady_ ;
+      /**
+       * <pre>
+       *对手是否准备好
+       * </pre>
+       *
+       * <code>bool enemyIsReady = 4;</code>
+       * @return The enemyIsReady.
+       */
+      @java.lang.Override
+      public boolean getEnemyIsReady() {
+        return enemyIsReady_;
+      }
+      /**
+       * <pre>
+       *对手是否准备好
+       * </pre>
+       *
+       * <code>bool enemyIsReady = 4;</code>
+       * @param value The enemyIsReady to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnemyIsReady(boolean value) {
+        
+        enemyIsReady_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *对手是否准备好
+       * </pre>
+       *
+       * <code>bool enemyIsReady = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnemyIsReady() {
+        
+        enemyIsReady_ = false;
         onChanged();
         return this;
       }
@@ -4406,20 +4506,20 @@ public final class GameMsgProtocol {
      * 放置的位置 X
      * </pre>
      *
-     * <code>uint32 PosX = 1;</code>
+     * <code>float PosX = 1;</code>
      * @return The posX.
      */
-    int getPosX();
+    float getPosX();
 
     /**
      * <pre>
      * 放置的位置 Y
      * </pre>
      *
-     * <code>uint32 PosY = 2;</code>
+     * <code>float PosY = 2;</code>
      * @return The posY.
      */
-    int getPosY();
+    float getPosY();
 
     /**
      * <pre>
@@ -4493,14 +4593,14 @@ public final class GameMsgProtocol {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 13: {
 
-              posX_ = input.readUInt32();
+              posX_ = input.readFloat();
               break;
             }
-            case 16: {
+            case 21: {
 
-              posY_ = input.readUInt32();
+              posY_ = input.readFloat();
               break;
             }
             case 26: {
@@ -4542,32 +4642,32 @@ public final class GameMsgProtocol {
     }
 
     public static final int POSX_FIELD_NUMBER = 1;
-    private int posX_;
+    private float posX_;
     /**
      * <pre>
      * 放置的位置 X
      * </pre>
      *
-     * <code>uint32 PosX = 1;</code>
+     * <code>float PosX = 1;</code>
      * @return The posX.
      */
     @java.lang.Override
-    public int getPosX() {
+    public float getPosX() {
       return posX_;
     }
 
     public static final int POSY_FIELD_NUMBER = 2;
-    private int posY_;
+    private float posY_;
     /**
      * <pre>
      * 放置的位置 Y
      * </pre>
      *
-     * <code>uint32 PosY = 2;</code>
+     * <code>float PosY = 2;</code>
      * @return The posY.
      */
     @java.lang.Override
-    public int getPosY() {
+    public float getPosY() {
       return posY_;
     }
 
@@ -4631,11 +4731,11 @@ public final class GameMsgProtocol {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (posX_ != 0) {
-        output.writeUInt32(1, posX_);
+      if (posX_ != 0F) {
+        output.writeFloat(1, posX_);
       }
-      if (posY_ != 0) {
-        output.writeUInt32(2, posY_);
+      if (posY_ != 0F) {
+        output.writeFloat(2, posY_);
       }
       if (!getCharacterBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, character_);
@@ -4649,13 +4749,13 @@ public final class GameMsgProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (posX_ != 0) {
+      if (posX_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, posX_);
+          .computeFloatSize(1, posX_);
       }
-      if (posY_ != 0) {
+      if (posY_ != 0F) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, posY_);
+          .computeFloatSize(2, posY_);
       }
       if (!getCharacterBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, character_);
@@ -4675,10 +4775,12 @@ public final class GameMsgProtocol {
       }
       GameMsgProtocol.PlayerPutCmd other = (GameMsgProtocol.PlayerPutCmd) obj;
 
-      if (getPosX()
-          != other.getPosX()) return false;
-      if (getPosY()
-          != other.getPosY()) return false;
+      if (java.lang.Float.floatToIntBits(getPosX())
+          != java.lang.Float.floatToIntBits(
+              other.getPosX())) return false;
+      if (java.lang.Float.floatToIntBits(getPosY())
+          != java.lang.Float.floatToIntBits(
+              other.getPosY())) return false;
       if (!getCharacter()
           .equals(other.getCharacter())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -4693,9 +4795,11 @@ public final class GameMsgProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + POSX_FIELD_NUMBER;
-      hash = (53 * hash) + getPosX();
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getPosX());
       hash = (37 * hash) + POSY_FIELD_NUMBER;
-      hash = (53 * hash) + getPosY();
+      hash = (53 * hash) + java.lang.Float.floatToIntBits(
+          getPosY());
       hash = (37 * hash) + CHARACTER_FIELD_NUMBER;
       hash = (53 * hash) + getCharacter().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -4837,9 +4941,9 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        posX_ = 0;
+        posX_ = 0F;
 
-        posY_ = 0;
+        posY_ = 0F;
 
         character_ = "";
 
@@ -4920,10 +5024,10 @@ public final class GameMsgProtocol {
 
       public Builder mergeFrom(GameMsgProtocol.PlayerPutCmd other) {
         if (other == GameMsgProtocol.PlayerPutCmd.getDefaultInstance()) return this;
-        if (other.getPosX() != 0) {
+        if (other.getPosX() != 0F) {
           setPosX(other.getPosX());
         }
-        if (other.getPosY() != 0) {
+        if (other.getPosY() != 0F) {
           setPosY(other.getPosY());
         }
         if (!other.getCharacter().isEmpty()) {
@@ -4959,17 +5063,17 @@ public final class GameMsgProtocol {
         return this;
       }
 
-      private int posX_ ;
+      private float posX_ ;
       /**
        * <pre>
        * 放置的位置 X
        * </pre>
        *
-       * <code>uint32 PosX = 1;</code>
+       * <code>float PosX = 1;</code>
        * @return The posX.
        */
       @java.lang.Override
-      public int getPosX() {
+      public float getPosX() {
         return posX_;
       }
       /**
@@ -4977,11 +5081,11 @@ public final class GameMsgProtocol {
        * 放置的位置 X
        * </pre>
        *
-       * <code>uint32 PosX = 1;</code>
+       * <code>float PosX = 1;</code>
        * @param value The posX to set.
        * @return This builder for chaining.
        */
-      public Builder setPosX(int value) {
+      public Builder setPosX(float value) {
         
         posX_ = value;
         onChanged();
@@ -4992,27 +5096,27 @@ public final class GameMsgProtocol {
        * 放置的位置 X
        * </pre>
        *
-       * <code>uint32 PosX = 1;</code>
+       * <code>float PosX = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearPosX() {
         
-        posX_ = 0;
+        posX_ = 0F;
         onChanged();
         return this;
       }
 
-      private int posY_ ;
+      private float posY_ ;
       /**
        * <pre>
        * 放置的位置 Y
        * </pre>
        *
-       * <code>uint32 PosY = 2;</code>
+       * <code>float PosY = 2;</code>
        * @return The posY.
        */
       @java.lang.Override
-      public int getPosY() {
+      public float getPosY() {
         return posY_;
       }
       /**
@@ -5020,11 +5124,11 @@ public final class GameMsgProtocol {
        * 放置的位置 Y
        * </pre>
        *
-       * <code>uint32 PosY = 2;</code>
+       * <code>float PosY = 2;</code>
        * @param value The posY to set.
        * @return This builder for chaining.
        */
-      public Builder setPosY(int value) {
+      public Builder setPosY(float value) {
         
         posY_ = value;
         onChanged();
@@ -5035,12 +5139,12 @@ public final class GameMsgProtocol {
        * 放置的位置 Y
        * </pre>
        *
-       * <code>uint32 PosY = 2;</code>
+       * <code>float PosY = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearPosY() {
         
-        posY_ = 0;
+        posY_ = 0F;
         onChanged();
         return this;
       }
@@ -8028,1136 +8132,6 @@ public final class GameMsgProtocol {
 
   }
 
-  public interface PlayerStopCmdOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PlayerStopCmd)
-      com.google.protobuf.MessageOrBuilder {
-  }
-  /**
-   * <pre>
-   * 用户停驻
-   * /////////////////////////////////////////////////////////////////////
-   * 指令
-   * </pre>
-   *
-   * Protobuf type {@code PlayerStopCmd}
-   */
-  public static final class PlayerStopCmd extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:PlayerStopCmd)
-      PlayerStopCmdOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use PlayerStopCmd.newBuilder() to construct.
-    private PlayerStopCmd(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private PlayerStopCmd() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new PlayerStopCmd();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PlayerStopCmd(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_PlayerStopCmd_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_PlayerStopCmd_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.PlayerStopCmd.class, GameMsgProtocol.PlayerStopCmd.Builder.class);
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof GameMsgProtocol.PlayerStopCmd)) {
-        return super.equals(obj);
-      }
-      GameMsgProtocol.PlayerStopCmd other = (GameMsgProtocol.PlayerStopCmd) obj;
-
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static GameMsgProtocol.PlayerStopCmd parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(GameMsgProtocol.PlayerStopCmd prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * 用户停驻
-     * /////////////////////////////////////////////////////////////////////
-     * 指令
-     * </pre>
-     *
-     * Protobuf type {@code PlayerStopCmd}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PlayerStopCmd)
-        GameMsgProtocol.PlayerStopCmdOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_PlayerStopCmd_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_PlayerStopCmd_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.PlayerStopCmd.class, GameMsgProtocol.PlayerStopCmd.Builder.class);
-      }
-
-      // Construct using GameMsgProtocol.PlayerStopCmd.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_PlayerStopCmd_descriptor;
-      }
-
-      @java.lang.Override
-      public GameMsgProtocol.PlayerStopCmd getDefaultInstanceForType() {
-        return GameMsgProtocol.PlayerStopCmd.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public GameMsgProtocol.PlayerStopCmd build() {
-        GameMsgProtocol.PlayerStopCmd result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public GameMsgProtocol.PlayerStopCmd buildPartial() {
-        GameMsgProtocol.PlayerStopCmd result = new GameMsgProtocol.PlayerStopCmd(this);
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.PlayerStopCmd) {
-          return mergeFrom((GameMsgProtocol.PlayerStopCmd)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(GameMsgProtocol.PlayerStopCmd other) {
-        if (other == GameMsgProtocol.PlayerStopCmd.getDefaultInstance()) return this;
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.PlayerStopCmd parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.PlayerStopCmd) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:PlayerStopCmd)
-    }
-
-    // @@protoc_insertion_point(class_scope:PlayerStopCmd)
-    private static final GameMsgProtocol.PlayerStopCmd DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerStopCmd();
-    }
-
-    public static GameMsgProtocol.PlayerStopCmd getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<PlayerStopCmd>
-        PARSER = new com.google.protobuf.AbstractParser<PlayerStopCmd>() {
-      @java.lang.Override
-      public PlayerStopCmd parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PlayerStopCmd(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<PlayerStopCmd> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PlayerStopCmd> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public GameMsgProtocol.PlayerStopCmd getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface PlayerStopResultOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PlayerStopResult)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     * 停驻用户 ID
-     * </pre>
-     *
-     * <code>uint32 stopPlayerID = 1;</code>
-     * @return The stopPlayerID.
-     */
-    int getStopPlayerID();
-
-    /**
-     * <pre>
-     * 停驻在位置 X
-     * </pre>
-     *
-     * <code>float stopAtPosX = 2;</code>
-     * @return The stopAtPosX.
-     */
-    float getStopAtPosX();
-
-    /**
-     * <pre>
-     * 停驻在位置 Y
-     * </pre>
-     *
-     * <code>float stopAtPosY = 3;</code>
-     * @return The stopAtPosY.
-     */
-    float getStopAtPosY();
-  }
-  /**
-   * <pre>
-   * 结果
-   * </pre>
-   *
-   * Protobuf type {@code PlayerStopResult}
-   */
-  public static final class PlayerStopResult extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:PlayerStopResult)
-      PlayerStopResultOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use PlayerStopResult.newBuilder() to construct.
-    private PlayerStopResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private PlayerStopResult() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new PlayerStopResult();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PlayerStopResult(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-
-              stopPlayerID_ = input.readUInt32();
-              break;
-            }
-            case 21: {
-
-              stopAtPosX_ = input.readFloat();
-              break;
-            }
-            case 29: {
-
-              stopAtPosY_ = input.readFloat();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return GameMsgProtocol.internal_static_PlayerStopResult_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return GameMsgProtocol.internal_static_PlayerStopResult_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              GameMsgProtocol.PlayerStopResult.class, GameMsgProtocol.PlayerStopResult.Builder.class);
-    }
-
-    public static final int STOPPLAYERID_FIELD_NUMBER = 1;
-    private int stopPlayerID_;
-    /**
-     * <pre>
-     * 停驻用户 ID
-     * </pre>
-     *
-     * <code>uint32 stopPlayerID = 1;</code>
-     * @return The stopPlayerID.
-     */
-    @java.lang.Override
-    public int getStopPlayerID() {
-      return stopPlayerID_;
-    }
-
-    public static final int STOPATPOSX_FIELD_NUMBER = 2;
-    private float stopAtPosX_;
-    /**
-     * <pre>
-     * 停驻在位置 X
-     * </pre>
-     *
-     * <code>float stopAtPosX = 2;</code>
-     * @return The stopAtPosX.
-     */
-    @java.lang.Override
-    public float getStopAtPosX() {
-      return stopAtPosX_;
-    }
-
-    public static final int STOPATPOSY_FIELD_NUMBER = 3;
-    private float stopAtPosY_;
-    /**
-     * <pre>
-     * 停驻在位置 Y
-     * </pre>
-     *
-     * <code>float stopAtPosY = 3;</code>
-     * @return The stopAtPosY.
-     */
-    @java.lang.Override
-    public float getStopAtPosY() {
-      return stopAtPosY_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (stopPlayerID_ != 0) {
-        output.writeUInt32(1, stopPlayerID_);
-      }
-      if (stopAtPosX_ != 0F) {
-        output.writeFloat(2, stopAtPosX_);
-      }
-      if (stopAtPosY_ != 0F) {
-        output.writeFloat(3, stopAtPosY_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (stopPlayerID_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, stopPlayerID_);
-      }
-      if (stopAtPosX_ != 0F) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, stopAtPosX_);
-      }
-      if (stopAtPosY_ != 0F) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, stopAtPosY_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof GameMsgProtocol.PlayerStopResult)) {
-        return super.equals(obj);
-      }
-      GameMsgProtocol.PlayerStopResult other = (GameMsgProtocol.PlayerStopResult) obj;
-
-      if (getStopPlayerID()
-          != other.getStopPlayerID()) return false;
-      if (java.lang.Float.floatToIntBits(getStopAtPosX())
-          != java.lang.Float.floatToIntBits(
-              other.getStopAtPosX())) return false;
-      if (java.lang.Float.floatToIntBits(getStopAtPosY())
-          != java.lang.Float.floatToIntBits(
-              other.getStopAtPosY())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + STOPPLAYERID_FIELD_NUMBER;
-      hash = (53 * hash) + getStopPlayerID();
-      hash = (37 * hash) + STOPATPOSX_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getStopAtPosX());
-      hash = (37 * hash) + STOPATPOSY_FIELD_NUMBER;
-      hash = (53 * hash) + java.lang.Float.floatToIntBits(
-          getStopAtPosY());
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static GameMsgProtocol.PlayerStopResult parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(GameMsgProtocol.PlayerStopResult prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * 结果
-     * </pre>
-     *
-     * Protobuf type {@code PlayerStopResult}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PlayerStopResult)
-        GameMsgProtocol.PlayerStopResultOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return GameMsgProtocol.internal_static_PlayerStopResult_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return GameMsgProtocol.internal_static_PlayerStopResult_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                GameMsgProtocol.PlayerStopResult.class, GameMsgProtocol.PlayerStopResult.Builder.class);
-      }
-
-      // Construct using GameMsgProtocol.PlayerStopResult.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        stopPlayerID_ = 0;
-
-        stopAtPosX_ = 0F;
-
-        stopAtPosY_ = 0F;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return GameMsgProtocol.internal_static_PlayerStopResult_descriptor;
-      }
-
-      @java.lang.Override
-      public GameMsgProtocol.PlayerStopResult getDefaultInstanceForType() {
-        return GameMsgProtocol.PlayerStopResult.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public GameMsgProtocol.PlayerStopResult build() {
-        GameMsgProtocol.PlayerStopResult result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public GameMsgProtocol.PlayerStopResult buildPartial() {
-        GameMsgProtocol.PlayerStopResult result = new GameMsgProtocol.PlayerStopResult(this);
-        result.stopPlayerID_ = stopPlayerID_;
-        result.stopAtPosX_ = stopAtPosX_;
-        result.stopAtPosY_ = stopAtPosY_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GameMsgProtocol.PlayerStopResult) {
-          return mergeFrom((GameMsgProtocol.PlayerStopResult)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(GameMsgProtocol.PlayerStopResult other) {
-        if (other == GameMsgProtocol.PlayerStopResult.getDefaultInstance()) return this;
-        if (other.getStopPlayerID() != 0) {
-          setStopPlayerID(other.getStopPlayerID());
-        }
-        if (other.getStopAtPosX() != 0F) {
-          setStopAtPosX(other.getStopAtPosX());
-        }
-        if (other.getStopAtPosY() != 0F) {
-          setStopAtPosY(other.getStopAtPosY());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        GameMsgProtocol.PlayerStopResult parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GameMsgProtocol.PlayerStopResult) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int stopPlayerID_ ;
-      /**
-       * <pre>
-       * 停驻用户 ID
-       * </pre>
-       *
-       * <code>uint32 stopPlayerID = 1;</code>
-       * @return The stopPlayerID.
-       */
-      @java.lang.Override
-      public int getStopPlayerID() {
-        return stopPlayerID_;
-      }
-      /**
-       * <pre>
-       * 停驻用户 ID
-       * </pre>
-       *
-       * <code>uint32 stopPlayerID = 1;</code>
-       * @param value The stopPlayerID to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStopPlayerID(int value) {
-        
-        stopPlayerID_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 停驻用户 ID
-       * </pre>
-       *
-       * <code>uint32 stopPlayerID = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStopPlayerID() {
-        
-        stopPlayerID_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float stopAtPosX_ ;
-      /**
-       * <pre>
-       * 停驻在位置 X
-       * </pre>
-       *
-       * <code>float stopAtPosX = 2;</code>
-       * @return The stopAtPosX.
-       */
-      @java.lang.Override
-      public float getStopAtPosX() {
-        return stopAtPosX_;
-      }
-      /**
-       * <pre>
-       * 停驻在位置 X
-       * </pre>
-       *
-       * <code>float stopAtPosX = 2;</code>
-       * @param value The stopAtPosX to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStopAtPosX(float value) {
-        
-        stopAtPosX_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 停驻在位置 X
-       * </pre>
-       *
-       * <code>float stopAtPosX = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStopAtPosX() {
-        
-        stopAtPosX_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      private float stopAtPosY_ ;
-      /**
-       * <pre>
-       * 停驻在位置 Y
-       * </pre>
-       *
-       * <code>float stopAtPosY = 3;</code>
-       * @return The stopAtPosY.
-       */
-      @java.lang.Override
-      public float getStopAtPosY() {
-        return stopAtPosY_;
-      }
-      /**
-       * <pre>
-       * 停驻在位置 Y
-       * </pre>
-       *
-       * <code>float stopAtPosY = 3;</code>
-       * @param value The stopAtPosY to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStopAtPosY(float value) {
-        
-        stopAtPosY_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       * 停驻在位置 Y
-       * </pre>
-       *
-       * <code>float stopAtPosY = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStopAtPosY() {
-        
-        stopAtPosY_ = 0F;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:PlayerStopResult)
-    }
-
-    // @@protoc_insertion_point(class_scope:PlayerStopResult)
-    private static final GameMsgProtocol.PlayerStopResult DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerStopResult();
-    }
-
-    public static GameMsgProtocol.PlayerStopResult getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<PlayerStopResult>
-        PARSER = new com.google.protobuf.AbstractParser<PlayerStopResult>() {
-      @java.lang.Override
-      public PlayerStopResult parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PlayerStopResult(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<PlayerStopResult> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PlayerStopResult> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public GameMsgProtocol.PlayerStopResult getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface PlayerLeaveCmdOrBuilder extends
       // @@protoc_insertion_point(interface_extends:PlayerLeaveCmd)
       com.google.protobuf.MessageOrBuilder {
@@ -10104,6 +9078,522 @@ public final class GameMsgProtocol {
 
   }
 
+  public interface PlayerActiveResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:PlayerActiveResult)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * 分配给用户的 id
+     * </pre>
+     *
+     * <code>uint32 playerID = 1;</code>
+     * @return The playerID.
+     */
+    int getPlayerID();
+  }
+  /**
+   * <pre>
+   * 用户与服务器建立起连接时，由服务器为其分配id
+   * </pre>
+   *
+   * Protobuf type {@code PlayerActiveResult}
+   */
+  public static final class PlayerActiveResult extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:PlayerActiveResult)
+      PlayerActiveResultOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PlayerActiveResult.newBuilder() to construct.
+    private PlayerActiveResult(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PlayerActiveResult() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PlayerActiveResult();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PlayerActiveResult(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              playerID_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return GameMsgProtocol.internal_static_PlayerActiveResult_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return GameMsgProtocol.internal_static_PlayerActiveResult_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              GameMsgProtocol.PlayerActiveResult.class, GameMsgProtocol.PlayerActiveResult.Builder.class);
+    }
+
+    public static final int PLAYERID_FIELD_NUMBER = 1;
+    private int playerID_;
+    /**
+     * <pre>
+     * 分配给用户的 id
+     * </pre>
+     *
+     * <code>uint32 playerID = 1;</code>
+     * @return The playerID.
+     */
+    @java.lang.Override
+    public int getPlayerID() {
+      return playerID_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (playerID_ != 0) {
+        output.writeUInt32(1, playerID_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (playerID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, playerID_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof GameMsgProtocol.PlayerActiveResult)) {
+        return super.equals(obj);
+      }
+      GameMsgProtocol.PlayerActiveResult other = (GameMsgProtocol.PlayerActiveResult) obj;
+
+      if (getPlayerID()
+          != other.getPlayerID()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+      hash = (53 * hash) + getPlayerID();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static GameMsgProtocol.PlayerActiveResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(GameMsgProtocol.PlayerActiveResult prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 用户与服务器建立起连接时，由服务器为其分配id
+     * </pre>
+     *
+     * Protobuf type {@code PlayerActiveResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:PlayerActiveResult)
+        GameMsgProtocol.PlayerActiveResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return GameMsgProtocol.internal_static_PlayerActiveResult_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return GameMsgProtocol.internal_static_PlayerActiveResult_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                GameMsgProtocol.PlayerActiveResult.class, GameMsgProtocol.PlayerActiveResult.Builder.class);
+      }
+
+      // Construct using GameMsgProtocol.PlayerActiveResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        playerID_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return GameMsgProtocol.internal_static_PlayerActiveResult_descriptor;
+      }
+
+      @java.lang.Override
+      public GameMsgProtocol.PlayerActiveResult getDefaultInstanceForType() {
+        return GameMsgProtocol.PlayerActiveResult.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public GameMsgProtocol.PlayerActiveResult build() {
+        GameMsgProtocol.PlayerActiveResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public GameMsgProtocol.PlayerActiveResult buildPartial() {
+        GameMsgProtocol.PlayerActiveResult result = new GameMsgProtocol.PlayerActiveResult(this);
+        result.playerID_ = playerID_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof GameMsgProtocol.PlayerActiveResult) {
+          return mergeFrom((GameMsgProtocol.PlayerActiveResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(GameMsgProtocol.PlayerActiveResult other) {
+        if (other == GameMsgProtocol.PlayerActiveResult.getDefaultInstance()) return this;
+        if (other.getPlayerID() != 0) {
+          setPlayerID(other.getPlayerID());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        GameMsgProtocol.PlayerActiveResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (GameMsgProtocol.PlayerActiveResult) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int playerID_ ;
+      /**
+       * <pre>
+       * 分配给用户的 id
+       * </pre>
+       *
+       * <code>uint32 playerID = 1;</code>
+       * @return The playerID.
+       */
+      @java.lang.Override
+      public int getPlayerID() {
+        return playerID_;
+      }
+      /**
+       * <pre>
+       * 分配给用户的 id
+       * </pre>
+       *
+       * <code>uint32 playerID = 1;</code>
+       * @param value The playerID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPlayerID(int value) {
+        
+        playerID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 分配给用户的 id
+       * </pre>
+       *
+       * <code>uint32 playerID = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPlayerID() {
+        
+        playerID_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:PlayerActiveResult)
+    }
+
+    // @@protoc_insertion_point(class_scope:PlayerActiveResult)
+    private static final GameMsgProtocol.PlayerActiveResult DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new GameMsgProtocol.PlayerActiveResult();
+    }
+
+    public static GameMsgProtocol.PlayerActiveResult getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PlayerActiveResult>
+        PARSER = new com.google.protobuf.AbstractParser<PlayerActiveResult>() {
+      @java.lang.Override
+      public PlayerActiveResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PlayerActiveResult(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PlayerActiveResult> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PlayerActiveResult> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public GameMsgProtocol.PlayerActiveResult getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_WhatRoomsCmd_descriptor;
   private static final 
@@ -10165,16 +9655,6 @@ public final class GameMsgProtocol {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PlayerDieResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PlayerStopCmd_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PlayerStopCmd_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PlayerStopResult_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PlayerStopResult_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_PlayerLeaveCmd_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -10184,6 +9664,11 @@ public final class GameMsgProtocol {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_PlayerLeaveResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_PlayerActiveResult_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_PlayerActiveResult_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -10196,30 +9681,30 @@ public final class GameMsgProtocol {
       "\n\025GameMsgProtocol.proto\"\016\n\014WhatRoomsCmd\"" +
       "m\n\017WhatRoomsResult\022+\n\010roomInfo\030\001 \003(\0132\031.W" +
       "hatRoomsResult.RoomInfo\032-\n\010RoomInfo\022\016\n\006r" +
-      "oomID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\"2\n\016Player" +
-      "EntryCmd\022\016\n\006roomID\030\001 \001(\r\022\020\n\010playerID\030\002 \001" +
-      "(\r\"7\n\021PlayerEntryResult\022\016\n\006roomID\030\001 \001(\r\022" +
-      "\022\n\nopponentID\030\002 \001(\r\"\020\n\016PlayerReadyCmd\"8\n" +
-      "\021PlayerReadyResult\022\020\n\010playerID\030\001 \001(\r\022\021\n\t" +
-      "roomState\030\002 \001(\r\"=\n\014PlayerPutCmd\022\014\n\004PosX\030" +
-      "\001 \001(\r\022\014\n\004PosY\030\002 \001(\r\022\021\n\tcharacter\030\003 \001(\t\"\232" +
-      "\001\n\017PlayerPutResult\022+\n\010stepInfo\030\001 \003(\0132\031.P" +
-      "layerPutResult.StepInfo\032Z\n\010StepInfo\022\r\n\005m" +
-      "sgID\030\001 \001(\r\022\020\n\010playerID\030\002 \001(\r\022\014\n\004PosX\030\003 \001" +
-      "(\002\022\014\n\004PosY\030\004 \001(\002\022\021\n\tcharacter\030\005 \001(\t\"\016\n\014P" +
-      "layerDieCmd\"&\n\017PlayerDieResult\022\023\n\013diePla" +
-      "yerID\030\001 \001(\r\"\017\n\rPlayerStopCmd\"P\n\020PlayerSt" +
-      "opResult\022\024\n\014stopPlayerID\030\001 \001(\r\022\022\n\nstopAt" +
-      "PosX\030\002 \001(\002\022\022\n\nstopAtPosY\030\003 \001(\002\"\020\n\016Player" +
-      "LeaveCmd\"*\n\021PlayerLeaveResult\022\025\n\rleavePl" +
-      "ayerID\030\001 \001(\r*\227\002\n\007MsgCode\022\022\n\016WHAT_ROOMS_C" +
-      "MD\020\000\022\025\n\021WHAT_ROOMS_RESULT\020\001\022\024\n\020PLAYER_EN" +
-      "TRY_CMD\020\002\022\027\n\023PLAYER_ENTRY_RESULT\020\003\022\024\n\020PL" +
-      "AYER_READY_CMD\020\004\022\027\n\023PLAYER_READY_RESULT\020" +
-      "\005\022\022\n\016PLAYER_PUT_CMD\020\006\022\025\n\021PLAYER_PUT_RESU" +
-      "LT\020\007\022\022\n\016PLAYER_DIE_CMD\020\010\022\025\n\021PLAYER_DIE_R" +
-      "ESULT\020\t\022\024\n\020PLAYER_LEAVE_CMD\020\n\022\027\n\023PLAYER_" +
-      "LEAVE_RESULT\020\013b\006proto3"
+      "oomID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\" \n\016Player" +
+      "EntryCmd\022\016\n\006roomID\030\001 \001(\r\"a\n\021PlayerEntryR" +
+      "esult\022\016\n\006roomID\030\001 \001(\r\022\025\n\rentryPlayerID\030\002" +
+      " \001(\r\022\017\n\007enemyID\030\003 \001(\r\022\024\n\014enemyIsReady\030\004 " +
+      "\001(\010\"\020\n\016PlayerReadyCmd\"8\n\021PlayerReadyResu" +
+      "lt\022\020\n\010playerID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\"" +
+      "=\n\014PlayerPutCmd\022\014\n\004PosX\030\001 \001(\002\022\014\n\004PosY\030\002 " +
+      "\001(\002\022\021\n\tcharacter\030\003 \001(\t\"\232\001\n\017PlayerPutResu" +
+      "lt\022+\n\010stepInfo\030\001 \003(\0132\031.PlayerPutResult.S" +
+      "tepInfo\032Z\n\010StepInfo\022\r\n\005msgID\030\001 \001(\r\022\020\n\010pl" +
+      "ayerID\030\002 \001(\r\022\014\n\004PosX\030\003 \001(\002\022\014\n\004PosY\030\004 \001(\002" +
+      "\022\021\n\tcharacter\030\005 \001(\t\"\016\n\014PlayerDieCmd\"&\n\017P" +
+      "layerDieResult\022\023\n\013diePlayerID\030\001 \001(\r\"\020\n\016P" +
+      "layerLeaveCmd\"*\n\021PlayerLeaveResult\022\025\n\rle" +
+      "avePlayerID\030\001 \001(\r\"&\n\022PlayerActiveResult\022" +
+      "\020\n\010playerID\030\001 \001(\r*\261\002\n\007MsgCode\022\022\n\016WHAT_RO" +
+      "OMS_CMD\020\000\022\025\n\021WHAT_ROOMS_RESULT\020\001\022\024\n\020PLAY" +
+      "ER_ENTRY_CMD\020\002\022\027\n\023PLAYER_ENTRY_RESULT\020\003\022" +
+      "\024\n\020PLAYER_READY_CMD\020\004\022\027\n\023PLAYER_READY_RE" +
+      "SULT\020\005\022\022\n\016PLAYER_PUT_CMD\020\006\022\025\n\021PLAYER_PUT" +
+      "_RESULT\020\007\022\022\n\016PLAYER_DIE_CMD\020\010\022\025\n\021PLAYER_" +
+      "DIE_RESULT\020\t\022\024\n\020PLAYER_LEAVE_CMD\020\n\022\027\n\023PL" +
+      "AYER_LEAVE_RESULT\020\013\022\030\n\024PLAYER_ACTIVE_RES" +
+      "ULT\020\014b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10248,13 +9733,13 @@ public final class GameMsgProtocol {
     internal_static_PlayerEntryCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerEntryCmd_descriptor,
-        new java.lang.String[] { "RoomID", "PlayerID", });
+        new java.lang.String[] { "RoomID", });
     internal_static_PlayerEntryResult_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_PlayerEntryResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerEntryResult_descriptor,
-        new java.lang.String[] { "RoomID", "OpponentID", });
+        new java.lang.String[] { "RoomID", "EntryPlayerID", "EnemyID", "EnemyIsReady", });
     internal_static_PlayerReadyCmd_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_PlayerReadyCmd_fieldAccessorTable = new
@@ -10297,30 +9782,24 @@ public final class GameMsgProtocol {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerDieResult_descriptor,
         new java.lang.String[] { "DiePlayerID", });
-    internal_static_PlayerStopCmd_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_PlayerStopCmd_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PlayerStopCmd_descriptor,
-        new java.lang.String[] { });
-    internal_static_PlayerStopResult_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_PlayerStopResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PlayerStopResult_descriptor,
-        new java.lang.String[] { "StopPlayerID", "StopAtPosX", "StopAtPosY", });
     internal_static_PlayerLeaveCmd_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_PlayerLeaveCmd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerLeaveCmd_descriptor,
         new java.lang.String[] { });
     internal_static_PlayerLeaveResult_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_PlayerLeaveResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerLeaveResult_descriptor,
         new java.lang.String[] { "LeavePlayerID", });
+    internal_static_PlayerActiveResult_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_PlayerActiveResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_PlayerActiveResult_descriptor,
+        new java.lang.String[] { "PlayerID", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

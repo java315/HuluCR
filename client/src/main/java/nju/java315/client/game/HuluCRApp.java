@@ -21,6 +21,9 @@ import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.ui.UI;
 import com.almasb.fxgl.ui.UIController;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javafx.beans.binding.StringBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Point2D;
@@ -29,9 +32,12 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import nju.java315.client.game.components.PlayerComponent;
+import nju.java315.client.game.event.EntryResultEvent;
 import nju.java315.client.game.event.PutEvent;
+import nju.java315.client.game.event.ReadyEvent;
 import nju.java315.client.game.type.MonsterType;
 import nju.java315.client.game.type.CursorEventType;
+import nju.java315.client.game.type.EntityType;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static nju.java315.client.game.Config.*;
@@ -43,24 +49,28 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.Random;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 interface randomMonster {
     MonsterType getRandomMonster();
 }
 
 public class HuluCRApp extends GameApplication {
-
+    static private final Logger LOGGER = LoggerFactory.getLogger(HuluCRApp.class);
     private HuluCRController uiController;
 
     private static Random rand = new Random(47);
+
+    private boolean playerIsReady = false;
+    private boolean enemyIsReady = false;
 
     // 闭包，获得随机的卡片
     static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand
             .nextInt(MonsterType.class.getEnumConstants().length)];
 
     List<Entity> cards = new ArrayList<>();
-
-    int cardX = 50;
-    int[] cardY = { 240, 325, 410, 495, 600 };
 
     // 以下变量用于选卡操作
     int currentCard = -1;
@@ -118,7 +128,7 @@ public class HuluCRApp extends GameApplication {
         input.addAction(putCard, MouseButton.PRIMARY);
     }
 
-    private Entity player;
+    // private Entity player;
     // private PlayerComponent playerComponent;
 
     // 初始化事件监听和处理
@@ -127,6 +137,10 @@ public class HuluCRApp extends GameApplication {
         // 事件相关
         onEvent(PutEvent.SELF_PUT, this::onMonsterPut);
         onEvent(PutEvent.ENEMY_PUT, this::onEnemyPut);
+        onEvent(ReadyEvent.SELF_READY, this::onSelfReady);
+        onEvent(ReadyEvent.ENEMY_READY, this::onEnemyReady);
+        onEvent(EntryResultEvent.SELF_ENTRY_RESULT, this::onSelfEntryResult);
+        onEvent(EntryResultEvent.ENEMY_ENTRY_RESULT, this::onEnemyEntryResult);
     }
 
     // 建立映射表
@@ -137,6 +151,11 @@ public class HuluCRApp extends GameApplication {
         vars.put("downTowerLives", CHILD_TOWER_LIVES);
         vars.put("mainTowerLives", MAIN_TOWER_LIVES);
         vars.put("waterMeter", WATER_INIT_COUNT);
+        vars.put("roomID", -1);
+        vars.put("playerID", -1);
+        vars.put("enemyID", -1);
+        // vars.put("playerIsReady", false);
+        // vars.put("enemyIsReady", false);
         vars.put("min", 0);
         vars.put("sec", 0);
     }
@@ -155,48 +174,11 @@ public class HuluCRApp extends GameApplication {
         initBlock();
         initGrid();
 
-        //圣水自动增加
-        getGameTimer().runAtInterval(()->{
-            if(getd("waterMeter") < WATER_MAX_COUNT){
-                inc("waterMeter", 1 / WATER_UP_STEP);
-                if(getd("waterMeter") > WATER_MAX_COUNT)
-                    set("waterMeter", WATER_MAX_COUNT);
-            }
-        }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
-
-        //初始化卡片栏
-        for(int i = 0;i < 4; i++){
-            MonsterType temp = randomMonster.getRandomMonster();
-
-            cards.add(
-                spawn("Card", new SpawnData(cardX, cardY[i]).put("type", temp))
-            );
-        }
-
-        //计时器
-        getGameTimer().runAtInterval(()->{
-            inc("sec", 1);
-            if(geti("sec")>=60){
-                inc("min", 1);
-                set("sec", 0);
-            }
-            String minValue, secValue;
-            if(geti("min") < 10)
-                minValue = "0" + String.valueOf(geti("min"));
-            else
-                minValue = String.valueOf(geti("min"));
-
-            if(geti("sec") < 10)
-                secValue = "0" + String.valueOf(geti("sec"));
-            else
-                secValue = String.valueOf(geti("sec"));
-
-            uiController.getTimeLabel().setText(minValue + ":" + secValue);
-        }, Duration.seconds(1));
+        spawn("ReadyButton", new SpawnData(Config.READY_BUTTON_X, Config.READY_BUTTON_Y));
 
         spawn("Background");
 
-        spawnPlayer();
+        //spawnPlayer();
     }
 
     // 初始化物理环境
@@ -208,13 +190,7 @@ public class HuluCRApp extends GameApplication {
     // 初始化ui
     @Override
     protected void initUI() {
-        uiController = new HuluCRController(getGameScene());
 
-        UI ui = getAssetLoader().loadUI(Asset.FXML_MAIN_UI, uiController);
-
-        uiController.getWaterMeter().currentValueProperty().bind(getdp("waterMeter"));
-
-        getGameScene().addUI(ui);
     }
 
     private boolean runningFirstTime = true;
@@ -223,16 +199,12 @@ public class HuluCRApp extends GameApplication {
     protected void onUpdate(double tpf) {
         super.onUpdate(tpf);
         if(runningFirstTime) {
-            
-            getDialogService().showInputBox("Please input your room id", answer -> {
+            getDialogService().showInputBox("请输入房间号", answer -> {
                 System.out.println("room id: " + answer);
                 // send room id to server
                 clientManager.enterRoom(Integer.parseInt(answer));
 
-                
                 runOnce(this::stopLoading, Duration.seconds(2.0));
-                
-                
 
                 runningFirstTime = false;
                 gameLoading = true;
@@ -251,9 +223,13 @@ public class HuluCRApp extends GameApplication {
     private Entity temp_monster;
     public void dealWithCursorBegin(Point2D cursorPoint){
         int x = (int)cursorPoint.getX(), y = (int)cursorPoint.getY();
-        if(x >= cardX && x <= cardX + 73){
+        if( x >= Config.READY_BUTTON_X && x <= (Config.READY_BUTTON_X + 120)
+                && y >= Config.READY_BUTTON_Y && y <= (Config.READY_BUTTON_Y + 60)){
+            cursorEventType = CursorEventType.PLAYER_READY;
+        }
+        else if(x >= Config.CARD_X && x <= Config.CARD_X + 73){
             for(int i = 0;i < 4;i++){
-                if(y >= cardY[i] && y <= cardY[i] + 73){
+                if(y >= Config.CARD_Y[i] && y <= Config.CARD_Y[i] + 73){
                     currentCard = i;
                     lastCursorPoint = cursorPoint;
                     cursorEventType = CursorEventType.PUT_CARD;
@@ -261,7 +237,7 @@ public class HuluCRApp extends GameApplication {
                     MonsterType type = (MonsterType)card.getType();
                     //temp_monster = spawn(type.getName(), cursorPoint);
                     temp_monster = spawn("FakeMonster", new SpawnData(cursorPoint).put("type", type));
-                    
+
                     card.setVisible(false);
                     break;
                 }
@@ -272,7 +248,7 @@ public class HuluCRApp extends GameApplication {
     public void dealWithCursor(Point2D cursorPoint){
         switch(cursorEventType){
             case PLAYER_READY:
-                break; 
+                break;
             case PUT_CARD:
                 if(currentCard != -1){
                     //Entity card = cards.get(currentCard);
@@ -280,7 +256,7 @@ public class HuluCRApp extends GameApplication {
                     double dy = (int)(cursorPoint.getY() - lastCursorPoint.getY());
                     temp_monster.translate(dx, dy);
                     //card.translate(dx, dy);
-                    
+
                     lastCursorPoint = cursorPoint;
                 }
                 break;
@@ -292,8 +268,13 @@ public class HuluCRApp extends GameApplication {
     }
 
     public void dealWithCursorEnd(Point2D cursorPoint){
+        int x = (int)cursorPoint.getX(), y = (int)cursorPoint.getY();
         switch(cursorEventType){
             case PLAYER_READY:
+                if( x >= Config.READY_BUTTON_X && x <= (Config.READY_BUTTON_X + 120)
+                        && y >= Config.READY_BUTTON_Y && y <= (Config.READY_BUTTON_Y + 60)){
+                    clientManager.ready();
+                }
                 break;
             case PUT_CARD:
                 if (currentCard == -1){
@@ -314,15 +295,14 @@ public class HuluCRApp extends GameApplication {
 
                         MonsterType temp = randomMonster.getRandomMonster();
                         cards.add(
-                            spawn("Card", new SpawnData(cardX, cardY[4]).put("type", temp))
+                            spawn("Card", new SpawnData(Config.CARD_X, Config.CARD_Y[4]).put("type", temp))
                         );
-                        
+
                         // 产生放置事件
                         card.removeFromWorld();
                         temp_monster.removeFromWorld();
                         System.out.println(type.getName());
                         getEventBus().fireEvent(new PutEvent(PutEvent.SELF_PUT, "LargeHulu", cursorPoint));
-                        
 
                     }
                     else {
@@ -331,16 +311,14 @@ public class HuluCRApp extends GameApplication {
                         card.setVisible(true);
                     }
                 }
-                
                 runOnce(this::updateCardPosition, Duration.millis(200));
-                
                 break;
             case UNKNOW:
                 break;
             default:
                 break;
         }
-        cursorPoint = null;
+        lastCursorPoint = null;
         currentCard = -1;
         cursorEventType = CursorEventType.UNKNOW;
     }
@@ -352,7 +330,7 @@ public class HuluCRApp extends GameApplication {
                 .duration(Duration.millis(200))
                 .translate(cards.get(i))
                 .from(cards.get(i).getPosition())
-                .to(new Point2D(cardX, cardY[i]))
+                .to(new Point2D(Config.CARD_X, Config.CARD_Y[i]))
                 .buildAndPlay();
         }
     }
@@ -366,10 +344,10 @@ public class HuluCRApp extends GameApplication {
         return false;
     }
 
-    private void spawnPlayer() {
-        player = spawn("Player", 15, 50);
-        // playerComponent = player.getComponent(PlayerComponent.class);
-    }
+    // private void spawnPlayer() {
+    //     player = spawn("Player", 15, 50);
+    //     // playerComponent = player.getComponent(PlayerComponent.class);
+    // }
 
     private void stopLoading(){
         gameLoading = false;
@@ -388,7 +366,108 @@ public class HuluCRApp extends GameApplication {
 
     }
 
+    private void onSelfReady(ReadyEvent event){
+        playerIsReady = true;
+        getGameWorld().getSingleton(EntityType.READY_BUTTON).removeFromWorld();
+        spawn("ReadyTitle", new SpawnData(Config.SELF_READY_TITLE_X, Config.READY_TITLE_Y));
+        if(enemyIsReady)
+            startGameAnimation();
 
+    }
+
+    private void onEnemyReady(ReadyEvent event){
+        enemyIsReady = true;
+        spawn("ReadyTitle", new SpawnData(Config.ENEMY_READY_TITLE_X, Config.READY_TITLE_Y));
+        if(playerIsReady)
+            startGameAnimation();
+    }
+
+    @Setter
+    @Getter
+    @AllArgsConstructor
+    static class MyBoolean{
+        Boolean b;
+    }
+
+    private void startGameAnimation(){
+        MyBoolean initFlag = new MyBoolean(false);
+        getGameWorld().getEntitiesByType(EntityType.READY_TITLE).forEach((entity)->{
+            animationBuilder()
+                .interpolator(Interpolators.EXPONENTIAL.EASE_IN())
+                .duration(Duration.millis(500))
+                .onFinished(()->{
+                    entity.removeFromWorld();
+                    if(!initFlag.getB()){
+                        spawn("StartTitle", new SpawnData(Config.START_TITLE_X, Config.START_TITLE_Y));
+                        startTitleAnimation();
+                        initFlag.setB(true);
+                    }
+
+                })
+                .translate(entity)
+                .from(entity.getPosition())
+                .to(new Point2D(Config.CENTER_READY_TITLE_X, Config.READY_TITLE_Y))
+                .buildAndPlay();
+        });
+    }
+
+    private void startTitleAnimation(){
+        getGameWorld().getEntitiesByType(EntityType.START_TITLE).forEach((entity)->{
+            animationBuilder()
+                .interpolator(Interpolators.EXPONENTIAL.EASE_IN())
+                .duration(Duration.millis(500))
+                .onFinished(()->{
+                    runOnce(()->{
+                        getGameWorld().getSingleton(EntityType.START_TITLE).removeFromWorld();
+
+                        initUIController();
+
+                        //初始化卡片栏
+                        initCards();
+
+                        //圣水自动增加
+                        initWaterTimer();
+
+                        //计时器
+                        initClockTimer();
+                    }, Duration.millis(500));
+                })
+                .scale(entity)
+                .from(new Point2D(0, 0))
+                .to(new Point2D(1,1))
+                .buildAndPlay();
+        });
+    }
+
+    private void onSelfEntryResult(EntryResultEvent event){
+        int roomID = event.getRoomID();
+        int enemyID = event.getEnemyID();
+        if(roomID == -1){
+            getDialogService().showInputBox("房间已满，请输入新的房间号", answer -> {
+                System.out.println("room id: " + answer);
+                // send room id to server
+                clientManager.enterRoom(Integer.parseInt(answer));
+            });
+            LOGGER.info("self enter room fault");
+        }else{
+            set("roomID", roomID);
+            LOGGER.info("self enter room :{}", roomID);
+
+            if(enemyID != -1){
+                set("enemyID", enemyID);
+                if(event.getEnemyIsReady()){
+                    enemyIsReady = true;
+                    spawn("ReadyTitle", new SpawnData(Config.ENEMY_READY_TITLE_X, Config.READY_TITLE_Y));
+                }
+            }
+        }
+    }
+
+    private void onEnemyEntryResult(EntryResultEvent event){
+        int enemyID = event.getEnemyID();
+        set("enemyID", enemyID);
+        LOGGER.info("player {} enter room", enemyID);
+    }
 
     // AStar
     private AStarGrid grid;
@@ -402,7 +481,7 @@ public class HuluCRApp extends GameApplication {
             if (type == HuluCRType.BLOCK){
                 return CellState.NOT_WALKABLE;
             }
-                
+
             return CellState.WALKABLE;
         });
         set("grid", grid);
@@ -424,5 +503,57 @@ public class HuluCRApp extends GameApplication {
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,20 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,480 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,167 - HULUIMG_SIZE).put("height", 262).put("width", 27+HULUIMG_SIZE));
+    }
+
+    private void initClockTimer(){
+        getGameTimer().runAtInterval(()->{
+            inc("sec", 1);
+            if(geti("sec")>=60){
+                inc("min", 1);
+                set("sec", 0);
+            }
+            String minValue, secValue;
+            if(geti("min") < 10)
+                minValue = "0" + String.valueOf(geti("min"));
+            else
+                minValue = String.valueOf(geti("min"));
+
+            if(geti("sec") < 10)
+                secValue = "0" + String.valueOf(geti("sec"));
+            else
+                secValue = String.valueOf(geti("sec"));
+
+            uiController.getTimeLabel().setText(minValue + ":" + secValue);
+        }, Duration.seconds(1));
+    }
+
+    private void initWaterTimer(){
+        getGameTimer().runAtInterval(()->{
+            if(getd("waterMeter") < WATER_MAX_COUNT){
+                inc("waterMeter", 1 / WATER_UP_STEP);
+                if(getd("waterMeter") > WATER_MAX_COUNT)
+                    set("waterMeter", WATER_MAX_COUNT);
+            }
+        }, Duration.seconds(WATER_UP_TIME / WATER_UP_STEP));
+    }
+
+    private void initCards(){
+        for(int i = 0;i < 4; i++){
+            MonsterType temp = randomMonster.getRandomMonster();
+
+            cards.add(
+                spawn("Card", new SpawnData(Config.CARD_X, Config.CARD_Y[i]).put("type", temp))
+            );
+        }
+    }
+
+    private void initUIController(){
+        uiController = new HuluCRController(getGameScene());
+
+        UI ui = getAssetLoader().loadUI(Asset.FXML_MAIN_UI, uiController);
+
+        uiController.getWaterMeter().currentValueProperty().bind(getdp("waterMeter"));
+
+        getGameScene().addUI(ui);
     }
 }

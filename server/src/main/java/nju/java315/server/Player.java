@@ -8,9 +8,9 @@ public class Player{
     private int roomID;
     private Boolean ready;
 
-    public Player(Channel channel){
+    public Player(Channel channel, int id){
         this.channel = channel;
-        playerID = -1;
+        playerID = id;
         roomID = -1;
         ready = false;
     }
@@ -19,9 +19,9 @@ public class Player{
         return channel;
     }
 
-    public void setPlayerID(int ID){
-        playerID = ID;
-    }
+    // public void setPlayerID(int ID){
+    //     playerID = ID;
+    // }
 
     public int getPlayerID(){
         return playerID;
