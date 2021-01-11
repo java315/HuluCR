@@ -1,8 +1,5 @@
 package nju.java315.client.game.event;
 
-import com.almasb.fxgl.entity.Entity;
-import com.google.protobuf.Any;
-
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.geometry.Point2D;
@@ -33,5 +30,4 @@ public class PutEvent extends Event {
     public Point2D getPoint() {
         return point;
     }
-    
 }

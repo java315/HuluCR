@@ -2,7 +2,6 @@ package nju.java315.client.game.network;
 
 import java.util.Arrays;
 
-import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.net.Connection;
 import com.almasb.fxgl.net.MessageHandler;
 import com.almasb.fxgl.net.Readers;
@@ -15,9 +14,14 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 import javafx.geometry.Point2D;
+import nju.java315.client.game.event.EntryResultEvent;
 import nju.java315.client.game.event.PutEvent;
+import nju.java315.client.game.event.ReadyEvent;
 import nju.java315.client.game.network.msg.GameMsgProtocol;
 import nju.java315.client.game.network.msg.GameMsgProtocol.PlayerPutResult.StepInfo;
+import nju.java315.client.game.util.Room.ROOM_STATE;
+
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class GameMsgHandler implements MessageHandler<byte[]> {
     static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
@@ -32,18 +36,42 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
 
             } else if (cmd instanceof GameMsgProtocol.PlayerEntryResult) {
                 GameMsgProtocol.PlayerEntryResult result = (GameMsgProtocol.PlayerEntryResult) cmd;
-                int roomID = result.getRoomID();
-                LOGGER.info("success enter room {}", roomID);
+
+                int entryPlayerID = result.getEntryPlayerID();
+                if(entryPlayerID == geti("playerID")){
+                    int roomID = result.getRoomID();
+                    int enemyID = result.getEnemyID();
+                    boolean enemyIsReady = result.getEnemyIsReady();
+                    System.out.println(enemyIsReady);
+
+                    getEventBus().fireEvent(new EntryResultEvent(EntryResultEvent.SELF_ENTRY_RESULT, roomID, enemyID, enemyIsReady));
+                }
+                else{
+                    int enemyID = result.getEntryPlayerID();
+
+                    getEventBus().fireEvent(new EntryResultEvent(EntryResultEvent.ENEMY_ENTRY_RESULT, enemyID));
+                }
             } else if (cmd instanceof GameMsgProtocol.PlayerReadyResult) {
+                GameMsgProtocol.PlayerReadyResult result = (GameMsgProtocol.PlayerReadyResult) cmd;
+                int id = result.getPlayerID();
+
+                if(id == geti("playerID"))
+                    getEventBus().fireEvent(new ReadyEvent(ReadyEvent.SELF_READY));
+                else if(id == geti("enemyID"))
+                    getEventBus().fireEvent(new ReadyEvent(ReadyEvent.ENEMY_READY));
+                else
+                    LOGGER.error("未知的玩家，id = {}", id);
+
+                ROOM_STATE roomState = decodeRoomState(result.getRoomState());
                 LOGGER.info("ready");
 
             } else if (cmd instanceof GameMsgProtocol.PlayerPutResult) {
                 GameMsgProtocol.PlayerPutResult result = (GameMsgProtocol.PlayerPutResult) cmd;
-                StepInfo info = result.getStepInfo(1);
-                float x = info.getPosX();
-                float y = info.getPosY();
-                String monsterName = info.getCharacter();
-                FXGL.getEventBus().fireEvent(new PutEvent(PutEvent.ENEMY_PUT,monsterName,new Point2D(x,y)));
+                // StepInfo info = result.getSerializedSize()
+                // float x = info.getPosX();
+                // float y = info.getPosY();
+                // String monsterName = info.getCharacter();
+                // getEventBus().fireEvent(new PutEvent(PutEvent.ENEMY_PUT,monsterName,new Point2D(x,y)));
             }
             else if (cmd instanceof GameMsgProtocol.PlayerDieResult) {
 
@@ -51,10 +79,34 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
             else if (cmd instanceof GameMsgProtocol.PlayerLeaveResult) {
 
             }
+            else if (cmd instanceof GameMsgProtocol.PlayerActiveResult) {
+                GameMsgProtocol.PlayerActiveResult result = (GameMsgProtocol.PlayerActiveResult) cmd;
+                int playerID = result.getPlayerID();
+                System.out.println("get ID" + playerID);
+                set("playerID", playerID);
+            }
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
         }
 
+    }
+
+    private ROOM_STATE decodeRoomState(int state){
+        ROOM_STATE roomState = null;
+        switch(state){
+            case ROOM_STATE.ONT_PLAYER_VALUE:
+                roomState = ROOM_STATE.ONE_PLAYER;
+                break;
+            case ROOM_STATE.TWO_PLAYER_VALUE:
+                roomState = ROOM_STATE.TWO_PLAYER;
+                break;
+            case ROOM_STATE.PLAYING_VALUE:
+                roomState = ROOM_STATE.PLAYING;
+                break;
+            default:
+                break;
+        }
+        return roomState;
     }
 
     private GeneratedMessageV3 decodeMessage(byte[] msg) {
@@ -92,6 +144,9 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
                 case GameMsgProtocol.MsgCode.PLAYER_LEAVE_RESULT_VALUE:
                     cmd = GameMsgProtocol.PlayerLeaveResult.parseFrom(msgBody);
                     break;
+                case GameMsgProtocol.MsgCode.PLAYER_ACTIVE_RESULT_VALUE:
+                    cmd = GameMsgProtocol.PlayerActiveResult.parseFrom(msgBody);
+                    break;
                 default:
                     break;
             }
@@ -104,7 +159,4 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
 
         return null;
     }
-
-
-    
 }

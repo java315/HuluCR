@@ -2,10 +2,10 @@ package nju.java315.server;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ScheduledFuture;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import io.netty.util.concurrent.ScheduledFuture;
 import nju.java315.server.msg.GameMsgProtocol;
 
 
@@ -46,7 +46,7 @@ public class Room implements Runnable{
         return roomState;
     }
 
-    public Player getOpponent(Player player){
+    public Player getEnemy(Player player){
         if(players[0] != player)
             return players[0];
         else

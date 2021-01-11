@@ -44,6 +44,7 @@ import nju.java315.client.game.components.ai.TargetMoveComponent;
 import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.components.attack.FireBallAttack;
 import nju.java315.client.game.type.AttackMethod;
+import nju.java315.client.game.type.EntityType;
 import nju.java315.client.game.type.MonsterType;
 import nju.java315.client.game.type.TowerType;
 
@@ -65,7 +66,7 @@ public class HuluCRFactory implements EntityFactory {
         return entityBuilder(data)
                 .type(HuluCRType.BLOCK)
                 .with(new CollidableComponent(true))
-                .viewWithBBox(rect)    
+                .viewWithBBox(rect)
                 .zIndex(-10)
                 .build();
     }
@@ -128,15 +129,39 @@ public class HuluCRFactory implements EntityFactory {
     public Entity newCard(SpawnData data){
         MonsterType type = data.get("type");
         return FXGL.entityBuilder(data)
-                .type(type)
-                .viewWithBBox(type.getCardUrl())
-                .build();
+                    .type(type)
+                    .viewWithBBox(type.getCardUrl())
+                    .build();
     }
 
     @Spawns("Grandfather")
     public Entity newGrandfather(SpawnData data) {
         return FXGL.entityBuilder()
                     .type(TowerType.GRANDFATHER)
+                    .build();
+    }
+
+    @Spawns("ReadyButton")
+    public Entity newReadyButton(SpawnData data){
+        return FXGL.entityBuilder(data)
+                    .viewWithBBox(Config.Asset.READY_BUTTON_URL)
+                    .type(EntityType.READY_BUTTON)
+                    .build();
+    }
+
+    @Spawns("ReadyTitle")
+    public Entity newReadyTitle(SpawnData data){
+        return FXGL.entityBuilder(data)
+                    .viewWithBBox(Config.Asset.READY_TITLE_URL)
+                    .type(EntityType.READY_TITLE)
+                    .build();
+    }
+
+    @Spawns("StartTitle")
+    public Entity newStartTitle(SpawnData data){
+        return FXGL.entityBuilder(data)
+                    .viewWithBBox(Config.Asset.START_TITLE_URL)
+                    .type(EntityType.START_TITLE)
                     .build();
     }
 
@@ -157,12 +182,12 @@ public class HuluCRFactory implements EntityFactory {
                     .with(new StateComponent())
                     .with(new MovableMonsterAIComponent())
                     .build();
-        
+
         hulu.setPosition(data.getX() - hulu.getWidth()/2, data.getY() - hulu.getY() - hulu.getHeight()/2);
         return hulu;
     }
 
-    
+
     @Spawns("FakeMonster")
     public Entity newFakeMonster(SpawnData data) {
 

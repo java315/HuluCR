@@ -14,6 +14,7 @@ enum MsgCode {
     PLAYER_DIE_RESULT = 9;
     PLAYER_LEAVE_CMD = 10;
     PLAYER_LEAVE_RESULT = 11;
+    PLAYER_ACTIVE_RESULT = 12;
 };
 
 //
@@ -46,7 +47,7 @@ message PlayerEntryCmd {
     uint32 roomID = 1;
 
     // 用户id
-    uint32 playerID = 2;
+    //uint32 playerID = 2;
 }
 
 // 结果
@@ -54,8 +55,14 @@ message PlayerEntryResult {
     // 房间号
     uint32 roomID = 1;
 
-    // 对手的id
-    uint32 opponentID = 2;
+    // 加入玩家的 id
+    uint32 entryPlayerID = 2;
+
+    // 房间中另一个人的id
+    uint32 enemyID = 3;
+
+    //对手是否准备好
+    bool enemyIsReady = 4;
 }
 
 //
@@ -78,10 +85,10 @@ message PlayerReadyResult {
 // 指令
 message PlayerPutCmd {
     // 放置的位置 X
-    uint32 PosX = 1;
+    float PosX = 1;
 
     // 放置的位置 Y
-    uint32 PosY = 2;
+    float PosY = 2;
 
     // 放置的角色
     string character = 3;
@@ -124,23 +131,6 @@ message PlayerDieResult {
 }
 
 //
-// 用户停驻
-///////////////////////////////////////////////////////////////////////
-// 指令
-message PlayerStopCmd {
-}
-
-// 结果
-message PlayerStopResult {
-    // 停驻用户 ID
-    uint32 stopPlayerID = 1;
-    // 停驻在位置 X
-    float stopAtPosX = 2;
-    // 停驻在位置 Y
-    float stopAtPosY = 3;
-}
-
-//
 // 用户离开房间
 ///////////////////////////////////////////////////////////////////////
 // 指令
@@ -151,4 +141,10 @@ message PlayerLeaveCmd {
 message PlayerLeaveResult {
     // 离开用户的 id
     uint32 leavePlayerID = 1;
+}
+
+// 用户与服务器建立起连接时，由服务器为其分配id
+message PlayerActiveResult {
+    // 分配给用户的 id
+    uint32 playerID = 1;
 }

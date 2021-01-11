@@ -16,7 +16,7 @@ public class Config {
     public static final int HEIGHT= 600;
 
     public static final int HORIZONTAL_GRID_NUM = 97;
-    public static final int VERTICAL_GRID_NUM = 60;  
+    public static final int VERTICAL_GRID_NUM = 60;
     public static final int CELL_HEIGHT = 10;
     public static final int CELL_WIDTH = 10;
 
@@ -24,6 +24,21 @@ public class Config {
     public static final int MAIN_TOWER_MID_LINE = 312; // 划分上下半场的中线
 
     // 圣水参数
+    public static final int CARD_X = 50;
+    public static final int[] CARD_Y = { 240, 325, 410, 495, 600 };
+
+    public static final int READY_BUTTON_X = 26;
+    public static final int READY_BUTTON_Y = 50;
+
+    public static final int SELF_READY_TITLE_X = 320;
+    public static final int ENEMY_READY_TITLE_X = 660;
+    public static final int CENTER_READY_TITLE_X = 490;
+    public static final int READY_TITLE_Y = 280;
+    public static final int START_TITLE_X = 370;
+    public static final int START_TITLE_Y = 210;
+
+    public static final int MAIN_TOWER_GRID_Y = 4;
+    public static final int MAIN_TOWER_GRID_X = 9;
 
     public static final double WATER_MAX_COUNT = 10.0;
     public static final int WATER_UP_TIME = 3; // 2 seconds add a water
@@ -124,5 +139,8 @@ public class Config {
         public static final String GRANDFATHER_LEFT_URL = "monster/grandfather-left.png";
         public static final String GRANDFATHER_RIGHT_URL= "monster/grandfather-right.png";
 
+        public static final String READY_BUTTON_URL = "readyButton.png";
+        public static final String READY_TITLE_URL = "readyTitle.png";
+        public static final String START_TITLE_URL = "startTitle.png";
     }
 }
