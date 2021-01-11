@@ -1,6 +1,7 @@
 package nju.java315.client.game;
 
 import com.almasb.fxgl.dsl.FXGL;
+import com.almasb.fxgl.dsl.components.ExpireCleanComponent;
 import com.almasb.fxgl.dsl.components.OffscreenCleanComponent;
 import com.almasb.fxgl.dsl.components.ProjectileComponent;
 import com.almasb.fxgl.entity.Entity;
@@ -9,6 +10,7 @@ import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.Spawns;
 import com.almasb.fxgl.entity.component.Component;
 import com.almasb.fxgl.entity.components.CollidableComponent;
+import com.almasb.fxgl.entity.state.StateComponent;
 import com.almasb.fxgl.particle.ParticleComponent;
 import com.almasb.fxgl.particle.ParticleEmitter;
 import com.almasb.fxgl.particle.ParticleEmitters;
@@ -28,12 +30,19 @@ import javafx.geometry.Point2D;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
+import nju.java315.client.game.components.DamageComponent;
 import nju.java315.client.game.components.HealthCompoent;
+import nju.java315.client.game.components.IdentityComponent;
 import nju.java315.client.game.components.MonsterCompenonet;
 import nju.java315.client.game.components.OwnerComponent;
 import nju.java315.client.game.components.PlayerComponent;
+import nju.java315.client.game.components.SensorComponent;
+import nju.java315.client.game.components.ai.MovableMonsterAIComponent;
 import nju.java315.client.game.components.ai.MoveComponent;
 import nju.java315.client.game.components.ai.TargetMoveComponent;
+import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
+import nju.java315.client.game.components.attack.FireBallAttack;
 import nju.java315.client.game.type.AttackMethod;
 import nju.java315.client.game.type.MonsterType;
 import nju.java315.client.game.type.TowerType;
@@ -80,11 +89,6 @@ public class HuluCRFactory implements EntityFactory {
 
     @Spawns("Fireball")
     public Entity newFireball(SpawnData data) {
-        System.out.println("fireball");
-        PhysicsComponent physics = new PhysicsComponent();
-        physics.setBodyType(BodyType.DYNAMIC);
-        physics.setFixtureDef(new FixtureDef().density(0.3f).restitution(1.0f));
-        physics.setOnPhysicsInitialized(() -> physics.setLinearVelocity(5 * 60, -5 * 60));
 
         SimpleBooleanProperty flag = new SimpleBooleanProperty();
         flag.set(true);
@@ -93,27 +97,29 @@ public class HuluCRFactory implements EntityFactory {
 
         emitter.startColorProperty().bind(
                 Bindings.when(flag)
-                        .then(Color.LIGHTYELLOW)
+                        .then(Color.RED)
                         .otherwise(Color.RED)
         );
 
         emitter.endColorProperty().bind(
                 Bindings.when(flag)
-                        .then(Color.RED)
+                        .then(Color.LIGHTPINK)
                         .otherwise(Color.LIGHTBLUE)
         );
 
         emitter.setBlendMode(BlendMode.SRC_OVER);
-        emitter.setSize(5, 10);
+        emitter.setSize(5, 7);
         emitter.setEmissionRate(1);
-
+        //Point2D direction = new Point2D(1,0);
+        Point2D direction = data.get("direction");
         return FXGL.entityBuilder(data)
                     .type(AttackMethod.FIREBALL)
                     .bbox(new HitBox(BoundingShape.circle(5)))
-                    .with(physics)
                     .with(new CollidableComponent(true))
                     .with(new ParticleComponent(emitter))
-                    //.with(new ProjectileComponent(new Point2D(0,1), 400))
+                    .with(new ProjectileComponent(direction, 400))
+                    .with(new ExpireCleanComponent(Duration.seconds(0.8)))
+                    .with(new DamageComponent(100))
                     .build();
 
     }
@@ -137,15 +143,19 @@ public class HuluCRFactory implements EntityFactory {
 
     @Spawns("LargeHulu")
     public Entity newLargeHulu(SpawnData data) {
+        boolean flag = data.get("flag");
         Entity hulu = FXGL.entityBuilder()
                     .type(MonsterType.LARGE_HULU)
                     .viewWithBBox(MonsterType.LARGE_HULU.getRightUrl())
-                    .with(new HealthCompoent(data.get("hp")))
-                    .with(new MonsterCompenonet())
+                    .with(new HealthCompoent(data.get("hp")))                
                     .with(new CollidableComponent(true))
-                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, 100))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, 30))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
-                    .with(new MoveComponent())
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
                     .build();
         
         hulu.setPosition(data.getX() - hulu.getWidth()/2, data.getY() - hulu.getY() - hulu.getHeight()/2);
@@ -179,5 +189,29 @@ public class HuluCRFactory implements EntityFactory {
                 .with(new OffscreenCleanComponent())
                 .with("dead", false)
                 .build();
+    }
+
+    @Spawns("Tower")
+    public Entity newTower(SpawnData data) {
+        String t;
+        boolean flag = data.get("flag");
+        if (flag) t = Config.Asset.GRANDFATHER_RIGHT_URL;
+        else t = Config.Asset.GRANDFATHER_LEFT_URL;
+        Entity tower = entityBuilder(data)
+                        .type(MonsterType.GRANDFATHER)
+                        .viewWithBBox(t)
+                        .with(new CollidableComponent(true))
+                        .with(new FireBallAttack())
+                        .with(new HealthCompoent(1000))
+                        .with(new IdentityComponent(flag))
+                        .with(new SensorComponent(200.0))
+                        .with(new StateComponent())
+                        .with(new UnmovableMonsterAIComponent())
+                        .scale(1.5, 1.5)
+                        .build();
+        
+        
+  
+        return tower;
     }
 }

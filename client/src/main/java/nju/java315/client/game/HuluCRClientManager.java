@@ -33,6 +33,7 @@ class HuluCRClientManager{
             conn = connection;
             connection.addMessageHandlerFX(new GameMsgHandler());
         });
+        client.connectAsync();
     }
      
 

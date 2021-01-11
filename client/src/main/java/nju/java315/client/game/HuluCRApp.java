@@ -11,11 +11,14 @@ import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.SceneFactory;
 import com.almasb.fxgl.app.scene.SimpleGameMenu;
 import com.almasb.fxgl.core.serialization.Bundle;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.EntityWorldListener;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.net.Client;
+import com.almasb.fxgl.pathfinding.Cell;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.ui.UI;
@@ -28,7 +31,9 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import nju.java315.client.game.components.IdentityComponent;
 import nju.java315.client.game.components.PlayerComponent;
+import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.event.PutEvent;
 import nju.java315.client.game.type.MonsterType;
 import nju.java315.client.game.type.CursorEventType;
@@ -139,6 +144,15 @@ public class HuluCRApp extends GameApplication {
         vars.put("waterMeter", WATER_INIT_COUNT);
         vars.put("min", 0);
         vars.put("sec", 0);
+
+        vars.put("enemy_main_tower_alive",true);
+        vars.put("enemy_down_tower_alive",true);
+        vars.put("enemy_up_tower_alive",true);
+
+        vars.put("self_main_tower_alive",true);
+        vars.put("self_down_tower_alive",true);
+        vars.put("self_up_tower_alive",true);
+        
     }
 
     // 初始化游戏元素
@@ -172,7 +186,7 @@ public class HuluCRApp extends GameApplication {
                 spawn("Card", new SpawnData(cardX, cardY[i]).put("type", temp))
             );
         }
-
+        
         //计时器
         getGameTimer().runAtInterval(()->{
             inc("sec", 1);
@@ -195,7 +209,7 @@ public class HuluCRApp extends GameApplication {
         }, Duration.seconds(1));
 
         spawn("Background");
-
+        spawnTowers();
         spawnPlayer();
     }
 
@@ -215,35 +229,17 @@ public class HuluCRApp extends GameApplication {
         uiController.getWaterMeter().currentValueProperty().bind(getdp("waterMeter"));
 
         getGameScene().addUI(ui);
+
+        
+        
+        
     }
 
     private boolean runningFirstTime = true;
     private boolean gameLoading = false;
     @Override
     protected void onUpdate(double tpf) {
-        super.onUpdate(tpf);
-        if(runningFirstTime) {
-            
-            getDialogService().showInputBox("Please input your room id", answer -> {
-                System.out.println("room id: " + answer);
-                // send room id to server
-                clientManager.enterRoom(Integer.parseInt(answer));
-
-                
-                runOnce(this::stopLoading, Duration.seconds(2.0));
-                
-                
-
-                runningFirstTime = false;
-                gameLoading = true;
-            });
-        }
-        else if (gameLoading) {
-            //System.out.println("loading");
-        }
-        else{
-
-        }
+        
 
     }
 
@@ -377,10 +373,10 @@ public class HuluCRApp extends GameApplication {
 
     private void onMonsterPut(PutEvent event){
 
-        spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100));
+        spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100).put("flag", IdentityComponent.SELF_FLAG));
 
         // 向server发送放置消息
-        spawn("Fireball", event.getPoint());
+        //spawn("Fireball", event.getPoint());
         clientManager.putMonster(event.getMonsterName(),event.getPoint());
     }
 
@@ -406,6 +402,7 @@ public class HuluCRApp extends GameApplication {
             return CellState.WALKABLE;
         });
         set("grid", grid);
+      
     }
 
     private void initBlock() {
@@ -424,5 +421,24 @@ public class HuluCRApp extends GameApplication {
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,20 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,480 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,167 - HULUIMG_SIZE).put("height", 262).put("width", 27+HULUIMG_SIZE));
+    }
+
+    // monster list
+    private ArrayList<Entity> selfTowers = new ArrayList<>();
+    private ArrayList<Entity> enemyTowers = new ArrayList<>();
+    private void spawnTowers(){
+        selfTowers.add(spawn("Tower", new SpawnData(SELF_MAIN_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+        selfTowers.add(spawn("Tower", new SpawnData(SELF_UP_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+        selfTowers.add(spawn("Tower", new SpawnData(SELF_DOWN_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+
+        enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_MAIN_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
+        enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_UP_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
+        enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_DOWN_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
+        
+        String[] pos = {"main","up","down"};
+        for(int i=0;i<3;++i) {
+            selfTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("self_"+pos[i]+"_tower");
+            enemyTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("enemy_"+pos[i]+"_tower");
+        }
     }
 }
