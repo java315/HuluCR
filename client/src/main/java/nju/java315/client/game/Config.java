@@ -23,7 +23,7 @@ public class Config {
     public static final int RIVERL_MID_LINE = 565;  // 划分左右半场的中线
     public static final int MAIN_TOWER_MID_LINE = 312; // 划分上下半场的中线
 
-    // 圣水参数
+    
     public static final int CARD_X = 50;
     public static final int[] CARD_Y = { 240, 325, 410, 495, 600 };
 
@@ -40,6 +40,7 @@ public class Config {
     public static final int MAIN_TOWER_GRID_Y = 4;
     public static final int MAIN_TOWER_GRID_X = 9;
 
+    // 圣水参数
     public static final double WATER_MAX_COUNT = 10.0;
     public static final int WATER_UP_TIME = 3; // 2 seconds add a water
     public static final double WATER_INIT_COUNT = 7.0;
