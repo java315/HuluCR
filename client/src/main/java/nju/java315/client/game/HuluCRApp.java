@@ -8,10 +8,16 @@ import com.almasb.fxgl.app.scene.FXGLDefaultMenu;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.SceneFactory;
+import com.almasb.fxgl.app.scene.SimpleGameMenu;
+import com.almasb.fxgl.core.serialization.Bundle;
+import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.Entity;
+import com.almasb.fxgl.entity.EntityWorldListener;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.net.Client;
+import com.almasb.fxgl.pathfinding.Cell;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.ui.UI;
@@ -22,6 +28,9 @@ import org.slf4j.LoggerFactory;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
+import nju.java315.client.game.components.IdentityComponent;
+import nju.java315.client.game.components.PlayerComponent;
+import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.event.EntryResultEvent;
 import nju.java315.client.game.event.PutEvent;
 import nju.java315.client.game.event.ReadyEvent;
@@ -134,6 +143,15 @@ public class HuluCRApp extends GameApplication {
         // vars.put("enemyIsReady", false);
         vars.put("min", 0);
         vars.put("sec", 0);
+
+        vars.put("enemy_main_tower_alive",true);
+        vars.put("enemy_down_tower_alive",true);
+        vars.put("enemy_up_tower_alive",true);
+
+        vars.put("self_main_tower_alive",true);
+        vars.put("self_down_tower_alive",true);
+        vars.put("self_up_tower_alive",true);
+        
     }
 
     // 初始化游戏元素
@@ -151,7 +169,7 @@ public class HuluCRApp extends GameApplication {
         initGrid();
 
         spawn("ReadyButton", new SpawnData(Config.READY_BUTTON_X, Config.READY_BUTTON_Y));
-
+        spawnTowers();
         spawn("Background");
 
         //spawnPlayer();
@@ -471,6 +489,7 @@ public class HuluCRApp extends GameApplication {
             return CellState.WALKABLE;
         });
         set("grid", grid);
+      
     }
 
     private void initBlock() {
@@ -493,6 +512,24 @@ public class HuluCRApp extends GameApplication {
 
     private HuluCRController uiController;
 
+    // monster list
+    private ArrayList<Entity> selfTowers = new ArrayList<>();
+    private ArrayList<Entity> enemyTowers = new ArrayList<>();
+    private void spawnTowers(){
+        selfTowers.add(spawn("Tower", new SpawnData(SELF_MAIN_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+        selfTowers.add(spawn("Tower", new SpawnData(SELF_UP_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+        selfTowers.add(spawn("Tower", new SpawnData(SELF_DOWN_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+
+        enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_MAIN_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
+        enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_UP_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
+        enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_DOWN_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
+
+        String[] pos = {"main","up","down"};
+        for(int i=0;i<3;++i) {
+            selfTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("self_"+pos[i]+"_tower");
+            enemyTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("enemy_"+pos[i]+"_tower");
+        }
+    }
     private void initClockTimer(){
         getGameTimer().runAtInterval(()->{
             inc("sec", 1);

@@ -6,9 +6,12 @@
  */
 package nju.java315.client.game;
 
+import javafx.geometry.Point2D;
+
 public class Config {
     private Config() {}
 
+    // 地图参数
     public static final int WIDTH = 970;
     public static final int HEIGHT= 600;
 
@@ -17,11 +20,10 @@ public class Config {
     public static final int CELL_HEIGHT = 10;
     public static final int CELL_WIDTH = 10;
 
-    public static final int RIVER_GRID_WIDTH = 1;
-    public static final int UP_TOWER_GRIX_Y = 3; // 从0开始
-    public static final int DOWN_TOWER_GRID_Y = 14;
-    public static final int TOWER_GRIX_X = 9;
+    public static final int RIVERL_MID_LINE = 565;  // 划分左右半场的中线
+    public static final int MAIN_TOWER_MID_LINE = 312; // 划分上下半场的中线
 
+    
     public static final int CARD_X = 50;
     public static final int[] CARD_Y = { 240, 325, 410, 495, 600 };
 
@@ -41,10 +43,20 @@ public class Config {
     public static final int MAIN_TOWER_GRID_Y = 4;
     public static final int MAIN_TOWER_GRID_X = 9;
 
+    // 圣水参数
     public static final double WATER_MAX_COUNT = 10.0;
     public static final int WATER_UP_TIME = 3; // 2 seconds add a water
     public static final double WATER_INIT_COUNT = 7.0;
     public static final double WATER_UP_STEP = 30.0;
+
+    // 防御塔参数
+    public static final Point2D ENEMY_UP_TOWER_POSITION = new Point2D(770,120);
+    public static final Point2D ENEMY_DOWN_TOWER_POSITION = new Point2D(770,420);
+    public static final Point2D ENEMY_MAIN_TOWER_POSITION = new Point2D(850,272);
+
+    public static final Point2D SELF_UP_TOWER_POSITION = new Point2D(340,120);
+    public static final Point2D SELF_DOWN_TOWER_POSITION = new Point2D(340,420);
+    public static final Point2D SELF_MAIN_TOWER_POSITION = new Point2D(260,272);
 
     public static final int CHILD_TOWER_LIVES = 1500;
     public static final int MAIN_TOWER_LIVES = 2500;
@@ -142,6 +154,9 @@ public class Config {
         public static final String WILD_BOAR_CARD_URL = "card/wildBoar.png";
         public static final String WILD_BOAR_ENTITY_LEFT_URL = "";
         public static final String WILD_BOAR_ENTITY_RIGHT_URL = "";
+
+        public static final String GRANDFATHER_LEFT_URL = "monster/grandfather-left.png";
+        public static final String GRANDFATHER_RIGHT_URL= "monster/grandfather-right.png";
 
         public static final String READY_BUTTON_URL = "readyButton.png";
         public static final String READY_TITLE_URL = "readyTitle.png";
