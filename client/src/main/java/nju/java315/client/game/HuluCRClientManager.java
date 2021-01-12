@@ -90,8 +90,6 @@ class HuluCRClientManager{
             for(int i=0;i<msgBody.length;i++){
                 bytes[i+2] = msgBody[i];
             }
-            System.out.println("代码为:"+msgCode);
-            System.out.println((int)bytes[0] + " " + (int)bytes[1]);
 
             return bytes;
         } catch (Exception ex){

@@ -53,12 +53,7 @@ public enum MonsterType{
         Config.HULU_HULU_COST,
         Config.HULU_HULU_HP
     ),
-    GRANDFATHER("Grandfather",
-            "",
-            Config.Asset.GRANDFATHER_LEFT_URL,          
-            Config.Asset.GRANDFATHER_RIGHT_URL,
-            0
-    ),
+    
     //妖精阵营
     NTR("NTR",
         Config.Asset.NTR_CARD_URL,
@@ -109,9 +104,18 @@ public enum MonsterType{
         Config.Asset.WILD_BOAR_ENTITY_RIGHT_URL,
         Config.WILD_BOAR_COST,
         Config.WILD_BOAR_HP
+    ),
+
+    // unmovable 
+    GRANDFATHER("Grandfather",
+            "",
+            Config.Asset.GRANDFATHER_LEFT_URL,          
+            Config.Asset.GRANDFATHER_RIGHT_URL,
+            0,
+            100
     );
 
-
+    
     private String cardUrl;
     private String leftUrl;
     private String rightUrl;
