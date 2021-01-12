@@ -29,7 +29,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
 import nju.java315.client.game.components.IdentityComponent;
-import nju.java315.client.game.components.PlayerComponent;
 import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.event.EntryResultEvent;
 import nju.java315.client.game.event.PutEvent;
@@ -59,8 +58,8 @@ public class HuluCRApp extends GameApplication {
 
     // 闭包，获得随机的卡片
     private static Random rand = new Random();
-    static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand
-            .nextInt(MonsterType.class.getEnumConstants().length)];
+    static randomMonster randomMonster = () -> 
+                            MonsterType.class.getEnumConstants()[rand.nextInt(MonsterType.class.getEnumConstants().length - 1)];
 
     List<Entity> cards = new ArrayList<>();
 
@@ -112,9 +111,6 @@ public class HuluCRApp extends GameApplication {
         };
         input.addAction(putCard, MouseButton.PRIMARY);
     }
-
-    // private Entity player;
-    // private PlayerComponent playerComponent;
 
     // 初始化事件监听和处理
     @Override
@@ -172,7 +168,6 @@ public class HuluCRApp extends GameApplication {
         spawnTowers();
         spawn("Background");
 
-        //spawnPlayer();
     }
 
     // 初始化物理环境
@@ -302,7 +297,7 @@ public class HuluCRApp extends GameApplication {
                         card.removeFromWorld();
                         temp_monster.removeFromWorld();
                         System.out.println(type.getName());
-
+                        
                         // 通知服务器
                         clientManager.putMonster(type.getName(), cursorPoint);
                     }
@@ -345,10 +340,6 @@ public class HuluCRApp extends GameApplication {
         return false;
     }
 
-    // private void spawnPlayer() {
-    //     player = spawn("Player", 15, 50);
-    //     // playerComponent = player.getComponent(PlayerComponent.class);
-    // }
 
     private void stopLoading(){
         gameLoading = false;
@@ -356,10 +347,8 @@ public class HuluCRApp extends GameApplication {
 
     private void onSelfPut(PutEvent event){
         Point2D putPoint = new Point2D(event.getX(), event.getY());
-
+        System.out.println("on self put");
         spawn("LargeHulu", new SpawnData(putPoint).put("flag", IdentityComponent.SELF_FLAG));
-
-        //spawn("Fireball", putPoint);
     }
 
     private void onEnemyPut(PutEvent event) {
@@ -388,25 +377,19 @@ public class HuluCRApp extends GameApplication {
             startGameAnimation();
     }
 
-    @Setter
-    @Getter
-    @AllArgsConstructor
-    static class MyBoolean{
-        Boolean b;
-    }
 
     private void startGameAnimation(){
-        MyBoolean initFlag = new MyBoolean(false);
+        boolean[] initFlag = {false};
         getGameWorld().getEntitiesByType(EntityType.READY_TITLE).forEach((entity)->{
             animationBuilder()
                 .interpolator(Interpolators.EXPONENTIAL.EASE_IN())
                 .duration(Duration.millis(500))
                 .onFinished(()->{
                     entity.removeFromWorld();
-                    if(!initFlag.getB()){
+                    if(!initFlag[0]){
                         spawn("StartTitle", new SpawnData(Config.START_TITLE_X, Config.START_TITLE_Y));
                         startTitleAnimation();
-                        initFlag.setB(true);
+                        initFlag[0]=true;
                     }
 
                 })

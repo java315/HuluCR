@@ -36,7 +36,6 @@ import nju.java315.client.game.components.HealthCompoent;
 import nju.java315.client.game.components.IdentityComponent;
 import nju.java315.client.game.components.MonsterCompenonet;
 import nju.java315.client.game.components.OwnerComponent;
-import nju.java315.client.game.components.PlayerComponent;
 import nju.java315.client.game.components.SensorComponent;
 import nju.java315.client.game.components.ai.MovableMonsterAIComponent;
 import nju.java315.client.game.components.ai.MoveComponent;
@@ -78,15 +77,6 @@ public class HuluCRFactory implements EntityFactory {
                 .view(texture("background/background.png", Config.WIDTH + 20, Config.HEIGHT + 20)).zIndex(-500).build();
     }
 
-    @Spawns("Player")
-    public Entity newPlayer(SpawnData data) {
-        Texture texture = texture("life.png");
-        texture.setPreserveRatio(true);
-        texture.setFitHeight(40);
-
-        return entityBuilder(data).type(HuluCRType.PLAYER).viewWithBBox(texture).with(new PlayerComponent())
-                .build();
-    }
 
     @Spawns("Fireball")
     public Entity newFireball(SpawnData data) {
@@ -219,13 +209,10 @@ public class HuluCRFactory implements EntityFactory {
 
     @Spawns("Tower")
     public Entity newTower(SpawnData data) {
-        String t;
         boolean flag = data.get("flag");
-        if (flag) t = Config.Asset.GRANDFATHER_RIGHT_URL;
-        else t = Config.Asset.GRANDFATHER_LEFT_URL;
         Entity tower = entityBuilder(data)
                         .type(MonsterType.GRANDFATHER)
-                        .viewWithBBox(t)
+                        .viewWithBBox(MonsterType.GRANDFATHER.getRightUrl())
                         .with(new CollidableComponent(true))
                         .with(new FireBallAttack())
                         .with(new HealthCompoent(1000))
