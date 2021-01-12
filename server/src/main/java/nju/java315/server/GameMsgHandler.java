@@ -160,6 +160,7 @@ public class GameMsgHandler extends SimpleChannelInboundHandler<Object> {
                 rBuilder.setPlayerID(player.getPlayerID());
                 rBuilder.setPosX(cmd.getPosX());
                 rBuilder.setPosY(cmd.getPosY());
+                rBuilder.setCharacter(cmd.getCharacter());
                 room.addMsg(rBuilder);
             }
             else if(msg instanceof GameMsgProtocol.PlayerDieCmd){
