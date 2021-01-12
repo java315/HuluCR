@@ -91,6 +91,14 @@ public class Config {
     public static final int WASP_HP = 100;
     public static final int WILD_BOAR_HP = 100;
 
+    // 移速
+    public static final int VERY_FAST = 100;
+    public static final int FAST = 70;
+    public static final int NOMAL = 50;
+    public static final int SLOW = 30;
+    public static final int VERY_SLOW = 20;
+    public static final int STILL = 0;
+
     // 网络相关参数
     public static final int SERVER_PORT = 8080;
     public static final String SERVER_IP = "localhost";
@@ -136,24 +144,24 @@ public class Config {
         public static final String SNAKE_ENTITY_RIGHT_URL = "monster/snake-right.png";
 
         public static final String CENTIPEDE_CARD_URL = "card/centipede.png";
-        public static final String CENTIPEDE_ENTITY_LEFT_URL = "";
-        public static final String CENTIPEDE_ENTITY_RIGHT_URL = "";
+        public static final String CENTIPEDE_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
+        public static final String CENTIPEDE_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
 
         public static final String SPIDER_CARD_URL = "card/spider.png";
-        public static final String SPIDER_ENTITY_LEFT_URL = "";
-        public static final String SPIDER_ENTITY_RIGHT_URL = "";
+        public static final String SPIDER_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
+        public static final String SPIDER_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
 
         public static final String TOAD_CARD_URL = "card/toad.png";
-        public static final String TOAD_ENTITY_LEFT_URL = "";
-        public static final String TOAD_ENTITY_RIGHT_URL = "";
+        public static final String TOAD_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
+        public static final String TOAD_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
 
         public static final String WASP_CARD_URL = "card/wasp.png";
-        public static final String WASP_ENTITY_LEFT_URL = "";
-        public static final String WASP_ENTITY_RIGHT_URL = "";
+        public static final String WASP_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
+        public static final String WASP_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
 
         public static final String WILD_BOAR_CARD_URL = "card/wildBoar.png";
-        public static final String WILD_BOAR_ENTITY_LEFT_URL = "";
-        public static final String WILD_BOAR_ENTITY_RIGHT_URL = "";
+        public static final String WILD_BOAR_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
+        public static final String WILD_BOAR_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
 
         public static final String GRANDFATHER_LEFT_URL = "monster/grandfather-left.png";
         public static final String GRANDFATHER_RIGHT_URL= "monster/grandfather-right.png";
