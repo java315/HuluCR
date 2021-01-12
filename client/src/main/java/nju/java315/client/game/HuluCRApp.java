@@ -4,34 +4,24 @@ import com.almasb.fxgl.animation.Interpolators;
 import com.almasb.fxgl.app.ApplicationMode;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
-import com.almasb.fxgl.app.MenuItem;
 import com.almasb.fxgl.app.scene.FXGLDefaultMenu;
 import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.app.scene.SceneFactory;
-import com.almasb.fxgl.app.scene.SimpleGameMenu;
-import com.almasb.fxgl.core.serialization.Bundle;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.Input;
 import com.almasb.fxgl.input.UserAction;
-import com.almasb.fxgl.net.Client;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
 import com.almasb.fxgl.ui.UI;
-import com.almasb.fxgl.ui.UIController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javafx.beans.binding.StringBinding;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Point2D;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
-import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import nju.java315.client.game.components.PlayerComponent;
 import nju.java315.client.game.event.EntryResultEvent;
 import nju.java315.client.game.event.PutEvent;
 import nju.java315.client.game.event.ReadyEvent;
@@ -42,10 +32,8 @@ import nju.java315.client.game.type.EntityType;
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static nju.java315.client.game.Config.*;
 
-import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.EnumSet;
 import java.util.Map;
 import java.util.Random;
 
@@ -59,25 +47,13 @@ interface randomMonster {
 
 public class HuluCRApp extends GameApplication {
     static private final Logger LOGGER = LoggerFactory.getLogger(HuluCRApp.class);
-    private HuluCRController uiController;
-
-    private static Random rand = new Random(47);
-
-    private boolean playerIsReady = false;
-    private boolean enemyIsReady = false;
 
     // 闭包，获得随机的卡片
+    private static Random rand = new Random();
     static randomMonster randomMonster = () -> MonsterType.class.getEnumConstants()[rand
             .nextInt(MonsterType.class.getEnumConstants().length)];
 
     List<Entity> cards = new ArrayList<>();
-
-    // 以下变量用于选卡操作
-    int currentCard = -1;
-    Point2D lastCursorPoint = null;
-
-    // 鼠标操作类型
-    CursorEventType cursorEventType = CursorEventType.UNKNOW;
 
     @Override
     protected void initSettings(GameSettings settings) {
@@ -135,7 +111,7 @@ public class HuluCRApp extends GameApplication {
     @Override
     protected void onPreInit() {
         // 事件相关
-        onEvent(PutEvent.SELF_PUT, this::onMonsterPut);
+        onEvent(PutEvent.SELF_PUT, this::onSelfPut);
         onEvent(PutEvent.ENEMY_PUT, this::onEnemyPut);
         onEvent(ReadyEvent.SELF_READY, this::onSelfReady);
         onEvent(ReadyEvent.ENEMY_READY, this::onEnemyReady);
@@ -221,6 +197,12 @@ public class HuluCRApp extends GameApplication {
 
     //确定正在进行哪种操作
     private Entity temp_monster;
+    // 鼠标操作类型
+    CursorEventType cursorEventType = CursorEventType.UNKNOW;
+    // 以下变量用于选卡操作
+    int currentCard = -1;
+    Point2D lastCursorPoint = null;
+
     public void dealWithCursorBegin(Point2D cursorPoint){
         int x = (int)cursorPoint.getX(), y = (int)cursorPoint.getY();
         if( x >= Config.READY_BUTTON_X && x <= (Config.READY_BUTTON_X + 120)
@@ -302,8 +284,9 @@ public class HuluCRApp extends GameApplication {
                         card.removeFromWorld();
                         temp_monster.removeFromWorld();
                         System.out.println(type.getName());
-                        getEventBus().fireEvent(new PutEvent(PutEvent.SELF_PUT, "LargeHulu", cursorPoint));
 
+                        // 通知服务器
+                        clientManager.putMonster(type.getName(), cursorPoint);
                     }
                     else {
                         Entity card = cards.get(currentCard);
@@ -353,18 +336,23 @@ public class HuluCRApp extends GameApplication {
         gameLoading = false;
     }
 
-    private void onMonsterPut(PutEvent event){
+    private void onSelfPut(PutEvent event){
+        Point2D putPoint = new Point2D(event.getX(), event.getY());
 
-        spawn(event.getMonsterName(), new SpawnData(event.getPoint()).put("hp", 100));
+        spawn("LargeHulu", new SpawnData(putPoint));
 
-        // 向server发送放置消息
-        spawn("Fireball", event.getPoint());
-        clientManager.putMonster(event.getMonsterName(),event.getPoint());
+        //spawn("Fireball", putPoint);
     }
 
     private void onEnemyPut(PutEvent event) {
+        float newX = Config.LEFT_BOUND_X + Config.RIGHT_BOUND_X - event.getX();
+        Point2D putPoint = new Point2D(newX, event.getY());
 
+        spawn("LargeHulu", new SpawnData(putPoint));
     }
+
+    private boolean playerIsReady = false;
+    private boolean enemyIsReady = false;
 
     private void onSelfReady(ReadyEvent event){
         playerIsReady = true;
@@ -455,10 +443,8 @@ public class HuluCRApp extends GameApplication {
 
             if(enemyID != -1){
                 set("enemyID", enemyID);
-                if(event.getEnemyIsReady()){
-                    enemyIsReady = true;
-                    spawn("ReadyTitle", new SpawnData(Config.ENEMY_READY_TITLE_X, Config.READY_TITLE_Y));
-                }
+                if(event.getEnemyIsReady())
+                    getEventBus().fireEvent(new ReadyEvent(ReadyEvent.ENEMY_READY));
             }
         }
     }
@@ -504,6 +490,8 @@ public class HuluCRApp extends GameApplication {
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,480 - HULUIMG_SIZE).put("height", 123-20).put("width", 27+HULUIMG_SIZE));
         spawn("Block", new SpawnData(552-HULUIMG_SIZE,167 - HULUIMG_SIZE).put("height", 262).put("width", 27+HULUIMG_SIZE));
     }
+
+    private HuluCRController uiController;
 
     private void initClockTimer(){
         getGameTimer().runAtInterval(()->{

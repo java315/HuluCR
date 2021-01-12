@@ -1,9 +1,5 @@
 package nju.java315.client.game;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
-import com.almasb.fxgl.core.serialization.Bundle;
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.net.Client;
 import com.almasb.fxgl.net.ClientConfig;
@@ -11,10 +7,7 @@ import com.almasb.fxgl.net.Connection;
 import com.google.protobuf.GeneratedMessageV3;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.yaml.snakeyaml.util.ArrayUtils;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.util.CharsetUtil;
 import javafx.geometry.Point2D;
 import nju.java315.client.game.network.GameMsgHandler;
 import nju.java315.client.game.network.msg.GameMsgProtocol;
@@ -58,7 +51,11 @@ class HuluCRClientManager{
         builder.setPosX((int)pos.getX());
         builder.setPosY((int)pos.getY());
         builder.setCharacter(monster);
-        //conn.send(outputFrame);
+        GameMsgProtocol.PlayerPutCmd cmd = builder.build();
+
+        byte[] outputFrame = encode(cmd);
+        if(conn != null)
+            conn.send(outputFrame);
     }
 
     private byte[] encode(Object msg){

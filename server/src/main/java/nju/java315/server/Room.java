@@ -31,9 +31,7 @@ public class Room implements Runnable{
     };
     private ROOM_STATE roomState;
     int msgID = -1;
-    Queue<GameMsgProtocol.PlayerPutResult.StepInfo> first = new LinkedList<>();
-    Queue<GameMsgProtocol.PlayerPutResult.StepInfo> second = new LinkedList<>();
-    Queue<GameMsgProtocol.PlayerPutResult.StepInfo> third = new LinkedList<>();
+    Queue<GameMsgProtocol.PlayerPutResult.StepInfo> msgQueue = new LinkedList<>();
     private ScheduledFuture<?> future;
 
     public Room(Player player){
@@ -82,34 +80,15 @@ public class Room implements Runnable{
 
     public void addMsg(GameMsgProtocol.PlayerPutResult.StepInfo.Builder builder){
         builder.setMsgID(++msgID);
-        first.add(builder.build());
+        msgQueue.add(builder.build());
     }
 
     @Override
     public void run(){
         GameMsgProtocol.PlayerPutResult.Builder resultBuilder = GameMsgProtocol.PlayerPutResult.newBuilder();
-        // while(third.peek() != null)
-        //     resultBuilder.addStepInfo(third.remove());
-        // while(second.peek() != null){
-        //     resultBuilder.addStepInfo(second.peek());
-        //     third.add(second.remove());
-        // }
-        // while(first.peek() != null){
-        //     resultBuilder.addStepInfo(first.peek());
-        //     second.add(first.remove());
-        // }
 
-        resultBuilder.addAllStepInfo(third);
-        third.clear();
-        third.addAll(second);
-
-        resultBuilder.addAllStepInfo(second);
-        second.clear();
-
-        while(first.peek() != null){
-            resultBuilder.addStepInfo(first.peek());
-            second.add(first.remove());
-        }
+        while(msgQueue.peek() != null)
+            resultBuilder.addStepInfo(msgQueue.remove());
 
         GameMsgProtocol.PlayerPutResult result = resultBuilder.build();
         players[0].getChannel().writeAndFlush(result);

@@ -165,7 +165,7 @@ public class HuluCRFactory implements EntityFactory {
         Entity hulu = FXGL.entityBuilder()
                     .type(MonsterType.LARGE_HULU)
                     .viewWithBBox(MonsterType.LARGE_HULU.getRightUrl())
-                    .with(new HealthCompoent(data.get("hp")))
+                    .with(new HealthCompoent(MonsterType.LARGE_HULU.getHp()))
                     .with(new MonsterCompenonet())
                     .with(new CollidableComponent(true))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, 100))

@@ -16,7 +16,7 @@ public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception{
-        LOGGER.info("正在编码 "+msg.toString());
+        //LOGGER.info("正在编码 "+msg.toString());
         if(ctx == null || msg == null)
             return;
 

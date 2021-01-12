@@ -5446,20 +5446,10 @@ public final class GameMsgProtocol {
 
       /**
        * <pre>
-       * 信息编号
-       * </pre>
-       *
-       * <code>uint32 msgID = 1;</code>
-       * @return The msgID.
-       */
-      int getMsgID();
-
-      /**
-       * <pre>
        * 谁放的
        * </pre>
        *
-       * <code>uint32 playerID = 2;</code>
+       * <code>uint32 playerID = 1;</code>
        * @return The playerID.
        */
       int getPlayerID();
@@ -5469,7 +5459,7 @@ public final class GameMsgProtocol {
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 3;</code>
+       * <code>float PosX = 2;</code>
        * @return The posX.
        */
       float getPosX();
@@ -5479,7 +5469,7 @@ public final class GameMsgProtocol {
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 4;</code>
+       * <code>float PosY = 3;</code>
        * @return The posY.
        */
       float getPosY();
@@ -5489,7 +5479,7 @@ public final class GameMsgProtocol {
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 5;</code>
+       * <code>string character = 4;</code>
        * @return The character.
        */
       java.lang.String getCharacter();
@@ -5498,7 +5488,7 @@ public final class GameMsgProtocol {
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 5;</code>
+       * <code>string character = 4;</code>
        * @return The bytes for character.
        */
       com.google.protobuf.ByteString
@@ -5556,25 +5546,20 @@ public final class GameMsgProtocol {
                 break;
               case 8: {
 
-                msgID_ = input.readUInt32();
-                break;
-              }
-              case 16: {
-
                 playerID_ = input.readUInt32();
                 break;
               }
-              case 29: {
+              case 21: {
 
                 posX_ = input.readFloat();
                 break;
               }
-              case 37: {
+              case 29: {
 
                 posY_ = input.readFloat();
                 break;
               }
-              case 42: {
+              case 34: {
                 java.lang.String s = input.readStringRequireUtf8();
 
                 character_ = s;
@@ -5612,29 +5597,14 @@ public final class GameMsgProtocol {
                 GameMsgProtocol.PlayerPutResult.StepInfo.class, GameMsgProtocol.PlayerPutResult.StepInfo.Builder.class);
       }
 
-      public static final int MSGID_FIELD_NUMBER = 1;
-      private int msgID_;
-      /**
-       * <pre>
-       * 信息编号
-       * </pre>
-       *
-       * <code>uint32 msgID = 1;</code>
-       * @return The msgID.
-       */
-      @java.lang.Override
-      public int getMsgID() {
-        return msgID_;
-      }
-
-      public static final int PLAYERID_FIELD_NUMBER = 2;
+      public static final int PLAYERID_FIELD_NUMBER = 1;
       private int playerID_;
       /**
        * <pre>
        * 谁放的
        * </pre>
        *
-       * <code>uint32 playerID = 2;</code>
+       * <code>uint32 playerID = 1;</code>
        * @return The playerID.
        */
       @java.lang.Override
@@ -5642,14 +5612,14 @@ public final class GameMsgProtocol {
         return playerID_;
       }
 
-      public static final int POSX_FIELD_NUMBER = 3;
+      public static final int POSX_FIELD_NUMBER = 2;
       private float posX_;
       /**
        * <pre>
        * 放置的位置 X
        * </pre>
        *
-       * <code>float PosX = 3;</code>
+       * <code>float PosX = 2;</code>
        * @return The posX.
        */
       @java.lang.Override
@@ -5657,14 +5627,14 @@ public final class GameMsgProtocol {
         return posX_;
       }
 
-      public static final int POSY_FIELD_NUMBER = 4;
+      public static final int POSY_FIELD_NUMBER = 3;
       private float posY_;
       /**
        * <pre>
        * 放置的位置 Y
        * </pre>
        *
-       * <code>float PosY = 4;</code>
+       * <code>float PosY = 3;</code>
        * @return The posY.
        */
       @java.lang.Override
@@ -5672,14 +5642,14 @@ public final class GameMsgProtocol {
         return posY_;
       }
 
-      public static final int CHARACTER_FIELD_NUMBER = 5;
+      public static final int CHARACTER_FIELD_NUMBER = 4;
       private volatile java.lang.Object character_;
       /**
        * <pre>
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 5;</code>
+       * <code>string character = 4;</code>
        * @return The character.
        */
       @java.lang.Override
@@ -5700,7 +5670,7 @@ public final class GameMsgProtocol {
        * 放置的角色
        * </pre>
        *
-       * <code>string character = 5;</code>
+       * <code>string character = 4;</code>
        * @return The bytes for character.
        */
       @java.lang.Override
@@ -5732,20 +5702,17 @@ public final class GameMsgProtocol {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (msgID_ != 0) {
-          output.writeUInt32(1, msgID_);
-        }
         if (playerID_ != 0) {
-          output.writeUInt32(2, playerID_);
+          output.writeUInt32(1, playerID_);
         }
         if (posX_ != 0F) {
-          output.writeFloat(3, posX_);
+          output.writeFloat(2, posX_);
         }
         if (posY_ != 0F) {
-          output.writeFloat(4, posY_);
+          output.writeFloat(3, posY_);
         }
         if (!getCharacterBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 5, character_);
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, character_);
         }
         unknownFields.writeTo(output);
       }
@@ -5756,24 +5723,20 @@ public final class GameMsgProtocol {
         if (size != -1) return size;
 
         size = 0;
-        if (msgID_ != 0) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(1, msgID_);
-        }
         if (playerID_ != 0) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt32Size(2, playerID_);
+            .computeUInt32Size(1, playerID_);
         }
         if (posX_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(3, posX_);
+            .computeFloatSize(2, posX_);
         }
         if (posY_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
-            .computeFloatSize(4, posY_);
+            .computeFloatSize(3, posY_);
         }
         if (!getCharacterBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, character_);
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, character_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -5790,8 +5753,6 @@ public final class GameMsgProtocol {
         }
         GameMsgProtocol.PlayerPutResult.StepInfo other = (GameMsgProtocol.PlayerPutResult.StepInfo) obj;
 
-        if (getMsgID()
-            != other.getMsgID()) return false;
         if (getPlayerID()
             != other.getPlayerID()) return false;
         if (java.lang.Float.floatToIntBits(getPosX())
@@ -5813,8 +5774,6 @@ public final class GameMsgProtocol {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        hash = (37 * hash) + MSGID_FIELD_NUMBER;
-        hash = (53 * hash) + getMsgID();
         hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
         hash = (53 * hash) + getPlayerID();
         hash = (37 * hash) + POSX_FIELD_NUMBER;
@@ -5962,8 +5921,6 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          msgID_ = 0;
-
           playerID_ = 0;
 
           posX_ = 0F;
@@ -5998,7 +5955,6 @@ public final class GameMsgProtocol {
         @java.lang.Override
         public GameMsgProtocol.PlayerPutResult.StepInfo buildPartial() {
           GameMsgProtocol.PlayerPutResult.StepInfo result = new GameMsgProtocol.PlayerPutResult.StepInfo(this);
-          result.msgID_ = msgID_;
           result.playerID_ = playerID_;
           result.posX_ = posX_;
           result.posY_ = posY_;
@@ -6051,9 +6007,6 @@ public final class GameMsgProtocol {
 
         public Builder mergeFrom(GameMsgProtocol.PlayerPutResult.StepInfo other) {
           if (other == GameMsgProtocol.PlayerPutResult.StepInfo.getDefaultInstance()) return this;
-          if (other.getMsgID() != 0) {
-            setMsgID(other.getMsgID());
-          }
           if (other.getPlayerID() != 0) {
             setPlayerID(other.getPlayerID());
           }
@@ -6096,56 +6049,13 @@ public final class GameMsgProtocol {
           return this;
         }
 
-        private int msgID_ ;
-        /**
-         * <pre>
-         * 信息编号
-         * </pre>
-         *
-         * <code>uint32 msgID = 1;</code>
-         * @return The msgID.
-         */
-        @java.lang.Override
-        public int getMsgID() {
-          return msgID_;
-        }
-        /**
-         * <pre>
-         * 信息编号
-         * </pre>
-         *
-         * <code>uint32 msgID = 1;</code>
-         * @param value The msgID to set.
-         * @return This builder for chaining.
-         */
-        public Builder setMsgID(int value) {
-          
-          msgID_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <pre>
-         * 信息编号
-         * </pre>
-         *
-         * <code>uint32 msgID = 1;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearMsgID() {
-          
-          msgID_ = 0;
-          onChanged();
-          return this;
-        }
-
         private int playerID_ ;
         /**
          * <pre>
          * 谁放的
          * </pre>
          *
-         * <code>uint32 playerID = 2;</code>
+         * <code>uint32 playerID = 1;</code>
          * @return The playerID.
          */
         @java.lang.Override
@@ -6157,7 +6067,7 @@ public final class GameMsgProtocol {
          * 谁放的
          * </pre>
          *
-         * <code>uint32 playerID = 2;</code>
+         * <code>uint32 playerID = 1;</code>
          * @param value The playerID to set.
          * @return This builder for chaining.
          */
@@ -6172,7 +6082,7 @@ public final class GameMsgProtocol {
          * 谁放的
          * </pre>
          *
-         * <code>uint32 playerID = 2;</code>
+         * <code>uint32 playerID = 1;</code>
          * @return This builder for chaining.
          */
         public Builder clearPlayerID() {
@@ -6188,7 +6098,7 @@ public final class GameMsgProtocol {
          * 放置的位置 X
          * </pre>
          *
-         * <code>float PosX = 3;</code>
+         * <code>float PosX = 2;</code>
          * @return The posX.
          */
         @java.lang.Override
@@ -6200,7 +6110,7 @@ public final class GameMsgProtocol {
          * 放置的位置 X
          * </pre>
          *
-         * <code>float PosX = 3;</code>
+         * <code>float PosX = 2;</code>
          * @param value The posX to set.
          * @return This builder for chaining.
          */
@@ -6215,7 +6125,7 @@ public final class GameMsgProtocol {
          * 放置的位置 X
          * </pre>
          *
-         * <code>float PosX = 3;</code>
+         * <code>float PosX = 2;</code>
          * @return This builder for chaining.
          */
         public Builder clearPosX() {
@@ -6231,7 +6141,7 @@ public final class GameMsgProtocol {
          * 放置的位置 Y
          * </pre>
          *
-         * <code>float PosY = 4;</code>
+         * <code>float PosY = 3;</code>
          * @return The posY.
          */
         @java.lang.Override
@@ -6243,7 +6153,7 @@ public final class GameMsgProtocol {
          * 放置的位置 Y
          * </pre>
          *
-         * <code>float PosY = 4;</code>
+         * <code>float PosY = 3;</code>
          * @param value The posY to set.
          * @return This builder for chaining.
          */
@@ -6258,7 +6168,7 @@ public final class GameMsgProtocol {
          * 放置的位置 Y
          * </pre>
          *
-         * <code>float PosY = 4;</code>
+         * <code>float PosY = 3;</code>
          * @return This builder for chaining.
          */
         public Builder clearPosY() {
@@ -6274,7 +6184,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 5;</code>
+         * <code>string character = 4;</code>
          * @return The character.
          */
         public java.lang.String getCharacter() {
@@ -6294,7 +6204,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 5;</code>
+         * <code>string character = 4;</code>
          * @return The bytes for character.
          */
         public com.google.protobuf.ByteString
@@ -6315,7 +6225,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 5;</code>
+         * <code>string character = 4;</code>
          * @param value The character to set.
          * @return This builder for chaining.
          */
@@ -6334,7 +6244,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 5;</code>
+         * <code>string character = 4;</code>
          * @return This builder for chaining.
          */
         public Builder clearCharacter() {
@@ -6348,7 +6258,7 @@ public final class GameMsgProtocol {
          * 放置的角色
          * </pre>
          *
-         * <code>string character = 5;</code>
+         * <code>string character = 4;</code>
          * @param value The bytes for character to set.
          * @return This builder for chaining.
          */
@@ -9688,23 +9598,22 @@ public final class GameMsgProtocol {
       "\001(\010\"\020\n\016PlayerReadyCmd\"8\n\021PlayerReadyResu" +
       "lt\022\020\n\010playerID\030\001 \001(\r\022\021\n\troomState\030\002 \001(\r\"" +
       "=\n\014PlayerPutCmd\022\014\n\004PosX\030\001 \001(\002\022\014\n\004PosY\030\002 " +
-      "\001(\002\022\021\n\tcharacter\030\003 \001(\t\"\232\001\n\017PlayerPutResu" +
+      "\001(\002\022\021\n\tcharacter\030\003 \001(\t\"\213\001\n\017PlayerPutResu" +
       "lt\022+\n\010stepInfo\030\001 \003(\0132\031.PlayerPutResult.S" +
-      "tepInfo\032Z\n\010StepInfo\022\r\n\005msgID\030\001 \001(\r\022\020\n\010pl" +
-      "ayerID\030\002 \001(\r\022\014\n\004PosX\030\003 \001(\002\022\014\n\004PosY\030\004 \001(\002" +
-      "\022\021\n\tcharacter\030\005 \001(\t\"\016\n\014PlayerDieCmd\"&\n\017P" +
-      "layerDieResult\022\023\n\013diePlayerID\030\001 \001(\r\"\020\n\016P" +
-      "layerLeaveCmd\"*\n\021PlayerLeaveResult\022\025\n\rle" +
-      "avePlayerID\030\001 \001(\r\"&\n\022PlayerActiveResult\022" +
-      "\020\n\010playerID\030\001 \001(\r*\261\002\n\007MsgCode\022\022\n\016WHAT_RO" +
-      "OMS_CMD\020\000\022\025\n\021WHAT_ROOMS_RESULT\020\001\022\024\n\020PLAY" +
-      "ER_ENTRY_CMD\020\002\022\027\n\023PLAYER_ENTRY_RESULT\020\003\022" +
-      "\024\n\020PLAYER_READY_CMD\020\004\022\027\n\023PLAYER_READY_RE" +
-      "SULT\020\005\022\022\n\016PLAYER_PUT_CMD\020\006\022\025\n\021PLAYER_PUT" +
-      "_RESULT\020\007\022\022\n\016PLAYER_DIE_CMD\020\010\022\025\n\021PLAYER_" +
-      "DIE_RESULT\020\t\022\024\n\020PLAYER_LEAVE_CMD\020\n\022\027\n\023PL" +
-      "AYER_LEAVE_RESULT\020\013\022\030\n\024PLAYER_ACTIVE_RES" +
-      "ULT\020\014b\006proto3"
+      "tepInfo\032K\n\010StepInfo\022\020\n\010playerID\030\001 \001(\r\022\014\n" +
+      "\004PosX\030\002 \001(\002\022\014\n\004PosY\030\003 \001(\002\022\021\n\tcharacter\030\004" +
+      " \001(\t\"\016\n\014PlayerDieCmd\"&\n\017PlayerDieResult\022" +
+      "\023\n\013diePlayerID\030\001 \001(\r\"\020\n\016PlayerLeaveCmd\"*" +
+      "\n\021PlayerLeaveResult\022\025\n\rleavePlayerID\030\001 \001" +
+      "(\r\"&\n\022PlayerActiveResult\022\020\n\010playerID\030\001 \001" +
+      "(\r*\261\002\n\007MsgCode\022\022\n\016WHAT_ROOMS_CMD\020\000\022\025\n\021WH" +
+      "AT_ROOMS_RESULT\020\001\022\024\n\020PLAYER_ENTRY_CMD\020\002\022" +
+      "\027\n\023PLAYER_ENTRY_RESULT\020\003\022\024\n\020PLAYER_READY" +
+      "_CMD\020\004\022\027\n\023PLAYER_READY_RESULT\020\005\022\022\n\016PLAYE" +
+      "R_PUT_CMD\020\006\022\025\n\021PLAYER_PUT_RESULT\020\007\022\022\n\016PL" +
+      "AYER_DIE_CMD\020\010\022\025\n\021PLAYER_DIE_RESULT\020\t\022\024\n" +
+      "\020PLAYER_LEAVE_CMD\020\n\022\027\n\023PLAYER_LEAVE_RESU" +
+      "LT\020\013\022\030\n\024PLAYER_ACTIVE_RESULT\020\014b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9769,7 +9678,7 @@ public final class GameMsgProtocol {
     internal_static_PlayerPutResult_StepInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerPutResult_StepInfo_descriptor,
-        new java.lang.String[] { "MsgID", "PlayerID", "PosX", "PosY", "Character", });
+        new java.lang.String[] { "PlayerID", "PosX", "PosY", "Character", });
     internal_static_PlayerDieCmd_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_PlayerDieCmd_fieldAccessorTable = new

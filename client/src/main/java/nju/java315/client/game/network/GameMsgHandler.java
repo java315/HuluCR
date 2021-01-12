@@ -28,7 +28,7 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
 
     @Override
     public void onReceive(Connection<byte[]> connection, byte[] msg) {
-        LOGGER.info("get server message : {}", Arrays.toString(msg));
+        //LOGGER.info("get server message : {}", Arrays.toString(msg));
 
         GeneratedMessageV3 cmd = decodeMessage(msg);
         try {
@@ -67,11 +67,20 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
 
             } else if (cmd instanceof GameMsgProtocol.PlayerPutResult) {
                 GameMsgProtocol.PlayerPutResult result = (GameMsgProtocol.PlayerPutResult) cmd;
-                // StepInfo info = result.getSerializedSize()
-                // float x = info.getPosX();
-                // float y = info.getPosY();
-                // String monsterName = info.getCharacter();
-                // getEventBus().fireEvent(new PutEvent(PutEvent.ENEMY_PUT,monsterName,new Point2D(x,y)));
+                for(int i=0;i < result.getStepInfoCount();i++){
+                    StepInfo info = result.getStepInfo(i);
+                    int id = info.getPlayerID();
+                    float x = info.getPosX();
+                    float y = info.getPosY();
+                    String monsterName = info.getCharacter();
+                    if(id == geti("playerID"))
+                        getEventBus().fireEvent(new PutEvent(PutEvent.SELF_PUT, monsterName, x, y));
+                    else if(id == geti("enemyID"))
+                        getEventBus().fireEvent(new PutEvent(PutEvent.ENEMY_PUT, monsterName, x, y));
+                    else
+                        LOGGER.error("未知的玩家，id = {}", id);
+                }
+
             }
             else if (cmd instanceof GameMsgProtocol.PlayerDieResult) {
 

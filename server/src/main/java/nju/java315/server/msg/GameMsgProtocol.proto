@@ -101,20 +101,17 @@ message PlayerPutResult {
 
     // 用户信息
     message StepInfo {
-        // 信息编号
-        uint32 msgID = 1;
-
         // 谁放的
-        uint32 playerID = 2;
+        uint32 playerID = 1;
 
         // 放置的位置 X
-        float PosX = 3;
+        float PosX = 2;
 
         // 放置的位置 Y
-        float PosY = 4;
+        float PosY = 3;
 
         // 放置的角色
-        string character = 5;
+        string character = 4;
     }
 }
 

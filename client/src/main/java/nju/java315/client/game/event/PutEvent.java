@@ -14,20 +14,26 @@ public class PutEvent extends Event {
     }
 
     private String monsterName;
-    private Point2D point;
+    private float x;
+    private float y;
 
-    public PutEvent(EventType<? extends Event> eventType, String monsterName, Point2D point) {
+    public PutEvent(EventType<? extends Event> eventType, String monsterName, float x, float y) {
         super(eventType);
 
         this.monsterName = monsterName;
-        this.point = point;
+        this.x = x;
+        this.y = y;
     }
 
     public String getMonsterName() {
         return monsterName;
     }
 
-    public Point2D getPoint() {
-        return point;
+    public float getX(){
+        return x;
+    }
+
+    public float getY(){
+        return y;
     }
 }

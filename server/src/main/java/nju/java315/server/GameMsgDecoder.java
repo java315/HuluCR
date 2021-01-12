@@ -26,7 +26,7 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
             LOGGER.warn("空消息");
             return;
         }
-        
+
         try{
             int length = ((ByteBuf)msg).readInt();
             System.out.println(length);
@@ -68,7 +68,6 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
                 LOGGER.info("完成处理");
                 ctx.fireChannelRead(cmd);
             }
-                
 
         }catch(Exception ex){
             LOGGER.error(ex.getMessage(), ex);

@@ -28,6 +28,9 @@ public class Config {
     public static final int READY_BUTTON_X = 26;
     public static final int READY_BUTTON_Y = 50;
 
+    public static final int LEFT_BOUND_X = 235;
+    public static final int RIGHT_BOUND_X = 910;
+
     public static final int SELF_READY_TITLE_X = 320;
     public static final int ENEMY_READY_TITLE_X = 660;
     public static final int CENTER_READY_TITLE_X = 490;
@@ -60,6 +63,21 @@ public class Config {
     public static final int TOAD_COST = 2;
     public static final int WASP_COST = 2;
     public static final int WILD_BOAR_COST = 2;
+
+    public static final int LARGE_HULU_HP = 100;
+    public static final int EYE_HULU_HP = 100;
+    public static final int IRON_HULU_HP = 100;
+    public static final int FIRE_HULU_HP = 100;
+    public static final int WATER_HULU_HP = 100;
+    public static final int STEALTH_HULU_HP = 100;
+    public static final int HULU_HULU_HP = 100;
+    public static final int NTR_HP = 100;
+    public static final int SNAKE_HP = 100;
+    public static final int CENTIPEDE_HP = 100;
+    public static final int SPIDER_HP = 100;
+    public static final int TOAD_HP = 100;
+    public static final int WASP_HP = 100;
+    public static final int WILD_BOAR_HP = 100;
 
     // 网络相关参数
     public static final int SERVER_PORT = 8080;
