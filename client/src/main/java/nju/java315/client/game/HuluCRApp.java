@@ -357,7 +357,7 @@ public class HuluCRApp extends GameApplication {
     private void onSelfPut(PutEvent event){
         Point2D putPoint = new Point2D(event.getX(), event.getY());
 
-        spawn("LargeHulu", new SpawnData(putPoint));
+        spawn("LargeHulu", new SpawnData(putPoint).put("flag", IdentityComponent.SELF_FLAG));
 
         //spawn("Fireball", putPoint);
     }
@@ -366,7 +366,7 @@ public class HuluCRApp extends GameApplication {
         float newX = Config.LEFT_BOUND_X + Config.RIGHT_BOUND_X - event.getX();
         Point2D putPoint = new Point2D(newX, event.getY());
 
-        spawn("LargeHulu", new SpawnData(putPoint));
+        spawn("LargeHulu", new SpawnData(putPoint).put("flag", IdentityComponent.ENEMY_FLAG));
     }
 
     private boolean playerIsReady = false;

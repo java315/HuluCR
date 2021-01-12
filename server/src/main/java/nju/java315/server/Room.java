@@ -79,7 +79,7 @@ public class Room implements Runnable{
     }
 
     public void addMsg(GameMsgProtocol.PlayerPutResult.StepInfo.Builder builder){
-        builder.setMsgID(++msgID);
+        //builder.setMsgID(++msgID);
         msgQueue.add(builder.build());
     }
 

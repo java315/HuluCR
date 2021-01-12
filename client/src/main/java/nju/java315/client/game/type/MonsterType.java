@@ -55,8 +55,9 @@ public enum MonsterType{
     ),
     GRANDFATHER("Grandfather",
             "",
-            Config.Asset.GRANDFATHER_LEFT_URL,          
+            Config.Asset.GRANDFATHER_LEFT_URL,
             Config.Asset.GRANDFATHER_RIGHT_URL,
+            0,
             0
     ),
     //妖精阵营
