@@ -20,6 +20,7 @@ import com.almasb.fxgl.net.Client;
 import com.almasb.fxgl.pathfinding.Cell;
 import com.almasb.fxgl.pathfinding.CellState;
 import com.almasb.fxgl.pathfinding.astar.AStarGrid;
+import com.almasb.fxgl.physics.PhysicsWorld;
 import com.almasb.fxgl.ui.UI;
 
 import org.slf4j.Logger;
@@ -28,12 +29,14 @@ import org.slf4j.LoggerFactory;
 import javafx.geometry.Point2D;
 import javafx.scene.input.MouseButton;
 import javafx.util.Duration;
+import nju.java315.client.game.collision.AttackMethodHandler;
 import nju.java315.client.game.components.IdentityComponent;
 import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.event.EntryResultEvent;
 import nju.java315.client.game.event.PutEvent;
 import nju.java315.client.game.event.ReadyEvent;
 import nju.java315.client.game.type.MonsterType;
+import nju.java315.client.game.type.AttackMethodType;
 import nju.java315.client.game.type.CursorEventType;
 import nju.java315.client.game.type.EntityType;
 
@@ -58,7 +61,7 @@ public class HuluCRApp extends GameApplication {
 
     // 闭包，获得随机的卡片
     private static Random rand = new Random();
-    static randomMonster randomMonster = () -> 
+    static randomMonster randomMonster = () ->
                             MonsterType.class.getEnumConstants()[rand.nextInt(MonsterType.class.getEnumConstants().length - 1)];
 
     List<Entity> cards = new ArrayList<>();
@@ -72,6 +75,7 @@ public class HuluCRApp extends GameApplication {
         settings.setProfilingEnabled(false);
         settings.setMainMenuEnabled(true);
         settings.setGameMenuEnabled(true);
+        settings.setDeveloperMenuEnabled(true);
         // settings.setEnabledMenuItems(EnumSet.of(MenuItem.EXTRA));
 
         settings.setSceneFactory(new SceneFactory() {
@@ -135,8 +139,6 @@ public class HuluCRApp extends GameApplication {
         vars.put("roomID", -1);
         vars.put("playerID", -1);
         vars.put("enemyID", -1);
-        // vars.put("playerIsReady", false);
-        // vars.put("enemyIsReady", false);
         vars.put("min", 0);
         vars.put("sec", 0);
 
@@ -173,7 +175,12 @@ public class HuluCRApp extends GameApplication {
     // 初始化物理环境
     @Override
     protected void initPhysics() {
-
+        PhysicsWorld physics = getPhysicsWorld();
+        for(int i=0; i<AttackMethodType.class.getEnumConstants().length;i++)
+            for(int j=0; j<MonsterType.class.getEnumConstants().length;j++)
+                physics.addCollisionHandler(new AttackMethodHandler(
+                                                AttackMethodType.class.getEnumConstants()[i],
+                                                MonsterType.class.getEnumConstants()[j]));
     }
 
     // 初始化ui

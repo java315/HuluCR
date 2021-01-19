@@ -31,10 +31,10 @@ import javafx.scene.effect.BlendMode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import nju.java315.client.game.components.AttackIdentityComponent;
 import nju.java315.client.game.components.DamageComponent;
 import nju.java315.client.game.components.HealthCompoent;
 import nju.java315.client.game.components.IdentityComponent;
-import nju.java315.client.game.components.MonsterCompenonet;
 import nju.java315.client.game.components.OwnerComponent;
 import nju.java315.client.game.components.SensorComponent;
 import nju.java315.client.game.components.ai.MovableMonsterAIComponent;
@@ -42,7 +42,7 @@ import nju.java315.client.game.components.ai.MoveComponent;
 import nju.java315.client.game.components.ai.TargetMoveComponent;
 import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.components.attack.FireBallAttack;
-import nju.java315.client.game.type.AttackMethod;
+import nju.java315.client.game.type.AttackMethodType;
 import nju.java315.client.game.type.EntityType;
 import nju.java315.client.game.type.MonsterType;
 import nju.java315.client.game.type.TowerType;
@@ -99,18 +99,19 @@ public class HuluCRFactory implements EntityFactory {
         );
 
         emitter.setBlendMode(BlendMode.SRC_OVER);
-        emitter.setSize(5, 7);
+        emitter.setSize(2, 3);
         emitter.setEmissionRate(1);
         //Point2D direction = new Point2D(1,0);
         Point2D direction = data.get("direction");
         return FXGL.entityBuilder(data)
-                    .type(AttackMethod.FIREBALL)
+                    .type(AttackMethodType.FIREBALL)
                     .bbox(new HitBox(BoundingShape.circle(5)))
                     .with(new CollidableComponent(true))
                     .with(new ParticleComponent(emitter))
-                    .with(new ProjectileComponent(direction, 400))
-                    .with(new ExpireCleanComponent(Duration.seconds(0.8)))
-                    .with(new DamageComponent(100))
+                    .with(new ProjectileComponent(direction, 200))
+                    .with(new AttackIdentityComponent(data.get("identity")))
+                    //.with(new ExpireCleanComponent(Duration.seconds(0.8)))
+                    .with(new DamageComponent(10))
                     .build();
 
     }
@@ -121,13 +122,6 @@ public class HuluCRFactory implements EntityFactory {
         return FXGL.entityBuilder(data)
                     .type(type)
                     .viewWithBBox(type.getCardUrl())
-                    .build();
-    }
-
-    @Spawns("Grandfather")
-    public Entity newGrandfather(SpawnData data) {
-        return FXGL.entityBuilder()
-                    .type(TowerType.GRANDFATHER)
                     .build();
     }
 
@@ -163,13 +157,12 @@ public class HuluCRFactory implements EntityFactory {
                     .type(MonsterType.LARGE_HULU)
                     .viewWithBBox(MonsterType.LARGE_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.LARGE_HULU.getHp()))
-                    .with(new MonsterCompenonet())
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, 30))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
-                    .with(new SensorComponent(150.0))
+                    .with(new SensorComponent(MonsterType.LARGE_HULU.getSensor()))
                     .with(new StateComponent())
                     .with(new MovableMonsterAIComponent())
                     .build();
@@ -196,7 +189,7 @@ public class HuluCRFactory implements EntityFactory {
         Entity owner = data.get("owner");
 
         return entityBuilder()
-                .type(AttackMethod.ARROW)
+                .type(AttackMethodType.ARROW)
                 .at(owner.getCenter().add(-3,18))
                 .viewWithBBox("arrow.png")
                 .collidable()
@@ -210,21 +203,17 @@ public class HuluCRFactory implements EntityFactory {
     @Spawns("Tower")
     public Entity newTower(SpawnData data) {
         boolean flag = data.get("flag");
-        Entity tower = entityBuilder(data)
-                        .type(MonsterType.GRANDFATHER)
-                        .viewWithBBox(MonsterType.GRANDFATHER.getRightUrl())
-                        .with(new CollidableComponent(true))
-                        .with(new FireBallAttack())
-                        .with(new HealthCompoent(1000))
-                        .with(new IdentityComponent(flag))
-                        .with(new SensorComponent(200.0))
-                        .with(new StateComponent())
-                        .with(new UnmovableMonsterAIComponent())
-                        .scale(1.5, 1.5)
-                        .build();
-        
-        
-  
-        return tower;
+        return entityBuilder(data)
+                .type(MonsterType.GRANDFATHER)
+                .viewWithBBox(MonsterType.GRANDFATHER.getRightUrl())
+                .with(new CollidableComponent(true))
+                .with(new FireBallAttack(flag))
+                .with(new HealthCompoent(MonsterType.GRANDFATHER.getHp()))
+                .with(new IdentityComponent(flag))
+                .with(new SensorComponent(MonsterType.GRANDFATHER.getSensor()))
+                .with(new StateComponent())
+                .with(new UnmovableMonsterAIComponent())
+                .scale(1.5, 1.5)
+                .build();
     }
 }

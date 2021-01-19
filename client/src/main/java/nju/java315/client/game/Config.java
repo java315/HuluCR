@@ -75,6 +75,7 @@ public class Config {
     public static final int TOAD_COST = 2;
     public static final int WASP_COST = 2;
     public static final int WILD_BOAR_COST = 2;
+    public static final int GRANDFATHER_COST = 0;
 
     public static final int LARGE_HULU_HP = 100;
     public static final int EYE_HULU_HP = 100;
@@ -90,6 +91,23 @@ public class Config {
     public static final int TOAD_HP = 100;
     public static final int WASP_HP = 100;
     public static final int WILD_BOAR_HP = 100;
+    public static final int GRANDFATHER_HP = 1000;
+
+    public static final double LARGE_HULU_SENSOR = 150.0;
+    public static final double EYE_HULU_SENSOR = 150.0;
+    public static final double IRON_HULU_SENSOR = 150.0;
+    public static final double FIRE_HULU_SENSOR = 150.0;
+    public static final double WATER_HULU_SENSOR = 150.0;
+    public static final double STEALTH_HULU_SENSOR = 150.0;
+    public static final double HULU_HULU_SENSOR = 150.0;
+    public static final double NTR_SENSOR = 150.0;
+    public static final double SNAKE_SENSOR = 150.0;
+    public static final double CENTIPEDE_SENSOR = 150.0;
+    public static final double SPIDER_SENSOR = 150.0;
+    public static final double TOAD_SENSOR = 150.0;
+    public static final double WASP_SENSOR = 150.0;
+    public static final double WILD_BOAR_SENSOR = 150.0;
+    public static final double GRANDFATHER_SENSOR = 200.0;
 
     // 网络相关参数
     public static final int SERVER_PORT = 8080;
@@ -102,61 +120,91 @@ public class Config {
         public static final String LARGE_HULU_CARD_URL = "card/largeHulu.png";
         public static final String LARGE_HULU_ENTITY_LEFT_URL = "monster/red-left.png";
         public static final String LARGE_HULU_ENTITY_RIGHT_URL = "monster/red-right.png";
+        public static final String LARGE_HULU_ENTITY_LEFT_DEAD_URL = "monster/red-left-dead.png";
+        public static final String LARGE_HULU_ENTITY_RIGHT_DEAD_URL = "monster/red-right-dead.png";
 
         public static final String EYE_HULU_CARD_URL = "card/eyeHulu.png";
         public static final String EYE_HULU_ENTITY_LEFT_URL = "monster/orange-left.png";
         public static final String EYE_HULU_ENTITY_RIGHT_URL = "monster/orange-right.png";
+        public static final String EYE_HULU_ENTITY_LEFT_DEAD_URL = "monster/orange-left-dead.png";
+        public static final String EYE_HULU_ENTITY_RIGHT_DEAD_URL = "monster/orange-right-dead.png";
 
         public static final String IRON_HULU_CARD_URL = "card/ironHulu.png";
         public static final String IRON_HULU_ENTITY_LEFT_URL = "monster/yellow-left.png";
         public static final String IRON_HULU_ENTITY_RIGHT_URL = "monster/yellow-right.png";
+        public static final String IRON_HULU_ENTITY_LEFT_DEAD_URL = "monster/yellow-left-dead.png";
+        public static final String IRON_HULU_ENTITY_RIGHT_DEAD_URL = "monster/yellow-right-dead.png";
 
         public static final String FIRE_HULU_CARD_URL = "card/fireHulu.png";
         public static final String FIRE_HULU_ENTITY_LEFT_URL = "monster/green-left.png";
         public static final String FIRE_HULU_ENTITY_RIGHT_URL = "monster/green-right.png";
+        public static final String FIRE_HULU_ENTITY_LEFT_DEAD_URL = "monster/green-left-dead.png";
+        public static final String FIRE_HULU_ENTITY_RIGHT_DEAD_URL = "monster/green-right-dead.png";
 
         public static final String WATER_HULU_CARD_URL = "card/waterHulu.png";
         public static final String WATER_HULU_ENTITY_LEFT_URL = "monster/blue-left.png";
         public static final String WATER_HULU_ENTITY_RIGHT_URL = "monster/blue-right.png";
+        public static final String WATER_HULU_ENTITY_LEFT_DEAD_URL = "monster/blue-left-dead.png";
+        public static final String WATER_HULU_ENTITY_RIGHT_DEAD_URL = "monster/blue-right-dead.png";
 
         public static final String STEALTH_HULU_CARD_URL = "card/stealthHulu.png";
         public static final String STEALTH_HULU_ENTITY_LEFT_URL = "monster/cyan-left.png";
         public static final String STEALTH_HULU_ENTITY_RIGHT_URL = "monster/cyan-right.png";
+        public static final String STEALTH_HULU_ENTITY_LEFT_DEAD_URL = "monster/cyan-left-dead.png";
+        public static final String STEALTH_HULU_ENTITY_RIGHT_DEAD_URL = "monster/cyan-right-dead.png";
 
         public static final String HULU_HULU_CARD_URL = "card/huluHulu.png";
         public static final String HULU_HULU_ENTITY_LEFT_URL = "monster/purple-left.png";
         public static final String HULU_HULU_ENTITY_RIGHT_URL = "monster/purple-right.png";
+        public static final String HULU_HULU_ENTITY_LEFT_DEAD_URL = "monster/purple-left-dead.png";
+        public static final String HULU_HULU_ENTITY_RIGHT_DEAD_URL = "monster/purple-right-dead.png";
 
         public static final String NTR_CARD_URL = "card/NTR.png";
         public static final String NTR_ENTITY_LEFT_URL = "monster/Scorpion-left.png";
         public static final String NTR_ENTITY_RIGHT_URL = "monster/Scorpion-right.png";
+        public static final String NTR_ENTITY_LEFT_DEAD_URL = "monster/Scorpion-left-dead.png";
+        public static final String NTR_ENTITY_RIGHT_DEAD_URL = "monster/Scorpion-right-dead.png";
 
         public static final String SNAKE_CARD_URL = "card/snake.png";
         public static final String SNAKE_ENTITY_LEFT_URL = "monster/snake-left.png";
         public static final String SNAKE_ENTITY_RIGHT_URL = "monster/snake-right.png";
+        public static final String SNAKE_ENTITY_LEFT_DEAD_URL = "monster/snake-left-dead.png";
+        public static final String SNAKE_ENTITY_RIGHT_DEAD_URL = "monster/snake-right-dead.png";
 
         public static final String CENTIPEDE_CARD_URL = "card/centipede.png";
         public static final String CENTIPEDE_ENTITY_LEFT_URL = "";
         public static final String CENTIPEDE_ENTITY_RIGHT_URL = "";
+        public static final String CENTIPEDE_ENTITY_LEFT_DEAD_URL = "";
+        public static final String CENTIPEDE_ENTITY_RIGHT_DEAD_URL = "";
 
         public static final String SPIDER_CARD_URL = "card/spider.png";
         public static final String SPIDER_ENTITY_LEFT_URL = "";
         public static final String SPIDER_ENTITY_RIGHT_URL = "";
+        public static final String SPIDER_ENTITY_LEFT_DEAD_URL = "";
+        public static final String SPIDER_ENTITY_RIGHT_DEAD_URL = "";
 
         public static final String TOAD_CARD_URL = "card/toad.png";
         public static final String TOAD_ENTITY_LEFT_URL = "";
         public static final String TOAD_ENTITY_RIGHT_URL = "";
+        public static final String TOAD_ENTITY_LEFT_DEAD_URL = "";
+        public static final String TOAD_ENTITY_RIGHT_DEAD_URL = "";
 
         public static final String WASP_CARD_URL = "card/wasp.png";
         public static final String WASP_ENTITY_LEFT_URL = "";
         public static final String WASP_ENTITY_RIGHT_URL = "";
+        public static final String WASP_ENTITY_LEFT_DEAD_URL = "";
+        public static final String WASP_ENTITY_RIGHT_DEAD_URL = "";
 
         public static final String WILD_BOAR_CARD_URL = "card/wildBoar.png";
         public static final String WILD_BOAR_ENTITY_LEFT_URL = "";
         public static final String WILD_BOAR_ENTITY_RIGHT_URL = "";
+        public static final String WILD_BOAR_ENTITY_LEFT_DEAD_URL = "";
+        public static final String WILD_BOAR_ENTITY_RIGHT_DEAD_URL = "";
 
         public static final String GRANDFATHER_LEFT_URL = "monster/grandfather-left.png";
         public static final String GRANDFATHER_RIGHT_URL= "monster/grandfather-right.png";
+        public static final String GRANDFATHER_LEFT_DEAD_URL = "monster/grandfather-left-dead.png";
+        public static final String GRANDFATHER_RIGHT_DEAD_URL= "monster/grandfather-right-dead.png";
 
         public static final String READY_BUTTON_URL = "readyButton.png";
         public static final String READY_TITLE_URL = "readyTitle.png";

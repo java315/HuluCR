@@ -4,7 +4,6 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.entity.components.BooleanComponent;
 import com.almasb.fxgl.texture.Texture;
 
-import nju.java315.client.game.Config;
 import nju.java315.client.game.type.MonsterType;
 
 public class IdentityComponent extends BooleanComponent{

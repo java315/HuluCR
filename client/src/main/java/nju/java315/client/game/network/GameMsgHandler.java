@@ -73,6 +73,7 @@ public class GameMsgHandler implements MessageHandler<byte[]> {
                     float x = info.getPosX();
                     float y = info.getPosY();
                     String monsterName = info.getCharacter();
+                    System.out.println(monsterName);
                     if(id == geti("playerID"))
                         getEventBus().fireEvent(new PutEvent(PutEvent.SELF_PUT, monsterName, x, y));
                     else if(id == geti("enemyID"))

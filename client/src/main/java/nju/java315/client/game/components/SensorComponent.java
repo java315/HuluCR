@@ -24,12 +24,11 @@ public class SensorComponent extends Component{
             updateClosestTarget();
         }
         else {
-            if (target.distance(entity) > sensorRange) {
+            if (target.distance(entity) > sensorRange || !target.getComponent(HealthCompoent.class).isAlived()) {
                 target = null;
                 //System.out.println("lost target");
             }
         }
-        
     }
 
     private void updateClosestTarget() {
@@ -39,7 +38,7 @@ public class SensorComponent extends Component{
             .filter(e -> e.getComponent(IdentityComponent.class).isEnemy(identity.getValue()))
             .min(Comparator.comparingDouble(e -> e.distance(entity)))
             .ifPresent(e -> {
-                if (e.distance(entity) >= sensorRange) return;
+                if (e.distance(entity) >= sensorRange || !e.getComponent(HealthCompoent.class).isAlived()) return;
                 target = e;
                 target.addComponentListener(new ComponentListener(){
 
@@ -51,10 +50,8 @@ public class SensorComponent extends Component{
                             // to test
                             target = null;
                         }
-                    
                 });
             });
-        
     }
 
     public Entity getTarget() {
