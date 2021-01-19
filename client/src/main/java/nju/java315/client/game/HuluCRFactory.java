@@ -153,24 +153,296 @@ public class HuluCRFactory implements EntityFactory {
     @Spawns("LargeHulu")
     public Entity newLargeHulu(SpawnData data) {
         boolean flag = data.get("flag");
-        Entity hulu = FXGL.entityBuilder()
+        Entity e = FXGL.entityBuilder()
                     .type(MonsterType.LARGE_HULU)
                     .viewWithBBox(MonsterType.LARGE_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.LARGE_HULU.getHp()))
                     .with(new CollidableComponent(true))
                     .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
-                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, 30))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.LARGE_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
                     .with(new SensorComponent(MonsterType.LARGE_HULU.getSensor()))
                     .with(new StateComponent())
                     .with(new MovableMonsterAIComponent())
                     .build();
 
-        hulu.setPosition(data.getX() - hulu.getWidth()/2, data.getY() - hulu.getY() - hulu.getHeight()/2);
-        return hulu;
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
     }
 
+    @Spawns("FireHulu")
+    public Entity newFireHulu(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.FIRE_HULU)
+                    .viewWithBBox(MonsterType.FIRE_HULU.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.FIRE_HULU.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.FIRE_HULU.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("EyeHulu")
+    public Entity newEyeHulu(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.EYE_HULU)
+                    .viewWithBBox(MonsterType.EYE_HULU.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.EYE_HULU.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.EYE_HULU.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("WaterHulu")
+    public Entity newWaterHulu(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.WATER_HULU)
+                    .viewWithBBox(MonsterType.WATER_HULU.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.WATER_HULU.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WATER_HULU.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("IronHulu")
+    public Entity newIronHulu(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.IRON_HULU)
+                    .viewWithBBox(MonsterType.IRON_HULU.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.IRON_HULU.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.IRON_HULU.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("StealthHulu")
+    public Entity newStealthHulu(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.STEALTH_HULU)
+                    .viewWithBBox(MonsterType.STEALTH_HULU.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.STEALTH_HULU.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.STEALTH_HULU.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("HuluHulu")
+    public Entity newHuluHulu(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.HULU_HULU)
+                    .viewWithBBox(MonsterType.HULU_HULU.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.HULU_HULU.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.HULU_HULU.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("NTR")
+    public Entity newNTR(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.NTR)
+                    .viewWithBBox(MonsterType.NTR.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.NTR.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.NTR.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("Snake")
+    public Entity newSnake(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.SNAKE)
+                    .viewWithBBox(MonsterType.SNAKE.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.SNAKE.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.SNAKE.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("Centipede")
+    public Entity newCentipede(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.CENTIPEDE)
+                    .viewWithBBox(MonsterType.CENTIPEDE.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.CENTIPEDE.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.CENTIPEDE.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("Spider")
+    public Entity newSpider(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.SPIDER)
+                    .viewWithBBox(MonsterType.SPIDER.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.SPIDER.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.SPIDER.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("Toad")
+    public Entity newToad(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.TOAD)
+                    .viewWithBBox(MonsterType.TOAD.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.TOAD.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.TOAD.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("Wasp")
+    public Entity newWasp(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.WASP)
+                    .viewWithBBox(MonsterType.WASP.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.WASP.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WASP.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
+
+    @Spawns("WildBoar")
+    public Entity newWildBoar(SpawnData data) {
+        boolean flag = data.get("flag");
+        Entity e = FXGL.entityBuilder()
+                    .type(MonsterType.WILD_BOAR)
+                    .viewWithBBox(MonsterType.WILD_BOAR.getRightUrl())
+                    .with(new HealthCompoent(MonsterType.WILD_BOAR.getHp()))
+                    .with(new CollidableComponent(true))
+                    .with(new FireBallAttack())
+                    .with(new IdentityComponent(flag))
+                    .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WILD_BOAR.getSpeed()))
+                    .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
+                    .with(new SensorComponent(150.0))
+                    .with(new StateComponent())
+                    .with(new MovableMonsterAIComponent())
+                    .build();
+
+        e.setPosition(data.getX() - e.getWidth()/2, data.getY() - e.getY() - e.getHeight()/2);
+        return e;
+    }
 
     @Spawns("FakeMonster")
     public Entity newFakeMonster(SpawnData data) {
