@@ -41,6 +41,7 @@ import nju.java315.client.game.components.ai.MovableMonsterAIComponent;
 import nju.java315.client.game.components.ai.MoveComponent;
 import nju.java315.client.game.components.ai.TargetMoveComponent;
 import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
+import nju.java315.client.game.components.attack.AttackMethod;
 import nju.java315.client.game.components.attack.FireBallAttack;
 import nju.java315.client.game.type.AttackMethodType;
 import nju.java315.client.game.type.EntityType;
@@ -103,17 +104,35 @@ public class HuluCRFactory implements EntityFactory {
         emitter.setEmissionRate(1);
         //Point2D direction = new Point2D(1,0);
         Point2D direction = data.get("direction");
+        //int move_speed = data.get("speed");
+        int move_speed = 200;
         return FXGL.entityBuilder(data)
                     .type(AttackMethodType.FIREBALL)
                     .bbox(new HitBox(BoundingShape.circle(5)))
                     .with(new CollidableComponent(true))
                     .with(new ParticleComponent(emitter))
-                    .with(new ProjectileComponent(direction, 200))
+                    .with(new ProjectileComponent(direction, move_speed))
                     .with(new AttackIdentityComponent(data.get("identity")))
                     //.with(new ExpireCleanComponent(Duration.seconds(0.8)))
                     .with(new DamageComponent(10))
                     .build();
 
+    }
+
+    @Spawns("Fist")
+    public Entity newFist(SpawnData data) {
+
+        Point2D direction = data.get("direction");
+        //int move_speed = data.get("speed");
+        int move_speed = 400;
+        return FXGL.entityBuilder(data)
+                    .type(AttackMethodType.FIREBALL)
+                    .bbox(new HitBox(BoundingShape.circle(5)))
+                    .with(new CollidableComponent(true))
+                    .with(new ProjectileComponent(direction, move_speed))
+                    .with(new ExpireCleanComponent(Duration.seconds(0.8)))
+                    .with(new DamageComponent(100))
+                    .build();
     }
 
     @Spawns("Card")
@@ -179,7 +198,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.FIRE_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.FIRE_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.FIRE_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -200,7 +219,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.EYE_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.EYE_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.EYE_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -221,7 +240,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.WATER_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.WATER_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WATER_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -242,7 +261,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.IRON_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.IRON_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.IRON_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -263,7 +282,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.STEALTH_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.STEALTH_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.STEALTH_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -284,7 +303,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.HULU_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.HULU_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.HULU_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -305,7 +324,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.NTR.getRightUrl())
                     .with(new HealthCompoent(MonsterType.NTR.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.NTR.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -326,7 +345,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.SNAKE.getRightUrl())
                     .with(new HealthCompoent(MonsterType.SNAKE.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.SNAKE.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -347,7 +366,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.CENTIPEDE.getRightUrl())
                     .with(new HealthCompoent(MonsterType.CENTIPEDE.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.CENTIPEDE.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -368,7 +387,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.SPIDER.getRightUrl())
                     .with(new HealthCompoent(MonsterType.SPIDER.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.SPIDER.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -389,7 +408,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.TOAD.getRightUrl())
                     .with(new HealthCompoent(MonsterType.TOAD.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.TOAD.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -410,7 +429,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.WASP.getRightUrl())
                     .with(new HealthCompoent(MonsterType.WASP.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WASP.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -431,7 +450,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.WILD_BOAR.getRightUrl())
                     .with(new HealthCompoent(MonsterType.WILD_BOAR.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new FireBallAttack(flag))
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WILD_BOAR.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -486,6 +505,15 @@ public class HuluCRFactory implements EntityFactory {
                 .with(new StateComponent())
                 .with(new UnmovableMonsterAIComponent())
                 .scale(1.5, 1.5)
+                .build();
+    }
+
+    @Spawns("hpBar")
+    public Entity newHpBar(SpawnData data) {
+        return FXGL.entityBuilder(data)
+                .view(new Rectangle(60, 10, Color.RED))
+                .view(new Rectangle(60, 10, Color.GREEN))
+                .zIndex(10)
                 .build();
     }
 }

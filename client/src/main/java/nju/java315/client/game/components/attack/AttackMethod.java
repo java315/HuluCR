@@ -37,6 +37,10 @@ public abstract class AttackMethod extends Component{
         return identity;
     }
 
+    public int getRange() {
+        return range;
+    }
+
     private LocalTimer attackTimer = FXGL.newLocalTimer();
     public void attack(Entity target){
         if (entity.getComponent(HealthCompoent.class).isAlived() && attackTimer.elapsed(ATTACK_DELAY)) {

@@ -31,7 +31,7 @@ public class AttackMethodHandler extends CollisionHandler {
 
             HealthCompoent hp = monster.getComponent(HealthCompoent.class);
             DamageComponent damage = attack_method.getComponent(DamageComponent.class);
-            hp.setValue(hp.getValue() - damage.getValue());
+            hp.setHP(hp.getValue() - damage.getValue());
 
             animationBuilder()
                 .duration(Duration.seconds(0.5))
