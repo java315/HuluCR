@@ -31,7 +31,7 @@ import javafx.scene.effect.BlendMode;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import nju.java315.client.game.components.AttackIdentityComponent;
+import nju.java315.client.game.components.AttackTargetComponent;
 import nju.java315.client.game.components.DamageComponent;
 import nju.java315.client.game.components.HealthCompoent;
 import nju.java315.client.game.components.IdentityComponent;
@@ -109,7 +109,7 @@ public class HuluCRFactory implements EntityFactory {
                     .with(new CollidableComponent(true))
                     .with(new ParticleComponent(emitter))
                     .with(new ProjectileComponent(direction, 200))
-                    .with(new AttackIdentityComponent(data.get("identity")))
+                    .with(new AttackTargetComponent(data.get("target")))
                     //.with(new ExpireCleanComponent(Duration.seconds(0.8)))
                     .with(new DamageComponent(10))
                     .build();
@@ -158,7 +158,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.LARGE_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.LARGE_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack(flag))
+                    .with(new FireBallAttack())
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.LARGE_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
@@ -479,7 +479,7 @@ public class HuluCRFactory implements EntityFactory {
                 .type(MonsterType.GRANDFATHER)
                 .viewWithBBox(MonsterType.GRANDFATHER.getRightUrl())
                 .with(new CollidableComponent(true))
-                .with(new FireBallAttack(flag))
+                .with(new FireBallAttack())
                 .with(new HealthCompoent(MonsterType.GRANDFATHER.getHp()))
                 .with(new IdentityComponent(flag))
                 .with(new SensorComponent(MonsterType.GRANDFATHER.getSensor()))

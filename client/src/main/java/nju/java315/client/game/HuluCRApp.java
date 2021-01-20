@@ -362,7 +362,7 @@ public class HuluCRApp extends GameApplication {
         float newX = Config.LEFT_BOUND_X + Config.RIGHT_BOUND_X - event.getX();
         Point2D putPoint = new Point2D(newX, event.getY());
         System.out.println("enemy put: " + event.getMonsterName());
-        spawn("Snake", new SpawnData(putPoint).put("flag", IdentityComponent.ENEMY_FLAG));
+        spawn(event.getMonsterName(), new SpawnData(putPoint).put("flag", IdentityComponent.ENEMY_FLAG));
     }
 
     private boolean playerIsReady = false;

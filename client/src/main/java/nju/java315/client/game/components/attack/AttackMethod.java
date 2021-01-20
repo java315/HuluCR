@@ -14,37 +14,31 @@ public abstract class AttackMethod extends Component{
     protected int damage;
     protected int range;
     protected float attack_speed; // how many times in 1 sec
-    protected boolean identity;
     private Duration ATTACK_DELAY;
-    public AttackMethod(String name, int damage, int range, float attack_speed, boolean identity){
+    public AttackMethod(String name, int damage, int range, float attack_speed){
         this.name = name;
         this.damage = damage;
         this.range = range;
         this.attack_speed = attack_speed;
         this.ATTACK_DELAY = Duration.seconds(1.0f/attack_speed);
-        this.identity = identity;
     }
 
-    public AttackMethod(int damage,int range, float attack_speed, boolean identity){
-        this("AttackMethod", damage, range, attack_speed, identity);
+    public AttackMethod(int damage,int range, float attack_speed){
+        this("AttackMethod", damage, range, attack_speed);
     }
 
     public String getName() {
         return name;
     }
 
-    public boolean getIdentity(){
-        return identity;
-    }
-
     private LocalTimer attackTimer = FXGL.newLocalTimer();
     public void attack(Entity target){
         if (entity.getComponent(HealthCompoent.class).isAlived() && attackTimer.elapsed(ATTACK_DELAY)) {
-            spawnAttack(entity.getCenter(), getDirection(target));
+            spawnAttack(entity.getCenter(), target);
             attackTimer.capture();
         }
     }
-    protected abstract Entity spawnAttack(Point2D position, Point2D direction);
+    protected abstract Entity spawnAttack(Point2D position, Entity target);
 
     public Point2D getDirection(Entity target){
         return target.getCenter().subtract(entity.getCenter());

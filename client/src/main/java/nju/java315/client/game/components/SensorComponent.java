@@ -43,7 +43,8 @@ public class SensorComponent extends Component{
                 target.addComponentListener(new ComponentListener(){
 
                         @Override
-                        public void onAdded(Component component) {}
+                        public void onAdded(Component component) {
+                        }
 
                         @Override
                         public void onRemoved(Component component) {
