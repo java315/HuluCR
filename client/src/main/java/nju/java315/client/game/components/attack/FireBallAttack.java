@@ -9,17 +9,17 @@ import javafx.geometry.Point2D;
 
 public class FireBallAttack extends AttackMethod {
 
-    public FireBallAttack(int damage, int range, float attack_speed, boolean identity) {
-        super(damage, range, attack_speed, identity);
+    public FireBallAttack(int damage, int range, float attack_speed) {
+        super(damage, range, attack_speed);
     }
 
-    public FireBallAttack(boolean identity) {
-        super(200, 400, 0.8f, identity);
+    public FireBallAttack() {
+        super(200, 400, 0.8f);
     }
 
     @Override
-    protected Entity spawnAttack(Point2D position, Point2D direction) {
-        return FXGL.spawn("Fireball", new SpawnData(position).put("direction", direction).put("identity", identity));
+    protected Entity spawnAttack(Point2D position, Entity target) {
+        return FXGL.spawn("Fireball", new SpawnData(position).put("direction", getDirection(target)).put("target", target));
     }
 
 }

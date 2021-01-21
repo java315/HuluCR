@@ -10,7 +10,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 import javafx.geometry.Point2D;
 import javafx.util.Duration;
 import nju.java315.client.game.HuluCRType;
-import nju.java315.client.game.components.AttackIdentityComponent;
+import nju.java315.client.game.components.AttackTargetComponent;
 import nju.java315.client.game.components.DamageComponent;
 import nju.java315.client.game.components.HealthCompoent;
 import nju.java315.client.game.components.IdentityComponent;
@@ -24,9 +24,9 @@ public class AttackMethodHandler extends CollisionHandler {
 
     @Override
     protected void onCollisionBegin(Entity attack_method, Entity monster) {
-        boolean attackMethodIdentity = attack_method.getComponent(AttackIdentityComponent.class).getValue();
-        if(monster.getComponent(IdentityComponent.class).isEnemy(attackMethodIdentity)){
-            attack_method.getComponent(CollidableComponent.class).setValue(false);
+        Entity target = attack_method.getComponent(AttackTargetComponent.class).getTarget();
+        if(monster == target){
+            // attack_method.getComponent(CollidableComponent.class).setValue(false);
             attack_method.getComponent(ProjectileComponent.class).setSpeed(0);
 
             HealthCompoent hp = monster.getComponent(HealthCompoent.class);
@@ -52,5 +52,10 @@ public class AttackMethodHandler extends CollisionHandler {
                 // present effect
             }
         }
+    }
+
+    @Override
+    public void onCollision(Entity attack_method, Entity monster){
+
     }
 }
