@@ -12,11 +12,13 @@
 
 ## 2.操作说明
 
-首先需要运行服务器，入口为：HuluCR.server.src.main.java.nju.java315.server.ServerApplication。
+* 运行方法：
 
-服务器运行成功之后，通过入口 HuluCR.client.src.main.java.nju.java315.client.ClientApplication 启动两个客户端。
+  首先需要运行服务器，入口为：HuluCR.server.src.main.java.nju.java315.server.ServerApplication。
 
-为了检查方便，我们编写了运行脚本，只需**在项目根目录执行 build 指令**，即可生成一个服务器和两个客户端。
+  服务器运行成功之后，通过入口 HuluCR.client.src.main.java.nju.java315.client.ClientApplication 启动两个客户端。
+
+  为了检查方便，我们编写了运行脚本，只需**在项目根目录执行 build 指令**，即可生成一个服务器和两个客户端。
 
 * 游戏开始界面如下：
 
@@ -595,11 +597,160 @@ public class AttackMethodHandler extends CollisionHandler {
 
 
 
+#### 服务器端：
+
+服务器端需要负责的任务有：
+
+* 管理客户端链接
+* 管理不同的房间
+* 对客户端发来的消息进行存储、转发
+
+在这个部分，我们采用了 netty 框架实现，netty 框架采用了责任链的设计模式，在初始化服务器端时，将负责处理消息的类按顺序添加到信号管道中，当收到消息时，消息从前到后流经管道，直到被某一个类处理；当发送消息时，消息从后往前流经管道，被每一个能处理它的类处理，直到发送。
+
+~~~java
+public class ServerApplication {
+	public static void main(String[] args) {
+        //nio，两个线程组一个负责分配任务，另一个负责处理任务
+		EventLoopGroup bossGroup = new NioEventLoopGroup();
+		EventLoopGroup workGroup = new NioEventLoopGroup();
+
+		ServerBootstrap b = new ServerBootstrap();
+		b.group(bossGroup, workGroup);
+		b.channel(NioServerSocketChannel.class);
+		b.childHandler(new ChannelInitializer<SocketChannel>() {
+			@Override
+			protected void initChannel(SocketChannel ch) throws Exception {
+				ChannelPipeline pipeline = ch.pipeline();
+                
+				pipeline.addLast(new GameMsgDecoder());
+				pipeline.addLast(new GameMsgEncoder());
+				pipeline.addLast(new GameMsgHandler());
+			}
+		});
+		......
+}
+~~~
+
+因此，在服务器端，需要实现的即为管道中的三个类 GameMsgDecoder、GameMsgEncoder、GameMsgHandler，下面分别进行介绍：
 
 
 
+##### 1.GameMsgDecoder
+
+此类继承 netty 中的 ChannelInboundHandlerAdapter 类，表示其用于对收到的信息进行处理。该类的主要任务是重写 channelRead 函数，利用自定义的应用层通信协议，对收到的信息进行解码，然后将解码后的信息再次发送到管道上，交给 GameMsgHandler 做进一步的处理。
+
+~~~java
+public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
+    static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgDecoder.class);
+
+    @Override
+    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
+        try{
+            int length = ((ByteBuf)msg).readInt();
+            ByteBuf byteBuf = ((ByteBuf)msg).readSlice(length);
+            
+            //消息的类型
+            //int unknownFlag = byteBuf.readShort();
+            int msgCode = byteBuf.readUnsignedShort();
+
+            byte[] msgBody = new byte[byteBuf.readableBytes()];
+            byteBuf.readBytes(msgBody);
+            GeneratedMessageV3 cmd = null;
+
+            switch(msgCode){
+                case GameMsgProtocol.MsgCode.WHAT_ROOMS_CMD_VALUE:
+                    cmd = GameMsgProtocol.WhatRoomsCmd.parseFrom(msgBody);
+                    break;
+                case GameMsgProtocol.MsgCode.PLAYER_ENTRY_CMD_VALUE:
+                    cmd = GameMsgProtocol.PlayerEntryCmd.parseFrom(msgBody);
+                    break;
+                ......
+            }
+
+            if(cmd != null){
+                LOGGER.info("完成处理");
+                ctx.fireChannelRead(cmd);
+            }
+
+        }catch(Exception ex){
+            LOGGER.error(ex.getMessage(), ex);
+        }
+    }
+}
+~~~
 
 
 
+##### 2.GameMsgEncoder
 
+此类继承 netty 中的 ChannelOutboundHandlerAdapter类，表示其用于对发出的信息进行处理。该类的主要任务是重写 write 函数，利用自定义的应用层通信协议，对发出的信息进行编码。
+
+~~~java
+public class GameMsgEncoder extends ChannelOutboundHandlerAdapter{
+    @Override
+    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception{
+        try{
+            int msgCode = -1;
+
+            if(msg instanceof GameMsgProtocol.WhatRoomsResult)
+                msgCode = GameMsgProtocol.MsgCode.WHAT_ROOMS_RESULT_VALUE;
+            else if(msg instanceof GameMsgProtocol.PlayerEntryResult)
+                msgCode = GameMsgProtocol.MsgCode.PLAYER_ENTRY_RESULT_VALUE;
+            ......
+
+            byte[] msgBody = ((GeneratedMessageV3)msg).toByteArray();
+
+            ByteBuf byteBuf = ctx.alloc().buffer();
+            byteBuf.writeInt(2 + msgBody.length);
+            byteBuf.writeShort((short)msgCode);
+            byteBuf.writeBytes(msgBody);
+
+            super.write(ctx, byteBuf, promise);
+        }catch (Exception ex){
+            LOGGER.error(ex.getMessage(), ex);
+        }
+    }
+}
+
+~~~
+
+
+
+##### 3.GameMsgHandler
+
+此类继承 SimpleChannelInboundHandler\<Object> ，为服务器端处理消息的核心，对消息进行的各种操作、对房间和用户连接的管理均在其中实现。
+
+实现细节：
+
+- 为了实现多房间：
+  - 考虑到需要保存房间的状态，实现了一个 Room 类，在其中实现了枚举 ROOM_STATE，每个房间保存（至多）两位玩家的信息，并提供对外查询接口。
+  - 利用从整形映射到 Room 的 map 实现多房间。
+- 实现 Player 类，其中保存玩家 ID、channel、所在房间号、以及是否准备好。利用从 ChannelId 映射到 player 的 map 实现 channel 与玩家的一一对应。在玩家进入房间时，将其对应 player 对象传入房间，后续可用其中信息（channel）发送信息。
+- 重写 ChannelActive 函数，当玩家第一次连接到服务器时，为玩家分配 ID，并将该用户的信息放入上述map中
+- 每个时隙里面只发一次，把收到的消息全部在一个包里转发出去，然后限制每个时隙客户端只能发一次。实现方法：
+  - 将收到的消息存入 Room 类中设置的消息队列
+  - 使将 Room 类扩展 runnable 接口，在其中重写 run，实现向客户端发送步骤消息，在 GameMsgHandler 中设置一个 ScheduledExecutorService，使用其中的 scheduleAtFixedRate 方法，在房间游戏开始时按一定速率向客户端发送消息。
+
+
+
+## 4.合作分工
+
+该项目由王梓博（181860106）和刘国涛（181860055）合作完成，根据 GitHub 上的 commit，总结两人的分工及贡献如下：
+
+* 前期（2020.12.14~2020.12.18）
+  * 王梓博完成了服务器端的编写
+  * 刘国涛完成了客户端框架的搭建
+* 中期及后期（2020.12.18~今）
+  * 客户端中各个功能的实现由两人共同实现，无大板块分工，贡献度相似
+
+![贡献](./img/Contribute.png)
+
+## 5.展望
+
+由于前期饼画的太大，我们将作业拖延到了最后一天才交，在此我们向老师和助教表示深深的歉意。但是，尽管做了这么长时间，我们仍然有不少的功能还没有完全实现，包括：
+
+* 更多的攻击方式
+* 更好的同步效果
+
+由于 FXGL 项目是由个人开发者开发的，并非十分完善，示例也不是很多，因此我们计划继续完成这个项目，并将其贡献给 FXGL 作为一个开发小示例，协助他一同维护这个小项目。
 
