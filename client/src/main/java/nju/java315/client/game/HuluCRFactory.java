@@ -42,6 +42,7 @@ import nju.java315.client.game.components.ai.MoveComponent;
 import nju.java315.client.game.components.ai.TargetMoveComponent;
 import nju.java315.client.game.components.ai.UnmovableMonsterAIComponent;
 import nju.java315.client.game.components.attack.FireBallAttack;
+import nju.java315.client.game.components.attack.WaterBallAttack;
 import nju.java315.client.game.type.AttackMethodType;
 import nju.java315.client.game.type.EntityType;
 import nju.java315.client.game.type.MonsterType;
@@ -95,6 +96,44 @@ public class HuluCRFactory implements EntityFactory {
         emitter.endColorProperty().bind(
                 Bindings.when(flag)
                         .then(Color.LIGHTPINK)
+                        .otherwise(Color.LIGHTBLUE)
+        );
+
+        emitter.setBlendMode(BlendMode.SRC_OVER);
+        emitter.setSize(2, 3);
+        emitter.setEmissionRate(1);
+        //Point2D direction = new Point2D(1,0);
+        Point2D direction = data.get("direction");
+        return FXGL.entityBuilder(data)
+                    .type(AttackMethodType.FIREBALL)
+                    .bbox(new HitBox(BoundingShape.circle(5)))
+                    .with(new CollidableComponent(true))
+                    .with(new ParticleComponent(emitter))
+                    .with(new ProjectileComponent(direction, 200))
+                    .with(new AttackTargetComponent(data.get("target")))
+                    //.with(new ExpireCleanComponent(Duration.seconds(0.8)))
+                    .with(new DamageComponent(10))
+                    .build();
+
+    }
+
+    @Spawns("Waterball")
+    public Entity newWaterball(SpawnData data) {
+
+        SimpleBooleanProperty flag = new SimpleBooleanProperty();
+        flag.set(true);
+
+        ParticleEmitter emitter = ParticleEmitters.newFireEmitter();
+
+        emitter.startColorProperty().bind(
+                Bindings.when(flag)
+                        .then(Color.BLUE)
+                        .otherwise(Color.BLUE)
+        );
+
+        emitter.endColorProperty().bind(
+                Bindings.when(flag)
+                        .then(Color.LIGHTBLUE)
                         .otherwise(Color.LIGHTBLUE)
         );
 
@@ -221,7 +260,7 @@ public class HuluCRFactory implements EntityFactory {
                     .viewWithBBox(MonsterType.WATER_HULU.getRightUrl())
                     .with(new HealthCompoent(MonsterType.WATER_HULU.getHp()))
                     .with(new CollidableComponent(true))
-                    .with(new FireBallAttack())
+                    .with(new WaterBallAttack())
                     .with(new IdentityComponent(flag))
                     .with(new CellMoveComponent(Config.CELL_WIDTH, Config.CELL_HEIGHT, MonsterType.WATER_HULU.getSpeed()))
                     .with(new AStarMoveComponent(new LazyValue<>(() -> geto("grid"))))
