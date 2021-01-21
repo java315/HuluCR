@@ -354,14 +354,12 @@ public class HuluCRApp extends GameApplication {
 
     private void onSelfPut(PutEvent event){
         Point2D putPoint = new Point2D(event.getX(), event.getY());
-        System.out.println("self put: " + event.getMonsterName());
         spawn(event.getMonsterName(), new SpawnData(putPoint).put("flag", IdentityComponent.SELF_FLAG));
     }
 
     private void onEnemyPut(PutEvent event) {
         float newX = Config.LEFT_BOUND_X + Config.RIGHT_BOUND_X - event.getX();
         Point2D putPoint = new Point2D(newX, event.getY());
-        System.out.println("enemy put: " + event.getMonsterName());
         spawn(event.getMonsterName(), new SpawnData(putPoint).put("flag", IdentityComponent.ENEMY_FLAG));
     }
 
