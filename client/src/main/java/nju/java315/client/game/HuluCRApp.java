@@ -167,7 +167,7 @@ public class HuluCRApp extends GameApplication {
         initGrid();
 
         spawn("ReadyButton", new SpawnData(Config.READY_BUTTON_X, Config.READY_BUTTON_Y));
-        spawnTowers();
+        // spawnTowers();
         spawn("Background");
 
     }
@@ -446,9 +446,10 @@ public class HuluCRApp extends GameApplication {
         }else{
             set("roomID", roomID);
             LOGGER.info("self enter room :{}", roomID);
-
+            spawnSelfTowers();
             if(enemyID != -1){
                 set("enemyID", enemyID);
+                spawnEnemyTowers();
                 if(event.getEnemyIsReady())
                     getEventBus().fireEvent(new ReadyEvent(ReadyEvent.ENEMY_READY));
             }
@@ -457,6 +458,7 @@ public class HuluCRApp extends GameApplication {
 
     private void onEnemyEntryResult(EntryResultEvent event){
         int enemyID = event.getEnemyID();
+        spawnEnemyTowers();
         set("enemyID", enemyID);
         LOGGER.info("player {} enter room", enemyID);
     }
@@ -477,7 +479,7 @@ public class HuluCRApp extends GameApplication {
             return CellState.WALKABLE;
         });
         set("grid", grid);
-      
+
     }
 
     private void initBlock() {
@@ -503,10 +505,18 @@ public class HuluCRApp extends GameApplication {
     // monster list
     private ArrayList<Entity> selfTowers = new ArrayList<>();
     private ArrayList<Entity> enemyTowers = new ArrayList<>();
-    private void spawnTowers(){
+    private void spawnSelfTowers(){
         selfTowers.add(spawn("Tower", new SpawnData(SELF_MAIN_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
         selfTowers.add(spawn("Tower", new SpawnData(SELF_UP_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
         selfTowers.add(spawn("Tower", new SpawnData(SELF_DOWN_TOWER_POSITION).put("flag", IdentityComponent.SELF_FLAG)));
+
+        String[] pos = {"main","up","down"};
+        for(int i=0;i<3;++i) {
+            selfTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("self_"+pos[i]+"_tower");
+        }
+    }
+
+    private void spawnEnemyTowers(){
 
         enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_MAIN_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
         enemyTowers.add(spawn("Tower", new SpawnData(ENEMY_UP_TOWER_POSITION).put("flag", IdentityComponent.ENEMY_FLAG)));
@@ -514,7 +524,6 @@ public class HuluCRApp extends GameApplication {
 
         String[] pos = {"main","up","down"};
         for(int i=0;i<3;++i) {
-            selfTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("self_"+pos[i]+"_tower");
             enemyTowers.get(i).getComponent(UnmovableMonsterAIComponent.class).setName("enemy_"+pos[i]+"_tower");
         }
     }
