@@ -1,4 +1,4 @@
-package nju.java315.client.game;
+package nju.java315.client.game.network;
 
 import com.almasb.fxgl.dsl.FXGL;
 import com.almasb.fxgl.net.Client;
@@ -9,22 +9,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javafx.geometry.Point2D;
-import nju.java315.client.game.network.GameMsgHandler;
 import nju.java315.client.game.network.msg.GameMsgProtocol;
 
-class HuluCRClientManager{
-    static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
+public class SendMsgHandler{
+    static private final Logger LOGGER = LoggerFactory.getLogger(ReceiveMsgHandler.class);
     private Client<byte[]> client;
 
     private Connection<byte[]> conn;
 
-    public HuluCRClientManager(String ip,int port) {
+    public SendMsgHandler(String ip,int port) {
 
         client = FXGL.getNetService().newTCPClient(ip, port, new ClientConfig<>(byte[].class));
         client.setOnConnected(connection -> {
             LOGGER.info("connect to server : " + connection.isConnected());
             conn = connection;
-            connection.addMessageHandlerFX(new GameMsgHandler());
+            connection.addMessageHandlerFX(new ReceiveMsgHandler());
         });
         client.connectAsync();
     }

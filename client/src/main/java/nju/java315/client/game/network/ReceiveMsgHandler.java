@@ -23,8 +23,8 @@ import nju.java315.client.game.util.Room.ROOM_STATE;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 
-public class GameMsgHandler implements MessageHandler<byte[]> {
-    static private final Logger LOGGER = LoggerFactory.getLogger(GameMsgHandler.class);
+public class ReceiveMsgHandler implements MessageHandler<byte[]> {
+    static private final Logger LOGGER = LoggerFactory.getLogger(ReceiveMsgHandler.class);
 
     @Override
     public void onReceive(Connection<byte[]> connection, byte[] msg) {

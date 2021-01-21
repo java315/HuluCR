@@ -39,6 +39,7 @@ import nju.java315.client.game.type.MonsterType;
 import nju.java315.client.game.type.AttackMethodType;
 import nju.java315.client.game.type.CursorEventType;
 import nju.java315.client.game.type.EntityType;
+import nju.java315.client.game.network.SendMsgHandler;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static nju.java315.client.game.Config.*;
@@ -149,16 +150,15 @@ public class HuluCRApp extends GameApplication {
         vars.put("self_main_tower_alive",true);
         vars.put("self_down_tower_alive",true);
         vars.put("self_up_tower_alive",true);
-        
     }
 
     // 初始化游戏元素
-    private HuluCRClientManager clientManager;
+    private SendMsgHandler clientManager;
 
     @Override
     protected void initGame() {
         // 初始化网络
-        clientManager = new HuluCRClientManager(SERVER_IP,SERVER_PORT);
+        clientManager = new SendMsgHandler(SERVER_IP,SERVER_PORT);
         //添加工厂
         getGameWorld().addEntityFactory(new HuluCRFactory());
 
